@@ -65,8 +65,6 @@
 
 #include <OpenGLES/ES1/glext.h>
 
-#include "const.h"
-
 int Texture2D::nameCounter_ = 0;
 GLfloat Texture2D::globalAlpha_ = 1;
 
