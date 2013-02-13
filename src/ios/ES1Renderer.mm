@@ -8,6 +8,8 @@
 
 #import "ES1Renderer.h"
 
+#import "opengl/texture2d.h"
+
 @implementation ES1Renderer {
  @private
   EAGLContext *context_;
@@ -101,7 +103,8 @@
   [context_ renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:layer];
   glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth_);
   glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight_);
-  
+  Texture2D::SetScreenHeight(backingHeight_);
+
   if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
     NSLog(@"Failed to make complete framebuffer object %x",
           glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
