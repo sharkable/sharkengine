@@ -67,6 +67,7 @@
 
 int Texture2D::nameCounter_ = 0;
 GLfloat Texture2D::globalAlpha_ = 1;
+GLfloat Texture2D::screen_height_ = 480;
 
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
                      uint32_t height, ScreenSize size, string filename) {
@@ -87,7 +88,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   }
 
   // Swap vertical coordinate system.
-  point.y = 480.f - point.y;
+  point.y = screen_height_ - point.y;
 
   GLfloat width = (GLfloat)width_ * max_s_,
   height = (GLfloat)height_ * max_t_;
@@ -111,7 +112,7 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
 
   // Swap vertical coordinate system.
   // TODO make this not screen size dependent.
-  point.y = 480.f - point.y;
+  point.y = screen_height_ - point.y;
   
   GLfloat    width = (GLfloat)width_ * max_s_ * leftRatio,
   height = (GLfloat)height_ * max_t_;
@@ -146,8 +147,7 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
   }
 
   // Swap vertical coordinate system.
-  // TODO screen size dependence.
-  point.y = 480.f - point.y;
+  point.y = screen_height_ - point.y;
   
   GLfloat    width = (GLfloat)width_ * max_s_ * rightRatio,
   height = (GLfloat)height_ * max_t_;
@@ -183,8 +183,7 @@ void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
   }
 
   // Swap vertical coordinate system.
-  // TODO screen size dependence.
-  point.y = 480.f - point.y;
+  point.y = screen_height_ - point.y;
   
   GLfloat    width = (GLfloat)width_ * max_s_,
   height = (GLfloat)height_ * max_t_;
