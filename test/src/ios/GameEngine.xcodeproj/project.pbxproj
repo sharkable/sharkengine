@@ -263,6 +263,8 @@
 		FE30FA4416CAE8C000E793E6 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				FE30FA5416CAE8C000E793E6 /* SoundEngine */,
+				FE30FA5E16CAE8C000E793E6 /* thirdparty */,
 				FE30FA4516CAE8C000E793E6 /* AdEngineIOS.h */,
 				FE30FA4616CAE8C000E793E6 /* AdEngineIOS.mm */,
 				FE30FA4716CAE8C000E793E6 /* EAGLView.h */,
@@ -278,8 +280,6 @@
 				FE30FA5116CAE8C000E793E6 /* GameTouchWindow.mm */,
 				FE30FA5216CAE8C000E793E6 /* LocalStore.mm */,
 				FE30FA5316CAE8C000E793E6 /* ResourceLoader.mm */,
-				FE30FA5416CAE8C000E793E6 /* SoundEngine */,
-				FE30FA5E16CAE8C000E793E6 /* thirdparty */,
 				FE30FAC616CAE8C000E793E6 /* TypeUtil.h */,
 				FE30FAC716CAE8C000E793E6 /* TypeUtil.mm */,
 			);
