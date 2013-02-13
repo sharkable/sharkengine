@@ -25,6 +25,7 @@
 - (id)initWithFrame:(CGRect)frame {  
   self = [super initWithFrame:frame];
   if (self) {
+    self.contentScaleFactor = [UIScreen mainScreen].scale;
     self.multipleTouchEnabled = YES;
     
     // Get the layer

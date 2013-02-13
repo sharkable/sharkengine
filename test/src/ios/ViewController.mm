@@ -38,12 +38,12 @@
 
     game_engine_ = new GameEngine();
     game_engine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-      game_engine_->SetScreenSize(screen_size_make(320, 480), game_size_make(320, 480));
-      game_engine_->SetScreenOffset(screen_point_make(0, 50));
-    } else {
-      game_engine_->SetScreenSize(screen_size_make(768, 1024), game_size_make(768, 1024));
-    }
+
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    game_engine_->SetScreenSize(screen_size_make(size.width * scale, size.height * scale),
+                                game_size_make(320, 480));
+
     root_view_.reset(new MainView(sp<GameEngine>(game_engine_)));
     game_engine_->PushView(root_view_);
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
