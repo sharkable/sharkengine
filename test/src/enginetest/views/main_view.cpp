@@ -9,6 +9,7 @@
 #include "enginetest/views/main_view.h"
 
 #include "gameengine/entities/simple_item.h"
+#include "gameengine/game_engine.h"
 #include "gameengine/sprite.h"
 
 MainView::MainView(sp<GameEngine> game_engine) : EngineView(game_engine) {

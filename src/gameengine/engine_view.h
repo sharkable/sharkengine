@@ -6,15 +6,14 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_ENGINEVIEW_H_
-#define AIRHOCKEY_GAMEENGINE_ENGINEVIEW_H_
+#ifndef GAMEENGINE_ENGINEVIEW_H_
+#define GAMEENGINE_ENGINEVIEW_H_
 
 #include <vector>
 using namespace std;
 
-#include "gameengine/touch.h"
-
 class GameEngine;
+class Touch;
 class ViewEntity;
 
 class EngineView {

@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_ADENGINE_H_
-#define AIRHOCKEY_GAMEENGINE_ADENGINE_H_
+#ifndef GAMEENGINE_ADENGINE_H_
+#define GAMEENGINE_ADENGINE_H_
 
 struct ScreenPoint;
 

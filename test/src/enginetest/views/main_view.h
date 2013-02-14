@@ -11,6 +11,8 @@
 
 #include "gameengine/engine_view.h"
 
+class GameEngine;
+
 class MainView : public EngineView {
  public:
   MainView(sp<GameEngine> game_engine);

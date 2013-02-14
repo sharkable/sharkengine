@@ -6,13 +6,15 @@
 //  Copyright Sharkable 2013. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "EAGLView.h"
-#import "FlurryAnalytics.h"
-#import "game_engine.h"
-#import "sound_player.h"
-#import "main_view.h"
-#import "ViewController.h"
+#import "ios/AppDelegate.h"
+
+#import "gameengine/game_engine.h"
+#import "ios/thirdparty/FlurryAnalytics/FlurryAnalytics.h"
+#import "ios/EAGLView.h"
+#import "ios/ViewController.h"
+#import "soundengine/sound_player.h"
+
+#import "enginetest/views/main_view.h"
 
 @interface AppDelegate ()
 - (void)initAudio:(SoundInitializationDelegate *)delegate;

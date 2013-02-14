@@ -9,6 +9,7 @@
 #include "gameengine/engine_view.h"
 
 #include "gameengine/game_engine.h"
+#include "gameengine/touch.h"
 #include "gameengine/view_entity.h"
 
 EngineView::EngineView(sp<GameEngine> game_engine) : game_engine_(game_engine) {
