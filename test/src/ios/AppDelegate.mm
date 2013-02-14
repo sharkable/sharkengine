@@ -45,8 +45,11 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  viewController_ = [[ViewController alloc] init];
-  
+  viewController_ = [[ViewController alloc] initWithGameSize:game_size_make(320, 480)];
+  sp<EngineView> rootView =
+      sp<EngineView>(new MainView(sp<GameEngine>(viewController_.gameEngine)));
+  viewController_.gameEngine->PushView(rootView);
+
   return YES;
 }
 
@@ -56,7 +59,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [viewController_ start];
-  viewController_.game_engine->ClearTouches();
+  viewController_.gameEngine->ClearTouches();
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

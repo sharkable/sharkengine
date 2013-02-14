@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+struct GameSize;
+class EngineView;
+
 class GameEngine;
 
 @interface ViewController : UIViewController
 
-@property(nonatomic, readonly) GameEngine *game_engine;
+@property(nonatomic, readonly) GameEngine *gameEngine;
 @property(nonatomic, readonly) UIWindow *window;
 
+- (id)initWithGameSize:(GameSize)gameSize;
 - (void)start;
 - (void)stop;
 
