@@ -36,7 +36,6 @@
 		FE30FB2E16CAE8FF00E793E6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE30FB2216CAE8FF00E793E6 /* Default@2x.png */; };
 		FE30FB2F16CAE8FF00E793E6 /* GameEngine-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE30FB2316CAE8FF00E793E6 /* GameEngine-Info.plist */; };
 		FE30FB3016CAE8FF00E793E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30FB2816CAE8FF00E793E6 /* main.m */; };
-		FE30FB3116CAE8FF00E793E6 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE30FB2A16CAE8FF00E793E6 /* ViewController.mm */; };
 		FE30FB3416CAED1900E793E6 /* main_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE30FB3216CAED1900E793E6 /* main_view.cpp */; };
 		FE30FB3616CAF29000E793E6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FB3516CAF29000E793E6 /* AdSupport.framework */; };
 		FE30FB4216CAF2C500E793E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FB3716CAF2C400E793E6 /* AudioToolbox.framework */; };
@@ -52,6 +51,7 @@
 		FE30FB4C16CAF2C500E793E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FB4116CAF2C400E793E6 /* SystemConfiguration.framework */; };
 		FE30FB5416CB0A6500E793E6 /* stripes_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = FE30FB5216CB0A6500E793E6 /* stripes_iphone.png */; };
 		FE30FB5516CB0A6500E793E6 /* stripes_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE30FB5316CB0A6500E793E6 /* stripes_iphone@2x.png */; };
+		FED7989016CDB0A700EF724B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FED7988F16CDB0A700EF724B /* ViewController.mm */; };
 		FEE74A1216CADEC800D477A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE74A1116CADEC800D477A5 /* UIKit.framework */; };
 		FEE74A1416CADEC800D477A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE74A1316CADEC800D477A5 /* Foundation.framework */; };
 		FEE74A1616CADEC800D477A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE74A1516CADEC800D477A5 /* CoreGraphics.framework */; };
@@ -141,8 +141,6 @@
 		FE30FB2316CAE8FF00E793E6 /* GameEngine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GameEngine-Info.plist"; sourceTree = "<group>"; };
 		FE30FB2416CAE8FF00E793E6 /* GameEngine-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GameEngine-Prefix.pch"; sourceTree = "<group>"; };
 		FE30FB2816CAE8FF00E793E6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FE30FB2916CAE8FF00E793E6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FE30FB2A16CAE8FF00E793E6 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		FE30FB3216CAED1900E793E6 /* main_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main_view.cpp; sourceTree = "<group>"; };
 		FE30FB3316CAED1900E793E6 /* main_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main_view.h; sourceTree = "<group>"; };
 		FE30FB3516CAF29000E793E6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -159,6 +157,8 @@
 		FE30FB4116CAF2C400E793E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FE30FB5216CB0A6500E793E6 /* stripes_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stripes_iphone.png; sourceTree = "<group>"; };
 		FE30FB5316CB0A6500E793E6 /* stripes_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stripes_iphone@2x.png"; sourceTree = "<group>"; };
+		FED7988E16CDB0A700EF724B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FED7988F16CDB0A700EF724B /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		FEE74A0E16CADEC800D477A5 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE74A1116CADEC800D477A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEE74A1316CADEC800D477A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -282,6 +282,8 @@
 				FE30FA5316CAE8C000E793E6 /* ResourceLoader.mm */,
 				FE30FAC616CAE8C000E793E6 /* TypeUtil.h */,
 				FE30FAC716CAE8C000E793E6 /* TypeUtil.mm */,
+				FED7988E16CDB0A700EF724B /* ViewController.h */,
+				FED7988F16CDB0A700EF724B /* ViewController.mm */,
 			);
 			name = ios;
 			path = ../../../src/ios;
@@ -405,8 +407,6 @@
 				FE30FB2316CAE8FF00E793E6 /* GameEngine-Info.plist */,
 				FE30FB2416CAE8FF00E793E6 /* GameEngine-Prefix.pch */,
 				FE30FB2816CAE8FF00E793E6 /* main.m */,
-				FE30FB2916CAE8FF00E793E6 /* ViewController.h */,
-				FE30FB2A16CAE8FF00E793E6 /* ViewController.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -596,8 +596,8 @@
 				FE30FB1416CAE8C000E793E6 /* texture2d.cc in Sources */,
 				FE30FB2B16CAE8FF00E793E6 /* AppDelegate.mm in Sources */,
 				FE30FB3016CAE8FF00E793E6 /* main.m in Sources */,
-				FE30FB3116CAE8FF00E793E6 /* ViewController.mm in Sources */,
 				FE30FB3416CAED1900E793E6 /* main_view.cpp in Sources */,
+				FED7989016CDB0A700EF724B /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
