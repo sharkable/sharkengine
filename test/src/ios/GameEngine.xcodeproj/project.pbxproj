@@ -26,7 +26,6 @@
 		FE30FADE16CAE8C000E793E6 /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE30FA5916CAE8C000E793E6 /* AVAudio.mm */; };
 		FE30FADF16CAE8C000E793E6 /* MyOpenALSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE30FA5B16CAE8C000E793E6 /* MyOpenALSupport.mm */; };
 		FE30FAE016CAE8C000E793E6 /* SoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE30FA5D16CAE8C000E793E6 /* SoundPlayer.mm */; };
-		FE30FAE116CAE8C000E793E6 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FA6116CAE8C000E793E6 /* libFlurryAnalytics.a */; };
 		FE30FB1116CAE8C000E793E6 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FAC416CAE8C000E793E6 /* libGoogleAdMobAds.a */; };
 		FE30FB1316CAE8C000E793E6 /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE30FAC716CAE8C000E793E6 /* TypeUtil.mm */; };
 		FE30FB1416CAE8C000E793E6 /* texture2d.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE30FAC916CAE8C000E793E6 /* texture2d.cc */; };
@@ -114,8 +113,6 @@
 		FE30FA5B16CAE8C000E793E6 /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
 		FE30FA5C16CAE8C000E793E6 /* SoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPlayer.h; sourceTree = "<group>"; };
 		FE30FA5D16CAE8C000E793E6 /* SoundPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundPlayer.mm; sourceTree = "<group>"; };
-		FE30FA6016CAE8C000E793E6 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		FE30FA6116CAE8C000E793E6 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		FE30FABB16CAE8C000E793E6 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		FE30FABC16CAE8C000E793E6 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		FE30FABD16CAE8C000E793E6 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -187,7 +184,6 @@
 				FE30FB4B16CAF2C500E793E6 /* StoreKit.framework in Frameworks */,
 				FE30FB4C16CAF2C500E793E6 /* SystemConfiguration.framework in Frameworks */,
 				FEE74A1216CADEC800D477A5 /* UIKit.framework in Frameworks */,
-				FE30FAE116CAE8C000E793E6 /* libFlurryAnalytics.a in Frameworks */,
 				FE30FB1116CAE8C000E793E6 /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,19 +304,9 @@
 		FE30FA5E16CAE8C000E793E6 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				FE30FA5F16CAE8C000E793E6 /* FlurryAnalytics */,
 				FE30FA6216CAE8C000E793E6 /* GoogleAdMobAdsSdkiOS-6.2.1 */,
 			);
 			path = thirdparty;
-			sourceTree = "<group>";
-		};
-		FE30FA5F16CAE8C000E793E6 /* FlurryAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				FE30FA6016CAE8C000E793E6 /* FlurryAnalytics.h */,
-				FE30FA6116CAE8C000E793E6 /* libFlurryAnalytics.a */,
-			);
-			path = FlurryAnalytics;
 			sourceTree = "<group>";
 		};
 		FE30FA6216CAE8C000E793E6 /* GoogleAdMobAdsSdkiOS-6.2.1 */ = {
@@ -693,8 +679,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameEngine-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../src/ios/thirdparty/FlurryAnalytics\"",
-					"\"$(SRCROOT)/../../../src/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/Add-ons/GoogleAnalyticsiOS_2.0beta3/Library\"",
 					"\"$(SRCROOT)/../../../src/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -712,8 +696,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameEngine-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../src/ios/thirdparty/FlurryAnalytics\"",
-					"\"$(SRCROOT)/../../../src/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/Add-ons/GoogleAnalyticsiOS_2.0beta3/Library\"",
 					"\"$(SRCROOT)/../../../src/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

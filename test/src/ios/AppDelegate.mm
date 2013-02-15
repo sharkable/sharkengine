@@ -9,7 +9,6 @@
 #import "ios/AppDelegate.h"
 
 #import "gameengine/game_engine.h"
-#import "ios/thirdparty/FlurryAnalytics/FlurryAnalytics.h"
 #import "ios/EAGLView.h"
 #import "ios/ViewController.h"
 #import "soundengine/sound_player.h"
