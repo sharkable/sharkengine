@@ -1,6 +1,8 @@
 var activeDocument = app.activeDocument;
 var outputFolder = activeDocument.path + "/output"
+var outputPositionsFilename = activeDocument.path + "/output/positions.xml"
 var layerVisibleMap = new Array();
+var layerPositionMap = {};
 
 var layerIndexes = getLayerSetsIndex();
 
@@ -13,7 +15,8 @@ for (var i = 0; i < layerIndexes.length; i++) {
 
 for (var i = 0; i < layerIndexes.length; i++) {
   makeActiveByIndex(layerIndexes[i], false);
-  if (activeDocument.activeLayer.name[0] == "_") {
+  var layerName = activeDocument.activeLayer.name;
+  if (layerName.length >= 2 && (layerName[0] == '_' || layerName[0] == '@')) {
     createResourceFromLayerSet(activeDocument.activeLayer);
   }
 }
@@ -23,6 +26,18 @@ for (var i = 0; i < layerIndexes.length; i++) {
   makeActiveByIndex(index, false);
   activeDocument.activeLayer.visible = layerVisibleMap[index];
 }
+
+var positionsFile = new File(outputPositionsFilename);
+positionsFile.open('w');
+positionsFile.writeln('<positions>');
+for (var layerName in layerPositionMap) {
+  positionsFile.writeln('  <position name=\"' + layerName + '\">');
+  positionsFile.writeln('    <x>' + layerPositionMap[layerName][0].value + '</x>');
+  positionsFile.writeln('    <y>' + layerPositionMap[layerName][1].value + '</y>');
+  positionsFile.writeln('  </position>');
+}
+positionsFile.writeln('</positions>');
+positionsFile.close();
 
 function getLayerSetsIndex() {  
    function getNumberLayers() { 
@@ -115,6 +130,11 @@ function setParentsVisible(layerSet, visible) {
 }
 
 function createResourceFromLayerSet(layerSet) {
+  var name = layerSet.name;
+  var saveFile = name[0] == '_' || name[1] == '_';
+  var savePosition = name[0] == '@' || name[1] == '@';
+  var documentName = layerSet.name.substring(saveFile && savePosition ? 2 : 1);
+
   recursiveSetLayerSetVisible(layerSet, true);
   setParentsVisible(layerSet, true);
 
@@ -124,7 +144,6 @@ function createResourceFromLayerSet(layerSet) {
   recursiveSetLayerSetVisible(layerSet, false);
   setParentsVisible(layerSet, false);
 
-  var documentName = layerSet.name.substring(1);
   var document = app.documents.add(activeDocument.width, activeDocument.height, 72, documentName,
 	                               NewDocumentMode.RGB, DocumentFill.TRANSPARENT);
   pasteInPlace();
@@ -135,11 +154,16 @@ function createResourceFromLayerSet(layerSet) {
   var x = oldWidth - document.width;
   var y = oldHeight - document.height;
   document.trim(TrimType.TRANSPARENT, false, false, true, true);
-  alert(documentName + ' position ' + x + "," + y);
 
-  var pngSaveOptions = new PNGSaveOptions();
-  pngSaveOptions.interlaced = false;
-  document.saveAs(new File(outputFolder + "/" + documentName), pngSaveOptions, true);
+  if (savePosition) {
+    layerPositionMap[documentName] = [x, y];
+  }
+
+  if (saveFile) {
+    var pngSaveOptions = new PNGSaveOptions();
+    pngSaveOptions.interlaced = false;
+    document.saveAs(new File(outputFolder + "/" + documentName), pngSaveOptions, true);
+  }
+
   document.close(SaveOptions.DONOTSAVECHANGES);
 }
-
