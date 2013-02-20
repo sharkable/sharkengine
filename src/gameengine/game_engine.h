@@ -13,6 +13,7 @@
 using namespace std;
 
 #include "gameengine/coordinate_types.h"
+#include "gameengine/positions.h"
 #include "gameengine/touch.h"
 
 class AdEngine;
@@ -36,6 +37,9 @@ class GameEngine {
   sp<AdEngine> ad_engine() { return ad_engine_; }
   void set_ad_engine(sp<AdEngine> ad_engine) { ad_engine_ = ad_engine; }
 
+  void load_positions(string filename) { positions_ = sp<Positions>(new Positions(filename)); }
+  GamePoint position(string name) { return positions_->position(name); }
+  
   void set_touches_began(vector<Touch> touches_began) { touches_began_ = touches_began; }
   void set_touches_moved(vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
   void set_touches_ended(vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
@@ -59,6 +63,7 @@ class GameEngine {
 
  private:
   sp<AdEngine> ad_engine_;
+  sp<Positions> positions_;
   vector<sp<EngineView> > views_;
   vector<Touch> touches_began_;
   vector<Touch> touches_moved_;
