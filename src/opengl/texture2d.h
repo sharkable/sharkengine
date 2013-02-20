@@ -70,7 +70,7 @@ using namespace std;
 // TODO this is overreaching... this shouldn't know about the game engine.
 #include "gameengine/coordinate_types.h"
 
-#define kMaxTextureSize   1024
+#define kMaxTextureSize   4096
 
 typedef enum {
   kTexture2DPixelFormat_Automatic = 0,

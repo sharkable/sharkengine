@@ -21,9 +21,18 @@ using namespace std;
 @implementation GameTouchWindow {
  @private
   GameEngine *gameEngine_;  // weak
+  CGFloat scale_;
 }
 
 @synthesize gameEngine = gameEngine_;
+
+- (id)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  if (self) {
+    scale_ = [UIScreen mainScreen].scale;
+  }
+  return self;
+}
 
 #pragma mark - UIWindow
 
@@ -46,7 +55,7 @@ using namespace std;
   for (UITouch *touch in touches) {
     Touch converted_touch;
     CGPoint location = [touch locationInView:touch.view];
-    ScreenPoint l = screen_point_make(location.x, location.y);
+    ScreenPoint l = screen_point_make(location.x * scale_, location.y * scale_);
     GamePoint p = gameEngine_->screen_point_to_game_point(l);
     converted_touch.set_location(p);
     converted_touch.set_identifier(touch);

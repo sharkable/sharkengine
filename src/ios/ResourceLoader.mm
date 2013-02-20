@@ -48,8 +48,10 @@ Texture2D ResourceLoader::Texture(string name) {
   } else {  // NOTE: No colorspace means a mask image
     pixelFormat = kTexture2DPixelFormat_A8;
   }
-  
-  ScreenSize imageSize = screen_size_make(CGImageGetWidth(image), CGImageGetHeight(image));
+
+  CGFloat scale = [UIScreen mainScreen].scale / uiImage.scale;
+  ScreenSize imageSize = screen_size_make(CGImageGetWidth(image) * scale,
+                                          CGImageGetHeight(image) * scale);
   CGAffineTransform transform = CGAffineTransformIdentity;
   
   NSUInteger width = imageSize.width;
@@ -112,7 +114,7 @@ Texture2D ResourceLoader::Texture(string name) {
   if (!CGAffineTransformIsIdentity(transform)) {
     CGContextConcatCTM(context, transform);
   }
-  CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image), CGImageGetHeight(image)),
+  CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image) * scale, CGImageGetHeight(image) * scale),
                      image);
   //Convert "RRRRRRRRRGGGGGGGGBBBBBBBBAAAAAAAA" to "RRRRRGGGGGGBBBBB"
   if (pixelFormat == kTexture2DPixelFormat_RGB565) {
