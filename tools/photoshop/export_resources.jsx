@@ -1,8 +1,12 @@
 var activeDocument = app.activeDocument;
-var outputFolder = activeDocument.path + "/output"
-var outputPositionsFilename = activeDocument.path + "/output/positions.xml"
+var outputFolder = activeDocument.path + "/../resources/images"
+var outputPositionsFilename = activeDocument.path + "/../resources/positions/positions.xml"
 var layerVisibleMap = new Array();
 var layerPositionMap = {};
+
+
+var response = prompt("It this for Retina Display?", 'n');
+var isRetina = response[0] != 'n' && response[0] != 'N';
 
 var layerIndexes = getLayerSetsIndex();
 
@@ -17,7 +21,7 @@ for (var i = 0; i < layerIndexes.length; i++) {
   makeActiveByIndex(layerIndexes[i], false);
   var layerName = activeDocument.activeLayer.name;
   if (layerName.length >= 2 && (layerName[0] == '_' || layerName[0] == '@')) {
-    createResourceFromLayerSet(activeDocument.activeLayer);
+    createResourceFromLayerSet(activeDocument.activeLayer, isRetina);
   }
 }
 
@@ -27,17 +31,19 @@ for (var i = 0; i < layerIndexes.length; i++) {
   activeDocument.activeLayer.visible = layerVisibleMap[index];
 }
 
-var positionsFile = new File(outputPositionsFilename);
-positionsFile.open('w');
-positionsFile.writeln('<positions>');
-for (var layerName in layerPositionMap) {
-  positionsFile.writeln('  <position name=\"' + layerName + '\">');
-  positionsFile.writeln('    <x>' + layerPositionMap[layerName][0].value + '</x>');
-  positionsFile.writeln('    <y>' + layerPositionMap[layerName][1].value + '</y>');
-  positionsFile.writeln('  </position>');
+if (!isRetina) {
+	var positionsFile = new File(outputPositionsFilename);
+	positionsFile.open('w');
+	positionsFile.writeln('<positions>');
+	for (var layerName in layerPositionMap) {
+	  positionsFile.writeln('  <position name=\"' + layerName + '\">');
+	  positionsFile.writeln('    <x>' + layerPositionMap[layerName][0].value + '</x>');
+	  positionsFile.writeln('    <y>' + layerPositionMap[layerName][1].value + '</y>');
+	  positionsFile.writeln('  </position>');
+	}
+	positionsFile.writeln('</positions>');
+	positionsFile.close();
 }
-positionsFile.writeln('</positions>');
-positionsFile.close();
 
 function getLayerSetsIndex() {  
    function getNumberLayers() { 
@@ -129,11 +135,14 @@ function setParentsVisible(layerSet, visible) {
   }  
 }
 
-function createResourceFromLayerSet(layerSet) {
+function createResourceFromLayerSet(layerSet, isRetina) {
   var name = layerSet.name;
   var saveFile = name[0] == '_' || name[1] == '_';
   var savePosition = name[0] == '@' || name[1] == '@';
   var documentName = layerSet.name.substring(saveFile && savePosition ? 2 : 1);
+  if (isRetina) {
+    documentName += "@2x";	
+  }
 
   recursiveSetLayerSetVisible(layerSet, true);
   setParentsVisible(layerSet, true);
@@ -156,7 +165,9 @@ function createResourceFromLayerSet(layerSet) {
   document.trim(TrimType.TRANSPARENT, false, false, true, true);
 
   if (savePosition) {
-    layerPositionMap[documentName] = [x, y];
+    // documentName might include a path, but we just want the filename.
+    var positionName = documentName.split("/").pop();
+    layerPositionMap[positionName] = [x, y];
   }
 
   if (saveFile) {
