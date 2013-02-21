@@ -31,9 +31,9 @@ Button::~Button() {
 
 bool Button::ContainsPoint(GamePoint p) {
   return p.x >= position_.x &&
-  p.y >= position_.y &&
-  p.x < position_.x + pressed_sprite_.content_size().width &&
-  p.y < position_.y + pressed_sprite_.content_size().height;
+      p.y >= position_.y &&
+      p.x < position_.x + pressed_sprite_.content_size().width &&
+      p.y < position_.y + pressed_sprite_.content_size().height;
 }
 
 
