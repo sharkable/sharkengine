@@ -1,6 +1,6 @@
 //
 //  simple_item.h
-//  AirHockey
+//  GameEngine
 //
 //  Created by Jonathan Sharkey on 10-04-30.
 //  Copyright 2010 Sharkable. All rights reserved.
@@ -12,10 +12,10 @@
 #include <vector>
 using namespace std;
 
+#include "gameengine/entities/animatable.h"
 #include "gameengine/sprite.h"
-#include "gameengine/view_entity.h"
 
-class SimpleItem : public ViewEntity {
+class SimpleItem : public Animatable {
  public:
   SimpleItem();
   SimpleItem(Sprite sprite, GamePoint position);
@@ -31,17 +31,11 @@ class SimpleItem : public ViewEntity {
   int sprite() { return sprite_; }
   void set_sprite(int sprite) { sprite_ = sprite; }
   void add_sprite(Sprite sprite) { sprites_.push_back(sprite); }
-  GamePoint position() { return position_; }
-  void set_position(GamePoint position) { position_ = position; }
-  double angle() { return angle_; }
-  void set_angle(double angle) { angle_ = angle; }
   GameSize size() { return sprites_[sprite_].content_size(); }
 
  private:
   vector<Sprite> sprites_;
   int sprite_;
-  GamePoint position_;
-  double angle_;
 };
 
 #endif

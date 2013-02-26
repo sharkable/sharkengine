@@ -1,6 +1,6 @@
 //
 //  simple_item.cc
-//  AirHockey
+//  GameEngine
 //
 //  Created by Jonathan Sharkey on 10-04-30.
 //  Copyright 2010 Sharkable. All rights reserved.
@@ -11,23 +11,20 @@
 #import "gameengine/resource_loader.h"
 
 SimpleItem::SimpleItem()
-    : sprite_(0),
-      position_(game_point_make(0, 0)),
-      angle_(0) {
+    : Animatable(),
+      sprite_(0) {
 }
 
 SimpleItem::SimpleItem(Sprite sprite, GamePoint position)
-    : sprite_(0),
-      position_(position),
-      angle_(0) {
+    : Animatable(position),
+      sprite_(0) {
   sprites_.push_back(sprite);
 }
 
 SimpleItem::SimpleItem(vector<Sprite> sprites, GamePoint position)
-    : sprites_(sprites),
-      sprite_(0),
-      position_(position),
-      angle_(0) {
+    : Animatable(position),
+      sprites_(sprites),
+      sprite_(0) {
 }
 
 SimpleItem::~SimpleItem() {
@@ -40,5 +37,5 @@ SimpleItem::~SimpleItem() {
 // ViewEntity
 
 void SimpleItem::Render() {
-  sprites_[sprite_].DrawAtPointAngle(position_, angle_);
+  sprites_[sprite_].DrawAtPointAngle(position(), angle());
 }
