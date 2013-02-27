@@ -23,7 +23,6 @@ class SimpleItem : public Animatable {
   ~SimpleItem();
 
   // ViewEntity
-  void Update() {}
   void Render();
 
   // Accessors

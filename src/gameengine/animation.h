@@ -6,9 +6,34 @@
 //
 //
 
-#ifndef __AirHockey__animation__
-#define __AirHockey__animation__
+#ifndef GAMEENGINE_ANIMATION_
+#define GAMEENGINE_ANIMATION_
 
-#include <iostream>
+typedef enum {
+  kAnimationTypeLinear = 0,
+  kAnimationTypeCubicEaseIn,
+  kAnimationTypeCubicEaseOut,
+  kAnimationTypeCubicEaseInOut,
+  kAnimationTypeBounceEaseIn,
+  kAnimationTypeBounceEaseOut,
+  kAnimationTypeBounceEaseInOut
+} AnimationType;
 
-#endif /* defined(__AirHockey__animation__) */
+class Animation {
+ public:
+  Animation();
+
+  void Reset(float start, float distance, int ticks, AnimationType type);
+  double Update();
+  bool IsActive();
+
+ private:
+  float start_;
+  float distance_;
+  int ticks_;
+  int totalTicks_;
+  AnimationType type_;
+};
+
+#endif
+
