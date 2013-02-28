@@ -37,5 +37,5 @@ SimpleItem::~SimpleItem() {
 // ViewEntity
 
 void SimpleItem::Render() {
-  sprites_[sprite_].DrawAtPointAngle(position(), angle());
+  sprites_[sprite_].Draw(position(), angle(), alpha(), zoom());
 }

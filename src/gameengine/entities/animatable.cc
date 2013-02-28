@@ -10,21 +10,33 @@
 
 Animatable::Animatable()
     : position_(kGamePointZero),
-      angle_(0) {
+      angle_(0),
+      alpha_(1),
+      zoom_(1) {
 }
 
 Animatable::Animatable(GamePoint position)
     : position_(position),
-      angle_(0) {
+      angle_(0),
+      alpha_(1),
+      zoom_(1) {
 }
 
-void Animatable::AnimateToPosition(GamePoint position, AnimationType animationType, int ticks) {
-  _x_animation.Reset(position_.x, position.x - position_.x, ticks, animationType);
-  _y_animation.Reset(position_.y, position.x - position_.y, ticks, animationType);
+void Animatable::AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks) {
+  _x_animation.Reset(position_.x, position.x - position_.x, ticks, animation_type);
+  _y_animation.Reset(position_.y, position.x - position_.y, ticks, animation_type);
 }
 
-void Animatable::AnimateToAngle(double angle, AnimationType animationType, int ticks) {
-  _angle_animation.Reset(angle_, angle - angle_, ticks, animationType);
+void Animatable::AnimateToAngle(double angle, AnimationType animation_type, int ticks) {
+  _angle_animation.Reset(angle_, angle - angle_, ticks, animation_type);
+}
+
+void Animatable::AnimateToAlpha(double alpha, AnimationType animation_type, int ticks) {
+  _alpha_animation.Reset(alpha_, alpha - alpha_, ticks, animation_type);
+}
+
+void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ticks) {
+  _zoom_animation.Reset(zoom_, zoom - zoom_, ticks, animation_type);
 }
 
 
@@ -39,5 +51,11 @@ void Animatable::Update() {
   }
   if (_angle_animation.IsActive()) {
     angle_ = _angle_animation.Update();
+  }
+  if (_alpha_animation.IsActive()) {
+    alpha_ = _alpha_animation.Update();
+  }
+  if (_zoom_animation.IsActive()) {
+    zoom_ = _zoom_animation.Update();
   }
 }

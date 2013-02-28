@@ -46,8 +46,8 @@ class Sprite {
     texture_.DrawAtPointAngle(game_engine_->game_point_to_screen_point(position), angle);
   }
 
-  void DrawAtPointAlpha(GamePoint position, GLfloat alpha) {
-    texture_.DrawAtPoint(game_engine_->game_point_to_screen_point(position), alpha, 1, 0, 0);
+  void Draw(GamePoint position, GLfloat angle, GLfloat alpha, GLfloat zoom) {
+    texture_.DrawAtPoint(game_engine_->game_point_to_screen_point(position), alpha, zoom, angle, 0);
   }
 
   void DrawAtPointLeftRatio(GamePoint position, GLfloat left_ratio) {
