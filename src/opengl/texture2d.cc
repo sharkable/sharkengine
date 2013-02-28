@@ -100,7 +100,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
   glTranslatef(point.x + width/2.0, point.y - height/2.0, 0.0);
   glRotatef(angle, 0.f, 0.f, 1.f);
-  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glColor4f(1.f, 1.f, 1.f, alpha*globalAlpha_);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }

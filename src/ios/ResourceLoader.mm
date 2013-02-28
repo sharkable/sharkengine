@@ -17,15 +17,21 @@ Texture2D ResourceLoader::Texture(string name) {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     name += "_iphone";
   }
+  string high_res_name = name;
   if ([UIScreen mainScreen].scale == 2) {
-    name += "@2x";
+    high_res_name += "@2x";
+  }
+
+  NSString *filename =
+      [[NSBundle mainBundle] pathForResource:TypeUtil::string2NSString(high_res_name) ofType:@"tx"];
+  FILE *fp = fopen(filename.UTF8String, "rb");
+  if (!fp) {
+    cout << "No high res file for " << name << endl;
+    filename = [[NSBundle mainBundle] pathForResource:TypeUtil::string2NSString(name) ofType:@"tx"];
+    fp = fopen(filename.UTF8String, "rb");
   }
 
   // TODO move this reading logic to pure C++ code.
-  NSString *filename = [[NSBundle mainBundle] pathForResource:TypeUtil::string2NSString(name)
-                                                       ofType:@"tx"];
-  FILE *fp = fopen(filename.UTF8String, "rb");
-
   int real_width, real_height;
   int width, height;
   fread(&real_width, sizeof(int), 1, fp);
