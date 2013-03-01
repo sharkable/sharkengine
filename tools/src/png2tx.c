@@ -18,18 +18,13 @@ void abort_(const char * s, ...) {
   abort();
 }
 
-int x, y;
+struct PNG {
+  unsigned short width;
+  unsigned short height;
+  png_bytep *row_pointers;
+};
 
-int width, height, width2, height2, rowbytes;
-png_byte color_type;
-png_byte bit_depth;
-
-png_structp png_ptr;
-png_infop info_ptr;
-int number_of_passes;
-png_bytep * row_pointers;
-
-void read_png_file(char *file_name) {
+struct PNG read_png_file(char *file_name) {
   unsigned char header[8];    // 8 is the maximum size that can be checked
 
   /* open file and test for it being a png */
@@ -43,13 +38,13 @@ void read_png_file(char *file_name) {
   }
 
   /* initialize stuff */
-  png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+  png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 
   if (!png_ptr) {
     abort_("[read_png_file] png_create_read_struct failed");
   }
 
-  info_ptr = png_create_info_struct(png_ptr);
+  png_infop info_ptr = png_create_info_struct(png_ptr);
   if (!info_ptr) {
     abort_("[read_png_file] png_create_info_struct failed");
   }
@@ -63,22 +58,22 @@ void read_png_file(char *file_name) {
 
   png_read_info(png_ptr, info_ptr);
 
-  width = png_get_image_width(png_ptr, info_ptr);
-  height = png_get_image_height(png_ptr, info_ptr);
-  color_type = png_get_color_type(png_ptr, info_ptr);
-  bit_depth = png_get_bit_depth(png_ptr, info_ptr);
+  struct PNG png; 
+  png.width = png_get_image_width(png_ptr, info_ptr);
+  png.height = png_get_image_height(png_ptr, info_ptr);
+  png_byte color_type = png_get_color_type(png_ptr, info_ptr);
+  png_byte bit_depth = png_get_bit_depth(png_ptr, info_ptr);
 
   if (color_type != PNG_COLOR_TYPE_RGB && color_type != PNG_COLOR_TYPE_RGB_ALPHA) {
-	abort_("[read_png_file] PNG %s must be RGB or RGBA", file_name);    	
+    abort_("[read_png_file] PNG %s must be RGB or RGBA", file_name);      
   }
   if (bit_depth != 8) {
-	abort_("[read_png_file] PNG %s must be 8 bits per channel", file_name);
+    abort_("[read_png_file] PNG %s must be 8 bits per channel", file_name);
   }
   if (color_type == PNG_COLOR_TYPE_RGB) {
-	png_set_add_alpha(png_ptr, 0xFF, PNG_FILLER_AFTER);
+    png_set_add_alpha(png_ptr, 0xFF, PNG_FILLER_AFTER);
   }
 
-  number_of_passes = png_set_interlace_handling(png_ptr);
   png_read_update_info(png_ptr, info_ptr);
 
   /* read file */
@@ -86,67 +81,82 @@ void read_png_file(char *file_name) {
     abort_("[read_png_file] Error during read_image");
   }
 
-  row_pointers = (png_bytep *) malloc(sizeof(png_bytep) * height);
+  png.row_pointers = (png_bytep *)malloc(sizeof(png_bytep) * png.height);
 
-  rowbytes = width * 4;
-  for (y = 0; y < height; y++) {
-    row_pointers[y] = (png_byte *) malloc(rowbytes);
+  int row_size = png.width * 4;
+  int y;
+  for (y = 0; y < png.height; y++) {
+    png.row_pointers[y] = (png_byte *)malloc(row_size);
   }
 
-  png_read_image(png_ptr, row_pointers);
+  png_read_image(png_ptr, png.row_pointers);
+  png_read_end(png_ptr, NULL);
+  png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
   fclose(fp);
+
+  return png;
 }
 
-void write_txtr_file(char *file_name) {
-  int y, x;
+void free_data(struct PNG png) {
+  int y;
+  for (y = 0; y < png.height; y++) {
+    free(png.row_pointers[y]);
+  }
+  free(png.row_pointers);
+}
 
+void write_tx_file(struct PNG png, char *file_name) {
   FILE *fp = fopen(file_name, "wb");
 
-  width2 = 1;
-  while (width2 < width) {
-	width2 *= 2;
+  unsigned short pow_2_width = 1;
+  while (pow_2_width < png.width) {
+    pow_2_width *= 2;
   }
-  height2 = 1;
-  while (height2 < height) {
-	height2 *= 2;
+  unsigned short pow_2_height = 1;
+  while (pow_2_height < png.height) {
+    pow_2_height *= 2;
   }
 
-  fwrite(&width, sizeof(int), 1, fp);
-  fwrite(&height, sizeof(int), 1, fp);
-  fwrite(&width2, sizeof(int), 1, fp);
-  fwrite(&height2, sizeof(int), 1, fp);
+  fwrite(&png.width, sizeof(unsigned short), 1, fp);
+  fwrite(&png.height, sizeof(unsigned short), 1, fp);
+  fwrite(&pow_2_width, sizeof(unsigned short), 1, fp);
+  fwrite(&pow_2_height, sizeof(unsigned short), 1, fp);
 
   png_byte zero = 0;
-  for (y = 0; y < height; y++) {
-    fwrite(row_pointers[y], sizeof(png_byte), width * 4, fp);
-	for (x = width * 4; x < width2 * 4; x++) {
-	  fwrite(&zero, sizeof(png_byte), 1, fp);
-	}
+  int x, y;
+  for (y = 0; y < png.height; y++) {
+    fwrite(png.row_pointers[y], sizeof(png_byte), png.width * 4, fp);
+    for (x = png.width * 4; x < pow_2_width * 4; x++) {
+      fwrite(&zero, sizeof(png_byte), 1, fp);
+    }
   }
-  for (y = height; y < height2; y++) {
-	for (x = 0; x < width2 * 4; x++) {
-	  fwrite(&zero, sizeof(png_byte), 1, fp);
-	}
+  for (y = png.height; y < pow_2_height; y++) {
+    for (x = 0; x < pow_2_width * 4; x++) {
+      fwrite(&zero, sizeof(png_byte), 1, fp);
+    }
   }
 
   fclose(fp);
 }
 
 int main(int argc, char **argv) {
-  int i;
-
   if (argc < 2) {
-    abort_("Usage: png2tx <file_in>");
+    abort_("Usage: png2tx file_in [file_out]");
   }
 
-  for (i = 1; i < argc; i++) {
-    read_png_file(argv[i]);
-    int len = strlen(argv[i]);
-    argv[i][len - 3] = 't';
-    argv[i][len - 2] = 'x';
-    argv[i][len - 1] = '\0';
-    write_txtr_file(argv[i]);
+  struct PNG png = read_png_file(argv[1]);
+  char *output_filename;
+  if (argc == 3) {
+    output_filename = argv[2];
+  } else {
+    output_filename = argv[1];
+    int len = strlen(output_filename);
+    output_filename[len - 3] = 't';
+    output_filename[len - 2] = 'x';
+    output_filename[len - 1] = '\0';
   }
+  write_tx_file(png, output_filename);
+  free_data(png);
 
   return 0;
 }
