@@ -32,17 +32,17 @@ for (var i = 0; i < layerIndexes.length; i++) {
 }
 
 if (!isRetina) {
-	var positionsFile = new File(outputPositionsFilename);
-	positionsFile.open('w');
-	positionsFile.writeln('<positions>');
-	for (var layerName in layerPositionMap) {
-	  positionsFile.writeln('  <position name=\"' + layerName + '\">');
-	  positionsFile.writeln('    <x>' + layerPositionMap[layerName][0].value + '</x>');
-	  positionsFile.writeln('    <y>' + layerPositionMap[layerName][1].value + '</y>');
-	  positionsFile.writeln('  </position>');
-	}
-	positionsFile.writeln('</positions>');
-	positionsFile.close();
+  var positionsFile = new File(outputPositionsFilename);
+  positionsFile.open('w');
+  positionsFile.writeln('<positions>');
+  for (var layerName in layerPositionMap) {
+    positionsFile.writeln('  <position name=\"' + layerName + '\">');
+    positionsFile.writeln('    <x>' + layerPositionMap[layerName][0].value + '</x>');
+    positionsFile.writeln('    <y>' + layerPositionMap[layerName][1].value + '</y>');
+    positionsFile.writeln('  </position>');
+  }
+  positionsFile.writeln('</positions>');
+  positionsFile.close();
 }
 
 function getLayerSetsIndex() {  
@@ -130,7 +130,7 @@ function recursiveSetLayerSetVisible(layer, visible) {
 function setParentsVisible(layerSet, visible) {
   var parent = layerSet.parent; 
   while (parent != activeDocument) {
-    parent.visible = visible;	
+    parent.visible = visible;  
     parent = parent.parent;
   }  
 }
@@ -141,7 +141,7 @@ function createResourceFromLayerSet(layerSet, isRetina) {
   var savePosition = name[0] == '@' || name[1] == '@';
   var documentName = layerSet.name.substring(saveFile && savePosition ? 2 : 1);
   if (isRetina) {
-    documentName += "@2x";	
+    documentName += "@2x";
   }
 
   recursiveSetLayerSetVisible(layerSet, true);
@@ -154,7 +154,7 @@ function createResourceFromLayerSet(layerSet, isRetina) {
   setParentsVisible(layerSet, false);
 
   var document = app.documents.add(activeDocument.width, activeDocument.height, 72, documentName,
-	                               NewDocumentMode.RGB, DocumentFill.TRANSPARENT);
+                                   NewDocumentMode.RGB, DocumentFill.TRANSPARENT);
   pasteInPlace();
 
   var oldWidth = document.width;
