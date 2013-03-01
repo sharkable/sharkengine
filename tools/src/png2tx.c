@@ -121,9 +121,12 @@ void write_tx_file(struct PNG png, char *filename) {
   }
   if (found_path) {
     struct stat st = {0};
-    int result = stat(path, &st);
-    if (result == -1) {
-        mkdir(path, 0700);
+    if (stat(path, &st) == -1) {
+      // Use |system| instead of |mkdir| so we can use the -p command.
+      char *command = (char *)malloc(strlen(path) + 10);
+      sprintf(command, "mkdir -p %s", path);
+      system(command);
+      free(command);
     }
   }
   free(path);
