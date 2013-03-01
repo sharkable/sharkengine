@@ -2,6 +2,7 @@
  * Copyright 2013 - Sharkable Inc.
  */
 
+#include <sys/stat.h>
 #include <png.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -24,17 +25,17 @@ struct PNG {
   png_bytep *row_pointers;
 };
 
-struct PNG read_png_file(char *file_name) {
+struct PNG read_png_file(char *filename) {
   unsigned char header[8];    // 8 is the maximum size that can be checked
 
   /* open file and test for it being a png */
-  FILE *fp = fopen(file_name, "rb");
+  FILE *fp = fopen(filename, "rb");
   if (!fp) {
-    abort_("[read_png_file] File %s could not be opened for reading", file_name);
+    abort_("[read_png_file] File %s could not be opened for reading", filename);
   }
   fread(header, 1, 8, fp);
   if (png_sig_cmp(header, 0, 8)) {
-    abort_("[read_png_file] File %s is not recognized as a PNG file", file_name);
+    abort_("[read_png_file] File %s is not recognized as a PNG file", filename);
   }
 
   /* initialize stuff */
@@ -65,10 +66,10 @@ struct PNG read_png_file(char *file_name) {
   png_byte bit_depth = png_get_bit_depth(png_ptr, info_ptr);
 
   if (color_type != PNG_COLOR_TYPE_RGB && color_type != PNG_COLOR_TYPE_RGB_ALPHA) {
-    abort_("[read_png_file] PNG %s must be RGB or RGBA", file_name);      
+    abort_("[read_png_file] PNG %s must be RGB or RGBA", filename);
   }
   if (bit_depth != 8) {
-    abort_("[read_png_file] PNG %s must be 8 bits per channel", file_name);
+    abort_("[read_png_file] PNG %s must be 8 bits per channel", filename);
   }
   if (color_type == PNG_COLOR_TYPE_RGB) {
     png_set_add_alpha(png_ptr, 0xFF, PNG_FILLER_AFTER);
@@ -105,8 +106,30 @@ void free_data(struct PNG png) {
   free(png.row_pointers);
 }
 
-void write_tx_file(struct PNG png, char *file_name) {
-  FILE *fp = fopen(file_name, "wb");
+void write_tx_file(struct PNG png, char *filename) {
+  // Create the directory if needed.
+  char *path = (char *)malloc(strlen(filename) * sizeof(char));
+  strcpy(path, filename);
+  int c;
+  int found_path = 0;
+  for (c = strlen(path) - 1; c >= 0; c--) {
+    if (path[c] == '/') {
+      path[c] = '\0';
+      found_path = 1;
+      break;
+    }
+  }
+  if (found_path) {
+    struct stat st = {0};
+    int result = stat(path, &st);
+    if (result == -1) {
+        mkdir(path, 0700);
+    }
+  }
+  free(path);
+
+  // Write the file.
+  FILE *fp = fopen(filename, "wb");
 
   fwrite(&png.width, sizeof(unsigned short), 1, fp);
   fwrite(&png.height, sizeof(unsigned short), 1, fp);
