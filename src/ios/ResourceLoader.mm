@@ -32,12 +32,12 @@ Texture2D ResourceLoader::Texture(string name) {
   }
 
   // TODO move this reading logic to pure C++ code.
-  int real_width, real_height;
-  int width, height;
-  fread(&real_width, sizeof(int), 1, fp);
-  fread(&real_height, sizeof(int), 1, fp);
-  fread(&width, sizeof(int), 1, fp);
-  fread(&height, sizeof(int), 1, fp);
+  uint16_t real_width, real_height;
+  uint16_t width, height;
+  fread(&real_width, sizeof(uint16_t), 1, fp);
+  fread(&real_height, sizeof(uint16_t), 1, fp);
+  fread(&width, sizeof(uint16_t), 1, fp);
+  fread(&height, sizeof(uint16_t), 1, fp);
 
   void *data = malloc(sizeof(char) * 4 * width * height);
   fread(data, sizeof(char), 4 * width * height, fp);
