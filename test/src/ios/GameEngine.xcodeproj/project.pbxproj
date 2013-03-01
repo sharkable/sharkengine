@@ -50,6 +50,21 @@
 		FE30FB4C16CAF2C500E793E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE30FB4116CAF2C400E793E6 /* SystemConfiguration.framework */; };
 		FE513B3916DF5C0600AFB0CE /* stripes_iphone.tx in Resources */ = {isa = PBXBuildFile; fileRef = FE513B3716DF5C0600AFB0CE /* stripes_iphone.tx */; };
 		FE513B3A16DF5C0600AFB0CE /* stripes_iphone@2x.tx in Resources */ = {isa = PBXBuildFile; fileRef = FE513B3816DF5C0600AFB0CE /* stripes_iphone@2x.tx */; };
+		FE51424716E02A7D00AFB0CE /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE51424316E02A7D00AFB0CE /* animation.cc */; };
+		FE51424816E02A7D00AFB0CE /* positions.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE51424516E02A7D00AFB0CE /* positions.cc */; };
+		FE51424B16E02A8D00AFB0CE /* animatable.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE51424916E02A8D00AFB0CE /* animatable.cc */; };
+		FE51426A16E02AE500AFB0CE /* Back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51424E16E02AE500AFB0CE /* Back.cpp */; };
+		FE51426B16E02AE500AFB0CE /* Bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425016E02AE500AFB0CE /* Bounce.cpp */; };
+		FE51426C16E02AE500AFB0CE /* Circ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425216E02AE500AFB0CE /* Circ.cpp */; };
+		FE51426D16E02AE500AFB0CE /* Cubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425416E02AE500AFB0CE /* Cubic.cpp */; };
+		FE51426F16E02AE500AFB0CE /* Elastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425716E02AE500AFB0CE /* Elastic.cpp */; };
+		FE51427016E02AE500AFB0CE /* Expo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425916E02AE500AFB0CE /* Expo.cpp */; };
+		FE51427116E02AE500AFB0CE /* Linear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425B16E02AE500AFB0CE /* Linear.cpp */; };
+		FE51427216E02AE500AFB0CE /* Quad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425D16E02AE500AFB0CE /* Quad.cpp */; };
+		FE51427316E02AE500AFB0CE /* Quart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51425F16E02AE500AFB0CE /* Quart.cpp */; };
+		FE51427416E02AE500AFB0CE /* Quint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51426116E02AE500AFB0CE /* Quint.cpp */; };
+		FE51427616E02AE500AFB0CE /* Sine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51426416E02AE500AFB0CE /* Sine.cpp */; };
+		FE51427716E02AE500AFB0CE /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE51426816E02AE500AFB0CE /* tinyxml2.cpp */; };
 		FED7989016CDB0A700EF724B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FED7988F16CDB0A700EF724B /* ViewController.mm */; };
 		FEE74A1216CADEC800D477A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE74A1116CADEC800D477A5 /* UIKit.framework */; };
 		FEE74A1416CADEC800D477A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE74A1316CADEC800D477A5 /* Foundation.framework */; };
@@ -154,6 +169,36 @@
 		FE30FB4116CAF2C400E793E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FE513B3716DF5C0600AFB0CE /* stripes_iphone.tx */ = {isa = PBXFileReference; lastKnownFileType = file; path = stripes_iphone.tx; sourceTree = "<group>"; };
 		FE513B3816DF5C0600AFB0CE /* stripes_iphone@2x.tx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "stripes_iphone@2x.tx"; sourceTree = "<group>"; };
+		FE51424316E02A7D00AFB0CE /* animation.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation.cc; sourceTree = "<group>"; };
+		FE51424416E02A7D00AFB0CE /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
+		FE51424516E02A7D00AFB0CE /* positions.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = positions.cc; sourceTree = "<group>"; };
+		FE51424616E02A7D00AFB0CE /* positions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = positions.h; sourceTree = "<group>"; };
+		FE51424916E02A8D00AFB0CE /* animatable.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animatable.cc; sourceTree = "<group>"; };
+		FE51424A16E02A8D00AFB0CE /* animatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animatable.h; sourceTree = "<group>"; };
+		FE51424E16E02AE500AFB0CE /* Back.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Back.cpp; sourceTree = "<group>"; };
+		FE51424F16E02AE500AFB0CE /* Back.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Back.h; sourceTree = "<group>"; };
+		FE51425016E02AE500AFB0CE /* Bounce.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bounce.cpp; sourceTree = "<group>"; };
+		FE51425116E02AE500AFB0CE /* Bounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bounce.h; sourceTree = "<group>"; };
+		FE51425216E02AE500AFB0CE /* Circ.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circ.cpp; sourceTree = "<group>"; };
+		FE51425316E02AE500AFB0CE /* Circ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circ.h; sourceTree = "<group>"; };
+		FE51425416E02AE500AFB0CE /* Cubic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cubic.cpp; sourceTree = "<group>"; };
+		FE51425516E02AE500AFB0CE /* Cubic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cubic.h; sourceTree = "<group>"; };
+		FE51425716E02AE500AFB0CE /* Elastic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Elastic.cpp; sourceTree = "<group>"; };
+		FE51425816E02AE500AFB0CE /* Elastic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elastic.h; sourceTree = "<group>"; };
+		FE51425916E02AE500AFB0CE /* Expo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Expo.cpp; sourceTree = "<group>"; };
+		FE51425A16E02AE500AFB0CE /* Expo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expo.h; sourceTree = "<group>"; };
+		FE51425B16E02AE500AFB0CE /* Linear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Linear.cpp; sourceTree = "<group>"; };
+		FE51425C16E02AE500AFB0CE /* Linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Linear.h; sourceTree = "<group>"; };
+		FE51425D16E02AE500AFB0CE /* Quad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quad.cpp; sourceTree = "<group>"; };
+		FE51425E16E02AE500AFB0CE /* Quad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quad.h; sourceTree = "<group>"; };
+		FE51425F16E02AE500AFB0CE /* Quart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quart.cpp; sourceTree = "<group>"; };
+		FE51426016E02AE500AFB0CE /* Quart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quart.h; sourceTree = "<group>"; };
+		FE51426116E02AE500AFB0CE /* Quint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quint.cpp; sourceTree = "<group>"; };
+		FE51426216E02AE500AFB0CE /* Quint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quint.h; sourceTree = "<group>"; };
+		FE51426416E02AE500AFB0CE /* Sine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sine.cpp; sourceTree = "<group>"; };
+		FE51426516E02AE500AFB0CE /* Sine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sine.h; sourceTree = "<group>"; };
+		FE51426816E02AE500AFB0CE /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
+		FE51426916E02AE500AFB0CE /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		FED7988E16CDB0A700EF724B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FED7988F16CDB0A700EF724B /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		FEE74A0E16CADEC800D477A5 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +262,7 @@
 				FE30FA4416CAE8C000E793E6 /* ios */,
 				FE30FAC816CAE8C000E793E6 /* opengl */,
 				FE30FACB16CAE8C000E793E6 /* soundengine */,
+				FE51424C16E02AE500AFB0CE /* thirdparty */,
 			);
 			name = GameEngine;
 			sourceTree = "<group>";
@@ -226,6 +272,8 @@
 			children = (
 				FE30FA3416CAE8C000E793E6 /* entities */,
 				FE30FA3016CAE8C000E793E6 /* ad_engine.h */,
+				FE51424316E02A7D00AFB0CE /* animation.cc */,
+				FE51424416E02A7D00AFB0CE /* animation.h */,
 				FE30FA3116CAE8C000E793E6 /* coordinate_types.h */,
 				FE30FA3216CAE8C000E793E6 /* engine_view.cc */,
 				FE30FA3316CAE8C000E793E6 /* engine_view.h */,
@@ -233,6 +281,8 @@
 				FE30FA3C16CAE8C000E793E6 /* game_engine.h */,
 				FE30FA3D16CAE8C000E793E6 /* local_store.h */,
 				FE30FA3E16CAE8C000E793E6 /* mt19937ar.c */,
+				FE51424516E02A7D00AFB0CE /* positions.cc */,
+				FE51424616E02A7D00AFB0CE /* positions.h */,
 				FE30FA3F16CAE8C000E793E6 /* resource_loader.cc */,
 				FE30FA4016CAE8C000E793E6 /* resource_loader.h */,
 				FE30FA4116CAE8C000E793E6 /* sprite.h */,
@@ -246,6 +296,8 @@
 		FE30FA3416CAE8C000E793E6 /* entities */ = {
 			isa = PBXGroup;
 			children = (
+				FE51424916E02A8D00AFB0CE /* animatable.cc */,
+				FE51424A16E02A8D00AFB0CE /* animatable.h */,
 				FE30FA3516CAE8C000E793E6 /* button.cc */,
 				FE30FA3616CAE8C000E793E6 /* button.h */,
 				FE30FA3716CAE8C000E793E6 /* multi_select.cc */,
@@ -405,6 +457,62 @@
 			);
 			name = resources;
 			path = ../../resources;
+			sourceTree = "<group>";
+		};
+		FE51424C16E02AE500AFB0CE /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				FE51424D16E02AE500AFB0CE /* PennerEasing */,
+				FE51426716E02AE500AFB0CE /* tinyxml2 */,
+			);
+			name = thirdparty;
+			path = ../../../src/thirdparty;
+			sourceTree = "<group>";
+		};
+		FE51424D16E02AE500AFB0CE /* PennerEasing */ = {
+			isa = PBXGroup;
+			children = (
+				FE51424E16E02AE500AFB0CE /* Back.cpp */,
+				FE51424F16E02AE500AFB0CE /* Back.h */,
+				FE51425016E02AE500AFB0CE /* Bounce.cpp */,
+				FE51425116E02AE500AFB0CE /* Bounce.h */,
+				FE51425216E02AE500AFB0CE /* Circ.cpp */,
+				FE51425316E02AE500AFB0CE /* Circ.h */,
+				FE51425416E02AE500AFB0CE /* Cubic.cpp */,
+				FE51425516E02AE500AFB0CE /* Cubic.h */,
+				FE51425716E02AE500AFB0CE /* Elastic.cpp */,
+				FE51425816E02AE500AFB0CE /* Elastic.h */,
+				FE51425916E02AE500AFB0CE /* Expo.cpp */,
+				FE51425A16E02AE500AFB0CE /* Expo.h */,
+				FE51425B16E02AE500AFB0CE /* Linear.cpp */,
+				FE51425C16E02AE500AFB0CE /* Linear.h */,
+				FE51425D16E02AE500AFB0CE /* Quad.cpp */,
+				FE51425E16E02AE500AFB0CE /* Quad.h */,
+				FE51425F16E02AE500AFB0CE /* Quart.cpp */,
+				FE51426016E02AE500AFB0CE /* Quart.h */,
+				FE51426116E02AE500AFB0CE /* Quint.cpp */,
+				FE51426216E02AE500AFB0CE /* Quint.h */,
+				FE51426416E02AE500AFB0CE /* Sine.cpp */,
+				FE51426516E02AE500AFB0CE /* Sine.h */,
+				FE51426616E02AE500AFB0CE /* src */,
+			);
+			path = PennerEasing;
+			sourceTree = "<group>";
+		};
+		FE51426616E02AE500AFB0CE /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FE51426716E02AE500AFB0CE /* tinyxml2 */ = {
+			isa = PBXGroup;
+			children = (
+				FE51426816E02AE500AFB0CE /* tinyxml2.cpp */,
+				FE51426916E02AE500AFB0CE /* tinyxml2.h */,
+			);
+			path = tinyxml2;
 			sourceTree = "<group>";
 		};
 		FEE74A0516CADEC800D477A5 = {
@@ -584,6 +692,21 @@
 				FE30FB3016CAE8FF00E793E6 /* main.m in Sources */,
 				FE30FB3416CAED1900E793E6 /* main_view.cpp in Sources */,
 				FED7989016CDB0A700EF724B /* ViewController.mm in Sources */,
+				FE51424716E02A7D00AFB0CE /* animation.cc in Sources */,
+				FE51424816E02A7D00AFB0CE /* positions.cc in Sources */,
+				FE51424B16E02A8D00AFB0CE /* animatable.cc in Sources */,
+				FE51426A16E02AE500AFB0CE /* Back.cpp in Sources */,
+				FE51426B16E02AE500AFB0CE /* Bounce.cpp in Sources */,
+				FE51426C16E02AE500AFB0CE /* Circ.cpp in Sources */,
+				FE51426D16E02AE500AFB0CE /* Cubic.cpp in Sources */,
+				FE51426F16E02AE500AFB0CE /* Elastic.cpp in Sources */,
+				FE51427016E02AE500AFB0CE /* Expo.cpp in Sources */,
+				FE51427116E02AE500AFB0CE /* Linear.cpp in Sources */,
+				FE51427216E02AE500AFB0CE /* Quad.cpp in Sources */,
+				FE51427316E02AE500AFB0CE /* Quart.cpp in Sources */,
+				FE51427416E02AE500AFB0CE /* Quint.cpp in Sources */,
+				FE51427616E02AE500AFB0CE /* Sine.cpp in Sources */,
+				FE51427716E02AE500AFB0CE /* tinyxml2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
