@@ -32,18 +32,31 @@ Texture2D ResourceLoader::Texture(string name) {
   }
 
   // TODO move this reading logic to pure C++ code.
-  uint16_t real_width, real_height;
-  uint16_t width, height;
-  fread(&real_width, sizeof(uint16_t), 1, fp);
-  fread(&real_height, sizeof(uint16_t), 1, fp);
-  fread(&width, sizeof(uint16_t), 1, fp);
-  fread(&height, sizeof(uint16_t), 1, fp);
+  uint16_t image_width, image_height;
+  fread(&image_width, sizeof(uint16_t), 1, fp);
+  fread(&image_height, sizeof(uint16_t), 1, fp);
+  uint16_t texture_width = 1;
+  uint16_t texture_height = 1;
+  while (texture_width < image_width) {
+    texture_width *= 2;
+  }
+  while (texture_height < image_height) {
+    texture_height *= 2;
+  }
+  unsigned char *data = (unsigned char *)malloc(sizeof(char) * 4 * texture_width * texture_height);
+  unsigned char *write_point = data;
+  uint16_t diff_width_size = (texture_width - image_width) * 4;
+  for (int y = 0; y < image_height; y++) {
+    fread(write_point, sizeof(char), 4 * image_width, fp);
+    write_point += 4 * image_width;
+    memset(write_point, 0, diff_width_size);
+    write_point += diff_width_size;
+  }
+  memset(write_point, 0, texture_width * (texture_height - image_height) * 4);
 
-  void *data = malloc(sizeof(char) * 4 * width * height);
-  fread(data, sizeof(char), 4 * width * height, fp);
-
-  ScreenSize imageSize = screen_size_make(real_width, real_height);
-  Texture2D texture(data, kTexture2DPixelFormat_RGBA8888, width, height, imageSize, name);
+  ScreenSize image_size = screen_size_make(image_width, image_height);
+  Texture2D texture(data, kTexture2DPixelFormat_RGBA8888, texture_width, texture_height, image_size,
+                    name);
 
   free(data);
   fclose(fp);

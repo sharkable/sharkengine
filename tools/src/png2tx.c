@@ -108,39 +108,19 @@ void free_data(struct PNG png) {
 void write_tx_file(struct PNG png, char *file_name) {
   FILE *fp = fopen(file_name, "wb");
 
-  unsigned short pow_2_width = 1;
-  while (pow_2_width < png.width) {
-    pow_2_width *= 2;
-  }
-  unsigned short pow_2_height = 1;
-  while (pow_2_height < png.height) {
-    pow_2_height *= 2;
-  }
-
   fwrite(&png.width, sizeof(unsigned short), 1, fp);
   fwrite(&png.height, sizeof(unsigned short), 1, fp);
-  fwrite(&pow_2_width, sizeof(unsigned short), 1, fp);
-  fwrite(&pow_2_height, sizeof(unsigned short), 1, fp);
 
-  png_byte zero = 0;
-  int x, y;
+  int y;
   for (y = 0; y < png.height; y++) {
     fwrite(png.row_pointers[y], sizeof(png_byte), png.width * 4, fp);
-    for (x = png.width * 4; x < pow_2_width * 4; x++) {
-      fwrite(&zero, sizeof(png_byte), 1, fp);
-    }
-  }
-  for (y = png.height; y < pow_2_height; y++) {
-    for (x = 0; x < pow_2_width * 4; x++) {
-      fwrite(&zero, sizeof(png_byte), 1, fp);
-    }
   }
 
   fclose(fp);
 }
 
 int main(int argc, char **argv) {
-  if (argc < 2) {
+  if (argc < 2 || argc > 3) {
     abort_("Usage: png2tx file_in [file_out]");
   }
 
