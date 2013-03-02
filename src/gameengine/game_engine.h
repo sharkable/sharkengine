@@ -65,12 +65,10 @@ class GameEngine {
   sp<AdEngine> ad_engine_;
   sp<Positions> positions_;
   vector<sp<EngineView> > views_;
+  vector<sp<EngineView> > next_views_;
   vector<Touch> touches_began_;
   vector<Touch> touches_moved_;
   vector<Touch> touches_ended_;
-  bool pop_on_next_;
-  bool replace_on_next_;
-  sp<EngineView> next_view_;
   ScreenPoint screen_offset_;
   double game_to_screen_point_ratio_x_;
   double game_to_screen_point_ratio_y_;

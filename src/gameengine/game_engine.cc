@@ -11,9 +11,7 @@
 #include "gameengine/engine_view.h"
 
 GameEngine::GameEngine()
-    : pop_on_next_(false),
-      replace_on_next_(false),
-      screen_offset_(kScreenPointZero),
+    : screen_offset_(kScreenPointZero),
       game_to_screen_point_ratio_x_(0),
       game_to_screen_point_ratio_y_(0),
       screen_to_game_point_ratio_x_(0),
@@ -33,19 +31,13 @@ void GameEngine::SetScreenOffset(ScreenPoint screen_offset) {
 }
 
 void GameEngine::Update() {
-  assert(views_.size() > 0);
-
-  if (pop_on_next_) {
-    views_.pop_back();
+  if (next_views_.size() > 0) {
+    views_ = next_views_;
     views_.back()->ViewIsShown();
-    pop_on_next_ = false;
-  } else if (replace_on_next_) {
-    views_.pop_back();
-    views_.push_back(next_view_);
-    next_view_->ViewIsShown();
-    replace_on_next_ = false;
-    next_view_.reset();
+    next_views_.clear();
   }
+
+  assert(views_.size() > 0);
 
   // Process input.
   sp<EngineView> top_view = views_.back();
@@ -82,15 +74,21 @@ void GameEngine::ClearTouches() {
 }
 
 void GameEngine::PushView(sp<EngineView> view) {
-  views_.push_back(view);
-  view->ViewIsShown();
+  if (next_views_.size() == 0) {
+    next_views_ = views_;
+  }
+  next_views_.push_back(view);
 }
 
 void GameEngine::PopView() {
-  pop_on_next_ = true;
+  assert(views_.size() > 0);
+  if (next_views_.size() == 0) {
+    next_views_ = views_;
+  }
+  next_views_.pop_back();
 }
 
 void GameEngine::SetRootView(sp<EngineView> view) {
-  replace_on_next_ = true;
-  next_view_ = view;
+  next_views_.clear();
+  next_views_.push_back(view);
 }
