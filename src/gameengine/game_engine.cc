@@ -18,6 +18,7 @@ GameEngine::GameEngine()
       game_to_screen_point_ratio_y_(0),
       screen_to_game_point_ratio_x_(0),
       screen_to_game_point_ratio_y_(0) {
+  positions_ = sp<Positions>(new Positions());
 }
 
 void GameEngine::SetScreenSize(ScreenSize screen_size, GameSize game_size) {

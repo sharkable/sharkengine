@@ -17,10 +17,6 @@ double str2double(const char *str) {
   return value;
 }
 
-Positions::Positions(string filename) {
-  LoadFile(filename);
-}
-
 void Positions::LoadFile(string filename) {
   tinyxml2::XMLDocument doc;
   assert(!doc.LoadFile(filename.c_str()));

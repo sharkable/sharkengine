@@ -16,12 +16,11 @@ using namespace std;
 
 class Positions {
  public:
-  Positions(string filename);
   GamePoint position(string name) { return positions_[name]; }
+  void LoadFile(string filename);
 
  private:
   map<string, GamePoint> positions_;
-  void LoadFile(string filename);
 };
 
 #endif
