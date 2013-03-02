@@ -1,6 +1,7 @@
 var activeDocument = app.activeDocument;
-var outputFolder = activeDocument.path + "/textures"
-var outputPositionsFilename = activeDocument.path + "/../resources/positions/positions.xml"
+var outputFolder = activeDocument.path + "/textures";
+var outputPositionsFolder = activeDocument.path + "/../resources/positions";
+var outputPositionsFilename = "positions.xml";
 var layerVisibleMap = new Array();
 var layerPositionMap = {};
 
@@ -23,6 +24,9 @@ for (var i = 0; i < layerIndexes.length; i++) {
   if (layerName.length >= 2 && (layerName[0] == '_' || layerName[0] == '@')) {
     createResourceFromLayerSet(activeDocument.activeLayer, isRetina);
   }
+  if (layerName.length >= 2 && layerName[0] == '#') {
+    outputPositionsFilename = layerName.substring(1) + ".xml";
+  }
 }
 
 for (var i = 0; i < layerIndexes.length; i++) {
@@ -32,7 +36,7 @@ for (var i = 0; i < layerIndexes.length; i++) {
 }
 
 if (!isRetina) {
-  var positionsFile = new File(outputPositionsFilename);
+  var positionsFile = new File(outputPositionsFolder + "/" + outputPositionsFilename);
   positionsFile.open('w');
   positionsFile.writeln('<positions>');
   for (var layerName in layerPositionMap) {
