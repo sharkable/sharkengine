@@ -32,6 +32,7 @@ class GameEngine {
 
   void PushView(sp<EngineView> view);
   void PopView();
+  void RemoveView(EngineView *view);
   void SetRootView(sp<EngineView> view);
 
   sp<AdEngine> ad_engine() { return ad_engine_; }

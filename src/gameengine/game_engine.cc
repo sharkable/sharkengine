@@ -88,6 +88,17 @@ void GameEngine::PopView() {
   next_views_.pop_back();
 }
 
+void GameEngine::RemoveView(EngineView *view) {
+  if (next_views_.size() == 0) {
+    next_views_ = views_;
+  }
+  for (vector<sp<EngineView> >::iterator i = next_views_.begin(); i != next_views_.end(); i++) {
+    if (i->get() == view) {
+      i = next_views_.erase(i);
+    }
+  }
+}
+
 void GameEngine::SetRootView(sp<EngineView> view) {
   next_views_.clear();
   next_views_.push_back(view);
