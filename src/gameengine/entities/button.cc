@@ -13,9 +13,9 @@
 #include "soundengine/sound_player.h"
 
 Button::Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
-    : normal_sprite_(normal_sprite),
+    : Animatable(position),
+      normal_sprite_(normal_sprite),
       pressed_sprite_(pressed_sprite),
-      position_(position),
       state_(kButtonStateNormal),
       delegate_(NULL) {
 }
@@ -30,10 +30,10 @@ Button::~Button() {
 }
 
 bool Button::ContainsPoint(GamePoint p) {
-  return p.x >= position_.x &&
-      p.y >= position_.y &&
-      p.x < position_.x + pressed_sprite_.content_size().width &&
-      p.y < position_.y + pressed_sprite_.content_size().height;
+  return p.x >= position().x &&
+      p.y >= position().y &&
+      p.x < position().x + pressed_sprite_.content_size().width &&
+      p.y < position().y + pressed_sprite_.content_size().height;
 }
 
 
@@ -45,11 +45,11 @@ void Button::Update() {
 void Button::Render() {
   switch (state_) {
     case kButtonStateNormal: {
-      normal_sprite_.DrawAtPoint(position_);
+      normal_sprite_.Draw(position(), angle(), alpha(), zoom());
       break;
     }
     case kButtonStatePressed: {
-      pressed_sprite_.DrawAtPoint(position_);
+      pressed_sprite_.Draw(position(), angle(), alpha(), zoom());
       break;
     }
   }
