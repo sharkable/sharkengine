@@ -51,6 +51,8 @@
 
 - (void)start {
   if (!animating_) {
+    // Do one tick immediately, then rely on the timer for subsequent ticks.
+    [target_ performSelector:selector_];
     if (displayLinkSupported_) {
       // CADisplayLink is API new to iPhone SDK 3.1. Compiling against earlier versions will result
       // in a warning, but can be dismissed if the system version runtime check for CADisplayLink

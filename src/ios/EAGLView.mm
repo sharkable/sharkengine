@@ -48,6 +48,7 @@
         return nil;
       }
     }
+    [renderer_ resizeFromLayer:(CAEAGLLayer *)self.layer];
   }
 
   return self;
@@ -65,12 +66,6 @@
 
 - (void)finishRender {
   [renderer_ finishRender];
-}
-
-#pragma mark - UIView
-
-- (void)layoutSubviews {
-  [renderer_ resizeFromLayer:(CAEAGLLayer *)self.layer];
 }
 
 @end
