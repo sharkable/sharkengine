@@ -40,10 +40,12 @@ class GameEngine {
 
   void load_positions(string filename) { positions_->LoadFile(filename); }
   GamePoint position(string name) { return positions_->position(name); }
-  
+
   void set_touches_began(vector<Touch> touches_began) { touches_began_ = touches_began; }
   void set_touches_moved(vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
   void set_touches_ended(vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
+
+  GameSize game_size() { return game_size_; }
 
   ScreenSize game_size_to_screen_size(GameSize game_size_) {
     return screen_size_make(game_size_.width * game_to_screen_point_ratio_x_,
@@ -71,6 +73,7 @@ class GameEngine {
   vector<Touch> touches_moved_;
   vector<Touch> touches_ended_;
   ScreenPoint screen_offset_;
+  GameSize game_size_;
   double game_to_screen_point_ratio_x_;
   double game_to_screen_point_ratio_y_;
   double screen_to_game_point_ratio_x_;
