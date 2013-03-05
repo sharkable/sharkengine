@@ -30,6 +30,11 @@ Button::~Button() {
 }
 
 bool Button::ContainsPoint(GamePoint p) {
+  // TODO: THIS IS A HACK
+  // For this big release, I zoom one button: the story stuff.
+  if (zoom() > 1) {
+    return true;
+  }
   return p.x >= position().x &&
       p.y >= position().y &&
       p.x < position().x + pressed_sprite_.content_size().width &&
