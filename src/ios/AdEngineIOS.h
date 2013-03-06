@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef AIRHOCKEY_IOS_ADENGINEIOS_H_
-#define AIRHOCKEY_IOS_ADENGINEIOS_H_
+#ifndef GAMEENGINE_IOS_ADENGINEIOS_H_
+#define GAMEENGINE_IOS_ADENGINEIOS_H_
 
 #import "gameengine/ad_engine.h"
 
@@ -17,6 +17,8 @@ class AdEngineIOS : public AdEngine {
  public:
   AdEngineIOS(UIViewController *root_view_controller);
   ~AdEngineIOS();
+
+  // AdEngine
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
 
