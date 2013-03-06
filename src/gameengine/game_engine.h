@@ -17,6 +17,7 @@ using namespace std;
 #include "gameengine/touch.h"
 
 class AdEngine;
+class AnalyticsEngine;
 class EngineView;
 
 class GameEngine {
@@ -37,6 +38,11 @@ class GameEngine {
 
   sp<AdEngine> ad_engine() { return ad_engine_; }
   void set_ad_engine(sp<AdEngine> ad_engine) { ad_engine_ = ad_engine; }
+
+  sp<AnalyticsEngine> analytics_engine() { return analytics_engine_; }
+  void set_analytics_engine(sp<AnalyticsEngine> analytics_engine) {
+    analytics_engine_ = analytics_engine;
+  }
 
   void load_positions(string filename) { positions_->LoadFile(filename); }
   GamePoint position(string name) { return positions_->position(name); }
@@ -66,6 +72,7 @@ class GameEngine {
 
  private:
   sp<AdEngine> ad_engine_;
+  sp<AnalyticsEngine> analytics_engine_;
   sp<Positions> positions_;
   vector<sp<EngineView> > views_;
   vector<sp<EngineView> > next_views_;

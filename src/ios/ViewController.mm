@@ -9,6 +9,7 @@
 #import "ios/ViewController.h"
 
 #import "ios/AdEngineIOS.h"
+#import "ios/AnalyticsEngineIOS.h"
 #import "ios/EAGLView.h"
 #import "ios/GameTimer.h"
 #import "ios/GameTouchWindow.h"
@@ -36,6 +37,7 @@
 
     gameEngine_ = new GameEngine();
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
+    gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
 
     CGSize size = [UIScreen mainScreen].bounds.size;
     CGFloat scale = [UIScreen mainScreen].scale;
