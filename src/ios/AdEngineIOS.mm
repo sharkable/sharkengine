@@ -25,6 +25,8 @@ AdEngineIOS::~AdEngineIOS() {
 
 // AdEngine
 
+// TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
+// to the GameEngine.
 void AdEngineIOS::SetAdAtPoint(ScreenPoint point) {
   if (!banner_view_) {
     banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
