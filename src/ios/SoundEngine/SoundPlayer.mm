@@ -16,7 +16,7 @@
 
 static SoundPlayerImpl *soundInstance_ = NULL;
 
-static const bool thisAppDoesDucking = NO; // if this gets changed to yes then it's all set up to duck the sound when iTunes is playing with Sound effects ON
+static const bool thisAppDoesDucking = YES; // if this gets changed to yes then it's all set up to duck the sound when iTunes is playing with Sound effects ON
 
 @interface SoundHelpers : NSObject
 + (NSString *)getAudioServicesError:(OSStatus)err;

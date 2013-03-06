@@ -27,6 +27,8 @@ typedef enum {
 class SoundPlayer {
  public:
   virtual void initializeWithDelegate(SoundInitializationDelegate *delegate) = 0;
+  virtual void syncAudioSessionForITunes() = 0;
+  virtual void duckAudioFromITunes(bool duck) = 0;
   virtual bool setGlobalVolume(float volume) = 0;
   virtual bool setVolume(Sound sound, float volume) = 0;
   virtual bool setPosition(Sound sound, float position) = 0;
