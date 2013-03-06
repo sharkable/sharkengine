@@ -36,6 +36,9 @@
     [gameTouchWindow_ makeKeyAndVisible];
 
     gameEngine_ = new GameEngine();
+    PlatformType platform_type = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ?
+        kPlatformTypePhone : kPlatformTypeTablet;
+    gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
 

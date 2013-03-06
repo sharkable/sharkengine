@@ -16,6 +16,11 @@ using namespace std;
 #include "gameengine/positions.h"
 #include "gameengine/touch.h"
 
+typedef enum {
+  kPlatformTypePhone = 0,
+  kPlatformTypeTablet
+} PlatformType;
+
 class AdEngine;
 class AnalyticsEngine;
 class EngineView;
@@ -25,7 +30,7 @@ class GameEngine {
   GameEngine();
   
   void SetScreenSize(ScreenSize screen_size, GameSize game_size);
-  void SetScreenOffset(ScreenPoint screen_offset);
+  void SetGameOffset(GamePoint game_offset);
 
   void Update();
   void Render();
@@ -35,6 +40,9 @@ class GameEngine {
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(sp<EngineView> view);
+
+  PlatformType platform_type() { return platform_type_; }
+  void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
 
   sp<AdEngine> ad_engine() { return ad_engine_; }
   void set_ad_engine(sp<AdEngine> ad_engine) { ad_engine_ = ad_engine; }
@@ -58,19 +66,20 @@ class GameEngine {
                             game_size_.height * game_to_screen_point_ratio_y_);
   }
   ScreenPoint game_point_to_screen_point(GamePoint game_point_) {
-    return screen_point_make(game_point_.x * game_to_screen_point_ratio_x_ + screen_offset_.x,
-                             game_point_.y * game_to_screen_point_ratio_y_ + screen_offset_.y);
+    return screen_point_make((game_point_.x + game_offset_.x) * game_to_screen_point_ratio_x_,
+                             (game_point_.y + game_offset_.y) * game_to_screen_point_ratio_y_);
   }
   GameSize screen_size_to_game_size(ScreenSize screen_size_) {
     return game_size_make(screen_size_.width * screen_to_game_point_ratio_x_,
                           screen_size_.height * screen_to_game_point_ratio_y_);
   }
   GamePoint screen_point_to_game_point(ScreenPoint screen_point_) {
-    return game_point_make((screen_point_.x - screen_offset_.x) * screen_to_game_point_ratio_x_,
-                           (screen_point_.y - screen_offset_.y) * screen_to_game_point_ratio_y_);
+    return game_point_make(screen_point_.x * screen_to_game_point_ratio_x_ - game_offset_.x,
+                           screen_point_.y * screen_to_game_point_ratio_y_ - game_offset_.y);
   }
 
  private:
+  PlatformType platform_type_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<Positions> positions_;
@@ -79,7 +88,7 @@ class GameEngine {
   vector<Touch> touches_began_;
   vector<Touch> touches_moved_;
   vector<Touch> touches_ended_;
-  ScreenPoint screen_offset_;
+  GamePoint game_offset_;
   GameSize game_size_;
   double game_to_screen_point_ratio_x_;
   double game_to_screen_point_ratio_y_;
