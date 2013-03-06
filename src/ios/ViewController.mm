@@ -32,7 +32,7 @@
   if (self) {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:screenSize];
-    [gameTouchWindow_ addSubview:self.view];
+    [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
 
     gameEngine_ = new GameEngine();
@@ -81,9 +81,21 @@
   self.view = view_;
 }
 
+// For iOS 5
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return (interfaceOrientation == UIInterfaceOrientationPortrait ||
           interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+}
+
+// For iOS 6
+
+- (BOOL)shouldAutorotate {
+  return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+  return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 #pragma mark - Private
