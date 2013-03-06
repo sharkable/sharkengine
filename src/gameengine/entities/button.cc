@@ -63,19 +63,24 @@ void Button::TouchesBegan(vector<Touch> touches) {
       if (ContainsPoint(touches[i].location())) {
         state_ = kButtonStatePressed;
         SoundPlayer::instance()->playSound(kSoundButton);
+        start_touch_ = touches[i].identifier();
+        break;
       }
     }
+  } else if (state_ == kButtonStatePressed) {
+    state_ = kButtonStateNormal;
   }
 }
 
 void Button::TouchesEnded(vector<Touch> touches) {
   if (state_ == kButtonStatePressed) {
-    state_ = kButtonStateNormal;
     for (int i = 0; i < touches.size(); i++) {
-      if (ContainsPoint(touches[i].location())) {
+      if (touches[i].identifier() == start_touch_) {
+        state_ = kButtonStateNormal;
         if (delegate_) {
           delegate_->ButtonPressed(this);
         }
+        break;
       }
     }
   }
