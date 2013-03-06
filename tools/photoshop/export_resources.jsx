@@ -36,7 +36,7 @@ for (var i = 0; i < layerIndexes.length; i++) {
   activeDocument.activeLayer.visible = layerVisibleMap[index];
 }
 
-if (!isRetina) {
+if ((!isPhone && !isRetina) || (isPhone && isRetina)) {
   var positionsFile = new File(outputPositionsFolder + "/" + outputPositionsFilename);
   positionsFile.open('w');
   positionsFile.writeln('<positions>');
@@ -177,7 +177,7 @@ function createResourceFromLayerSet(layerSet, isRetina) {
     // documentName might include a path, but we just want the filename.
     var positionName = originalLayerName.split("/").pop();
     if (isPhone) {
-      layerPositionMap[positionName] = [x * (768.0 / 320.0), y * (768.0 / 320.0)];
+      layerPositionMap[positionName] = [x * (768.0 / 320.0 / 2), y * (768.0 / 320.0 / 2)];
     } else {
       layerPositionMap[positionName] = [x, y];      
     }
