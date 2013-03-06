@@ -37,9 +37,9 @@ void MultiSelect::Render() {
   for (int i = 0; i < normal_sprites_.size(); i++) {
     GamePoint p = game_point_make(positions_x_[i], positions_y_[i]);
     if (i == selected_value_) {
-      selected_sprites_[i].DrawAtPoint(p);
+      selected_sprites_[i].Draw(p, 0, alpha(), 1);
     } else {
-      normal_sprites_[i].DrawAtPoint(p);
+      normal_sprites_[i].Draw(p, 0, alpha(), 1);
     }
   }
 }

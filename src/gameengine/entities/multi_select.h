@@ -12,12 +12,12 @@
 #include <vector>
 using namespace std;
 
-#include "gameengine/view_entity.h"
+#include "gameengine/entities/animatable.h"
 
 class Sprite;
 struct GamePoint;
 
-class MultiSelect : public ViewEntity {
+class MultiSelect : public Animatable {
  public:
   MultiSelect() {}
   ~MultiSelect();
@@ -25,7 +25,6 @@ class MultiSelect : public ViewEntity {
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);
 
   // ViewEntity
-  void Update() {}
   void Render();
   void TouchesBegan(vector<Touch> touches);
 
