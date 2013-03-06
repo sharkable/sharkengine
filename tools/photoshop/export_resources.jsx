@@ -6,8 +6,9 @@ var layerVisibleMap = new Array();
 var layerPositionMap = {};
 
 
-var response = prompt("It this for Retina Display?", 'n');
+var response = prompt("It this for Retina Display? iPhone?", 'nn');
 var isRetina = response[0] != 'n' && response[0] != 'N';
+var isPhone = response[1] != 'n' && response[1] != 'N';
 
 var layerIndexes = getLayerSetsIndex();
 
@@ -25,7 +26,7 @@ for (var i = 0; i < layerIndexes.length; i++) {
     createResourceFromLayerSet(activeDocument.activeLayer, isRetina);
   }
   if (layerName.length >= 2 && layerName[0] == '#') {
-    outputPositionsFilename = layerName.substring(1) + ".xml";
+    outputPositionsFilename = layerName.substring(1) + (isPhone ? "_iphone" : "") + ".xml";
   }
 }
 
@@ -143,7 +144,11 @@ function createResourceFromLayerSet(layerSet, isRetina) {
   var name = layerSet.name;
   var saveFile = name[0] == '_' || name[1] == '_';
   var savePosition = name[0] == '@' || name[1] == '@';
-  var documentName = layerSet.name.substring(saveFile && savePosition ? 2 : 1);
+  var originalLayerName = layerSet.name.substring(saveFile && savePosition ? 2 : 1);
+  var documentName = originalLayerName;
+  if (isPhone) {
+    documentName += "_iphone";
+  }
   if (isRetina) {
     documentName += "@2x";
   }
@@ -170,8 +175,12 @@ function createResourceFromLayerSet(layerSet, isRetina) {
 
   if (savePosition) {
     // documentName might include a path, but we just want the filename.
-    var positionName = documentName.split("/").pop();
-    layerPositionMap[positionName] = [x, y];
+    var positionName = originalLayerName.split("/").pop();
+    if (isPhone) {
+      layerPositionMap[positionName] = [x * (768.0 / 320.0), y * (768.0 / 320.0)];
+    } else {
+      layerPositionMap[positionName] = [x, y];      
+    }
   }
 
   if (saveFile) {
