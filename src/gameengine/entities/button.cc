@@ -44,9 +44,6 @@ bool Button::ContainsPoint(GamePoint p) {
 
 // ViewEntity
 
-void Button::Update() {
-}
-
 void Button::Render() {
   switch (state_) {
     case kButtonStateNormal: {

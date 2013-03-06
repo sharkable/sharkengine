@@ -32,7 +32,6 @@ class Button : public Animatable {
   ~Button();
   
   // ViewEntity
-  void Update();
   void Render();
   void TouchesBegan(vector<Touch> touches);
   void TouchesEnded(vector<Touch> touches);
