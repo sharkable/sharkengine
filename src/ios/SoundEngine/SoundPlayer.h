@@ -27,6 +27,7 @@ class SoundPlayerImpl : public SoundPlayer {
   void loadSoundsWithDelegate(SoundInitializationDelegate *delegate);
   bool setGlobalVolume(float volume);
   bool setVolume(Sound sound, float volume);
+  bool setPosition(Sound sound, float position);
   bool playSound(Sound sound);
   bool stopSound(Sound sound);
   void playSong(string filename);
@@ -40,6 +41,7 @@ class SoundPlayerImpl : public SoundPlayer {
   bool musicOn_;
   bool soundEffectsOn_;
   AudioInterruptDelegate* delegate_;
+  float globalVolume_;
 
   NSURL *filenameToUrl(NSString *name);
 };

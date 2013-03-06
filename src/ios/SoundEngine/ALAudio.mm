@@ -118,4 +118,9 @@ ALCdevice*  device_  = nil;
   alSourcef(source_id_, AL_GAIN, gain);
 }
 
+-(void)setPosition:(float)position {
+  float sourcePosAL[] = {position, 0.0f, 0.0f};
+  alSourcefv(source_id_, AL_POSITION, sourcePosAL);
+}
+
 @end

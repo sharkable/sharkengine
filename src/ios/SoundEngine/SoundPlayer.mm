@@ -140,7 +140,7 @@ void SoundPlayerImpl::loadSoundsWithDelegate(SoundInitializationDelegate *delega
   NSAutoreleasePool *subpool = [[NSAutoreleasePool alloc] init];
   
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score" andExt:@"wav"]];
-  [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score_final" andExt:@"mp3"]];
+  [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score_final" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"paddle_hit" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"puck_rink_bounce" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"puck_puck_hit" andExt:@"wav"]];
@@ -150,7 +150,7 @@ void SoundPlayerImpl::loadSoundsWithDelegate(SoundInitializationDelegate *delega
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"start" andExt:@"wav"]];
 
   delegate->SoundInitialized(this);
-  
+
   [subpool release];
 }
 
@@ -165,8 +165,9 @@ void SoundPlayerImpl::initializeWithDelegate(SoundInitializationDelegate *delega
 }
 
 bool SoundPlayerImpl::setGlobalVolume(float volume) {
+  globalVolume_ = volume / 2;
   for (ALAudio* ALSound in sounds_) {
-    [ALSound setVolume:volume];
+    [ALSound setVolume:globalVolume_];
   }
   return true;
 }
@@ -175,7 +176,19 @@ bool SoundPlayerImpl::setVolume(Sound sound, float volume) {
   if (soundEffectsOn_) {
     if (sounds_.count > sound) {
       ALAudio* ALSound = (ALAudio*)[sounds_ objectAtIndex:sound];
-      [ALSound setVolume:volume];
+      [ALSound setVolume:volume * globalVolume_];
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
+
+bool SoundPlayerImpl::setPosition(Sound sound, float position) {
+  if (soundEffectsOn_) {
+    if (sounds_.count > sound) {
+      ALAudio* ALSound = (ALAudio*)[sounds_ objectAtIndex:sound];
+      [ALSound setPosition:position];
       return true;
     }
     return false;

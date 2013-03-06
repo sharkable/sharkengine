@@ -9,4 +9,5 @@
 -(bool)isPlaying;
 -(void)loop:(bool)flag;
 -(void)setVolume:(float)volume;
+-(void)setPosition:(float)position;
 @end

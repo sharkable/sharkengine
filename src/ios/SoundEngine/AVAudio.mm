@@ -91,6 +91,12 @@
   player_.volume = volume;
 }
 
+-(void)setPosition:(float)position
+{
+  // TODO
+  NSAssert(false, @"setPosition not implemented in AVAudio.");
+}
+
 -(void) pause
 {
   if(player_.playing == YES) {
