@@ -10,19 +10,18 @@
 #define AIRHOCKEY_GAMEENGINE_LOCALSTORE_H_
 
 #import <string>
-using namespace std;
 
 namespace LocalStore {
 
-bool HasEntryForKey(string key);
-bool BoolForKey(string key);
-void SetBool(bool value, string key);
-int IntegerForKey(string key);
-void SetInteger(int value, string key);
-double DoubleForKey(string key);
-void SetDouble(double value, string key);
-string StringForKey(string key);
-void SetString(string value, string key);
+bool HasEntryForKey(std::string key);
+bool BoolForKey(std::string key);
+void SetBool(bool value, std::string key);
+int IntegerForKey(std::string key);
+void SetInteger(int value, std::string key);
+double DoubleForKey(std::string key);
+void SetDouble(double value, std::string key);
+std::string StringForKey(std::string key);
+void SetString(std::string value, std::string key);
 
 }
 

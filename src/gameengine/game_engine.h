@@ -10,7 +10,6 @@
 #define AIRHOCKEY_GAMEENGINE_GAMEENGINE_H_
 
 #include <vector>
-using namespace std;
 
 #include "gameengine/coordinate_types.h"
 #include "gameengine/positions.h"
@@ -52,12 +51,12 @@ class GameEngine {
     analytics_engine_ = analytics_engine;
   }
 
-  void load_positions(string filename) { positions_->LoadFile(filename); }
-  GamePoint position(string name) { return positions_->position(name); }
+  void load_positions(std::string filename) { positions_->LoadFile(filename); }
+  GamePoint position(std::string name) { return positions_->position(name); }
 
-  void set_touches_began(vector<Touch> touches_began) { touches_began_ = touches_began; }
-  void set_touches_moved(vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
-  void set_touches_ended(vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
+  void set_touches_began(std::vector<Touch> touches_began) { touches_began_ = touches_began; }
+  void set_touches_moved(std::vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
+  void set_touches_ended(std::vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
 
   GameSize game_size() { return game_size_; }
 
@@ -83,11 +82,11 @@ class GameEngine {
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<Positions> positions_;
-  vector<sp<EngineView> > views_;
-  vector<sp<EngineView> > next_views_;
-  vector<Touch> touches_began_;
-  vector<Touch> touches_moved_;
-  vector<Touch> touches_ended_;
+  std::vector<sp<EngineView> > views_;
+  std::vector<sp<EngineView> > next_views_;
+  std::vector<Touch> touches_began_;
+  std::vector<Touch> touches_moved_;
+  std::vector<Touch> touches_ended_;
   GamePoint game_offset_;
   GameSize game_size_;
   double game_to_screen_point_ratio_x_;

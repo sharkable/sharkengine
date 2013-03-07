@@ -10,6 +10,8 @@
 
 #import "gameengine/resource_loader.h"
 
+using std::vector;
+
 SimpleItem::SimpleItem()
     : Animatable(),
       sprite_(0) {

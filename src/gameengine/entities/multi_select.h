@@ -10,7 +10,6 @@
 #define AIRHOCKEY_GAMEENGINE_ENTITIES_MULTISELECT_H_
 
 #include <vector>
-using namespace std;
 
 #include "gameengine/entities/animatable.h"
 
@@ -26,17 +25,17 @@ class MultiSelect : public Animatable {
 
   // ViewEntity
   void Render();
-  void TouchesBegan(vector<Touch> touches);
+  void TouchesBegan(std::vector<Touch> touches);
 
   // Accessors
   int selected_value() { return selected_value_; };
   void set_selected_value(int selected_value) { selected_value_ = selected_value; }
 
  private:
-  vector<Sprite> normal_sprites_;
-  vector<Sprite> selected_sprites_;
-  vector<double> positions_x_;
-  vector<double> positions_y_;
+  std::vector<Sprite> normal_sprites_;
+  std::vector<Sprite> selected_sprites_;
+  std::vector<double> positions_x_;
+  std::vector<double> positions_y_;
   int selected_value_;
 };
 

@@ -17,7 +17,7 @@ double str2double(const char *str) {
   return value;
 }
 
-void Positions::LoadFile(string filename) {
+void Positions::LoadFile(std::string filename) {
   tinyxml2::XMLDocument doc;
   assert(!doc.LoadFile(filename.c_str()));
   tinyxml2::XMLNode *positionsNode = doc.FirstChild();

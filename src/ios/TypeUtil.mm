@@ -10,6 +10,8 @@
 
 #import <Foundation/Foundation.h>
 
+using std::string;
+
 string TypeUtil::NSString2string(NSString *str) {
   return string([str UTF8String]);
 }

@@ -10,14 +10,13 @@
 #define AirHockey_TypeUtil_h
 
 #include <string>
-using namespace std;
 
 @class NSString;
 
 class TypeUtil {
  public:
-  static string NSString2string(NSString *string);
-  static NSString *string2NSString(string string);
+  static std::string NSString2string(NSString *string);
+  static NSString *string2NSString(std::string string);
 };
 
 #endif

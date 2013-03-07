@@ -14,6 +14,8 @@
 
 #import "TypeUtil.h"
 
+using std::string;
+
 static SoundPlayerImpl *soundInstance_ = NULL;
 
 static const bool thisAppDoesDucking = YES; // if this gets changed to yes then it's all set up to duck the sound when iTunes is playing with Sound effects ON

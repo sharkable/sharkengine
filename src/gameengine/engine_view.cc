@@ -12,6 +12,8 @@
 #include "gameengine/touch.h"
 #include "gameengine/view_entity.h"
 
+using std::vector;
+
 EngineView::EngineView(sp<GameEngine> game_engine) : game_engine_(game_engine) {
 }
 
@@ -61,7 +63,7 @@ void EngineView::AddEntity(sp<ViewEntity> entity) {
 }
 
 void EngineView::RemoveEntity(sp<ViewEntity> entity) {
-  for (vector<sp<ViewEntity> >::iterator i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (*i == entity) {
       entities_.erase(i);
       break;

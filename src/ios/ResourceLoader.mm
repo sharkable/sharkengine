@@ -13,6 +13,8 @@
 #include "ios/TypeUtil.h"
 #include "opengl/texture2D.h"
 
+using std::string;
+
 Texture2D ResourceLoader::Texture(string name) {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
     name += "_iphone";
@@ -26,7 +28,7 @@ Texture2D ResourceLoader::Texture(string name) {
       [[NSBundle mainBundle] pathForResource:TypeUtil::string2NSString(high_res_name) ofType:@"tx"];
   FILE *fp = fopen(filename.UTF8String, "rb");
   if (!fp) {
-    cout << "No high res file for " << name << endl;
+    std::cout << "No high res file for " << name << std::endl;
     filename = [[NSBundle mainBundle] pathForResource:TypeUtil::string2NSString(name) ofType:@"tx"];
     fp = fopen(filename.UTF8String, "rb");
   }

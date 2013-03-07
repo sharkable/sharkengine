@@ -10,22 +10,21 @@
 #define AIRHOCKEY_GAMEENGINE_RESOURCELOADER_H_
 
 #include <map>
-using namespace std;
 
 #include "opengl/Texture2D.h"
 
 class ResourceLoader {
  public:
   static ResourceLoader &Instance();
-  Texture2D TextureWithName(string name);
-  void ReleaseResource(string name);
+  Texture2D TextureWithName(std::string name);
+  void ReleaseResource(std::string name);
   void ReleaseResource(Texture2D resource);
 
  private:
-  Texture2D Texture(string filename);
+  Texture2D Texture(std::string filename);
   
-  map<string, Texture2D> resources_;
-  map<string, int> resource_counter_;
+  std::map<std::string, Texture2D> resources_;
+  std::map<std::string, int> resource_counter_;
 };
 
 #endif

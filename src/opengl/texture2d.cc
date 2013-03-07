@@ -65,6 +65,8 @@
 
 #include <OpenGLES/ES1/glext.h>
 
+using std::string;
+
 int Texture2D::nameCounter_ = 0;
 GLfloat Texture2D::globalAlpha_ = 1;
 GLfloat Texture2D::screen_height_ = 480;

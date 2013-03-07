@@ -8,6 +8,9 @@
 
 #include "gameengine/resource_loader.h"
 
+using std::map;
+using std::string;
+
 ResourceLoader instance__;
 
 ResourceLoader &ResourceLoader::Instance() {
@@ -42,7 +45,7 @@ void ResourceLoader::ReleaseResource(string name) {
 }
 
 void ResourceLoader::ReleaseResource(Texture2D resource) {
-  for (map<string, Texture2D>::iterator i = resources_.begin(); i != resources_.end(); i++) {
+  for (auto i = resources_.begin(); i != resources_.end(); i++) {
     if (i->second.name() == resource.name()) {
       ReleaseResource(i->first);
       return;

@@ -30,7 +30,7 @@ class SoundPlayerImpl : public SoundPlayer {
   bool setPosition(Sound sound, float position);
   bool playSound(Sound sound);
   bool stopSound(Sound sound);
-  void playSong(string filename);
+  void playSong(std::string filename);
   void stopSong();
   void setMusicOn(bool on);
   void setSoundEffectsOn(bool on);

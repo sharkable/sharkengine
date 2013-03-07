@@ -12,6 +12,8 @@
 #include "gameengine/touch.h"
 #include "soundengine/sound_player.h"
 
+using std::vector;
+
 Button::Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
     : Animatable(position),
       normal_sprite_(normal_sprite),

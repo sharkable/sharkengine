@@ -9,13 +9,12 @@
 #import "GameTouchWindow.h"
 
 #include <vector>
-using namespace std;
 
 #import "game_engine.h"
 #import "Touch.h"
 
 @interface GameTouchWindow ()
-- (vector<Touch>)convertTouches:(NSSet *)touches;
+- (std::vector<Touch>)convertTouches:(NSSet *)touches;
 @end
 
 @implementation GameTouchWindow {
@@ -52,9 +51,9 @@ using namespace std;
 
 #pragma mark - Private
 
-- (vector<Touch>)convertTouches:(NSSet *)touches {
+- (std::vector<Touch>)convertTouches:(NSSet *)touches {
   
-  vector<Touch> converted_touches;
+  std::vector<Touch> converted_touches;
   for (UITouch *touch in touches) {
     Touch converted_touch;
     CGPoint location = [touch locationInView:touch.view];

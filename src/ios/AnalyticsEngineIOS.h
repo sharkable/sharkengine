@@ -10,7 +10,6 @@
 #define GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_
 
 #include <map>
-using namespace std;
 
 #include "gameengine/analytics_engine.h"
 
@@ -18,8 +17,8 @@ using namespace std;
 class AnalyticsEngineIOS : public AnalyticsEngine {
  public:
   // AnalyticsEngine
-  void LogEvent(string event_name);
-  void LogEvent(string event_name, map<string, string> parameters);
+  void LogEvent(std::string event_name);
+  void LogEvent(std::string event_name, std::map<std::string, std::string> parameters);
 };
 
 #endif  

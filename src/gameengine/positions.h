@@ -12,15 +12,14 @@
 #include "gameengine/coordinate_types.h"
 
 #include <map>
-using namespace std;
 
 class Positions {
  public:
-  GamePoint position(string name) { return positions_[name]; }
-  void LoadFile(string filename);
+  GamePoint position(std::string name) { return positions_[name]; }
+  void LoadFile(std::string filename);
 
  private:
-  map<string, GamePoint> positions_;
+  std::map<std::string, GamePoint> positions_;
 };
 
 #endif

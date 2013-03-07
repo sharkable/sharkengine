@@ -10,6 +10,8 @@
 
 #include "ios/TypeUtil.h"
 
+using std::string;
+
 bool LocalStore::HasEntryForKey(string key) {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   return [[[userDefaults dictionaryRepresentation] allKeys]

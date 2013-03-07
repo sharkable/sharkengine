@@ -10,7 +10,6 @@
 #define GAMEENGINE_ENGINEVIEW_H_
 
 #include <vector>
-using namespace std;
 
 class GameEngine;
 class Touch;
@@ -23,9 +22,9 @@ class EngineView {
   virtual void ViewIsShown() {}
   virtual void Update();
   virtual void Render();
-  virtual void TouchesBegan(vector<Touch> touches);
-  virtual void TouchesMoved(vector<Touch> touches);
-  virtual void TouchesEnded(vector<Touch> touches);
+  virtual void TouchesBegan(std::vector<Touch> touches);
+  virtual void TouchesMoved(std::vector<Touch> touches);
+  virtual void TouchesEnded(std::vector<Touch> touches);
   virtual void ClearTouches();
   // If you add an entity using this method, then this EngineView is responsible for releasing this
   // object.
@@ -39,7 +38,7 @@ class EngineView {
 
  private:
   sp<GameEngine> game_engine_;
-  vector<sp<ViewEntity> > entities_;
+  std::vector<sp<ViewEntity> > entities_;
 };
 
 #endif

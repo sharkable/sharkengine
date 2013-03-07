@@ -65,7 +65,6 @@
 
 #import <OpenGLES/ES1/gl.h>
 #import <string>
-using namespace std;
 
 // TODO this is overreaching... this shouldn't know about the game engine.
 #include "gameengine/coordinate_types.h"
@@ -91,7 +90,7 @@ class Texture2D {
  public:
   Texture2D() : name_(0) { }
   Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
-            ScreenSize size, string filename);
+            ScreenSize size, std::string filename);
 
   static void SetGlobalAlpha(GLfloat alpha);
   // TODO remove this crap. Figure out a better way to handle the coordinate system.
@@ -106,19 +105,19 @@ class Texture2D {
   
   bool loaded() { return name_ != 0; }  // TODO identical to data_loaded
   GLuint name() { return name_; }
-  string filename() { return filename_; }
+  std::string filename() { return filename_; }
   bool data_loaded() { return name_ != 0; }
   ScreenSize content_size() { return size_; }
 
  private:
   void Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
-            ScreenSize size, string filename);
+            ScreenSize size, std::string filename);
 
   static int nameCounter_;
   static GLfloat globalAlpha_;
   static GLfloat screen_height_;
   GLuint name_;
-  string filename_;
+  std::string filename_;
   ScreenSize size_;
   uint32_t width_;
   uint32_t height_;

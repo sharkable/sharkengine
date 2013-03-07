@@ -10,7 +10,6 @@
 #define AIRHOCKEY_GAMEENGINE_VIEWENTITY_H_
 
 #include <vector>
-using namespace std;
 
 class Touch;
 
@@ -18,9 +17,9 @@ class ViewEntity {
  public:
   virtual void Update() = 0;
   virtual void Render() = 0;
-  virtual void TouchesBegan(vector<Touch> touches) {}
-  virtual void TouchesMoved(vector<Touch> touches) {}
-  virtual void TouchesEnded(vector<Touch> touches) {}
+  virtual void TouchesBegan(std::vector<Touch> touches) {}
+  virtual void TouchesMoved(std::vector<Touch> touches) {}
+  virtual void TouchesEnded(std::vector<Touch> touches) {}
   virtual void ClearTouches() {}
 };
 

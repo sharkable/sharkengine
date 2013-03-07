@@ -34,7 +34,7 @@ class SoundPlayer {
   virtual bool setPosition(Sound sound, float position) = 0;
   virtual bool playSound(Sound sound) = 0;
   virtual bool stopSound(Sound sound) = 0;
-  virtual void playSong(string filename) = 0;
+  virtual void playSong(std::string filename) = 0;
   virtual void stopSong() = 0;
   virtual void setMusicOn(bool on) = 0;
   virtual void setSoundEffectsOn(bool on) = 0;
