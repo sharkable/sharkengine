@@ -6,8 +6,8 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#ifndef AirHockey_TypeUtil_h
-#define AirHockey_TypeUtil_h
+#ifndef GAMEENGINE_IOS_TYPEUTIL_H_
+#define GAMEENGINE_IOS_TYPEUTIL_H_
 
 #include <string>
 

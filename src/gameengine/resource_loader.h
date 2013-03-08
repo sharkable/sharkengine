@@ -6,8 +6,8 @@
 //  Copyright 2009 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_RESOURCELOADER_H_
-#define AIRHOCKEY_GAMEENGINE_RESOURCELOADER_H_
+#ifndef GAMEENGINE_RESOURCELOADER_H_
+#define GAMEENGINE_RESOURCELOADER_H_
 
 #include <map>
 

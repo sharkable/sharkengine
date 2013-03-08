@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_SPRITE_H_
-#define AIRHOCKEY_GAMEENGINE_SPRITE_H_
+#ifndef GAMEENGINE_SPRITE_H_
+#define GAMEENGINE_SPRITE_H_
 
 #include "opengl/texture2D.h"
 

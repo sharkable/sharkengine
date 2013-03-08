@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_LOCALSTORE_H_
-#define AIRHOCKEY_GAMEENGINE_LOCALSTORE_H_
+#ifndef GAMEENGINE_LOCALSTORE_H_
+#define GAMEENGINE_LOCALSTORE_H_
 
 #import <string>
 

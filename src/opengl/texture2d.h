@@ -60,8 +60,8 @@
  
  */
 
-#ifndef AIRHOCKEY_OPENGL_TEXTURE2D_H_
-#define AIRHOCKEY_OPENGL_TEXTURE2D_H_
+#ifndef GAMEENGINE_OPENGL_TEXTURE2D_H_
+#define GAMEENGINE_OPENGL_TEXTURE2D_H_
 
 #import <OpenGLES/ES1/gl.h>
 #import <string>

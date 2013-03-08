@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_SOUND_PLAYER_H
-#define AIRHOCKEY_SOUND_PLAYER_H
+#ifndef SOUNDENGINE_SOUNDPLAYER_H_
+#define SOUNDENGINE_SOUNDPLAYER_H_
 
 #include "soundengine/sound_initialization_delegate.h"
 

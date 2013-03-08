@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_TOUCH_H_
-#define AIRHOCKEY_GAMEENGINE_TOUCH_H_
+#ifndef GAMEENGINE_TOUCH_H_
+#define GAMEENGINE_TOUCH_H_
 
 #include "gameengine/coordinate_types.h"
 

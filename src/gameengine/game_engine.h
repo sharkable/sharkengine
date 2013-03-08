@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef AIRHOCKEY_GAMEENGINE_GAMEENGINE_H_
-#define AIRHOCKEY_GAMEENGINE_GAMEENGINE_H_
+#ifndef GAMEENGINE_GAMEENGINE_H_
+#define GAMEENGINE_GAMEENGINE_H_
 
 #include <vector>
 

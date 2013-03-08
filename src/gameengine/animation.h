@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ANIMATION_
-#define GAMEENGINE_ANIMATION_
+#ifndef GAMEENGINE_ANIMATION_H_
+#define GAMEENGINE_ANIMATION_H_
 
 typedef enum {
   kAnimationTypeLinear = 0,
@@ -36,4 +36,3 @@ class Animation {
 };
 
 #endif
-
