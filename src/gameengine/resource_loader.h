@@ -22,7 +22,7 @@ class ResourceLoader {
 
  private:
   Texture2D Texture(std::string filename);
-  
+
   std::map<std::string, Texture2D> resources_;
   std::map<std::string, int> resource_counter_;
 };

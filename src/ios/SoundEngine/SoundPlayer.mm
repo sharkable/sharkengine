@@ -30,9 +30,9 @@ static const bool thisAppDoesDucking = YES; // if this gets changed to yes then 
   if (err == kAudioSessionNoError) {
     return nil;
   }
-  
+
   NSString *errStr = nil;
-  
+
   switch (err) {
     case kAudioSessionNotInitialized:
       errStr = @"An Audio Session Services function was called without first initializing the "
@@ -59,7 +59,7 @@ static const bool thisAppDoesDucking = YES; // if this gets changed to yes then 
     case kAudioServicesNoHardwareError:
       errStr = @"The audio operation failed because the device has no audio input available.";
       break;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED > 30000      
+#if __IPHONE_OS_VERSION_MIN_REQUIRED > 30000
     case kAudioSessionNoCategorySet:
       errStr = @"The audio operation failed because it requires the audio session to have an "
           "explicitly-set category, but none was set. To use a hardware codec you must explicitly "
@@ -75,7 +75,7 @@ static const bool thisAppDoesDucking = YES; // if this gets changed to yes then 
       errStr = @"Unknown Audio Session Error\n";
       break;
   }
-  return errStr;  
+  return errStr;
 }
 
 @end
@@ -99,12 +99,12 @@ bool SoundPlayerImpl::isMusicPlayingInITunes() {
   return musicIsPlayingInITunes_;
 }
 
-// allow sound effects to be clear by ducking the iTunes song    
+// allow sound effects to be clear by ducking the iTunes song
 void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
   // note: not sure if this is for all AudioSession properties, but at least with ducking the
   // session has to be inactive to make the change so here we set the session to inactive at the top
   // of the function, and set to active at the end after setting the property
-  
+
   NSError *activeErr = nil;
   BOOL sessionActive = [session_ setActive:NO error:&activeErr];
   if (!sessionActive) {
@@ -113,7 +113,7 @@ void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
 
   // if the user want's the sound effects on while iTunes is playing , then we duck the iTunes so
   // you can hear the sounds, if sounds are off, iTunes is full volume :P
-  UInt32 allowDuck = thisAppDoesDucking && duck && musicIsPlayingInITunes_;    
+  UInt32 allowDuck = thisAppDoesDucking && duck && musicIsPlayingInITunes_;
   OSStatus propertySetError =
       AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, sizeof(allowDuck),
                               &allowDuck);
@@ -122,7 +122,7 @@ void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
     NSLog(@"ERROR setting iTunes audio ducking property to [%s] ... \n\t ERROR: %@\n",
           allowDuck ? "ON" : "OFF" ,errStr );
   }
-  
+
   activeErr = nil;
   sessionActive = [session_ setActive:YES error:&activeErr];
 
@@ -132,7 +132,7 @@ void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
 }
 
 NSURL *SoundPlayerImpl::filenameToUrl(NSString *name) {
-  // Convert path to a URL 
+  // Convert path to a URL
   NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], name];
   NSURL *url  = [NSURL fileURLWithPath:path];
   return url;
@@ -140,7 +140,7 @@ NSURL *SoundPlayerImpl::filenameToUrl(NSString *name) {
 
 void SoundPlayerImpl::loadSoundsWithDelegate(SoundInitializationDelegate *delegate) {
   NSAutoreleasePool *subpool = [[NSAutoreleasePool alloc] init];
-  
+
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score_final" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"paddle_hit" andExt:@"wav"]];
@@ -228,7 +228,7 @@ void SoundPlayerImpl::playSong(string filename)
   // no game songs if iTunes is playing
   if( musicIsPlayingInITunes_ )
     return;
-  
+
   stopSong();
   if (musicOn_) {
     song_ = [[AVAudio alloc] initWithURL:filenameToUrl(TypeUtil::string2NSString(filename))];
@@ -253,7 +253,7 @@ void SoundPlayerImpl::setSoundEffectsOn(bool on) {
 SoundPlayerImpl::SoundPlayerImpl() {
   sounds_ = [[NSMutableArray alloc] initWithCapacity:kNumSounds];
   song_ = nil;
-  
+
   AudioInterruptDelegate* delegate = [[AudioInterruptDelegate alloc] init];
 
   delegate_ = delegate;
@@ -270,8 +270,8 @@ SoundPlayerImpl::SoundPlayerImpl() {
 //    YES        YES        YES          iTunes keeps playing w/ ducked volume, sound effects play over iTunes music ( NO GAME MUSIC )
 
 
-// NOTE: if iTunes is playing all calls to playSong will be ignored, as well as any changes to music being enabled.... 
-// NOTE: if iTunes is playing calls to enableSound will trigger the enabling , disabling of the 'ducking' 
+// NOTE: if iTunes is playing all calls to playSong will be ignored, as well as any changes to music being enabled....
+// NOTE: if iTunes is playing calls to enableSound will trigger the enabling , disabling of the 'ducking'
 
 
 //
@@ -290,19 +290,19 @@ void SoundPlayerImpl::syncAudioSessionForITunes()
   if( success == NO )
   {
     //DOH!
-    NSLog( @"ERROR Setting audio session category to allow itunes playback\n\t%@", sessionError ); 
+    NSLog( @"ERROR Setting audio session category to allow itunes playback\n\t%@", sessionError );
   }
-  else 
+  else
   {
     NSLog( @"SUCCESS Setting audio session category to allow itunes playback\n");
-    
+
     MPMusicPlayerController* iPodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    
+
     // we need to know if a song is playing, because if one is not playing then we will want
     // to turn on our music (if the user has the music enabled - which is done elsewhere using
     // this 'musicIsPlayingInITunes_' member )
     MPMediaItem * currentlyPlayingItem = [iPodMusicPlayer nowPlayingItem];
     BOOL isPlayingITunes = (currentlyPlayingItem != nil ) && ( iPodMusicPlayer.playbackState == MPMusicPlaybackStatePlaying );
-    musicIsPlayingInITunes_ = isPlayingITunes;    
-  }  
+    musicIsPlayingInITunes_ = isPlayingITunes;
+  }
 }

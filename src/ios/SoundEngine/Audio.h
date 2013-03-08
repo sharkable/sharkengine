@@ -1,5 +1,5 @@
 /**
- * The Audio protocal ensures a standardised set of functionality for any 
+ * The Audio protocal ensures a standardised set of functionality for any
  * class that implements it.
  **/
 @protocol Audio

@@ -4,15 +4,15 @@
 @implementation AudioInterruptDelegate
 
 
- 
+
  //audioPlayerEndInterruption: is called when the audio session interruption has ended and this player had been interrupted while playing. (phone rings, user ignores it... music stops, now its back on yay)
- //The player can be restarted at this point. 
- 
+ //The player can be restarted at this point.
+
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player
 {
   NSError* activationError = nil;
   [[AVAudioSession sharedInstance] setActive:YES error:&activationError];
-  [player play];  
+  [player play];
 }
 
 @end
@@ -32,23 +32,23 @@
     {
       NSLog( @"ERROR Initializing AVAudioPlayer in AVAudio::initWithURL \n\t%@\n\tURL [%@]\n", error, url );
     }
-    else 
+    else
     {
       NSLog( @"SUCCESS Initializing AVAudioPlayer [%p] in AVAudio::initWithURL \n\tURL [%@]\n", player_,  url );
     }
 
-    
+
     [self loop:NO];
     [player_ prepareToPlay];
   }
-  
+
   return self;
 }
 
 -(void) dealloc
 {
   [self stop];
-  
+
   [player_ release];
   [super dealloc];
 }

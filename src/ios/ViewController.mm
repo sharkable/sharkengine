@@ -48,7 +48,7 @@
                                gameSize);
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
-    gameTouchWindow_.gameEngine = gameEngine_;    
+    gameTouchWindow_.gameEngine = gameEngine_;
   }
   return self;
 }
@@ -67,7 +67,7 @@
   [gameTimer_ start];
 }
 
-- (void)stop {  
+- (void)stop {
   [gameTimer_ stop];
 }
 

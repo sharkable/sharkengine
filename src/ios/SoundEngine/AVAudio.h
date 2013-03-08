@@ -3,12 +3,12 @@
 
 
 
-@interface AudioInterruptDelegate : NSObject <AVAudioPlayerDelegate> 
+@interface AudioInterruptDelegate : NSObject <AVAudioPlayerDelegate>
 {
-  
+
 }
 
-/* audioPlayerEndInterruption: is called when the audio session interruption has ended and this player had been interrupted while playing. 
+/* audioPlayerEndInterruption: is called when the audio session interruption has ended and this player had been interrupted while playing.
  The player can be restarted at this point. */
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player;
 

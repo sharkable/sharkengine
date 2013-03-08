@@ -1,7 +1,7 @@
 #import "ALAudio.h"
 
 ALCcontext* context_ = nil;
-ALCdevice*  device_  = nil; 
+ALCdevice*  device_  = nil;
 
 
 @implementation ALAudio
@@ -13,46 +13,46 @@ ALCdevice*  device_  = nil;
     if(device_ == nil)
     {
       device_ = alcOpenDevice(NULL);
-      if (device_) 
+      if (device_)
       {
         context_ = alcCreateContext(device_,NULL);
         alcMakeContextCurrent(context_);
       }
     }
-    
+
     ALvoid* audioData;
     ALenum  error = AL_NO_ERROR;
     ALenum  format;
     ALsizei size;
     ALsizei freq;
-    
+
     NSBundle * bundle = [NSBundle mainBundle];
-    
+
     // get some audio data from a wave file
     CFURLRef fileURL = (CFURLRef)[[NSURL fileURLWithPath:[bundle pathForResource:filename ofType:ext]] retain];
     if(!fileURL)
     {
       return nil;
     }
-    
+
     audioData = MyGetOpenALAudioData(fileURL, &size, &format, &freq);
-    
+
     CFRelease(fileURL);
-    
+
     if((error = alGetError()) != AL_NO_ERROR) {
       printf("error loading sound: %x\n", error);
       exit(1);
     }
-    
+
     // grab a buffer ID from openAL
     alGenBuffers(1, &buffer_id_);
-    
+
     // load the awaiting data blob into the openAL buffer.
-    alBufferData(buffer_id_,format,audioData,size,freq); 
-    
+    alBufferData(buffer_id_,format,audioData,size,freq);
+
     // grab a source ID from openAL
-    alGenSources(1, &source_id_); 
-    
+    alGenSources(1, &source_id_);
+
     // attach the buffer to the source
     alSourcei(source_id_, AL_BUFFER, buffer_id_);
 
@@ -61,16 +61,16 @@ ALCdevice*  device_  = nil;
     alSourcef(source_id_, AL_MIN_GAIN,  0.0f);
     alSourcef(source_id_, AL_MAX_GAIN,  1.0f);
     //    if (loops) alSourcei(source_id_, AL_LOOPING, AL_TRUE);
-    
+
     // clean up the buffer
     if (audioData)
     {
       free(audioData);
       audioData = NULL;
     }
-    
+
   }
-  
+
   return self;
 }
 
@@ -78,10 +78,10 @@ ALCdevice*  device_  = nil;
 {
   alDeleteSources(1, &source_id_);
   alDeleteBuffers(1, &buffer_id_);
-  
+
   alcDestroyContext(context_);
   alcCloseDevice(device_);
-  
+
   [super dealloc];
 }
 

@@ -33,17 +33,17 @@ enum {
 @implementation ES2Renderer {
  @private
   EAGLContext *context_;
-  
+
   // The pixel dimensions of the CAEAGLLayer
   GLint backingWidth_;
   GLint backingHeight_;
-  
+
   // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
   GLuint defaultFramebuffer_;
   GLuint colorRenderbuffer_;
-  
+
   GLuint program_;
-  
+
   GameEngine *gameEngine_;
 }
 
@@ -77,25 +77,25 @@ enum {
     glDeleteFramebuffers(1, &defaultFramebuffer_);
     defaultFramebuffer_ = 0;
   }
-  
+
   if (colorRenderbuffer_) {
     glDeleteRenderbuffers(1, &colorRenderbuffer_);
     colorRenderbuffer_ = 0;
   }
-  
+
   if (program_) {
     glDeleteProgram(program_);
     program_ = 0;
   }
-  
+
   // Tear down context
   if ([EAGLContext currentContext] == context_) {
     [EAGLContext setCurrentContext:nil];
   }
-  
+
   [context_ release];
   context_ = nil;
-  
+
   [super dealloc];
 }
 
@@ -128,13 +128,13 @@ enum {
   [context_ renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer];
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth_);
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight_);
-  
+
   if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
     NSLog(@"Failed to make complete framebuffer object %x",
           glCheckFramebufferStatus(GL_FRAMEBUFFER));
     return NO;
   }
-  
+
   return YES;
 }
 
@@ -267,7 +267,7 @@ enum {
       glDeleteProgram(program_);
       program_ = 0;
     }
-    
+
     return NO;
   }
 

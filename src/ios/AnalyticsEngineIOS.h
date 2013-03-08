@@ -21,4 +21,4 @@ class AnalyticsEngineIOS : public AnalyticsEngine {
   void LogEvent(std::string event_name, std::map<std::string, std::string> parameters);
 };
 
-#endif  
+#endif

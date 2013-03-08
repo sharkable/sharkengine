@@ -14,7 +14,7 @@ using std::string;
 ResourceLoader instance__;
 
 ResourceLoader &ResourceLoader::Instance() {
-  return instance__;          
+  return instance__;
 }
 
 Texture2D ResourceLoader::TextureWithName(string name) {
@@ -28,7 +28,7 @@ Texture2D ResourceLoader::TextureWithName(string name) {
   Texture2D texture = resources_[name];
   resource_counter_[name]++;
 
-  return texture;  
+  return texture;
 }
 
 void ResourceLoader::ReleaseResource(string name) {

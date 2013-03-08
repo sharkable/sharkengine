@@ -27,7 +27,7 @@ class EngineView;
 class GameEngine {
  public:
   GameEngine();
-  
+
   void SetScreenSize(ScreenSize screen_size, GameSize game_size);
   void SetGameOffset(GamePoint game_offset);
 

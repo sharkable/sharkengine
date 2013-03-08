@@ -14,7 +14,7 @@
  @private
   id target_;  // weak
   SEL selector_;
-  
+
   BOOL animating_;
   BOOL displayLinkSupported_;
   // Use of the CADisplayLink class is the preferred method for controlling your animation timing.
@@ -30,7 +30,7 @@
   if (self) {
     target_ = target;
     selector_ = selector;
-    
+
     // A system version of 3.1 or greater is required to use CADisplayLink. The NSTimer
     // class is used as fallback when it isn't available.
     NSString *reqSysVer = @"3.1";
@@ -45,7 +45,7 @@
 - (void)dealloc {
   [displayLink_ release];
   [animationTimer_ release];
-  
+
   [super dealloc];
 }
 
@@ -58,7 +58,7 @@
       // in a warning, but can be dismissed if the system version runtime check for CADisplayLink
       // exists in -initWithCoder:. The runtime check ensures this code will not be called in system
       // versions earlier than 3.1.
-      
+
       displayLink_ =
           [[NSClassFromString(@"CADisplayLink") displayLinkWithTarget:target_
                                                              selector:selector_] retain];
@@ -72,7 +72,7 @@
                                                         userInfo:nil
                                                          repeats:YES] retain];
     }
-    
+
     animating_ = YES;
   }
 }
@@ -88,7 +88,7 @@
       [animationTimer_ release];
       animationTimer_ = nil;
     }
-    
+
     animating_ = NO;
   }
 }

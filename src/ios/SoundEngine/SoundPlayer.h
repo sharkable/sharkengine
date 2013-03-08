@@ -17,7 +17,7 @@
 class SoundPlayerImpl : public SoundPlayer {
  public:
   SoundPlayerImpl();
-  
+
   AVAudioSession* session();
   bool isMusicPlayingInITunes();
   void syncAudioSessionForITunes();

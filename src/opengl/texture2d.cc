@@ -1,7 +1,7 @@
 /*
- 
+
  ===== IMPORTANT =====
- 
+
  This is sample code demonstrating API, technology or techniques in development.
  Although this sample code has been reviewed for technical accuracy, it is not
  final. Apple is supplying this information to help you plan for the adoption of
@@ -13,20 +13,20 @@
  technology. For information about updates to this and other developer
  documentation, view the New & Updated sidebars in subsequent documentation
  seeds.
- 
+
  =====================
- 
+
  File: Texture2D.m
  Abstract: Creates OpenGL 2D textures from images or text.
- 
+
  Version: 1.6
- 
+
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
  ("Apple") in consideration of your agreement to the following terms, and your
  use, installation, modification or redistribution of this Apple software
  constitutes acceptance of these terms.  If you do not agree with these terms,
  please do not use, install, modify or redistribute this Apple software.
- 
+
  In consideration of your agreement to abide by the following terms, and subject
  to these terms, Apple grants you a personal, non-exclusive license, under
  Apple's copyrights in this original Apple software (the "Apple Software"), to
@@ -42,13 +42,13 @@
  including but not limited to any patent rights that may be infringed by your
  derivative works or by other works in which the Apple Software may be
  incorporated.
- 
+
  The Apple Software is provided by Apple on an "AS IS" basis.  APPLE MAKES NO
  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED
  WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND OPERATION ALONE OR IN
  COMBINATION WITH YOUR PRODUCTS.
- 
+
  IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL OR
  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
@@ -56,9 +56,9 @@
  DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED AND WHETHER UNDER THEORY OF
  CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF
  APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
+
  Copyright (C) 2008 Apple Inc. All Rights Reserved.
- 
+
  */
 
 #include "opengl/texture2D.h"
@@ -116,24 +116,24 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
   // Swap vertical coordinate system.
   // TODO make this not screen size dependent.
   point.y = screen_height_ - point.y;
-  
+
   GLfloat    width = (GLfloat)width_ * max_s_ * leftRatio,
   height = (GLfloat)height_ * max_t_;
-  
+
   coordinates_[2] = coordinates_[6] = leftRatio * max_s_;
 
   vertices_[0] = -width/2.0;
   vertices_[1] = -height/2.0;
-  
+
   vertices_[3] = width/2.0;
   vertices_[4] = -height/2.0;
-  
+
   vertices_[6] = -width/2.0;
   vertices_[7] = height/2.0;
-  
+
   vertices_[9] = width/2.0;
   vertices_[10] = height/2.0;
-  
+
   glLoadIdentity();
   glBindTexture(GL_TEXTURE_2D, name_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
@@ -151,24 +151,24 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
-  
+
   GLfloat    width = (GLfloat)width_ * max_s_ * rightRatio,
   height = (GLfloat)height_ * max_t_;
-  
+
   coordinates_[0] = coordinates_[4] = (1.0 - rightRatio) * max_s_;
 
   vertices_[0] = -width/2.0;
   vertices_[1] = -height/2.0;
-  
+
   vertices_[3] = width/2.0;
   vertices_[4] = -height/2.0;
-  
+
   vertices_[6] = -width/2.0;
   vertices_[7] = height/2.0;
-  
+
   vertices_[9] = width/2.0;
   vertices_[10] = height/2.0;
-  
+
   glLoadIdentity();
   glBindTexture(GL_TEXTURE_2D, name_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
@@ -187,7 +187,7 @@ void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
-  
+
   GLfloat    width = (GLfloat)width_ * max_s_,
   height = (GLfloat)height_ * max_t_;
 
@@ -218,7 +218,7 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
 
   //glGenTextures(1, &name_);
   name_ = ++nameCounter_;
-  
+
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
   glBindTexture(GL_TEXTURE_2D, name_);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -235,42 +235,42 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
     default:
       break;
       // TODO [NSException raise:NSInternalInconsistencyException format:@""];
-      
+
   }
   glBindTexture(GL_TEXTURE_2D, saveName);
-  
+
   size_ = size;
   width_ = width;
   height_ = height;
   format_ = pixelFormat;
   max_s_ = size.width / (float)width;
   max_t_ = size.height / (float)height;
-  
+
   coordinates_[0] = 0;
   coordinates_[1] = max_t_;
-  
+
   coordinates_[2] = max_s_;
   coordinates_[3] = max_t_;
-  
+
   coordinates_[4] = 0;
   coordinates_[5] = 0;
-  
+
   coordinates_[6] = max_s_;
   coordinates_[7] = 0;
-  
-  
+
+
   vertices_[0] = -size.width/2.0;
   vertices_[1] = -size.height/2.0;
   vertices_[2] = 0;
-  
+
   vertices_[3] = size.width/2.0;
   vertices_[4] = -size.height/2.0;
   vertices_[5] = 0;
-  
+
   vertices_[6] = -size.width/2.0;
   vertices_[7] = size.height/2.0;
   vertices_[8] = 0.0;
-  
+
   vertices_[9] = size.width/2.0;
   vertices_[10] = size.height/2.0;
   vertices_[11] = 0.0;

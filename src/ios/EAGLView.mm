@@ -12,7 +12,7 @@
 #import "ES2Renderer.h"
 #import "ESRenderer.h"
 
-@implementation EAGLView {    
+@implementation EAGLView {
  @private
   id<ESRenderer> renderer_;
 }
@@ -22,12 +22,12 @@
   return [CAEAGLLayer class];
 }
 
-- (id)initWithFrame:(CGRect)frame {  
+- (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
     self.contentScaleFactor = [UIScreen mainScreen].scale;
     self.multipleTouchEnabled = YES;
-    
+
     // Get the layer
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 
@@ -56,7 +56,7 @@
 
 - (void)dealloc {
   [renderer_ release];
-  
+
   [super dealloc];
 }
 

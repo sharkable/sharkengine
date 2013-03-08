@@ -30,7 +30,7 @@ class Button : public Animatable {
   Button() : state_(kButtonStateNormal) {}
   Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
-  
+
   // ViewEntity
   void Render();
   void TouchesBegan(std::vector<Touch> touches);

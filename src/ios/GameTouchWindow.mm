@@ -52,7 +52,7 @@
 #pragma mark - Private
 
 - (std::vector<Touch>)convertTouches:(NSSet *)touches {
-  
+
   std::vector<Touch> converted_touches;
   for (UITouch *touch in touches) {
     Touch converted_touch;

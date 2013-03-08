@@ -43,7 +43,7 @@ void GameEngine::Update() {
 
   // Process input.
   sp<EngineView> top_view = views_.back();
-  
+
   if (touches_began_.size() > 0) {
     top_view->TouchesBegan(touches_began_);
     touches_began_.clear();
@@ -56,11 +56,11 @@ void GameEngine::Update() {
     top_view->TouchesEnded(touches_ended_);
     touches_ended_.clear();
   }
-  
+
   // Update views.
   for (int i = 0; i < views_.size(); i++) {
     views_[i]->Update();
-  }  
+  }
 }
 
 void GameEngine::Render() {

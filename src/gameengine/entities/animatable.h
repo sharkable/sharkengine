@@ -25,7 +25,7 @@ class Animatable : public ViewEntity {
 
   // VewEntity
   void Update();
-  
+
   // Accessors
   GamePoint position() { return position_; }
   void set_position(GamePoint position) { position_ = position; }
