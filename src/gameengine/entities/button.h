@@ -9,9 +9,13 @@
 #ifndef GAMEENGINE_ENTITIES_BUTTON_H_
 #define GAMEENGINE_ENTITIES_BUTTON_H_
 
+#include <vector>
+
 #include "gameengine/entities/animatable.h"
-#include "gameengine/game_engine.h"
+#include "gameengine/coordinate_types.h"
 #include "gameengine/sprite.h"
+
+class Touch;
 
 typedef enum {
   kButtonStateNormal,

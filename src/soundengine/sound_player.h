@@ -9,6 +9,8 @@
 #ifndef SOUNDENGINE_SOUNDPLAYER_H_
 #define SOUNDENGINE_SOUNDPLAYER_H_
 
+#include <string>
+
 #include "soundengine/sound_initialization_delegate.h"
 
 typedef enum {

@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "gameengine/entities/animatable.h"
+#include "gameengine/coordinate_types.h"
 #include "gameengine/sprite.h"
 
 class SimpleItem : public Animatable {

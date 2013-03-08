@@ -12,6 +12,7 @@
 #include "gameengine/coordinate_types.h"
 
 #include <map>
+#include <string>
 
 class Positions {
  public:

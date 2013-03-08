@@ -10,6 +10,7 @@
 #define GAMEENGINE_RESOURCELOADER_H_
 
 #include <map>
+#include <string>
 
 #include "opengl/Texture2D.h"
 

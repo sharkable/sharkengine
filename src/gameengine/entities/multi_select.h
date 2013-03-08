@@ -12,9 +12,10 @@
 #include <vector>
 
 #include "gameengine/entities/animatable.h"
+#include "gameengine/coordinate_types.h"
 
 class Sprite;
-struct GamePoint;
+class Touch;
 
 class MultiSelect : public Animatable {
  public:
