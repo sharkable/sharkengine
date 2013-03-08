@@ -6,15 +6,15 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#import "ios/ViewController.h"
+#import "gameengine/ios/ViewController.h"
 
-#import "ios/AdEngineIOS.h"
-#import "ios/AnalyticsEngineIOS.h"
-#import "ios/EAGLView.h"
-#import "ios/GameTimer.h"
-#import "ios/GameTouchWindow.h"
+#import "gameengine/ios/AdEngineIOS.h"
+#import "gameengine/ios/AnalyticsEngineIOS.h"
+#import "gameengine/ios/EAGLView.h"
+#import "gameengine/ios/GameTimer.h"
+#import "gameengine/ios/GameTouchWindow.h"
+#import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
-#import "opengl/texture2d.h"
 
 @implementation ViewController {
  @private

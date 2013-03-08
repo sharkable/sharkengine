@@ -61,7 +61,7 @@
 
  */
 
-#include "opengl/texture2D.h"
+#include "gameengine/opengl/texture2D.h"
 
 #include <OpenGLES/ES1/glext.h>
 

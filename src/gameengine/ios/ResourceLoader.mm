@@ -10,8 +10,8 @@
 
 #import <UIKit/UIKit.h>
 
-#include "ios/TypeUtil.h"
-#include "opengl/texture2D.h"
+#include "gameengine/ios/TypeUtil.h"
+#include "gameengine/opengl/texture2D.h"
 
 using std::string;
 

@@ -8,7 +8,7 @@
 
 #include "gameengine/local_store.h"
 
-#include "ios/TypeUtil.h"
+#include "gameengine/ios/TypeUtil.h"
 
 using std::string;
 

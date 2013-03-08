@@ -6,10 +6,10 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#import "ios/AdEngineIOS.h"
+#import "gameengine/ios/AdEngineIOS.h"
 
-#import "GADBannerView.h"
-#import "GADRequest.h"
+#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADBannerView.h"
+#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADRequest.h"
 #import "gameengine/coordinate_types.h"
 
 AdEngineIOS::AdEngineIOS(UIViewController *root_view_controller) {

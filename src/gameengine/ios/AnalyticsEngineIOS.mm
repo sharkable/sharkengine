@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "ios/thirdparty/Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"
-#include "ios/AnalyticsEngineIOS.h"
-#include "ios/TypeUtil.h"
+#import "gameengine/ios/thirdparty/Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"
+#import "gameengine/ios/AnalyticsEngineIOS.h"
+#import "gameengine/ios/TypeUtil.h"
 
 using std::map;
 using std::string;

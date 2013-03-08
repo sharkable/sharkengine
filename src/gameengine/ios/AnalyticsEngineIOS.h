@@ -9,9 +9,10 @@
 #ifndef GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_
 #define GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_
 
-#include <map>
+#import <map>
+#import <string>
 
-#include "gameengine/analytics_engine.h"
+#import "gameengine/analytics_engine.h"
 
 // TODO have this do setup as well maybe?
 class AnalyticsEngineIOS : public AnalyticsEngine {
