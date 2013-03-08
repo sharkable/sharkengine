@@ -1,9 +1,9 @@
 //
 //  EAGLView.m
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jonathan Sharkey on 10-04-10.
-//  Copyright Sharkable 2010. All rights reserved.
+//  Created by Jon Sharkey on 2010-04-10.
+//  Copyright 2010 Sharkable. All rights reserved.
 //
 
 #import "EAGLView.h"

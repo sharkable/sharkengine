@@ -1,8 +1,8 @@
 //
 //  SoundPlayer.h
-//  SocialDeck
+//  SoundEngine
 //
-//  Created by Jonathan Sharkey on 09-10-21.
+//  Created by Jon Sharkey on 2009-10-21.
 //  Copyright 2009 Sharkable. All rights reserved.
 //
 

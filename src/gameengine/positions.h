@@ -2,8 +2,8 @@
 //  positions.h
 //  GameEngine
 //
-//  Created by Jon Sharkey on 2/19/13.
-//
+//  Created by Jon Sharkey on 2013-02-19.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #ifndef GAMEENGINE_POSITIONS_H_

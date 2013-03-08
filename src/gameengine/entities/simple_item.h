@@ -2,7 +2,7 @@
 //  simple_item.h
 //  GameEngine
 //
-//  Created by Jonathan Sharkey on 10-04-30.
+//  Created by Jon Sharkey on 2010-04-30.
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 

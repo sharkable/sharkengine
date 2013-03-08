@@ -1,9 +1,9 @@
 //
 //  TypeUtil.cpp
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jon Sharkey on 3/8/12.
-//  Copyright (c) 2012 Sharkable. All rights reserved.
+//  Created by Jon Sharkey on 2012-03-08.
+//  Copyright 2012 Sharkable. All rights reserved.
 //
 
 #import "TypeUtil.h"

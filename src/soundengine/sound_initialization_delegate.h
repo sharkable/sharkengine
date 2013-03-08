@@ -1,9 +1,9 @@
 //
 //  sound_initialization_delegate.h
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jonathan Sharkey on 09-10-26.
-//  Copyright 2012 Sharkable. All rights reserved.
+//  Created by Jon Sharkey on 2009-10-26.
+//  Copyright 2009 Sharkable. All rights reserved.
 //
 
 #ifndef AIRHOCKEY_SOUND_INITIALIZATION_DELEGATE_H

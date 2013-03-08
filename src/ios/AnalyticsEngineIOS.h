@@ -2,8 +2,8 @@
 //  AnalyticsEngineIOS.h
 //  GameEngine
 //
-//  Created by Jon Sharkey on 3/5/13.
-//
+//  Created by Jon Sharkey on 2013-03-05.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #ifndef GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_

@@ -1,9 +1,9 @@
 //
 //  AdEngineIOS.h
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jon Sharkey on 2/7/13.
-//
+//  Created by Jon Sharkey on 2013-02-07.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #ifndef GAMEENGINE_IOS_ADENGINEIOS_H_

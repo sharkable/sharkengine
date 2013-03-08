@@ -1,9 +1,9 @@
 //
 //  coordinate_types.h
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jon Sharkey on 1/27/13.
-//
+//  Created by Jon Sharkey on 2013-01-27.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #ifndef GAMEENGINE_COORDINATETYPES_H

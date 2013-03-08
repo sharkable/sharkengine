@@ -1,9 +1,9 @@
 //
 //  ViewController.h
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jonathan Sharkey on 4/1/12.
-//  Copyright (c) 2012 Sharkable. All rights reserved.
+//  Created by Jon Sharkey on 2012-04-01.
+//  Copyright 2012 Sharkable. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

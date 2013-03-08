@@ -1,8 +1,8 @@
 //
 //  ResourceLoader.m
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jonathan Sharkey on 09-09-28.
+//  Created by Jon Sharkey on 2009-09-28.
 //  Copyright 2009 Sharkable. All rights reserved.
 //
 

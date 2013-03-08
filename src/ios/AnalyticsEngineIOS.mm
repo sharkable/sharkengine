@@ -2,8 +2,8 @@
 //  AnalyticsEngineIOS.mm
 //  GameEngine
 //
-//  Created by Jon Sharkey on 3/5/13.
-//
+//  Created by Jon Sharkey on 2013-03-05.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #import "ios/thirdparty/Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"

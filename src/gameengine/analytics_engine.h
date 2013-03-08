@@ -1,9 +1,9 @@
 //
 //  analytics_engine.h
-//  AirHockey
+//  GameEngine
 //
-//  Created by Jonathan Sharkey on 3/5/13.
-//  Copyright (c) 2013 Sharkable. All rights reserved.
+//  Created by Jon Sharkey on 2013-03-05.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #ifndef GAMEENGINE_ANALYITICSENGINE_H_
