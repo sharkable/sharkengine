@@ -35,6 +35,9 @@ void GameEngine::SetScreenOffset(ScreenPoint screen_offset) {
 
 void GameEngine::Update() {
   if (next_views_.size() > 0) {
+    if (views_.size()) {
+      views_.back()->ClearTouches();
+    }
     views_ = next_views_;
     views_.back()->ViewIsShown();
     next_views_.clear();
