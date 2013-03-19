@@ -27,7 +27,7 @@
 
 @synthesize window = gameTouchWindow_, gameEngine = gameEngine_;
 
-- (id)initWithGameSize:(GameSize)gameSize {
+- (id)init {
   self = [super init];
   if (self) {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
@@ -41,11 +41,6 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
-
-    CGSize size = [UIScreen mainScreen].bounds.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    gameEngine_->SetScreenSize(screen_size_make(size.width * scale, size.height * scale),
-                               gameSize);
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;

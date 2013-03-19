@@ -18,7 +18,6 @@ class GameEngine;
 @property(nonatomic, readonly) GameEngine *gameEngine;
 @property(nonatomic, readonly) UIWindow *window;
 
-- (id)initWithGameSize:(GameSize)gameSize;
 - (void)start;
 - (void)stop;
 
