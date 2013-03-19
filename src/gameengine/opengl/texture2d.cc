@@ -85,9 +85,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point) {
 }
 
 void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z) {
-  if (!name_) {
-    return;
-  }
+  assert(name_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
@@ -109,9 +107,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
 }
 
 void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
-  if (!name_) {
-    return;
-  }
+  assert(name_);
 
   // Swap vertical coordinate system.
   // TODO make this not screen size dependent.
@@ -145,9 +141,7 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
 }
 
 void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
-  if (!name_) {
-    return;
-  }
+  assert(name_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
@@ -181,9 +175,7 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
 
 
 void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
-  if (!name_) {
-    return;
-  }
+  assert(name_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
