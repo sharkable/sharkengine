@@ -31,6 +31,7 @@ class EngineView {
   void AddEntity(ViewEntity *entity);
   void AddEntity(sp<ViewEntity> entity);
   void RemoveEntity(sp<ViewEntity> entity);
+  bool ContainsEntity(sp<ViewEntity> entity);
 
   sp<GameEngine> game_engine() { return game_engine_; }
 

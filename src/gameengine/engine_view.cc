@@ -70,3 +70,7 @@ void EngineView::RemoveEntity(sp<ViewEntity> entity) {
     }
   }
 }
+
+bool EngineView::ContainsEntity(sp<ViewEntity> entity) {
+  return std::find(entities_.begin(), entities_.end(), entity) != entities_.end();
+}
