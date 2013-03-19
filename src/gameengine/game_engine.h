@@ -29,7 +29,7 @@ class GameEngine {
   GameEngine();
 
   void SetScreenSize(ScreenSize screen_size, GameSize game_size);
-  void SetGameOffset(GamePoint game_offset);
+  void SetScreenOffset(ScreenPoint screen_offset);
 
   void Update();
   void Render();
@@ -65,16 +65,16 @@ class GameEngine {
                             game_size_.height * game_to_screen_point_ratio_y_);
   }
   ScreenPoint game_point_to_screen_point(GamePoint game_point_) {
-    return screen_point_make((game_point_.x + game_offset_.x) * game_to_screen_point_ratio_x_,
-                             (game_point_.y + game_offset_.y) * game_to_screen_point_ratio_y_);
+    return screen_point_make(game_point_.x * game_to_screen_point_ratio_x_ + screen_offset_.x,
+                             game_point_.y * game_to_screen_point_ratio_y_ + screen_offset_.y);
   }
   GameSize screen_size_to_game_size(ScreenSize screen_size_) {
     return game_size_make(screen_size_.width * screen_to_game_point_ratio_x_,
                           screen_size_.height * screen_to_game_point_ratio_y_);
   }
   GamePoint screen_point_to_game_point(ScreenPoint screen_point_) {
-    return game_point_make(screen_point_.x * screen_to_game_point_ratio_x_ - game_offset_.x,
-                           screen_point_.y * screen_to_game_point_ratio_y_ - game_offset_.y);
+    return game_point_make((screen_point_.x - screen_offset_.x) * screen_to_game_point_ratio_x_,
+                           (screen_point_.y - screen_offset_.y) * screen_to_game_point_ratio_y_);
   }
 
  private:
@@ -87,7 +87,7 @@ class GameEngine {
   std::vector<Touch> touches_began_;
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;
-  GamePoint game_offset_;
+  ScreenPoint screen_offset_;
   GameSize game_size_;
   double game_to_screen_point_ratio_x_;
   double game_to_screen_point_ratio_y_;

@@ -12,7 +12,8 @@
 
 GameEngine::GameEngine()
     : platform_type_(kPlatformTypePhone),
-      game_offset_(kGamePointZero),
+      screen_offset_(kScreenPointZero),
+      game_size_(kGameSizeZero),
       game_to_screen_point_ratio_x_(0),
       game_to_screen_point_ratio_y_(0),
       screen_to_game_point_ratio_x_(0),
@@ -28,8 +29,8 @@ void GameEngine::SetScreenSize(ScreenSize screen_size, GameSize game_size) {
   screen_to_game_point_ratio_y_ = game_size.height / screen_size.height;
 }
 
-void GameEngine::SetGameOffset(GamePoint game_offset) {
-  game_offset_ = game_offset;
+void GameEngine::SetScreenOffset(ScreenPoint screen_offset) {
+  screen_offset_ = screen_offset;
 }
 
 void GameEngine::Update() {
