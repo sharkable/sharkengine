@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#include "soundengine/sound_initialization_delegate.h"
 #include "soundengine/sound_player.h"
 
 #import "ALAudio.h"
@@ -23,8 +22,7 @@ class SoundPlayerImpl : public SoundPlayer {
   void syncAudioSessionForITunes();
   void duckAudioFromITunes(bool duck);
 
-  void initializeWithDelegate(SoundInitializationDelegate *delegate);
-  void loadSoundsWithDelegate(SoundInitializationDelegate *delegate);
+  void initialize();
   bool setGlobalVolume(float volume);
   bool setVolume(Sound sound, float volume);
   bool setPosition(Sound sound, float position);

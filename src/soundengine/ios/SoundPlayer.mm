@@ -138,9 +138,7 @@ NSURL *SoundPlayerImpl::filenameToUrl(NSString *name) {
   return url;
 }
 
-void SoundPlayerImpl::loadSoundsWithDelegate(SoundInitializationDelegate *delegate) {
-  NSAutoreleasePool *subpool = [[NSAutoreleasePool alloc] init];
-
+void SoundPlayerImpl::initialize() {
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"score_final" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"paddle_hit" andExt:@"wav"]];
@@ -150,20 +148,6 @@ void SoundPlayerImpl::loadSoundsWithDelegate(SoundInitializationDelegate *delega
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"button_click" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"get_ready" andExt:@"wav"]];
   [sounds_ addObject:[[ALAudio alloc] initWithFilename:@"start" andExt:@"wav"]];
-
-  delegate->SoundInitialized(this);
-
-  [subpool release];
-}
-
-void *loadSounds(void *delegate) {
-  soundInstance_->loadSoundsWithDelegate((SoundInitializationDelegate *)delegate);
-  pthread_exit(NULL);
-}
-
-void SoundPlayerImpl::initializeWithDelegate(SoundInitializationDelegate *delegate) {
-  pthread_t thread;
-  pthread_create(&thread, NULL, loadSounds, delegate);
 }
 
 bool SoundPlayerImpl::setGlobalVolume(float volume) {

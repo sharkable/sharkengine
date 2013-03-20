@@ -11,8 +11,6 @@
 
 #include <string>
 
-#include "soundengine/sound_initialization_delegate.h"
-
 typedef enum {
   kSoundScore = 0,
   kSoundScoreFinal,
@@ -28,7 +26,7 @@ typedef enum {
 
 class SoundPlayer {
  public:
-  virtual void initializeWithDelegate(SoundInitializationDelegate *delegate) = 0;
+  virtual void initialize() = 0;
   virtual void syncAudioSessionForITunes() = 0;
   virtual void duckAudioFromITunes(bool duck) = 0;
   virtual bool setGlobalVolume(float volume) = 0;
