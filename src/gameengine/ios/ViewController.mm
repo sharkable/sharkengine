@@ -10,6 +10,7 @@
 
 #import "gameengine/ios/AdEngineIOS.h"
 #import "gameengine/ios/AnalyticsEngineIOS.h"
+#import "gameengine/ios/AppStoreEngineIOS.h"
 #import "gameengine/ios/EAGLView.h"
 #import "gameengine/ios/GameTimer.h"
 #import "gameengine/ios/GameTouchWindow.h"
@@ -41,6 +42,7 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
+    gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new AppStoreEngineIOS()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;

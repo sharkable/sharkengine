@@ -22,6 +22,7 @@ typedef enum {
 
 class AdEngine;
 class AnalyticsEngine;
+class AppStoreEngine;
 class EngineView;
 
 class GameEngine {
@@ -49,6 +50,11 @@ class GameEngine {
   sp<AnalyticsEngine> analytics_engine() { return analytics_engine_; }
   void set_analytics_engine(sp<AnalyticsEngine> analytics_engine) {
     analytics_engine_ = analytics_engine;
+  }
+
+  sp<AppStoreEngine> app_store_engine() { return app_store_engine_; }
+  void set_app_store_engine(sp<AppStoreEngine> app_store_engine) {
+    app_store_engine_ = app_store_engine;
   }
 
   void load_positions(std::string filename) { positions_->LoadFile(filename); }
@@ -81,6 +87,7 @@ class GameEngine {
   PlatformType platform_type_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
+  sp<AppStoreEngine> app_store_engine_;
   sp<Positions> positions_;
   std::vector<sp<EngineView> > views_;
   std::vector<sp<EngineView> > next_views_;
