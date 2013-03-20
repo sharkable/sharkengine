@@ -18,38 +18,41 @@ EngineView::EngineView(sp<GameEngine> game_engine) : game_engine_(game_engine) {
 }
 
 void EngineView::Update() {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->Update();
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->Update();
   }
 }
 
 void EngineView::Render() {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->Render();
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->Render();
   }
 }
 
 void EngineView::TouchesBegan(vector<Touch> touches) {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->TouchesBegan(touches);
+  // Iterate backwards. The items on top get priority to capture touches.
+  for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
+    if ((*i)->TouchesBegan(touches)) {
+      break;
+    }
   }
 }
 
 void EngineView::TouchesMoved(vector<Touch> touches) {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->TouchesMoved(touches);
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->TouchesMoved(touches);
   }
 }
 
 void EngineView::TouchesEnded(vector<Touch> touches) {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->TouchesEnded(touches);
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->TouchesEnded(touches);
   }
 }
 
 void EngineView::ClearTouches() {
-  for (int i = 0; i < entities_.size(); i++) {
-    entities_[i]->ClearTouches();
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->ClearTouches();
   }
 }
 

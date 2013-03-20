@@ -46,7 +46,7 @@ void MultiSelect::Render() {
   }
 }
 
-void MultiSelect::TouchesBegan(vector<Touch> touches) {
+bool MultiSelect::TouchesBegan(vector<Touch> touches) {
   for (int i = 0; i < normal_sprites_.size(); i++) {
     double x = positions_x_[i];
     double y = positions_y_[i];
@@ -59,8 +59,9 @@ void MultiSelect::TouchesBegan(vector<Touch> touches) {
           selected_value_ = i;
           SoundPlayer::instance()->playSound(kSoundMultiSelect);
         };
-        return;
+        return true;
       }
     }
   }
+  return false;
 }

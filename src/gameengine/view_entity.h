@@ -17,7 +17,7 @@ class ViewEntity {
  public:
   virtual void Update() = 0;
   virtual void Render() = 0;
-  virtual void TouchesBegan(std::vector<Touch> touches) {}
+  virtual bool TouchesBegan(std::vector<Touch> touches) { return false; }
   virtual void TouchesMoved(std::vector<Touch> touches) {}
   virtual void TouchesEnded(std::vector<Touch> touches) {}
   virtual void ClearTouches() {}
