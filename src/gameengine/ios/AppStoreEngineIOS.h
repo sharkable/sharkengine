@@ -11,10 +11,18 @@
 #ifndef GAMEENGINE_IOS_APPSTOREENGINEIOS_H_
 #define GAMEENGINE_IOS_APPSTOREENGINEIOS_H_
 
+@class PopupHandler;
+
 class AppStoreEngineIOS : public AppStoreEngine {
  public:
+  AppStoreEngineIOS();
+  ~AppStoreEngineIOS();
+
   void AskForRate(std::string app_name, std::string app_id);
   void AskForUpgrade(std::string app_name, std::string app_id);
+
+ private:
+  PopupHandler *popup_handler_;
 };
 
 #endif
