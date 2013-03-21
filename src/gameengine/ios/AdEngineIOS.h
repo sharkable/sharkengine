@@ -12,6 +12,8 @@
 #import "gameengine/ad_engine.h"
 
 @class GADBannerView;
+@class GADInterstitial;
+@class InterstitialState;
 
 class AdEngineIOS : public AdEngine {
  public:
@@ -21,9 +23,15 @@ class AdEngineIOS : public AdEngine {
   // AdEngine
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
+  bool ShowFullScreenAd();
+  bool IsShowingFullScreenAd();
 
  private:
+  void SetUpNewInterstitial();
+  
   GADBannerView *banner_view_;
+  GADInterstitial *interstitial_;
+  InterstitialState *interstitial_state_;
   UIViewController *root_view_controller_;
 };
 

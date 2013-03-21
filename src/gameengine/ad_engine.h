@@ -15,6 +15,8 @@ class AdEngine {
  public:
   virtual void SetAdAtPoint(ScreenPoint point) = 0;
   virtual void RemoveAd() = 0;
+  virtual bool ShowFullScreenAd() = 0;
+  virtual bool IsShowingFullScreenAd() = 0;
 };
 
 #endif
