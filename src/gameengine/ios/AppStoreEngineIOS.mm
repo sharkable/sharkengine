@@ -8,30 +8,46 @@
 
 #include "gameengine/ios/AppStoreEngineIOS.h"
 
+#include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>
 
 #include "gameengine/ios/TypeUtil.h"
 
-@interface PopupHandler : NSObject<UIAlertViewDelegate> {
+@interface PopupHandler : NSObject<SKPaymentTransactionObserver, SKProductsRequestDelegate,
+    UIAlertViewDelegate> {
  @private
   UIAlertView *_ratePopup;
   UIAlertView *_upgradePopup;
   NSString *_appId;
+  SKProductsRequest *_request;
+  SKProduct *_product;
 }
 
 - (void)askForRateAppNamed:(NSString *)appName appId:(NSString *)appId;
-- (void)askForUpgradeAppNamed:(NSString *)appName appId:(NSString *)appId;
+- (void)askForUpgradeAppNamed:(NSString *)appName purchaseId:(NSString *)purchaseId;
 - (void)rateApp;
 - (void)upgradeApp;
+- (void)restoreUpgrade;
+- (void)showFailure:(NSString *)message;
 
 @end
 
 @implementation PopupHandler
 
+- (id)init {
+  self = [super init];
+  if (self) {
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+  }
+  return  self;
+}
+
 - (void)dealloc {
   [_ratePopup release];
   [_upgradePopup release];
   [_appId release];
+  [_request release];
+  [_product release];
 
   [super dealloc];
 }
@@ -51,19 +67,110 @@
   [_ratePopup show];
 }
 
-- (void)askForUpgradeAppNamed:(NSString *)appName appId:(NSString *)appId {
-  [_appId release];
-  _appId = [appId retain];
-  NSString *message =
-      [NSString stringWithFormat:@"Are you enjoying %@?\n\nGive it a rating in the app store!",
-       appName];
+- (void)askForUpgradeAppNamed:(NSString *)appName purchaseId:(NSString *)purchaseId {
+  if (![SKPaymentQueue canMakePayments]) {
+    [[[[UIAlertView alloc] initWithTitle:@"Cannot upgrade"
+                                 message:@"You aren't set up to do purchases on this device."
+                                delegate:nil
+                       cancelButtonTitle:@"OK"
+                       otherButtonTitles:nil] autorelease] show];
+    
+    return;
+  }
+  
+  [_request release];
+  _request =
+      [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:purchaseId]];
+  _request.delegate = self;
+  [_request start];
+}
+
+- (void)rateApp {
+  NSString *url = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
+                      _appId];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+- (void)upgradeApp {
+  NSLog(@"upgrading: %@", _product.productIdentifier);
+  SKPayment *payment = [SKPayment paymentWithProduct:_product];
+  [[SKPaymentQueue defaultQueue] addPayment:payment];
+  NSLog(@"done");
+}
+
+- (void)restoreUpgrade {
+  [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+- (void)showFailure:(NSString *)message {
+  if (!message) {
+    message = @"There was an error.";
+  }
+  [[[[UIAlertView alloc] initWithTitle:@"Cannot upgrade"
+                               message:message
+                              delegate:nil
+                     cancelButtonTitle:@"OK"
+                     otherButtonTitles:nil] autorelease] show];
+}
+
+
+// SKPaymentTransactionObserver
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+  for (SKPaymentTransaction *transaction in transactions) {
+    switch (transaction.transactionState) {
+      case SKPaymentTransactionStatePurchased:
+      case SKPaymentTransactionStateRestored:
+        NSLog(@"purchased");
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        break;
+      case SKPaymentTransactionStateFailed:
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        NSLog(@"ERROR: %d", transaction.error.code);
+        [self showFailure:transaction.error.localizedDescription];
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue
+    restoreCompletedTransactionsFailedWithError:(NSError *)error {
+  [self showFailure:error.localizedDescription];
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads {
+}
+
+// SKProductsRequestDelegate
+
+- (void)productsRequest:(SKProductsRequest *)request
+     didReceiveResponse:(SKProductsResponse *)response {
+  NSArray *products = response.products;
+  if (products.count < 1) {
+    [self showFailure:nil];
+  }
+  [_product release];
+  _product = [[response.products objectAtIndex:0] retain];
+
+  NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+  [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+  [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+  [numberFormatter setLocale:_product.priceLocale];
+  NSString *price = [numberFormatter stringFromNumber:_product.price];
+  NSString *restore = @"Restore existing purchase";
+
   [_upgradePopup release];
-  _upgradePopup = [[UIAlertView alloc] initWithTitle:@"Upgrade!"
-                                             message:message
+  _upgradePopup = [[UIAlertView alloc] initWithTitle:_product.localizedTitle
+                                             message:_product.localizedDescription
                                             delegate:self
                                    cancelButtonTitle:@"No thanks"
-                                   otherButtonTitles:@"Upgrade!", nil];
+                                   otherButtonTitles:price, restore, nil];
   [_upgradePopup show];
+
+  [_request release];
+  _request = nil;
 }
 
 
@@ -79,6 +186,8 @@
   } else if (alertView == _upgradePopup) {
     if (buttonIndex == _upgradePopup.firstOtherButtonIndex) {
       [self upgradeApp];
+    } else if (buttonIndex == _upgradePopup.firstOtherButtonIndex + 1) {
+      [self restoreUpgrade];
     }
     [_upgradePopup release];
     _upgradePopup = nil;
@@ -86,15 +195,6 @@
 
   [_appId release];
   _appId = nil;
-}
-
-- (void)rateApp {
-  NSString *url = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
-                      _appId];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-}
-
-- (void)upgradeApp {
 }
 
 @end
@@ -113,7 +213,7 @@ void AppStoreEngineIOS::AskForRate(std::string app_name, std::string app_id) {
                                appId:TypeUtil::string2NSString(app_id)];
 }
 
-void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string app_id) {
+void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string purchase_id) {
   [popup_handler_ askForUpgradeAppNamed:TypeUtil::string2NSString(app_name)
-                                  appId:TypeUtil::string2NSString(app_id)];
+                             purchaseId:TypeUtil::string2NSString(purchase_id)];
 }
