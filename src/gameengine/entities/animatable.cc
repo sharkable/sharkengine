@@ -24,7 +24,7 @@ Animatable::Animatable(GamePoint position)
 
 void Animatable::AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks) {
   _x_animation.Reset(position_.x, position.x - position_.x, ticks, animation_type);
-  _y_animation.Reset(position_.y, position.x - position_.y, ticks, animation_type);
+  _y_animation.Reset(position_.y, position.y - position_.y, ticks, animation_type);
 }
 
 void Animatable::AnimateToAngle(double angle, AnimationType animation_type, int ticks) {
