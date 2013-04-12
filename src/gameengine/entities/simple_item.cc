@@ -6,9 +6,9 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#import "gameengine/entities/simple_item.h"
+#include "gameengine/entities/simple_item.h"
 
-#import "gameengine/resource_loader.h"
+#include "gameengine/resource_loader.h"
 
 using std::vector;
 

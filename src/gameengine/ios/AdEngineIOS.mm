@@ -3,7 +3,7 @@
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-07.
-//  Copyright 2012 Sharkable. All rights reserved.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #import "gameengine/ios/AdEngineIOS.h"

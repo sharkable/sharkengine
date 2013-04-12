@@ -63,7 +63,7 @@
 
 #include "gameengine/opengl/texture2D.h"
 
-#include <OpenGLES/ES1/glext.h>
+#include <GLES/glext.h>
 
 using std::string;
 

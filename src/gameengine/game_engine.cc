@@ -6,7 +6,7 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#import "gameengine/game_engine.h"
+#include "gameengine/game_engine.h"
 
 #include "gameengine/engine_view.h"
 
@@ -63,13 +63,17 @@ void GameEngine::Update() {
 
   // Update views.
   for (int i = 0; i < views_.size(); i++) {
+    s_log("about to update %s", typeid(*views_[i]).name());
     views_[i]->Update();
+    s_log("updated %s", typeid(*views_[i]).name());
   }
 }
 
 void GameEngine::Render() {
   for (int i = 0; i < views_.size(); i++) {
+    s_log("about to render %s", typeid(*views_[i]).name());
     views_[i]->Render();
+    s_log("rendered %s", typeid(*views_[i]).name());
   }
 }
 
@@ -80,6 +84,7 @@ void GameEngine::ClearTouches() {
 }
 
 void GameEngine::PushView(sp<EngineView> view) {
+  s_log("pushing: %s", typeid(*view).name());
   if (next_views_.size() == 0) {
     next_views_ = views_;
   }

@@ -8,6 +8,8 @@
 
 #include "gameengine/engine_view.h"
 
+#include <algorithm>
+
 #include "gameengine/game_engine.h"
 #include "gameengine/touch.h"
 #include "gameengine/view_entity.h"

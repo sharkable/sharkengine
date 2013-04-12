@@ -63,8 +63,8 @@
 #ifndef GAMEENGINE_OPENGL_TEXTURE2D_H_
 #define GAMEENGINE_OPENGL_TEXTURE2D_H_
 
-#import <OpenGLES/ES1/gl.h>
-#import <string>
+#include <GLES/gl.h>
+#include <string>
 
 // TODO this is overreaching... this shouldn't know about the game engine.
 #include "gameengine/coordinate_types.h"

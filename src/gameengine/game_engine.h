@@ -9,6 +9,7 @@
 #ifndef GAMEENGINE_GAMEENGINE_H_
 #define GAMEENGINE_GAMEENGINE_H_
 
+#include <memory>
 #include <vector>
 
 #include "gameengine/coordinate_types.h"
@@ -26,7 +27,7 @@ class AppStoreEngine;
 class EngineView;
 
 class GameEngine {
- public:
+public:
   GameEngine();
 
   void SetScreenSize(ScreenSize screen_size, GameSize game_size);
@@ -83,7 +84,7 @@ class GameEngine {
                            (screen_point_.y - screen_offset_.y) * screen_to_game_point_ratio_y_);
   }
 
- private:
+private:
   PlatformType platform_type_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;

@@ -9,7 +9,7 @@
 #ifndef GAMEENGINE_LOCALSTORE_H_
 #define GAMEENGINE_LOCALSTORE_H_
 
-#import <string>
+#include <string>
 
 namespace LocalStore {
 
