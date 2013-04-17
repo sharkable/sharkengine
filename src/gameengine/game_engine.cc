@@ -49,7 +49,6 @@ void GameEngine::Update() {
   sp<EngineView> top_view = views_.back();
 
   if (touches_began_.size() > 0) {
-    s_log("touches began!");
     top_view->TouchesBegan(touches_began_);
     touches_began_.clear();
   }
@@ -64,17 +63,13 @@ void GameEngine::Update() {
 
   // Update views.
   for (int i = 0; i < views_.size(); i++) {
-    //s_log("about to update %s", typeid(*views_[i]).name());
     views_[i]->Update();
-    //s_log("updated %s", typeid(*views_[i]).name());
   }
 }
 
 void GameEngine::Render() {
   for (int i = 0; i < views_.size(); i++) {
-    //s_log("about to render %s", typeid(*views_[i]).name());
     views_[i]->Render();
-    //s_log("rendered %s", typeid(*views_[i]).name());
   }
 }
 
@@ -85,7 +80,6 @@ void GameEngine::ClearTouches() {
 }
 
 void GameEngine::PushView(sp<EngineView> view) {
-  s_log("pushing: %s", typeid(*view).name());
   if (next_views_.size() == 0) {
     next_views_ = views_;
   }

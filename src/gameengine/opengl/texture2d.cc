@@ -63,13 +63,11 @@
 
 #include "gameengine/opengl/texture2D.h"
 
-#include <GLES/glext.h>
-
 using std::string;
 
 int Texture2D::nameCounter_ = 0;
 GLfloat Texture2D::globalAlpha_ = 1;
-GLfloat Texture2D::screen_height_ = 1030;
+GLfloat Texture2D::screen_height_ = 480;
 
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
                      uint32_t height, ScreenSize size, string filename) {
@@ -84,14 +82,10 @@ void Texture2D::DrawAtPoint(ScreenPoint point) {
   DrawAtPoint(point, 1.f, 1.f, 0.f, 0.f);
 }
 
-
-#include <stdlib.h>
-
-
+// TODO change this.
 float z_pos = 0.0;
 
 void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z) {
-//  if (rand() % 10 != 0) return;
   assert(name_);
 
   // Swap vertical coordinate system.
@@ -100,15 +94,16 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   GLfloat width = (GLfloat)width_ * max_s_,
   height = (GLfloat)height_ * max_t_;
 
-  //s_log("rendering: %s   %f,%f,%f,%f", filename_.c_str(), point.x, point.y, width, height);
-
   glLoadIdentity();
   glBindTexture(GL_TEXTURE_2D, name_);
-  //s_log("error: %d", glGetError());
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
-  glTranslatef(point.x + width/2.0, point.y - height/2.0, z_pos); z_pos += 0.0001;
+  glTranslatef(point.x + width/2.0, point.y - height/2.0, z_pos);
+
+  // TODO fix this
+  z_pos += 0.0001;
+
   glScalef(zoom, zoom, 0);
   glRotatef(angle, 0.f, 0.f, 1.f);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -218,8 +213,8 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
   GLint saveName;
   filename_ = filename;
 
+  // TODO decide how we're generating names. Do some research.
   glGenTextures(1, &name_);
-  s_log("texture: %s  name: %d", filename.c_str(), name_);
   //name_ = ++nameCounter_;
 
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
@@ -236,12 +231,12 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
       glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, width, height, 0, GL_ALPHA, GL_UNSIGNED_BYTE, data);
       break;
     default:
-      s_log("FAILED");
       break;
       // TODO [NSException raise:NSInternalInconsistencyException format:@""];
 
   }
-  //glBindTexture(GL_TEXTURE_2D, saveName);
+  // TODO what is this for?
+  glBindTexture(GL_TEXTURE_2D, saveName);
 
   size_ = size;
   width_ = width;

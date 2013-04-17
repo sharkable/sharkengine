@@ -47,8 +47,6 @@ class Sprite {
   }
 
   void Draw(GamePoint position, GLfloat angle, GLfloat alpha, GLfloat zoom) {
-    ScreenPoint sp1 = game_engine_->game_point_to_screen_point(position);
-    //s_log("drawing %s at: %f,%f  %f,%f", texture_.filename().c_str(), position.x, position.y, sp1.x, sp1.y);
     texture_.DrawAtPoint(game_engine_->game_point_to_screen_point(position), alpha, zoom, angle, 0);
   }
 

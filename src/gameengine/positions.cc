@@ -10,8 +10,10 @@
 
 #include "thirdparty/tinyxml2/tinyxml2.h"
 
+#ifdef __ANDROID__
 #include "libzip/zip.h"
 #include "app.h"
+#endif
 
 double str2double(const char *str) {
   char *end_ptr;
@@ -21,18 +23,21 @@ double str2double(const char *str) {
 }
 
 void Positions::LoadFile(std::string filename) {
-  // TODO: Android only
+  tinyxml2::XMLDocument doc;
+
+// TODO refactor this. Figure out what is a good design.
+#ifdef ANDROID
   struct zip_stat stat;
   zip_stat(APKArchive, filename.c_str(), 0, &stat);
-  s_log("POSITION: %s  %d", filename.c_str(), stat.size);
   zip_file *fp = zip_fopen(APKArchive, filename.c_str(), 0);
   char *data = new char[stat.size];
   zip_fread(fp, data, stat.size);
-
-  tinyxml2::XMLDocument doc;
-//  assert(!doc.LoadFile(filename.c_str()));
-  s_log("trying to parse: %d", doc.Parse(data));
+  assert(doc.Parse(data));
   delete data;
+#else
+  assert(!doc.LoadFile(filename.c_str()));
+#endif
+
   tinyxml2::XMLNode *positionsNode = doc.FirstChild();
   assert(!strcmp("positions", positionsNode->ToElement()->Name()));
 

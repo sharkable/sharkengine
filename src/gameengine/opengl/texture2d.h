@@ -63,7 +63,12 @@
 #ifndef GAMEENGINE_OPENGL_TEXTURE2D_H_
 #define GAMEENGINE_OPENGL_TEXTURE2D_H_
 
+#ifdef __APPLE__
+#include <OpenGLES/ES1/glext.h>
+#else
 #include <GLES/gl.h>
+#endif
+
 #include <string>
 
 // TODO this is overreaching... this shouldn't know about the game engine.
@@ -71,6 +76,7 @@
 
 #define kMaxTextureSize   4096
 
+// TODO ugh. Android hack.
 extern float z_pos;
 
 typedef enum {

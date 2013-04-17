@@ -2,8 +2,8 @@
 //  SoundPlayer.h
 //  SoundEngine
 //
-//  Created by Jon Sharkey on 2009-10-21.
-//  Copyright 2009 Sharkable. All rights reserved.
+//  Created by Jon Sharkey on 2013-03-21.
+//  Copyright 2013 Sharkable. All rights reserved.
 //
 
 #include "soundengine/sound_player.h"
