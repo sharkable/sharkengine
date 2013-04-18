@@ -76,9 +76,6 @@
 
 #define kMaxTextureSize   4096
 
-// TODO ugh. Android hack.
-extern float z_pos;
-
 typedef enum {
   kTexture2DPixelFormat_Automatic = 0,
   kTexture2DPixelFormat_RGBA8888,
