@@ -19,7 +19,7 @@ Texture2D ResourceLoader::Texture(string name) {
   name += "_iphone@2x";
   string high_res_name = name;
 
-  string filename = "assets/resources/textures/" + name + ".tx";
+  string filename = "assets/textures/" + name + ".tx";
 
   zip_file *fp = zip_fopen(APKArchive, filename.c_str(), 0);
   if (!fp) {
