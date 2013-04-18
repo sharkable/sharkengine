@@ -26,13 +26,14 @@ void Positions::LoadFile(std::string filename) {
   tinyxml2::XMLDocument doc;
 
 // TODO refactor this. Figure out what is a good design.
-#ifdef ANDROID
+#ifdef __ANDROID__
   struct zip_stat stat;
   zip_stat(APKArchive, filename.c_str(), 0, &stat);
   zip_file *fp = zip_fopen(APKArchive, filename.c_str(), 0);
-  char *data = new char[stat.size];
+  char *data = new char[stat.size + 1];
   zip_fread(fp, data, stat.size);
-  assert(doc.Parse(data));
+  data[stat.size] = '\0';
+  assert(!doc.Parse(data));
   delete data;
 #else
   assert(!doc.LoadFile(filename.c_str()));
