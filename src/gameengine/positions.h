@@ -14,10 +14,12 @@
 #include <map>
 #include <string>
 
+class AssetReader;
+
 class Positions {
  public:
   GamePoint position(std::string name) { return positions_[name]; }
-  void LoadFile(std::string filename);
+  void LoadFile(AssetReader &file);
 
  private:
   std::map<std::string, GamePoint> positions_;

@@ -23,7 +23,9 @@ typedef enum {
 class AdEngine;
 class AnalyticsEngine;
 class AppStoreEngine;
+class AssetReader;
 class EngineView;
+class GameEngineFactory;
 
 class GameEngine {
  public:
@@ -44,6 +46,9 @@ class GameEngine {
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
 
+  sp<GameEngineFactory> factory() { return factory_; }
+  void set_factory(sp<GameEngineFactory> factory) { factory_ = factory; }
+
   sp<AdEngine> ad_engine() { return ad_engine_; }
   void set_ad_engine(sp<AdEngine> ad_engine) { ad_engine_ = ad_engine; }
 
@@ -57,7 +62,7 @@ class GameEngine {
     app_store_engine_ = app_store_engine;
   }
 
-  void load_positions(std::string filename) { positions_->LoadFile(filename); }
+  void load_positions(AssetReader &file) { positions_->LoadFile(file); }
   GamePoint position(std::string name) { return positions_->position(name); }
 
   void set_touches_began(std::vector<Touch> touches_began) { touches_began_ = touches_began; }
@@ -85,6 +90,7 @@ class GameEngine {
 
  private:
   PlatformType platform_type_;
+  sp<GameEngineFactory> factory_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<AppStoreEngine> app_store_engine_;

@@ -10,10 +10,7 @@
 
 #include "thirdparty/tinyxml2/tinyxml2.h"
 
-#ifdef __ANDROID__
-#include "libzip/zip.h"
-#include "app.h"
-#endif
+#include "gameengine/asset_reader.h"
 
 double str2double(const char *str) {
   char *end_ptr;
@@ -22,22 +19,14 @@ double str2double(const char *str) {
   return value;
 }
 
-void Positions::LoadFile(std::string filename) {
+void Positions::LoadFile(AssetReader &file) {
   tinyxml2::XMLDocument doc;
 
-// TODO refactor this. Figure out what is a good design.
-#ifdef __ANDROID__
-  struct zip_stat stat;
-  zip_stat(APKArchive, filename.c_str(), 0, &stat);
-  zip_file *fp = zip_fopen(APKArchive, filename.c_str(), 0);
-  char *data = new char[stat.size + 1];
-  zip_fread(fp, data, stat.size);
-  data[stat.size] = '\0';
+  char *data = new char[file.size() + 1];
+  file.read(data, sizeof(char), file.size());
+  data[file.size()] = '\0';
   assert(!doc.Parse(data));
   delete data;
-#else
-  assert(!doc.LoadFile(filename.c_str()));
-#endif
 
   tinyxml2::XMLNode *positionsNode = doc.FirstChild();
   assert(!strcmp("positions", positionsNode->ToElement()->Name()));
