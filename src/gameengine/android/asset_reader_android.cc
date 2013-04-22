@@ -21,7 +21,6 @@ AssetReaderAndroid::AssetReaderAndroid(std::string filename)
 }
 
 AssetReaderAndroid::~AssetReaderAndroid() {
-  s_log("deconstruct");
   if (file_ptr_) {
     zip_fclose(file_ptr_);
   }
