@@ -11,9 +11,10 @@
 
 class AssetReader {
  public:
-  virtual size_t size() = 0;
-  virtual size_t read(void *ptr, size_t size, size_t count) = 0;
-  virtual bool close() = 0;
+  virtual size_t Size() = 0;
+  virtual size_t Read(void *ptr, size_t size, size_t count) = 0;
+  virtual bool Close() = 0;
+  virtual bool IsOpen() = 0;
 };
 
 #endif

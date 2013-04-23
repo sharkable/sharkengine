@@ -19,7 +19,7 @@ class AssetReader;
 class Positions {
  public:
   GamePoint position(std::string name) { return positions_[name]; }
-  void LoadFile(AssetReader &file);
+  void LoadFile(AssetReader &asset_reader);
 
  private:
   std::map<std::string, GamePoint> positions_;

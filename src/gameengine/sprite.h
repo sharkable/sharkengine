@@ -26,7 +26,7 @@ class Sprite {
   }
 
   Sprite(sp<GameEngine> game_engine, std::string texture_name) : game_engine_(game_engine) {
-    texture_ = ResourceLoader::Instance().TextureWithName(texture_name);
+    texture_ = game_engine->resource_loader().TextureWithName(texture_name);
   }
 
   // TODO consider removing this.

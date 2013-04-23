@@ -12,6 +12,7 @@
 
 GameEngine::GameEngine()
     : platform_type_(kPlatformTypePhone),
+      resource_loader_(*this),
       screen_offset_(kScreenPointZero),
       game_size_(kGameSizeZero),
       game_to_screen_point_ratio_x_(0),

@@ -19,12 +19,12 @@ double str2double(const char *str) {
   return value;
 }
 
-void Positions::LoadFile(AssetReader &file) {
+void Positions::LoadFile(AssetReader &asset_reader) {
   tinyxml2::XMLDocument doc;
 
-  char *data = new char[file.size() + 1];
-  file.read(data, sizeof(char), file.size());
-  data[file.size()] = '\0';
+  char *data = new char[asset_reader.Size() + 1];
+  asset_reader.Read(data, sizeof(char), asset_reader.Size());
+  data[asset_reader.Size()] = '\0';
   assert(!doc.Parse(data));
   delete data;
 

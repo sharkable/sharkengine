@@ -18,10 +18,10 @@ using std::vector;
 
 MultiSelect::~MultiSelect() {
   for (int i = 0; i < normal_sprites_.size(); i++) {
-    ResourceLoader::Instance().ReleaseResource(normal_sprites_[i].texture());
+    // TODO ResourceLoader::Instance().ReleaseResource(normal_sprites_[i].texture());
   }
   for (int i = 0; i < selected_sprites_.size(); i++) {
-    ResourceLoader::Instance().ReleaseResource(selected_sprites_[i].texture());
+    // TODO ResourceLoader::Instance().ReleaseResource(selected_sprites_[i].texture());
   }
 }
 

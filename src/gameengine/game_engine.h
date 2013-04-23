@@ -13,6 +13,7 @@
 
 #include "gameengine/coordinate_types.h"
 #include "gameengine/positions.h"
+#include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
 
 typedef enum {
@@ -62,6 +63,8 @@ class GameEngine {
     app_store_engine_ = app_store_engine;
   }
 
+  ResourceLoader &resource_loader() { return resource_loader_; }
+
   void load_positions(AssetReader &file) { positions_->LoadFile(file); }
   GamePoint position(std::string name) { return positions_->position(name); }
 
@@ -90,10 +93,14 @@ class GameEngine {
 
  private:
   PlatformType platform_type_;
+
+  // Platform specific
   sp<GameEngineFactory> factory_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<AppStoreEngine> app_store_engine_;
+
+  ResourceLoader resource_loader_;
   sp<Positions> positions_;
   std::vector<sp<EngineView> > views_;
   std::vector<sp<EngineView> > next_views_;

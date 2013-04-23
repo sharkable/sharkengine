@@ -24,10 +24,10 @@ Button::Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
 
 Button::~Button() {
   if (normal_sprite_.texture().loaded()) {
-    ResourceLoader::Instance().ReleaseResource(normal_sprite_.texture());
+    // TODO game_engine->resource_loader().ReleaseResource(normal_sprite_.texture());
   }
   if (pressed_sprite_.texture().loaded()) {
-    ResourceLoader::Instance().ReleaseResource(pressed_sprite_.texture());
+    // TODO ResourceLoader::Instance().ReleaseResource(pressed_sprite_.texture());
   }
 }
 

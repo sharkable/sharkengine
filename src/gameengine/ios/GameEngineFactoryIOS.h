@@ -1,5 +1,5 @@
 //
-//  game_engine_factory_ios.h
+//  GameEngineFactoryIOS.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.

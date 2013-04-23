@@ -14,16 +14,21 @@
 
 #include "opengl/Texture2D.h"
 
+class AssetReader;
+class GameEngine;
+
 class ResourceLoader {
  public:
-  static ResourceLoader &Instance();
-  Texture2D TextureWithName(std::string name);
-  void ReleaseResource(std::string name);
+  ResourceLoader(GameEngine &game_engine);
+
+  Texture2D TextureWithName(const std::string &name);
+  void ReleaseResource(const std::string &name);
   void ReleaseResource(Texture2D resource);
 
  private:
   Texture2D Texture(std::string filename);
 
+  GameEngine &game_engine_;
   std::map<std::string, Texture2D> resources_;
   std::map<std::string, int> resource_counter_;
 };

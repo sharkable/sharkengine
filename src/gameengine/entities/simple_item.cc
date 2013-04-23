@@ -31,7 +31,7 @@ SimpleItem::SimpleItem(vector<Sprite> sprites, GamePoint position)
 
 SimpleItem::~SimpleItem() {
   for (int i = 0; i < sprites_.size(); i++) {
-    ResourceLoader::Instance().ReleaseResource(sprites_[i].texture());
+    // TODO ResourceLoader::Instance().ReleaseResource(sprites_[i].texture());
   }
 }
 

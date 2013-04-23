@@ -1,14 +1,14 @@
 //
-//  game_engine_factory_ios.cc
+//  GameEngineFactoryIOS.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/ios/game_engine_factory_ios.h"
+#include "gameengine/ios/GameEngineFactoryIOS.h"
 
-#include "gameengine/ios/asset_reader_ios.h"
+#include "gameengine/ios/AssetReaderIOS.h"
 
 using std::string;
 

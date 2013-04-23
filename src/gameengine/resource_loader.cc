@@ -8,16 +8,17 @@
 
 #include "gameengine/resource_loader.h"
 
+#include "gameengine/asset_reader.h"
+#include "gameengine/game_engine.h"
+#include "gameengine/game_engine_factory.h"
+
 using std::map;
 using std::string;
 
-ResourceLoader instance__;
-
-ResourceLoader &ResourceLoader::Instance() {
-  return instance__;
+ResourceLoader::ResourceLoader(GameEngine &game_engine) : game_engine_(game_engine) {
 }
 
-Texture2D ResourceLoader::TextureWithName(string name) {
+Texture2D ResourceLoader::TextureWithName(const std::string &name) {
   if (resource_counter_[name] == 0) {
     Texture2D tex = Texture(name);
     resource_counter_[name]++;
@@ -31,7 +32,7 @@ Texture2D ResourceLoader::TextureWithName(string name) {
   return texture;
 }
 
-void ResourceLoader::ReleaseResource(string name) {
+void ResourceLoader::ReleaseResource(const string &name) {
   int count = resource_counter_[name];
   if (count == 0) {
     return;
@@ -52,4 +53,58 @@ void ResourceLoader::ReleaseResource(Texture2D resource) {
     }
   }
   assert(false);
+}
+
+
+// private
+
+Texture2D ResourceLoader::Texture(string name) {
+  // TODO fix up this.
+  string filename = name;
+  if (game_engine_.platform_type() == kPlatformTypePhone) {
+    filename += "_iphone";
+  }
+  string high_res_filename = filename;
+  //  if ([UIScreen mainScreen].scale == 2) {
+  high_res_filename += "@2x";
+  //  }
+
+  high_res_filename += ".tx";
+  filename += ".tx";
+
+  sp<AssetReader> asset_reader = game_engine_.factory()->createAssetReader(high_res_filename);
+  if (!asset_reader->IsOpen()) {
+    std::cout << "No high res file for " << name << std::endl;
+    asset_reader = game_engine_.factory()->createAssetReader(filename);
+  }
+
+  uint16_t image_width, image_height;
+  asset_reader->Read(&image_width, sizeof(uint16_t), 1);
+  asset_reader->Read(&image_height, sizeof(uint16_t), 1);
+  uint16_t texture_width = 1;
+  uint16_t texture_height = 1;
+  while (texture_width < image_width) {
+    texture_width *= 2;
+  }
+  while (texture_height < image_height) {
+    texture_height *= 2;
+  }
+  unsigned char *data = (unsigned char *)malloc(sizeof(char) * 4 * texture_width * texture_height);
+  unsigned char *write_point = data;
+  uint16_t diff_width_size = (texture_width - image_width) * 4;
+  for (int y = 0; y < image_height; y++) {
+    asset_reader->Read(write_point, sizeof(char), 4 * image_width);
+    write_point += 4 * image_width;
+    memset(write_point, 0, diff_width_size);
+    write_point += diff_width_size;
+  }
+  memset(write_point, 0, texture_width * (texture_height - image_height) * 4);
+
+  ScreenSize image_size = screen_size_make(image_width, image_height);
+  Texture2D texture(data, kTexture2DPixelFormat_RGBA8888, texture_width, texture_height, image_size,
+                    name);
+
+  free(data);
+  asset_reader->Close();
+  return texture;
 }
