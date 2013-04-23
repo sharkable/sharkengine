@@ -59,15 +59,14 @@ void ResourceLoader::ReleaseResource(Texture2D resource) {
 // private
 
 Texture2D ResourceLoader::Texture(string name) {
-  // TODO fix up this.
   string filename = name;
   if (game_engine_.platform_type() == kPlatformTypePhone) {
     filename += "_iphone";
   }
   string high_res_filename = filename;
-  //  if ([UIScreen mainScreen].scale == 2) {
-  high_res_filename += "@2x";
-  //  }
+  if (game_engine_.platform_resolution() == kPlatformResolutionHigh) {
+    high_res_filename += "@2x";
+  }
 
   high_res_filename += ".tx";
   filename += ".tx";

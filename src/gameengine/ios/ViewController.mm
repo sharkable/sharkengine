@@ -37,9 +37,14 @@
     [gameTouchWindow_ makeKeyAndVisible];
 
     gameEngine_ = new GameEngine();
+
     PlatformType platform_type = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ?
         kPlatformTypePhone : kPlatformTypeTablet;
+    PlatformResolution platform_resolution = [UIScreen mainScreen].scale == 2 ?
+        kPlatformResolutionHigh : kPlatformResolutionLow;
     gameEngine_->set_platform_type(platform_type);
+    gameEngine_->set_platform_resolution(platform_resolution);
+
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
     gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new AppStoreEngineIOS()));

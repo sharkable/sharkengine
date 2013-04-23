@@ -21,6 +21,11 @@ typedef enum {
   kPlatformTypeTablet
 } PlatformType;
 
+typedef enum {
+  kPlatformResolutionLow = 0,
+  kPlatformResolutionHigh
+} PlatformResolution;
+
 class AdEngine;
 class AnalyticsEngine;
 class AppStoreEngine;
@@ -46,6 +51,11 @@ class GameEngine {
 
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
+
+  PlatformResolution platform_resolution() { return platform_resolution_; }
+  void set_platform_resolution(PlatformResolution platform_resolution) {
+    platform_resolution_ = platform_resolution;
+  };
 
   sp<GameEngineFactory> factory() { return factory_; }
   void set_factory(sp<GameEngineFactory> factory) { factory_ = factory; }
@@ -93,6 +103,7 @@ class GameEngine {
 
  private:
   PlatformType platform_type_;
+  PlatformResolution platform_resolution_;
 
   // Platform specific
   sp<GameEngineFactory> factory_;
