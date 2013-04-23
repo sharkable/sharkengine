@@ -26,7 +26,7 @@ AssetReaderAndroid::~AssetReaderAndroid() {
   }
 }
 
-size_t AssetReaderAndroid::size() {
+size_t AssetReaderAndroid::Size() {
   if (file_size_ == -1) {
     struct zip_stat stat;
     zip_stat(APKArchive, filename_.c_str(), 0, &stat);
@@ -35,18 +35,22 @@ size_t AssetReaderAndroid::size() {
   return file_size_;
 }
 
-size_t AssetReaderAndroid::read(void *ptr, size_t size, size_t count) {
+size_t AssetReaderAndroid::Read(void *ptr, size_t size, size_t count) {
   if (file_ptr_) {
     return zip_fread(file_ptr_, ptr, size * count);
   }
   return 0;
 }
 
-bool AssetReaderAndroid::close() {
+bool AssetReaderAndroid::Close() {
   if (file_ptr_) {
     bool result = zip_fclose(file_ptr_);
     file_ptr_ = NULL;
     return result;
   }
   return false;
+}
+
+bool AssetReaderAndroid::IsOpen() {
+  return file_ptr_ != NULL;
 }

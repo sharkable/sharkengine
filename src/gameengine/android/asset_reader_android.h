@@ -19,9 +19,10 @@ class AssetReaderAndroid : public AssetReader {
  public:
   AssetReaderAndroid(std::string filename);
   ~AssetReaderAndroid();
-  size_t size();
-  size_t read(void *ptr, size_t size, size_t count);
-  bool close();
+  size_t Size();
+  size_t Read(void *ptr, size_t size, size_t count);
+  bool Close();
+  bool IsOpen();
 
  private:
   std::string filename_;

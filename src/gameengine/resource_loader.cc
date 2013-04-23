@@ -59,7 +59,12 @@ void ResourceLoader::ReleaseResource(Texture2D resource) {
 // private
 
 Texture2D ResourceLoader::Texture(string name) {
+// TODO think about this
+#ifdef __ANDROID__
+  string filename = "assets/textures/" + name;
+#else
   string filename = name;
+#endif
   if (game_engine_.platform_type() == kPlatformTypePhone) {
     filename += "_iphone";
   }
