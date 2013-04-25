@@ -47,7 +47,7 @@
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FED2200B1729EBA8007C0834 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resources; path = ../../../../airhockey/resources; sourceTree = "<group>"; };
 		FED2200C1729EBA8007C0834 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../../airhockey/src; sourceTree = "<group>"; };
-		FEECBE081729E76300C395B4 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = /Users/spizzy/Development/sharkable/airhockey/projects/ios/../../../gameengine/core; sourceTree = "<absolute>"; };
+		FEECBE081729E76300C395B4 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = /Users/spizzy/Development/sharkable/gameengine/core; sourceTree = "<absolute>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -249,7 +249,7 @@
 					NDEBUG,
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockey-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../../../airhockey/resources/plist/AirHockey-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -340,7 +340,7 @@
 					"$(inherited)",
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockey-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../../../airhockey/resources/plist/AirHockey-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -359,7 +359,7 @@
 					NDEBUG,
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockey-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../../../airhockey/resources/plist/AirHockey-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
