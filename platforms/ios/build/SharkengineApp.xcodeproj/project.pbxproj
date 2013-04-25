@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE3CF94314F9807E0063CCA5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94214F9807E0063CCA5 /* QuartzCore.framework */; };
-		FE3CF94514F980A40063CCA5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94414F980A40063CCA5 /* OpenAL.framework */; };
-		FE3CF94714F980AC0063CCA5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */; };
-		FE3CF94B14F9810B0063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
-		FE3CF94D14F981400063CCA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94C14F981400063CCA5 /* AudioToolbox.framework */; };
-		FE3CF94F14F981530063CCA5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94E14F981530063CCA5 /* MediaPlayer.framework */; };
-		FE3CF95114F9819E0063CCA5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF95014F9819E0063CCA5 /* MessageUI.framework */; };
 		FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94C14F981400063CCA5 /* AudioToolbox.framework */; };
 		FE3CF95314F982A30063CCA5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */; };
 		FE3CF95414F982A30063CCA5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94814F980D00063CCA5 /* CFNetwork.framework */; };
@@ -24,26 +17,15 @@
 		FE3CF95914F982A30063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
-		FE3F442D16C445E000E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
-		FE3F442E16C445E000E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
 		FE789BC814F97B34007FCBC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC714F97B34007FCBC5 /* Foundation.framework */; };
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
 		FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
 		FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
-		FEA8E5C414F97CB00084E117 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
-		FEA8E5C514F97CB00084E117 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC714F97B34007FCBC5 /* Foundation.framework */; };
-		FEA8E5C614F97CB00084E117 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
-		FEA8E5C714F97CB00084E117 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
-		FEA8E5C814F97CB00084E117 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
 		FED2200D1729EBA8007C0834 /* resources in Resources */ = {isa = PBXBuildFile; fileRef = FED2200B1729EBA8007C0834 /* resources */; };
-		FED2200E1729EBA8007C0834 /* resources in Resources */ = {isa = PBXBuildFile; fileRef = FED2200B1729EBA8007C0834 /* resources */; };
 		FED2200F1729EBA8007C0834 /* src in Resources */ = {isa = PBXBuildFile; fileRef = FED2200C1729EBA8007C0834 /* src */; };
-		FED220101729EBA8007C0834 /* src in Resources */ = {isa = PBXBuildFile; fileRef = FED2200C1729EBA8007C0834 /* src */; };
 		FEECBE091729E76300C395B4 /* core in Resources */ = {isa = PBXBuildFile; fileRef = FEECBE081729E76300C395B4 /* core */; };
-		FEECBE0A1729E76300C395B4 /* core in Resources */ = {isa = PBXBuildFile; fileRef = FEECBE081729E76300C395B4 /* core */; };
 		FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47BC616DF0C950096F3D4 /* libz.dylib */; };
-		FEF47BC816DF0CA40096F3D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47BC616DF0C950096F3D4 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +45,6 @@
 		FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FE789BCB14F97B34007FCBC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		FEA8E5CD14F97CB00084E117 /* AirHockeyFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockeyFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED2200B1729EBA8007C0834 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resources; path = ../../../../airhockey/resources; sourceTree = "<group>"; };
 		FED2200C1729EBA8007C0834 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../../airhockey/src; sourceTree = "<group>"; };
 		FEECBE081729E76300C395B4 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = /Users/spizzy/Development/sharkable/airhockey/projects/ios/../../../gameengine/core; sourceTree = "<absolute>"; };
@@ -91,28 +72,6 @@
 				FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */,
 				FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */,
 				FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FEA8E5C314F97CB00084E117 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FE3F442D16C445E000E8BEDF /* AdSupport.framework in Frameworks */,
-				FE3F442E16C445E000E8BEDF /* StoreKit.framework in Frameworks */,
-				FE3CF95114F9819E0063CCA5 /* MessageUI.framework in Frameworks */,
-				FE3CF94F14F981530063CCA5 /* MediaPlayer.framework in Frameworks */,
-				FE3CF94D14F981400063CCA5 /* AudioToolbox.framework in Frameworks */,
-				FE3CF94B14F9810B0063CCA5 /* SystemConfiguration.framework in Frameworks */,
-				FE3CF94714F980AC0063CCA5 /* AVFoundation.framework in Frameworks */,
-				FE3CF94514F980A40063CCA5 /* OpenAL.framework in Frameworks */,
-				FE3CF94314F9807E0063CCA5 /* QuartzCore.framework in Frameworks */,
-				FEA8E5C814F97CB00084E117 /* OpenGLES.framework in Frameworks */,
-				FEA8E5C414F97CB00084E117 /* UIKit.framework in Frameworks */,
-				FEA8E5C514F97CB00084E117 /* Foundation.framework in Frameworks */,
-				FEA8E5C614F97CB00084E117 /* CoreGraphics.framework in Frameworks */,
-				FEA8E5C714F97CB00084E117 /* GLKit.framework in Frameworks */,
-				FEF47BC816DF0CA40096F3D4 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				FE789BC114F97B34007FCBC5 /* AirHockey.app */,
-				FEA8E5CD14F97CB00084E117 /* AirHockeyFree.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,23 +156,6 @@
 			productReference = FE789BC114F97B34007FCBC5 /* AirHockey.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FEA8E5C114F97CB00084E117 /* AirHockeyFree */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FEA8E5CA14F97CB00084E117 /* Build configuration list for PBXNativeTarget "AirHockeyFree" */;
-			buildPhases = (
-				FEA8E5C214F97CB00084E117 /* Sources */,
-				FEA8E5C314F97CB00084E117 /* Frameworks */,
-				FEA8E5C914F97CB00084E117 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AirHockeyFree;
-			productName = AirHockey;
-			productReference = FEA8E5CD14F97CB00084E117 /* AirHockeyFree.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,7 +177,6 @@
 			projectRoot = "";
 			targets = (
 				FE789BC014F97B34007FCBC5 /* AirHockey */,
-				FEA8E5C114F97CB00084E117 /* AirHockeyFree */,
 			);
 		};
 /* End PBXProject section */
@@ -252,27 +192,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FEA8E5C914F97CB00084E117 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FEECBE0A1729E76300C395B4 /* core in Resources */,
-				FED2200E1729EBA8007C0834 /* resources in Resources */,
-				FED220101729EBA8007C0834 /* src in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FE789BBD14F97B34007FCBC5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FEA8E5C214F97CB00084E117 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,21 +255,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Distribution;
-		};
-		FE5DF90E16E96AA400C0E399 /* Distribution */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "IS_FREE=true";
-				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockeyFree-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AirHockeyFree;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -461,39 +369,6 @@
 			};
 			name = Release;
 		};
-		FEA8E5CB14F97CB00084E117 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IS_FREE=true",
-					"$(inherited)",
-				);
-				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockeyFree-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AirHockeyFree;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		FEA8E5CC14F97CB00084E117 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "IS_FREE=true";
-				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "$(SRCROOT)/../../resources/plist/AirHockeyFree-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AirHockeyFree;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,16 +388,6 @@
 				FE789BEB14F97B34007FCBC5 /* Debug */,
 				FE789BEC14F97B34007FCBC5 /* Release */,
 				FE5DF90D16E96AA400C0E399 /* Distribution */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FEA8E5CA14F97CB00084E117 /* Build configuration list for PBXNativeTarget "AirHockeyFree" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FEA8E5CB14F97CB00084E117 /* Debug */,
-				FEA8E5CC14F97CB00084E117 /* Release */,
-				FE5DF90E16E96AA400C0E399 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
