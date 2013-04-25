@@ -31,7 +31,12 @@ class AnalyticsEngine;
 class AppStoreEngine;
 class AssetReader;
 class EngineView;
+class GameEngine;
 class GameEngineFactory;
+
+extern "C" {
+  void sharkengine_init(sp<GameEngine> game_engine);
+}
 
 class GameEngine {
  public:

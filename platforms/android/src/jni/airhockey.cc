@@ -8,8 +8,6 @@ extern "C" {
 
 #include <GLES/gl.h>
 
-#include "airhockey/views/rink_view.h"
-#include "airhockey/views/splash_view.h"
 #include "gameengine/android/modules/ad_engine_android.h"
 #include "gameengine/android/modules/analytics_engine_android.h"
 #include "gameengine/android/modules/game_engine_factory_android.h"
@@ -46,20 +44,7 @@ void init() {
   sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid());
   game_engine_->set_analytics_engine(analytics_engine);
 
-  game_engine_->load_positions(
-      *game_engine_->factory()->createAssetReader("assets/positions/game_menu_iphone.xml"));
-  game_engine_->load_positions(
-      *game_engine_->factory()->createAssetReader("assets/positions/main_menu_iphone.xml"));
-  game_engine_->load_positions(
-      *game_engine_->factory()->createAssetReader("assets/positions/play_iphone.xml"));
-  game_engine_->load_positions(
-      *game_engine_->factory()->createAssetReader("assets/positions/rink_iphone.xml"));
-
-  sp<EngineView> root_view = sp<EngineView>(new RinkView(game_engine_));
-  game_engine_->SetRootView(root_view);
-
-  sp<EngineView> splash_view = sp<EngineView>(new SplashView(game_engine_));
-  game_engine_->PushView(splash_view);
+  sharkengine_init(game_engine_);
 }
 
 void update() {
