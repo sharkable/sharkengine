@@ -2,7 +2,7 @@ LOCAL_PATH := /
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := airhockey
+LOCAL_MODULE := sharkengine
 
 LOCAL_CFLAGS := -DANDROID_NDK \
                 -DDISABLE_IMPORTGL \
