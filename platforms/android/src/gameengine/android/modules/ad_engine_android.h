@@ -9,7 +9,7 @@
 #ifndef GAMEENGINE_IOS_ADENGINEANDROID_H_
 #define GAMEENGINE_IOS_ADENGINEANDROID_H_
 
-#include "gameengine/ad_engine.h"
+#include "gameengine/modules/ad_engine.h"
 
 class AdEngineAndroid : public AdEngine {
  public:

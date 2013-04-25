@@ -8,9 +8,9 @@
 
 #include "gameengine/entities/button.h"
 
+#include "gameengine/modules/sound_player.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
-#include "soundengine/sound_player.h"
 
 using std::vector;
 

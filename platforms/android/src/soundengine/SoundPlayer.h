@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "soundengine/sound_player.h"
+#include "gameengine/modules/sound_player.h"
 
 class SoundPlayerImpl : public SoundPlayer {
  public:

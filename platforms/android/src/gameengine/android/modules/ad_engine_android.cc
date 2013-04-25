@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/ad_engine_android.h"
+#include "gameengine/android/modules/ad_engine_android.h"
 
 #include "gameengine/coordinate_types.h"
 

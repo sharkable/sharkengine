@@ -6,13 +6,13 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/asset_reader_android.h"
+#include "gameengine/android/modules/asset_reader_android.h"
 
 // TODO This is currently in the airhockey source. Rethink JNI... and the GameEngine in general.
-#include "libzip/zip.h"
+#include "jni/libzip/zip.h"
 
 // TODO UGH this is kinda gross. This is needed for the GLOBAL variable APKArchive.
-#include "app.h"
+#include "jni/app.h"
 
 AssetReaderAndroid::AssetReaderAndroid(std::string filename)
     : filename_(filename),

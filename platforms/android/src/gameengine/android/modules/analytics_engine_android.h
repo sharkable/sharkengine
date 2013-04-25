@@ -12,7 +12,7 @@
 #include <map>
 #include <string>
 
-#include "gameengine/analytics_engine.h"
+#include "gameengine/modules/analytics_engine.h"
 
 // TODO have this do setup as well maybe?
 class AnalyticsEngineAndroid : public AnalyticsEngine {

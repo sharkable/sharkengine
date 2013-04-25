@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/analytics_engine_android.h"
+#include "gameengine/android/modules/analytics_engine_android.h"
 
 using std::map;
 using std::string;

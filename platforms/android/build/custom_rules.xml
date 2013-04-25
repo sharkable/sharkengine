@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Airhockey" default="help">
+
+    <target name="-pre-build">
+        <echo message="----------"/>
+        <echo message="Building NDK game code..."/>
+        <echo message="----------"/>
+        <exec executable="${env.ANDROID_NDK_ROOT}/ndk-build" failonerror="true"/>
+    </target>
+
+    <target name="-pre-clean">
+        <echo message="----------"/>
+        <echo message="Cleaning NDK game code..."/>
+        <echo message="----------"/>
+        <exec executable="${env.ANDROID_NDK_ROOT}/ndk-build" failonerror="true">
+            <arg value="clean"/>
+        </exec>
+    </target>
+
+</project>

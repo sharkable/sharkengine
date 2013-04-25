@@ -8,11 +8,11 @@
 
 #include "gameengine/entities/multi_select.h"
 
+#include "gameengine/modules/sound_player.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/sprite.h"
 #include "gameengine/touch.h"
-#include "soundengine/sound_player.h"
 
 using std::vector;
 

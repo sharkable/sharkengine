@@ -6,7 +6,7 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/local_store.h"
+#include "gameengine/modules/local_store.h"
 
 using std::string;
 

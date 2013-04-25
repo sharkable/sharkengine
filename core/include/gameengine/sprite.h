@@ -9,8 +9,7 @@
 #ifndef GAMEENGINE_SPRITE_H_
 #define GAMEENGINE_SPRITE_H_
 
-#include "opengl/texture2D.h"
-
+#include "gameengine/opengl/texture2D.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 
