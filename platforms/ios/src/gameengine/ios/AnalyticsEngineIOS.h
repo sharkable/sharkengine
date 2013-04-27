@@ -12,7 +12,7 @@
 #import <map>
 #import <string>
 
-#import "gameengine/analytics_engine.h"
+#import "gameengine/modules/analytics_engine.h"
 
 // TODO have this do setup as well maybe?
 class AnalyticsEngineIOS : public AnalyticsEngine {

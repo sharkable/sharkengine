@@ -9,7 +9,7 @@
 #ifndef GAMEENGINE_IOS_ADENGINEIOS_H_
 #define GAMEENGINE_IOS_ADENGINEIOS_H_
 
-#import "gameengine/ad_engine.h"
+#import "gameengine/modules/ad_engine.h"
 
 @class GADBannerView;
 @class GADInterstitial;

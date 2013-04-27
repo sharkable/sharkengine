@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#include "soundengine/sound_player.h"
+#include "gameengine/modules/sound_player.h"
 
 #import "ALAudio.h"
 #import "AVAudio.h"
