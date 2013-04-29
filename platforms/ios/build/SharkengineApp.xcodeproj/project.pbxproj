@@ -399,21 +399,6 @@
 		FEAC8A62172B4A1500DD8F17 /* win@2x.tx in Resources */ = {isa = PBXBuildFile; fileRef = FEAC88ED172B4A1500DD8F17 /* win@2x.tx */; };
 		FEAC8A63172B4A1500DD8F17 /* win_iphone.tx in Resources */ = {isa = PBXBuildFile; fileRef = FEAC88EE172B4A1500DD8F17 /* win_iphone.tx */; };
 		FEAC8A64172B4A1500DD8F17 /* win_iphone@2x.tx in Resources */ = {isa = PBXBuildFile; fileRef = FEAC88EF172B4A1500DD8F17 /* win_iphone@2x.tx */; };
-		FEAC8A65172B4A1500DD8F17 /* paddle.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88F3172B4A1500DD8F17 /* paddle.cc */; };
-		FEAC8A66172B4A1500DD8F17 /* post.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88F5172B4A1500DD8F17 /* post.cc */; };
-		FEAC8A67172B4A1500DD8F17 /* puck.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88F7172B4A1500DD8F17 /* puck.cc */; };
-		FEAC8A68172B4A1500DD8F17 /* rink.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88F9172B4A1500DD8F17 /* rink.cc */; };
-		FEAC8A69172B4A1500DD8F17 /* round_thing.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88FB172B4A1500DD8F17 /* round_thing.cc */; };
-		FEAC8A6A172B4A1500DD8F17 /* sound_slider.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88FD172B4A1500DD8F17 /* sound_slider.cc */; };
-		FEAC8A6B172B4A1500DD8F17 /* init.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC88FF172B4A1500DD8F17 /* init.cc */; };
-		FEAC8A6C172B4A1500DD8F17 /* AirHockeyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEAC8903172B4A1500DD8F17 /* AirHockeyAppDelegate.mm */; };
-		FEAC8A6D172B4A1500DD8F17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAC8904172B4A1500DD8F17 /* main.m */; };
-		FEAC8A6E172B4A1500DD8F17 /* game_menu_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC8906172B4A1500DD8F17 /* game_menu_view.cc */; };
-		FEAC8A6F172B4A1500DD8F17 /* main_menu_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC8908172B4A1500DD8F17 /* main_menu_view.cc */; };
-		FEAC8A70172B4A1500DD8F17 /* play_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC890A172B4A1500DD8F17 /* play_view.cc */; };
-		FEAC8A71172B4A1500DD8F17 /* rink_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC890C172B4A1500DD8F17 /* rink_view.cc */; };
-		FEAC8A72172B4A1500DD8F17 /* splash_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC890E172B4A1500DD8F17 /* splash_view.cc */; };
-		FEAC8A73172B4A1500DD8F17 /* story_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEAC8910172B4A1500DD8F17 /* story_view.cc */; };
 		FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47BC616DF0C950096F3D4 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -874,35 +859,6 @@
 		FEAC88ED172B4A1500DD8F17 /* win@2x.tx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "win@2x.tx"; sourceTree = "<group>"; };
 		FEAC88EE172B4A1500DD8F17 /* win_iphone.tx */ = {isa = PBXFileReference; lastKnownFileType = file; path = win_iphone.tx; sourceTree = "<group>"; };
 		FEAC88EF172B4A1500DD8F17 /* win_iphone@2x.tx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "win_iphone@2x.tx"; sourceTree = "<group>"; };
-		FEAC88F3172B4A1500DD8F17 /* paddle.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = paddle.cc; sourceTree = "<group>"; };
-		FEAC88F4172B4A1500DD8F17 /* paddle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paddle.h; sourceTree = "<group>"; };
-		FEAC88F5172B4A1500DD8F17 /* post.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = post.cc; sourceTree = "<group>"; };
-		FEAC88F6172B4A1500DD8F17 /* post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = post.h; sourceTree = "<group>"; };
-		FEAC88F7172B4A1500DD8F17 /* puck.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = puck.cc; sourceTree = "<group>"; };
-		FEAC88F8172B4A1500DD8F17 /* puck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = puck.h; sourceTree = "<group>"; };
-		FEAC88F9172B4A1500DD8F17 /* rink.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rink.cc; sourceTree = "<group>"; };
-		FEAC88FA172B4A1500DD8F17 /* rink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rink.h; sourceTree = "<group>"; };
-		FEAC88FB172B4A1500DD8F17 /* round_thing.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = round_thing.cc; sourceTree = "<group>"; };
-		FEAC88FC172B4A1500DD8F17 /* round_thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = round_thing.h; sourceTree = "<group>"; };
-		FEAC88FD172B4A1500DD8F17 /* sound_slider.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_slider.cc; sourceTree = "<group>"; };
-		FEAC88FE172B4A1500DD8F17 /* sound_slider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_slider.h; sourceTree = "<group>"; };
-		FEAC88FF172B4A1500DD8F17 /* init.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = init.cc; sourceTree = "<group>"; };
-		FEAC8901172B4A1500DD8F17 /* AirHockey_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirHockey_Prefix.pch; sourceTree = "<group>"; };
-		FEAC8902172B4A1500DD8F17 /* AirHockeyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirHockeyAppDelegate.h; sourceTree = "<group>"; };
-		FEAC8903172B4A1500DD8F17 /* AirHockeyAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AirHockeyAppDelegate.mm; sourceTree = "<group>"; };
-		FEAC8904172B4A1500DD8F17 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FEAC8906172B4A1500DD8F17 /* game_menu_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_menu_view.cc; sourceTree = "<group>"; };
-		FEAC8907172B4A1500DD8F17 /* game_menu_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_menu_view.h; sourceTree = "<group>"; };
-		FEAC8908172B4A1500DD8F17 /* main_menu_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main_menu_view.cc; sourceTree = "<group>"; };
-		FEAC8909172B4A1500DD8F17 /* main_menu_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main_menu_view.h; sourceTree = "<group>"; };
-		FEAC890A172B4A1500DD8F17 /* play_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = play_view.cc; sourceTree = "<group>"; };
-		FEAC890B172B4A1500DD8F17 /* play_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = play_view.h; sourceTree = "<group>"; };
-		FEAC890C172B4A1500DD8F17 /* rink_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rink_view.cc; sourceTree = "<group>"; };
-		FEAC890D172B4A1500DD8F17 /* rink_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rink_view.h; sourceTree = "<group>"; };
-		FEAC890E172B4A1500DD8F17 /* splash_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = splash_view.cc; sourceTree = "<group>"; };
-		FEAC890F172B4A1500DD8F17 /* splash_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splash_view.h; sourceTree = "<group>"; };
-		FEAC8910172B4A1500DD8F17 /* story_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = story_view.cc; sourceTree = "<group>"; };
-		FEAC8911172B4A1500DD8F17 /* story_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = story_view.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -935,13 +891,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE28F90016C9C54A00D3BBFB /* AirHockey */ = {
+		FE28F90016C9C54A00D3BBFB /* App */ = {
 			isa = PBXGroup;
 			children = (
 				FEAC8795172B4A1300DD8F17 /* resources */,
-				FEAC88F0172B4A1500DD8F17 /* src */,
 			);
-			name = AirHockey;
+			name = App;
 			sourceTree = "<group>";
 		};
 		FE28F90116C9C56900D3BBFB /* GameEngine */ = {
@@ -958,7 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				FEF47BC616DF0C950096F3D4 /* libz.dylib */,
-				FE28F90016C9C54A00D3BBFB /* AirHockey */,
+				FE28F90016C9C54A00D3BBFB /* App */,
 				FE28F90116C9C56900D3BBFB /* GameEngine */,
 				FE789BC414F97B34007FCBC5 /* Frameworks */,
 				FE789BC214F97B34007FCBC5 /* Products */,
@@ -1635,75 +1590,6 @@
 			path = textures;
 			sourceTree = "<group>";
 		};
-		FEAC88F0172B4A1500DD8F17 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				FEAC88F1172B4A1500DD8F17 /* airhockey */,
-			);
-			name = src;
-			path = ../../../../airhockey/src;
-			sourceTree = "<group>";
-		};
-		FEAC88F1172B4A1500DD8F17 /* airhockey */ = {
-			isa = PBXGroup;
-			children = (
-				FEAC88F2172B4A1500DD8F17 /* entities */,
-				FEAC88FF172B4A1500DD8F17 /* init.cc */,
-				FEAC8900172B4A1500DD8F17 /* ios */,
-				FEAC8905172B4A1500DD8F17 /* views */,
-			);
-			path = airhockey;
-			sourceTree = "<group>";
-		};
-		FEAC88F2172B4A1500DD8F17 /* entities */ = {
-			isa = PBXGroup;
-			children = (
-				FEAC88F3172B4A1500DD8F17 /* paddle.cc */,
-				FEAC88F4172B4A1500DD8F17 /* paddle.h */,
-				FEAC88F5172B4A1500DD8F17 /* post.cc */,
-				FEAC88F6172B4A1500DD8F17 /* post.h */,
-				FEAC88F7172B4A1500DD8F17 /* puck.cc */,
-				FEAC88F8172B4A1500DD8F17 /* puck.h */,
-				FEAC88F9172B4A1500DD8F17 /* rink.cc */,
-				FEAC88FA172B4A1500DD8F17 /* rink.h */,
-				FEAC88FB172B4A1500DD8F17 /* round_thing.cc */,
-				FEAC88FC172B4A1500DD8F17 /* round_thing.h */,
-				FEAC88FD172B4A1500DD8F17 /* sound_slider.cc */,
-				FEAC88FE172B4A1500DD8F17 /* sound_slider.h */,
-			);
-			path = entities;
-			sourceTree = "<group>";
-		};
-		FEAC8900172B4A1500DD8F17 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				FEAC8901172B4A1500DD8F17 /* AirHockey_Prefix.pch */,
-				FEAC8902172B4A1500DD8F17 /* AirHockeyAppDelegate.h */,
-				FEAC8903172B4A1500DD8F17 /* AirHockeyAppDelegate.mm */,
-				FEAC8904172B4A1500DD8F17 /* main.m */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		FEAC8905172B4A1500DD8F17 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				FEAC8906172B4A1500DD8F17 /* game_menu_view.cc */,
-				FEAC8907172B4A1500DD8F17 /* game_menu_view.h */,
-				FEAC8908172B4A1500DD8F17 /* main_menu_view.cc */,
-				FEAC8909172B4A1500DD8F17 /* main_menu_view.h */,
-				FEAC890A172B4A1500DD8F17 /* play_view.cc */,
-				FEAC890B172B4A1500DD8F17 /* play_view.h */,
-				FEAC890C172B4A1500DD8F17 /* rink_view.cc */,
-				FEAC890D172B4A1500DD8F17 /* rink_view.h */,
-				FEAC890E172B4A1500DD8F17 /* splash_view.cc */,
-				FEAC890F172B4A1500DD8F17 /* splash_view.h */,
-				FEAC8910172B4A1500DD8F17 /* story_view.cc */,
-				FEAC8911172B4A1500DD8F17 /* story_view.h */,
-			);
-			path = views;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2139,21 +2025,6 @@
 				FEAC8792172B44B200DD8F17 /* AVAudio.mm in Sources */,
 				FEAC8793172B44B200DD8F17 /* MyOpenALSupport.mm in Sources */,
 				FEAC8794172B44B200DD8F17 /* SoundPlayer.mm in Sources */,
-				FEAC8A65172B4A1500DD8F17 /* paddle.cc in Sources */,
-				FEAC8A66172B4A1500DD8F17 /* post.cc in Sources */,
-				FEAC8A67172B4A1500DD8F17 /* puck.cc in Sources */,
-				FEAC8A68172B4A1500DD8F17 /* rink.cc in Sources */,
-				FEAC8A69172B4A1500DD8F17 /* round_thing.cc in Sources */,
-				FEAC8A6A172B4A1500DD8F17 /* sound_slider.cc in Sources */,
-				FEAC8A6B172B4A1500DD8F17 /* init.cc in Sources */,
-				FEAC8A6C172B4A1500DD8F17 /* AirHockeyAppDelegate.mm in Sources */,
-				FEAC8A6D172B4A1500DD8F17 /* main.m in Sources */,
-				FEAC8A6E172B4A1500DD8F17 /* game_menu_view.cc in Sources */,
-				FEAC8A6F172B4A1500DD8F17 /* main_menu_view.cc in Sources */,
-				FEAC8A70172B4A1500DD8F17 /* play_view.cc in Sources */,
-				FEAC8A71172B4A1500DD8F17 /* rink_view.cc in Sources */,
-				FEAC8A72172B4A1500DD8F17 /* splash_view.cc in Sources */,
-				FEAC8A73172B4A1500DD8F17 /* story_view.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
