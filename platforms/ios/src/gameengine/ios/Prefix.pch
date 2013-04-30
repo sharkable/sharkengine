@@ -1,0 +1,31 @@
+//
+// Prefix header.
+//
+
+// TODO Either don't share this with Android, or move it out of the ios folder.
+//     (Probably the former.)
+
+#ifdef __OBJC__
+  // TODO consider explicity importing these.
+  #import <Availability.h>
+  #import <Foundation/Foundation.h>
+  #import <UIKit/UIKit.h>
+#endif
+
+#ifdef __cplusplus
+  #include <assert.h>
+  #include <iostream>
+
+  #ifdef __ANDROID__
+    #include <memory>
+    #define sp std::shared_ptr
+  #else
+    #include <tr1/memory>
+    #define sp std::tr1::shared_ptr
+  #endif
+#endif
+
+#ifdef __ANDROID__
+  #include <android/log.h>
+  #define s_log(...)  __android_log_print(ANDROID_LOG_DEBUG, "Sharkable", __VA_ARGS__);
+#endif
