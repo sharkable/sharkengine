@@ -8,10 +8,10 @@
 
 #import "gameengine/ios/AdEngineIOS.h"
 
-#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADBannerView.h"
-#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADInterstitial.h"
-#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADInterstitialDelegate.h"
-#import "gameengine/ios/thirdparty/GoogleAdMobAdsSdkiOS-6.2.1/GADRequest.h"
+#import "gameengine/ios/thirdparty/admob/GADBannerView.h"
+#import "gameengine/ios/thirdparty/admob/GADInterstitial.h"
+#import "gameengine/ios/thirdparty/admob/GADInterstitialDelegate.h"
+#import "gameengine/ios/thirdparty/admob/GADRequest.h"
 #import "gameengine/coordinate_types.h"
 
 // TODO Take this through a parameter.

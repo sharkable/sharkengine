@@ -8,7 +8,7 @@
 
 #import "gameengine/ios/AnalyticsEngineIOS.h"
 
-#import "gameengine/ios/thirdparty/Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"
+#import "gameengine/ios/thirdparty/flurry/Flurry.h"
 #import "gameengine/ios/TypeUtil.h"
 
 using std::map;
