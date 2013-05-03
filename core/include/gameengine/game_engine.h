@@ -42,7 +42,9 @@ class GameEngine {
  public:
   GameEngine();
 
-  void SetScreenSize(ScreenSize screen_size, GameSize game_size);
+  // TODO consider refactoring this information exposure for game vs. platform, using inheritance.
+  void SetScreenSize(ScreenSize screen_size);
+  void SetGameSize(GameSize game_size);
   void SetScreenOffset(ScreenPoint screen_offset);
 
   void Update();
@@ -87,6 +89,7 @@ class GameEngine {
   void set_touches_moved(std::vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
   void set_touches_ended(std::vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
 
+  ScreenSize screen_size() { return screen_size_; }
   GameSize game_size() { return game_size_; }
 
   ScreenSize game_size_to_screen_size(GameSize game_size_) {
@@ -107,6 +110,8 @@ class GameEngine {
   }
 
  private:
+  void UpdateSizeRatios();
+
   PlatformType platform_type_;
   PlatformResolution platform_resolution_;
 
@@ -123,8 +128,9 @@ class GameEngine {
   std::vector<Touch> touches_began_;
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;
-  ScreenPoint screen_offset_;
+  ScreenSize screen_size_;
   GameSize game_size_;
+  ScreenPoint screen_offset_;
   double game_to_screen_point_ratio_x_;
   double game_to_screen_point_ratio_y_;
   double screen_to_game_point_ratio_x_;

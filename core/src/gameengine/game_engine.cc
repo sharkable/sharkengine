@@ -22,12 +22,14 @@ GameEngine::GameEngine()
   positions_ = sp<Positions>(new Positions());
 }
 
-void GameEngine::SetScreenSize(ScreenSize screen_size, GameSize game_size) {
+void GameEngine::SetScreenSize(ScreenSize screen_size) {
+  screen_size_ = screen_size;
+  UpdateSizeRatios();
+}
+
+void GameEngine::SetGameSize(GameSize game_size) {
   game_size_ = game_size;
-  game_to_screen_point_ratio_x_ = screen_size.width / game_size.width;
-  game_to_screen_point_ratio_y_ = screen_size.height / game_size.height;
-  screen_to_game_point_ratio_x_ = game_size.width / screen_size.width;
-  screen_to_game_point_ratio_y_ = game_size.height / screen_size.height;
+  UpdateSizeRatios();
 }
 
 void GameEngine::SetScreenOffset(ScreenPoint screen_offset) {
@@ -109,4 +111,14 @@ void GameEngine::RemoveView(EngineView *view) {
 void GameEngine::SetRootView(sp<EngineView> view) {
   next_views_.clear();
   next_views_.push_back(view);
+}
+
+
+// private
+
+void GameEngine::UpdateSizeRatios() {
+  game_to_screen_point_ratio_x_ = screen_size_.width / game_size_.width;
+  game_to_screen_point_ratio_y_ = screen_size_.height / game_size_.height;
+  screen_to_game_point_ratio_x_ = game_size_.width / screen_size_.width;
+  screen_to_game_point_ratio_y_ = game_size_.height / screen_size_.height;
 }
