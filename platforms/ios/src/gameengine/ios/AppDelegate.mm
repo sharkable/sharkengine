@@ -35,19 +35,12 @@
   [Flurry startSession:@"BGGPH5B2THWFSJHXEKRH"];
 
   viewController_ = [[ViewController alloc] init];
-
-  double screenWidth = [UIScreen mainScreen].bounds.size.width * [UIScreen mainScreen].scale;
-  double screenHeight = screenWidth * 1024.0 / 768.0;
-  viewController_.gameEngine->SetScreenSize(screen_size_make(screenWidth, screenHeight),
-                                            game_size_make(768.0, 1024.0));
-
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-    // Make room for the banner ad.
-    ScreenPoint offset = screen_point_make(0, 53 * [UIScreen mainScreen].scale);
-    viewController_.gameEngine->SetScreenOffset(offset);
-  }
-
   viewController_.gameEngine->set_factory(sp<GameEngineFactory>(new GameEngineFactoryIOS()));
+
+  CGSize screenSize = [UIScreen mainScreen].bounds.size;
+  CGFloat scale = [UIScreen mainScreen].scale;
+  viewController_.gameEngine->SetScreenSize(screen_size_make(screenSize.width * scale,
+                                                             screenSize.height * scale));
 
   // TODO why is this a shared_ptr?
   sharkengine_init(sp<GameEngine>(viewController_.gameEngine));
