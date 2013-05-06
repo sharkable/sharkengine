@@ -13,27 +13,10 @@
 GameEngine::GameEngine()
     : platform_type_(kPlatformTypePhone),
       resource_loader_(*this),
+      screen_size_(kScreenSizeZero),
       screen_offset_(kScreenPointZero),
-      game_size_(kGameSizeZero),
-      game_to_screen_point_ratio_x_(0),
-      game_to_screen_point_ratio_y_(0),
-      screen_to_game_point_ratio_x_(0),
-      screen_to_game_point_ratio_y_(0) {
+      screen_to_game_point_ratio_(1) {
   positions_ = sp<Positions>(new Positions());
-}
-
-void GameEngine::SetScreenSize(ScreenSize screen_size) {
-  screen_size_ = screen_size;
-  UpdateSizeRatios();
-}
-
-void GameEngine::SetGameSize(GameSize game_size) {
-  game_size_ = game_size;
-  UpdateSizeRatios();
-}
-
-void GameEngine::SetScreenOffset(ScreenPoint screen_offset) {
-  screen_offset_ = screen_offset;
 }
 
 void GameEngine::Update() {
@@ -111,14 +94,4 @@ void GameEngine::RemoveView(EngineView *view) {
 void GameEngine::SetRootView(sp<EngineView> view) {
   next_views_.clear();
   next_views_.push_back(view);
-}
-
-
-// private
-
-void GameEngine::UpdateSizeRatios() {
-  game_to_screen_point_ratio_x_ = screen_size_.width / game_size_.width;
-  game_to_screen_point_ratio_y_ = screen_size_.height / game_size_.height;
-  screen_to_game_point_ratio_x_ = game_size_.width / screen_size_.width;
-  screen_to_game_point_ratio_y_ = game_size_.height / screen_size_.height;
 }
