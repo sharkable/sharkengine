@@ -39,8 +39,8 @@
 
   CGSize screenSize = [UIScreen mainScreen].bounds.size;
   CGFloat scale = [UIScreen mainScreen].scale;
-  viewController_.gameEngine->SetScreenSize(screen_size_make(screenSize.width * scale,
-                                                             screenSize.height * scale));
+  viewController_.gameEngine->set_screen_size(screen_size_make(screenSize.width * scale,
+                                                               screenSize.height * scale));
 
   // TODO why is this a shared_ptr?
   sharkengine_init(sp<GameEngine>(viewController_.gameEngine));
