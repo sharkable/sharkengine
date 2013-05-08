@@ -4,7 +4,7 @@ var outputPositionsFolder = activeDocument.path + "/../resources/positions";
 var outputPositionsFilename = "positions.xml";
 var layerVisibleMap = new Array();
 var layerPositionMap = {};
-
+var rulerOffset = getRulerOffset();
 
 var response = prompt("It this for Retina Display? iPhone?", 'nn');
 var isRetina = response[0] != 'n' && response[0] != 'N';
@@ -49,6 +49,14 @@ if ((!isPhone && !isRetina) || (isPhone && isRetina)) {
   positionsFile.writeln('</positions>');
   positionsFile.close();
 }
+
+function getRulerOffset() {
+   var ref = new ActionReference();
+   ref.putEnumerated(charIDToTypeID("Dcmn"), charIDToTypeID("Ordn"), charIDToTypeID("Trgt"));
+   var xOffset = executeActionGet(ref).getInteger(stringIDToTypeID('rulerOriginH')) / 65536;
+   var yOffset = executeActionGet(ref).getInteger(stringIDToTypeID('rulerOriginV')) / 65536;
+   return [xOffset, yOffset];
+};
 
 function getLayerSetsIndex() {  
    function getNumberLayers() { 
@@ -169,8 +177,8 @@ function createResourceFromLayerSet(layerSet, isRetina) {
   var oldWidth = document.width;
   var oldHeight = document.height;
   document.trim(TrimType.TRANSPARENT, true, true, false, false);
-  var x = oldWidth - document.width;
-  var y = oldHeight - document.height;
+  var x = oldWidth - document.width - rulerOffset[0];
+  var y = oldHeight - document.height - rulerOffset[1];
   document.trim(TrimType.TRANSPARENT, false, false, true, true);
 
   if (savePosition) {
