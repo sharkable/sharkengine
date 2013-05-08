@@ -31,6 +31,10 @@ void EngineView::Render() {
   }
 }
 
+bool EngineView::IsCapturingTouches() {
+  return true;
+}
+
 void EngineView::TouchesBegan(vector<Touch> touches) {
   // Iterate backwards. The items on top get priority to capture touches.
   for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {

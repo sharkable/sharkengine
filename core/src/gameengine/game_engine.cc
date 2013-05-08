@@ -32,19 +32,26 @@ void GameEngine::Update() {
   assert(views_.size() > 0);
 
   // Process input.
-  sp<EngineView> top_view = views_.back();
-
-  if (touches_began_.size() > 0) {
-    top_view->TouchesBegan(touches_began_);
-    touches_began_.clear();
+  sp<EngineView> touch_view;
+  for (auto i = views_.rbegin(); i != views_.rend(); i++) {
+    if ((*i)->IsCapturingTouches()) {
+      touch_view = *i;
+      break;
+    }
   }
-  if (touches_moved_.size() > 0) {
-    top_view->TouchesMoved(touches_moved_);
-    touches_moved_.clear();
-  }
-  if (touches_ended_.size() > 0) {
-    top_view->TouchesEnded(touches_ended_);
-    touches_ended_.clear();
+  if (touch_view) {
+    if (touches_began_.size() > 0) {
+      touch_view->TouchesBegan(touches_began_);
+      touches_began_.clear();
+    }
+    if (touches_moved_.size() > 0) {
+      touch_view->TouchesMoved(touches_moved_);
+      touches_moved_.clear();
+    }
+    if (touches_ended_.size() > 0) {
+      touch_view->TouchesEnded(touches_ended_);
+      touches_ended_.clear();
+    }
   }
 
   // Update views.
@@ -87,6 +94,7 @@ void GameEngine::RemoveView(EngineView *view) {
   for (auto i = next_views_.begin(); i != next_views_.end(); i++) {
     if (i->get() == view) {
       i = next_views_.erase(i);
+      break;
     }
   }
 }
