@@ -9,53 +9,64 @@
 #include "gameengine/entities/animatable.h"
 
 Animatable::Animatable()
-    : position_(kGamePointZero),
+    : delegate_(NULL),
+      position_(kGamePointZero),
       angle_(0),
       alpha_(1),
       zoom_(1) {
 }
 
 Animatable::Animatable(GamePoint position)
-    : position_(position),
+    : delegate_(NULL),
+      position_(position),
       angle_(0),
       alpha_(1),
       zoom_(1) {
 }
 
 void Animatable::AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks) {
-  _x_animation.Reset(position_.x, position.x - position_.x, ticks, animation_type);
-  _y_animation.Reset(position_.y, position.y - position_.y, ticks, animation_type);
+  x_animation_.Reset(position_.x, position.x - position_.x, ticks, animation_type);
+  y_animation_.Reset(position_.y, position.y - position_.y, ticks, animation_type);
 }
 
 void Animatable::AnimateToAngle(double angle, AnimationType animation_type, int ticks) {
-  _angle_animation.Reset(angle_, angle - angle_, ticks, animation_type);
+  angle_animation_.Reset(angle_, angle - angle_, ticks, animation_type);
 }
 
 void Animatable::AnimateToAlpha(double alpha, AnimationType animation_type, int ticks) {
-  _alpha_animation.Reset(alpha_, alpha - alpha_, ticks, animation_type);
+  alpha_animation_.Reset(alpha_, alpha - alpha_, ticks, animation_type);
 }
 
 void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ticks) {
-  _zoom_animation.Reset(zoom_, zoom - zoom_, ticks, animation_type);
+  zoom_animation_.Reset(zoom_, zoom - zoom_, ticks, animation_type);
 }
 
 
 // ViewEntity
 
 void Animatable::Update() {
-  if (_x_animation.IsActive()) {
-    position_.x = _x_animation.Update();
+  bool call_delegate = false;
+  if (x_animation_.IsActive()) {
+    position_.x = x_animation_.Update();
+    call_delegate = !x_animation_.IsActive();
   }
-  if (_y_animation.IsActive()) {
-    position_.y = _y_animation.Update();
+  if (y_animation_.IsActive()) {
+    position_.y = y_animation_.Update();
+    call_delegate = !y_animation_.IsActive();
   }
-  if (_angle_animation.IsActive()) {
-    angle_ = _angle_animation.Update();
+  if (angle_animation_.IsActive()) {
+    angle_ = angle_animation_.Update();
+    call_delegate = !angle_animation_.IsActive();
   }
-  if (_alpha_animation.IsActive()) {
-    alpha_ = _alpha_animation.Update();
+  if (alpha_animation_.IsActive()) {
+    alpha_ = alpha_animation_.Update();
+    call_delegate = !alpha_animation_.IsActive();
   }
-  if (_zoom_animation.IsActive()) {
-    zoom_ = _zoom_animation.Update();
+  if (zoom_animation_.IsActive()) {
+    zoom_ = zoom_animation_.Update();
+    call_delegate = !zoom_animation_.IsActive();
+  }
+  if (delegate_ && call_delegate) {
+    delegate_->AnimationFinished(this);
   }
 }

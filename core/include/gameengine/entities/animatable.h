@@ -13,6 +13,13 @@
 #include "gameengine/coordinate_types.h"
 #include "gameengine/view_entity.h"
 
+class Animatable;
+
+class AnimatableDelegate {
+ public:
+  virtual void AnimationFinished(Animatable *animatable) = 0;
+};
+
 class Animatable : public ViewEntity {
  public:
   Animatable();
@@ -27,6 +34,8 @@ class Animatable : public ViewEntity {
   void Update();
 
   // Accessors
+  AnimatableDelegate *delegate() { return delegate_; }
+  void set_delegate(AnimatableDelegate *delegate) { delegate_ = delegate; }
   GamePoint position() { return position_; }
   void set_position(GamePoint position) { position_ = position; }
   double angle() { return angle_; }
@@ -37,16 +46,18 @@ class Animatable : public ViewEntity {
   void set_zoom(double zoom) { zoom_ = zoom; }
 
  private:
+  AnimatableDelegate *delegate_;
+
   GamePoint position_;
   double angle_;
   double alpha_;
   double zoom_;
 
-  Animation _x_animation;
-  Animation _y_animation;
-  Animation _angle_animation;
-  Animation _alpha_animation;
-  Animation _zoom_animation;
+  Animation x_animation_;
+  Animation y_animation_;
+  Animation angle_animation_;
+  Animation alpha_animation_;
+  Animation zoom_animation_;
 };
 
 #endif
