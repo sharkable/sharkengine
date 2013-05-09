@@ -38,6 +38,6 @@ SimpleItem::~SimpleItem() {
 
 // ViewEntity
 
-void SimpleItem::Render() {
-  sprites_[sprite_].Draw(position(), angle(), alpha(), zoom());
+void SimpleItem::Render(GamePoint offset) {
+  sprites_[sprite_].Draw(position() + offset, angle(), alpha(), zoom());
 }

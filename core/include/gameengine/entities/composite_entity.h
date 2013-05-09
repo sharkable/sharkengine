@@ -11,18 +11,18 @@
 
 #include <vector>
 
+#include "gameengine/entities/animatable.h"
 #include "gameengine/coordinate_types.h"
-#include "gameengine/view_entity.h"
 
 class Touch;
 
-class CompositeEntity : public ViewEntity {
+class CompositeEntity : public Animatable {
  public:
   void AddEntity(sp<ViewEntity> entity);
 
   // ViewEntity
   void Update();
-  void Render();
+  void Render(GamePoint offset);
   bool TouchesBegan(std::vector<Touch> touches);
   void TouchesMoved(std::vector<Touch> touches);
   void TouchesEnded(std::vector<Touch> touches);

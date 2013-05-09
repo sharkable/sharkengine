@@ -24,9 +24,10 @@ void CompositeEntity::Update() {
   }
 }
 
-void CompositeEntity::Render() {
+void CompositeEntity::Render(GamePoint offset) {
+  GamePoint composite_offset = position() + offset;
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
-    (*i)->Render();
+    (*i)->Render(composite_offset);
   }
 }
 

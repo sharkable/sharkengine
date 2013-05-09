@@ -41,14 +41,14 @@ bool Button::ContainsPoint(GamePoint p) {
 
 // ViewEntity
 
-void Button::Render() {
+void Button::Render(GamePoint offset) {
   switch (state_) {
     case kButtonStateNormal: {
-      normal_sprite_.Draw(position(), angle(), alpha(), zoom());
+      normal_sprite_.Draw(position() + offset, angle(), alpha(), zoom());
       break;
     }
     case kButtonStatePressed: {
-      pressed_sprite_.Draw(position(), angle(), alpha(), zoom());
+      pressed_sprite_.Draw(position() + offset, angle(), alpha(), zoom());
       break;
     }
   }

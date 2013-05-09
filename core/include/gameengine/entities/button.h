@@ -36,7 +36,7 @@ class Button : public Animatable {
   ~Button();
 
   // ViewEntity
-  void Render();
+  void Render(GamePoint offset);
   bool TouchesBegan(std::vector<Touch> touches);
   void TouchesEnded(std::vector<Touch> touches);
 

@@ -25,7 +25,7 @@ class MultiSelect : public Animatable {
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);
 
   // ViewEntity
-  void Render();
+  void Render(GamePoint offset);
   bool TouchesBegan(std::vector<Touch> touches);
 
   // Accessors

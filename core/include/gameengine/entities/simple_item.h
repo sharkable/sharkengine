@@ -23,7 +23,7 @@ class SimpleItem : public Animatable {
   ~SimpleItem();
 
   // ViewEntity
-  void Render();
+  void Render(GamePoint offset);
 
   // Accessors
   void set_sprites(std::vector<Sprite> sprites) { sprites_ = sprites; }

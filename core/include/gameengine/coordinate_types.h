@@ -35,6 +35,14 @@ inline GamePoint game_point_make(double x, double y) {
   return point;
 }
 
+inline GamePoint operator+(const GamePoint &point_1, const GamePoint &point_2) {
+  return game_point_make(point_1.x + point_2.x, point_1.y + point_2.y);
+}
+
+inline GamePoint operator-(const GamePoint &point_1, const GamePoint &point_2) {
+  return game_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
+}
+
 static const GameSize kGameSizeZero = game_size_make(0, 0);
 static const GamePoint kGamePointZero = game_point_make(0, 0);
 

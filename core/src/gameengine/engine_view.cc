@@ -27,7 +27,7 @@ void EngineView::Update() {
 
 void EngineView::Render() {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
-    (*i)->Render();
+    (*i)->Render(kGamePointZero);
   }
 }
 
