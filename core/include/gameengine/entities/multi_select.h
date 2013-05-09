@@ -26,7 +26,7 @@ class MultiSelect : public Animatable {
 
   // ViewEntity
   void Render(GamePoint offset);
-  bool TouchesBegan(std::vector<Touch> touches);
+  bool TouchesBegan(GamePoint offset, std::vector<Touch> touches);
 
   // Accessors
   int selected_value() { return selected_value_; };

@@ -37,8 +37,8 @@ class Button : public Animatable {
 
   // ViewEntity
   void Render(GamePoint offset);
-  bool TouchesBegan(std::vector<Touch> touches);
-  void TouchesEnded(std::vector<Touch> touches);
+  bool TouchesBegan(GamePoint offset, std::vector<Touch> touches);
+  void TouchesEnded(GamePoint offset, std::vector<Touch> touches);
 
   bool ContainsPoint(GamePoint p);
 

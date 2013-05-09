@@ -54,10 +54,10 @@ void Button::Render(GamePoint offset) {
   }
 }
 
-bool Button::TouchesBegan(vector<Touch> touches) {
+bool Button::TouchesBegan(GamePoint offset, vector<Touch> touches) {
   if (state_ == kButtonStateNormal) {
     for (int i = 0; i < touches.size(); i++) {
-      if (ContainsPoint(touches[i].location())) {
+      if (ContainsPoint(touches[i].location() - offset)) {
         state_ = kButtonStatePressed;
         SoundPlayer::instance()->playSound(kSoundButton);
         start_touch_ = touches[i].identifier();
@@ -70,7 +70,7 @@ bool Button::TouchesBegan(vector<Touch> touches) {
   return false;
 }
 
-void Button::TouchesEnded(vector<Touch> touches) {
+void Button::TouchesEnded(GamePoint offset, vector<Touch> touches) {
   if (state_ == kButtonStatePressed) {
     for (int i = 0; i < touches.size(); i++) {
       if (touches[i].identifier() == start_touch_) {

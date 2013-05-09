@@ -46,13 +46,13 @@ void MultiSelect::Render(GamePoint offset) {
   }
 }
 
-bool MultiSelect::TouchesBegan(vector<Touch> touches) {
+bool MultiSelect::TouchesBegan(GamePoint offset, vector<Touch> touches) {
   for (int i = 0; i < normal_sprites_.size(); i++) {
     double x = positions_x_[i];
     double y = positions_y_[i];
     GameSize size = normal_sprites_[i].content_size();
     for (int j = 0; j < touches.size(); j++) {
-      GamePoint touchPoint = touches[j].location();
+      GamePoint touchPoint = touches[j].location() - offset;
       if (touchPoint.x >= x && touchPoint.y >= y && touchPoint.x < x + size.width &&
           touchPoint.y < y + size.height) {
         if (selected_value_ != i) {

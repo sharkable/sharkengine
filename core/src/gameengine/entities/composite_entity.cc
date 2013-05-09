@@ -31,24 +31,27 @@ void CompositeEntity::Render(GamePoint offset) {
   }
 }
 
-bool CompositeEntity::TouchesBegan(vector<Touch> touches) {
+bool CompositeEntity::TouchesBegan(GamePoint offset, vector<Touch> touches) {
+  GamePoint composite_offset = position() + offset;
   for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
-    if ((*i)->TouchesBegan(touches)) {
+    if ((*i)->TouchesBegan(composite_offset, touches)) {
       return true;
     }
   }
   return false;
 }
 
-void CompositeEntity::TouchesMoved(vector<Touch> touches) {
+void CompositeEntity::TouchesMoved(GamePoint offset, vector<Touch> touches) {
+  GamePoint composite_offset = position() + offset;
   for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
-    (*i)->TouchesMoved(touches);
+    (*i)->TouchesMoved(composite_offset, touches);
   }
 }
 
-void CompositeEntity::TouchesEnded(vector<Touch> touches) {
+void CompositeEntity::TouchesEnded(GamePoint offset, vector<Touch> touches) {
+  GamePoint composite_offset = position() + offset;
   for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
-    (*i)->TouchesEnded(touches);
+    (*i)->TouchesEnded(composite_offset, touches);
   }
 }
 

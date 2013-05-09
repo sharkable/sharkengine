@@ -23,9 +23,9 @@ class CompositeEntity : public Animatable {
   // ViewEntity
   void Update();
   void Render(GamePoint offset);
-  bool TouchesBegan(std::vector<Touch> touches);
-  void TouchesMoved(std::vector<Touch> touches);
-  void TouchesEnded(std::vector<Touch> touches);
+  bool TouchesBegan(GamePoint offset, std::vector<Touch> touches);
+  void TouchesMoved(GamePoint offset, std::vector<Touch> touches);
+  void TouchesEnded(GamePoint offset, std::vector<Touch> touches);
   void ClearTouches();
 
  private:
