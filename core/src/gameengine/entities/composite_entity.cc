@@ -19,6 +19,7 @@ void CompositeEntity::AddEntity(sp<ViewEntity> entity) {
 // ViewEntity
 
 void CompositeEntity::Update() {
+  Animatable::Update();
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     (*i)->Update();
   }
