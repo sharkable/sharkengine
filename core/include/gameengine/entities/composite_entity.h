@@ -14,6 +14,8 @@
 #include "gameengine/coordinate_types.h"
 #include "gameengine/view_entity.h"
 
+class Touch;
+
 class CompositeEntity : public ViewEntity {
  public:
   void AddEntity(sp<ViewEntity> entity);
@@ -21,6 +23,10 @@ class CompositeEntity : public ViewEntity {
   // ViewEntity
   void Update();
   void Render();
+  bool TouchesBegan(std::vector<Touch> touches);
+  void TouchesMoved(std::vector<Touch> touches);
+  void TouchesEnded(std::vector<Touch> touches);
+  void ClearTouches();
 
  private:
   std::vector<sp<ViewEntity> > entities_;
