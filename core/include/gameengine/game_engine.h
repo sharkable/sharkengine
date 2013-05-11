@@ -44,6 +44,7 @@ class GameEngine {
 
   void Update();
   void Render();
+  void NotifyPause();
   void ClearTouches();
 
   void PushView(sp<EngineView> view);

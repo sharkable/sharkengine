@@ -22,6 +22,7 @@ class EngineView {
   virtual void ViewIsShown() {}
   virtual void Update();
   virtual void Render();
+  virtual void NotifyPause() {}
   virtual bool IsCapturingTouches();
   virtual void TouchesBegan(std::vector<Touch> touches);
   virtual void TouchesMoved(std::vector<Touch> touches);

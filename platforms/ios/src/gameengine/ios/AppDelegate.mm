@@ -65,6 +65,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+  viewController_.gameEngine->NotifyPause();
   [viewController_ stop];
 }
 

@@ -66,6 +66,12 @@ void GameEngine::Render() {
   }
 }
 
+void GameEngine::NotifyPause() {
+  for (int i = 0; i < views_.size(); i++) {
+    views_[i]->NotifyPause();
+  }
+}
+
 void GameEngine::ClearTouches() {
   for (int i = 0; i < views_.size(); i++) {
     views_[i]->ClearTouches();
