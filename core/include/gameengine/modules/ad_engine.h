@@ -9,10 +9,13 @@
 #ifndef GAMEENGINE_ADENGINE_H_
 #define GAMEENGINE_ADENGINE_H_
 
+#include <string>
+
 struct ScreenPoint;
 
 class AdEngine {
  public:
+  virtual void SetPublisherId(std::string publisher_id) = 0;
   virtual void SetAdAtPoint(ScreenPoint point) = 0;
   virtual void RemoveAd() = 0;
   virtual bool ShowFullScreenAd() = 0;

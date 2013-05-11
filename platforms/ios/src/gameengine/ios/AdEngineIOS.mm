@@ -12,10 +12,10 @@
 #import "gameengine/ios/thirdparty/admob/GADInterstitial.h"
 #import "gameengine/ios/thirdparty/admob/GADInterstitialDelegate.h"
 #import "gameengine/ios/thirdparty/admob/GADRequest.h"
+#import "gameengine/ios/TypeUtil.h"
 #import "gameengine/coordinate_types.h"
 
-// TODO Take this through a parameter.
-static NSString *kPublisherId = @"a14bdda6dfc895a";
+using std::string;
 
 @interface InterstitialState : NSObject<GADInterstitialDelegate> {
  @private
@@ -62,12 +62,17 @@ AdEngineIOS::~AdEngineIOS() {
 
 // AdEngine
 
+void AdEngineIOS::SetPublisherId(string publisher_id) {
+  publisher_id_ = publisher_id;
+}
+
 // TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
 // to the GameEngine.
 void AdEngineIOS::SetAdAtPoint(ScreenPoint point) {
   if (!banner_view_) {
+    assert(publisher_id_.length());
     banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-    banner_view_.adUnitID = kPublisherId;
+    banner_view_.adUnitID = TypeUtil::string2NSString(publisher_id_);
     banner_view_.rootViewController = root_view_controller_;
     GADRequest *request = [GADRequest request];
     request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
@@ -102,10 +107,11 @@ bool AdEngineIOS::IsShowingFullScreenAd() {
 // private
 
 void AdEngineIOS::SetUpNewInterstitial() {
+  assert(publisher_id_.length());
   [interstitial_ release];
   interstitial_ = [[GADInterstitial alloc] init];
   interstitial_.delegate = interstitial_state_;
-  interstitial_.adUnitID = kPublisherId;
+  interstitial_.adUnitID = TypeUtil::string2NSString(publisher_id_);
   GADRequest *request = [GADRequest request];
   request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
   [interstitial_ loadRequest:request];

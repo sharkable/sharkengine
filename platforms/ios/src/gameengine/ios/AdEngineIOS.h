@@ -9,7 +9,9 @@
 #ifndef GAMEENGINE_IOS_ADENGINEIOS_H_
 #define GAMEENGINE_IOS_ADENGINEIOS_H_
 
-#import "gameengine/modules/ad_engine.h"
+#include <string>
+
+#include "gameengine/modules/ad_engine.h"
 
 @class GADBannerView;
 @class GADInterstitial;
@@ -21,6 +23,7 @@ class AdEngineIOS : public AdEngine {
   ~AdEngineIOS();
 
   // AdEngine
+  void SetPublisherId(std::string publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
   bool ShowFullScreenAd();
@@ -28,7 +31,8 @@ class AdEngineIOS : public AdEngine {
 
  private:
   void SetUpNewInterstitial();
-  
+
+  std::string publisher_id_;
   GADBannerView *banner_view_;
   GADInterstitial *interstitial_;
   InterstitialState *interstitial_state_;
