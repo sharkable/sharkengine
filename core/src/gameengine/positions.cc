@@ -36,6 +36,7 @@ void Positions::LoadFile(AssetReader &asset_reader) {
     const char *name = position->ToElement()->Attribute("name");
     double x = str2double(position->FirstChildElement("x")->GetText());
     double y = str2double(position->FirstChildElement("y")->GetText());
+    assert(positions_.find(name) == positions_.end());
     positions_[name] = game_point_make(x, y);
 
     position = position->NextSibling();
