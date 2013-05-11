@@ -18,7 +18,7 @@ class AppStoreEngineIOS : public AppStoreEngine {
   AppStoreEngineIOS();
   ~AppStoreEngineIOS();
 
-  void AskForRate(std::string app_name, std::string app_id);
+  void AskForRate();
   void AskForUpgrade(std::string app_name, std::string purchase_id);
 
  private:

@@ -11,21 +11,18 @@
 #include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>
 
+#include "gameengine/ios/thirdparty/appirater/Appirater.h"
 #include "gameengine/ios/TypeUtil.h"
 
 @interface PopupHandler : NSObject<SKPaymentTransactionObserver, SKProductsRequestDelegate,
     UIAlertViewDelegate> {
  @private
-  UIAlertView *_ratePopup;
   UIAlertView *_upgradePopup;
   NSString *_appId;
   SKProductsRequest *_request;
   SKProduct *_product;
 }
 
-- (void)askForRateAppNamed:(NSString *)appName appId:(NSString *)appId;
-- (void)askForUpgradeAppNamed:(NSString *)appName purchaseId:(NSString *)purchaseId;
-- (void)rateApp;
 - (void)upgradeApp;
 - (void)restoreUpgrade;
 - (void)showFailure:(NSString *)message;
@@ -43,28 +40,12 @@
 }
 
 - (void)dealloc {
-  [_ratePopup release];
   [_upgradePopup release];
   [_appId release];
   [_request release];
   [_product release];
 
   [super dealloc];
-}
-
-- (void)askForRateAppNamed:(NSString *)appName appId:(NSString *)appId {
-  [_appId release];
-  _appId = [appId retain];
-  NSString *message =
-      [NSString stringWithFormat:@"Are you enjoying %@?\n\nGive it a rating in the app store!",
-       appName];
-  [_ratePopup release];
-  _ratePopup = [[UIAlertView alloc] initWithTitle:@"Rate this game!"
-                                          message:message
-                                         delegate:self
-                                cancelButtonTitle:@"No thanks"
-                                otherButtonTitles:@"Rate!", nil];
-  [_ratePopup show];
 }
 
 - (void)askForUpgradeAppNamed:(NSString *)appName purchaseId:(NSString *)purchaseId {
@@ -83,12 +64,6 @@
       [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:purchaseId]];
   _request.delegate = self;
   [_request start];
-}
-
-- (void)rateApp {
-  NSString *url = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
-                      _appId];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 - (void)upgradeApp {
@@ -177,13 +152,7 @@
 // UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-  if (alertView == _ratePopup) {
-    if (buttonIndex == _ratePopup.firstOtherButtonIndex) {
-      [self rateApp];
-    }
-    [_ratePopup release];
-    _ratePopup = nil;
-  } else if (alertView == _upgradePopup) {
+  if (alertView == _upgradePopup) {
     if (buttonIndex == _upgradePopup.firstOtherButtonIndex) {
       [self upgradeApp];
     } else if (buttonIndex == _upgradePopup.firstOtherButtonIndex + 1) {
@@ -208,9 +177,8 @@ AppStoreEngineIOS::~AppStoreEngineIOS() {
   [popup_handler_ release];
 }
 
-void AppStoreEngineIOS::AskForRate(std::string app_name, std::string app_id) {
-  [popup_handler_ askForRateAppNamed:TypeUtil::string2NSString(app_name)
-                               appId:TypeUtil::string2NSString(app_id)];
+void AppStoreEngineIOS::AskForRate() {
+  [Appirater rateApp];
 }
 
 void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string purchase_id) {

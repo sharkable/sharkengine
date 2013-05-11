@@ -8,6 +8,7 @@
 
 #import "gameengine/ios/AppDelegate.h"
 
+#import "gameengine/ios/thirdparty/appirater/Appirater.h"
 #import "gameengine/ios/thirdparty/flurry/Flurry.h"
 #import "gameengine/ios/GameEngineFactoryIOS.h"
 #import "gameengine/ios/TypeUtil.h"
@@ -30,6 +31,13 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [Appirater setAppId:@"371905230"];
+  [Appirater setDaysUntilPrompt:1];
+  [Appirater setUsesUntilPrompt:6];
+  [Appirater setSignificantEventsUntilPrompt:-1];
+  [Appirater setTimeBeforeReminding:2];
+  [Appirater setDebug:NO];
+
   NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
   [Flurry setAppVersion:appVersion];
   [Flurry startSession:@"BGGPH5B2THWFSJHXEKRH"];
@@ -45,7 +53,15 @@
   // TODO why is this a shared_ptr?
   sharkengine_init(sp<GameEngine>(viewController_.gameEngine));
 
+  SoundPlayer::instance()->syncAudioSessionForITunes();
+
+  [Appirater appLaunched:YES];
+
   return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+  [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -53,9 +69,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  SoundPlayer::instance()->syncAudioSessionForITunes();
-  SoundPlayer::instance()->duckAudioFromITunes(true);
-
   [viewController_ start];
   viewController_.gameEngine->ClearTouches();
 }

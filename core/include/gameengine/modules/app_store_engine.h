@@ -11,7 +11,7 @@
 
 class AppStoreEngine {
  public:
-  virtual void AskForRate(std::string app_name, std::string app_id) = 0;
+  virtual void AskForRate() = 0;
   virtual void AskForUpgrade(std::string app_name, std::string app_id) = 0;
 };
 
