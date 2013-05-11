@@ -49,7 +49,6 @@ AdEngineIOS::AdEngineIOS(UIViewController *root_view_controller) {
   interstitial_ = nil;
   interstitial_state_ = [[InterstitialState alloc] init];
   root_view_controller_ = [root_view_controller retain];
-  SetUpNewInterstitial();
 }
 
 AdEngineIOS::~AdEngineIOS() {
@@ -90,23 +89,7 @@ void AdEngineIOS::RemoveAd() {
   banner_view_ = nil;
 }
 
-bool AdEngineIOS::ShowFullScreenAd() {
-  if (!interstitial_.isReady) {
-    return false;
-  }
-  [interstitial_ presentFromRootViewController:root_view_controller_];
-  SetUpNewInterstitial();
-  return true;
-}
-
-bool AdEngineIOS::IsShowingFullScreenAd() {
-  return interstitial_state_.showing;
-}
-
-
-// private
-
-void AdEngineIOS::SetUpNewInterstitial() {
+void AdEngineIOS::PrepareFullScreenAd() {
   assert(publisher_id_.length());
   [interstitial_ release];
   interstitial_ = [[GADInterstitial alloc] init];
@@ -115,4 +98,17 @@ void AdEngineIOS::SetUpNewInterstitial() {
   GADRequest *request = [GADRequest request];
   request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
   [interstitial_ loadRequest:request];
+}
+
+bool AdEngineIOS::ShowFullScreenAd() {
+  if (!interstitial_.isReady) {
+    return false;
+  }
+  [interstitial_ presentFromRootViewController:root_view_controller_];
+  PrepareFullScreenAd();
+  return true;
+}
+
+bool AdEngineIOS::IsShowingFullScreenAd() {
+  return interstitial_state_.showing;
 }

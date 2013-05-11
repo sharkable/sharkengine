@@ -26,12 +26,11 @@ class AdEngineIOS : public AdEngine {
   void SetPublisherId(std::string publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
+  void PrepareFullScreenAd();
   bool ShowFullScreenAd();
   bool IsShowingFullScreenAd();
 
  private:
-  void SetUpNewInterstitial();
-
   std::string publisher_id_;
   GADBannerView *banner_view_;
   GADInterstitial *interstitial_;
