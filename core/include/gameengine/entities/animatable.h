@@ -35,7 +35,7 @@ class Animatable : public ViewEntity {
 
   // Accessors
   AnimatableDelegate *delegate() { return delegate_; }
-  void set_delegate(AnimatableDelegate *delegate) { delegate_ = delegate; }
+  void set_animatable_delegate(AnimatableDelegate *delegate) { delegate_ = delegate; }
   GamePoint position() { return position_; }
   void set_position(GamePoint position) { position_ = position; }
   double angle() { return angle_; }
