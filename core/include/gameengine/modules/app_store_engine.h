@@ -9,10 +9,16 @@
 #ifndef GAMEENGINE_APPSTOREENGINE_H_
 #define GAMEENGINE_APPSTOREENGINE_H_
 
+class AppStoreEngineDelegate {
+ public:
+  virtual void UpgradeSucceeded() = 0;
+};
+
 class AppStoreEngine {
  public:
   virtual void AskForRate() = 0;
-  virtual void AskForUpgrade(std::string app_name, std::string app_id) = 0;
+  virtual void AskForUpgrade(std::string app_name, std::string app_id,
+                             AppStoreEngineDelegate *delegate) = 0;
 };
 
 #endif

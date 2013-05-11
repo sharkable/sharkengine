@@ -21,6 +21,7 @@
   NSString *_appId;
   SKProductsRequest *_request;
   SKProduct *_product;
+  AppStoreEngineDelegate *_delegate;  // weak
 }
 
 - (void)upgradeApp;
@@ -48,14 +49,16 @@
   [super dealloc];
 }
 
-- (void)askForUpgradeAppNamed:(NSString *)appName purchaseId:(NSString *)purchaseId {
+- (void)askForUpgradeAppNamed:(NSString *)appName
+    purchaseId:(NSString *)purchaseId
+    delegate:(AppStoreEngineDelegate *)delegate {
+  _delegate = delegate;
   if (![SKPaymentQueue canMakePayments]) {
     [[[[UIAlertView alloc] initWithTitle:@"Cannot upgrade"
                                  message:@"You aren't set up to do purchases on this device."
                                 delegate:nil
                        cancelButtonTitle:@"OK"
                        otherButtonTitles:nil] autorelease] show];
-    
     return;
   }
   
@@ -96,7 +99,22 @@
     switch (transaction.transactionState) {
       case SKPaymentTransactionStatePurchased:
       case SKPaymentTransactionStateRestored:
-        NSLog(@"purchased");
+        if (_delegate) {
+          _delegate->UpgradeSucceeded();
+          [[[[UIAlertView alloc] initWithTitle:@"Congrats!"
+                                       message:@"No more ads. Thanks for your support!"
+                                      delegate:nil
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil] autorelease] show];
+        } else {
+          NSString *message = @"There was a problem upgrading the app. Please try again and choose "
+              "\"Restore existing purchase\". You won't be charged again.";
+          [[[[UIAlertView alloc] initWithTitle:@"Error"
+                                       message:message
+                                      delegate:nil
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil] autorelease] show];
+        }
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         break;
       case SKPaymentTransactionStateFailed:
@@ -181,7 +199,9 @@ void AppStoreEngineIOS::AskForRate() {
   [Appirater rateApp];
 }
 
-void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string purchase_id) {
+void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string purchase_id,
+                                      AppStoreEngineDelegate *delegate) {
   [popup_handler_ askForUpgradeAppNamed:TypeUtil::string2NSString(app_name)
-                             purchaseId:TypeUtil::string2NSString(purchase_id)];
+                             purchaseId:TypeUtil::string2NSString(purchase_id)
+                               delegate:delegate];
 }

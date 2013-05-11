@@ -19,7 +19,8 @@ class AppStoreEngineIOS : public AppStoreEngine {
   ~AppStoreEngineIOS();
 
   void AskForRate();
-  void AskForUpgrade(std::string app_name, std::string purchase_id);
+  void AskForUpgrade(std::string app_name, std::string purchase_id,
+                     AppStoreEngineDelegate *delegate);
 
  private:
   PopupHandler *popup_handler_;
