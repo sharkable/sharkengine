@@ -136,6 +136,7 @@
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads {
 }
 
+
 // SKProductsRequestDelegate
 
 - (void)productsRequest:(SKProductsRequest *)request
@@ -143,6 +144,7 @@
   NSArray *products = response.products;
   if (products.count < 1) {
     [self showFailure:nil];
+    return;
   }
   [_product release];
   _product = [[response.products objectAtIndex:0] retain];
