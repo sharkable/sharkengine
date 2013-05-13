@@ -25,7 +25,10 @@ void Positions::LoadFile(AssetReader &asset_reader) {
   char *data = new char[asset_reader.Size() + 1];
   asset_reader.Read(data, sizeof(char), asset_reader.Size());
   data[asset_reader.Size()] = '\0';
-  assert(!doc.Parse(data));
+  bool successful_parse = !doc.Parse(data);
+  if (!successful_parse) {
+    assert(false);
+  }
   delete data;
 
   tinyxml2::XMLNode *positionsNode = doc.FirstChild();
