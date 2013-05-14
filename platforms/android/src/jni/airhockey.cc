@@ -1,6 +1,6 @@
 
 extern "C" {
-  void init();
+  void init(int width, int height);
   void update();
   void touch(int action, double x, double y);
 }
@@ -16,7 +16,7 @@ extern "C" {
 
 static sp<GameEngine> game_engine_;
 
-void init() {
+void init(int width, int height) {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glDepthMask(false);
   glEnable(GL_CULL_FACE);
@@ -27,11 +27,12 @@ void init() {
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
   // TODO This shouldn't be hardcoded. Rethink this anyways.
-  Texture2D::SetScreenHeight(960);
 
   game_engine_.reset(new GameEngine());
 
-  game_engine_->SetScreenSize(screen_size_make(640, 960), game_size_make(768, 1024));
+  Texture2D::SetScreenHeight(height);
+  game_engine_->set_screen_size(screen_size_make(width, height));
+
   game_engine_->set_platform_type(kPlatformTypePhone);
   game_engine_->set_platform_resolution(kPlatformResolutionHigh);
 
@@ -51,7 +52,7 @@ void update() {
   game_engine_->Update();
 
     int backingWidth_ = 640;
-    int backingHeight_ = 960;
+    int backingHeight_ = 1138;
 
     glViewport(0, 0, backingWidth_, backingHeight_);
 

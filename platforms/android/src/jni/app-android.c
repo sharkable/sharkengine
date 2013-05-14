@@ -53,7 +53,7 @@ static void loadAPK (const char* apkPath) {
 
 /* Call to initialize the graphics state */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv * env, jclass cls, jstring apkPath)
+Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv * env, jclass cls, jstring apkPath, int w, int h)
 {
   s_log("Here in nativeInit()");
   const char* str;
@@ -66,17 +66,18 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv * env, jclass cls,
   gAppAlive    = 1;
   sDemoStopped = 0;
   sTimeOffsetInit = 0;
-  init();
+  init(w, h);
 }
 
-JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeResize( JNIEnv*  env, jobject  thiz, jint w, jint h )
-{
-    sWindowWidth  = w;
-    sWindowHeight = h;
-    s_log("resize w=%d h=%d", w, h);
-//    game_engine_->Update();
-}
+// JNIEXPORT void JNICALL
+// Java_com_sharkable_sharkengine_DemoRenderer_nativeResize( JNIEnv*  env, jobject  thiz, jint w, jint h )
+// {
+//     sWindowWidth  = w;
+//     sWindowHeight = h;
+//     setScreenSize(w, h);
+//     s_log("resize w=%d h=%d", w, h);
+// //    game_engine_->Update();
+// }
 
 /* Call to finalize the graphics state */
 JNIEXPORT void JNICALL

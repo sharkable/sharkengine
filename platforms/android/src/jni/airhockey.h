@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void init();
+void init(int width, int height);
 void update();
 void touch(int action, double x, double y);
 
