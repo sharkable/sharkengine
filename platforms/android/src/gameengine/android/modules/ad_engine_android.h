@@ -14,8 +14,10 @@
 class AdEngineAndroid : public AdEngine {
  public:
   // AdEngine
+  void SetPublisherId(std::string publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
+  void PrepareFullScreenAd();
   bool ShowFullScreenAd();
   bool IsShowingFullScreenAd();
 };

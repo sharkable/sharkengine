@@ -10,7 +10,12 @@
 
 #include "gameengine/coordinate_types.h"
 
+using std::string;
+
 // AdEngine
+
+void AdEngineAndroid::SetPublisherId(std::string publisher_id) {
+}
 
 // TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
 // to the GameEngine.
@@ -18,6 +23,9 @@ void AdEngineAndroid::SetAdAtPoint(ScreenPoint point) {
 }
 
 void AdEngineAndroid::RemoveAd() {
+}
+
+void AdEngineAndroid::PrepareFullScreenAd() {
 }
 
 bool AdEngineAndroid::ShowFullScreenAd() {
