@@ -32,6 +32,7 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/core/src/gameengine/engine_view.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/animatable.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/button.cc \
+    $(SHARKENGINE_HOME)/core/src/gameengine/entities/composite_entity.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/multi_select.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/simple_item.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/game_engine.cc \
