@@ -14,6 +14,7 @@
 #import "gameengine/ios/EAGLView.h"
 #import "gameengine/ios/GameTimer.h"
 #import "gameengine/ios/GameTouchWindow.h"
+#import "gameengine/ios/LocalStoreIOS.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -45,6 +46,7 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_platform_resolution(platform_resolution);
 
+    gameEngine_->set_local_store(sp<LocalStore>(new LocalStoreIOS()));
     gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
     gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new AppStoreEngineIOS()));

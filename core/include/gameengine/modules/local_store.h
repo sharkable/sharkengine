@@ -11,18 +11,17 @@
 
 #include <string>
 
-namespace LocalStore {
-
-bool HasEntryForKey(std::string key);
-bool BoolForKey(std::string key);
-void SetBool(bool value, std::string key);
-int IntegerForKey(std::string key);
-void SetInteger(int value, std::string key);
-double DoubleForKey(std::string key);
-void SetDouble(double value, std::string key);
-std::string StringForKey(std::string key);
-void SetString(std::string value, std::string key);
-
-}
+class LocalStore {
+ public:
+  virtual bool HasEntryForKey(std::string key) = 0;
+  virtual bool BoolForKey(std::string key) = 0;
+  virtual void SetBool(bool value, std::string key) = 0;
+  virtual int IntegerForKey(std::string key) = 0;
+  virtual void SetInteger(int value, std::string key) = 0;
+  virtual double DoubleForKey(std::string key) = 0;
+  virtual void SetDouble(double value, std::string key) = 0;
+  virtual std::string StringForKey(std::string key) = 0;
+  virtual void SetString(std::string value, std::string key) = 0;
+};
 
 #endif
