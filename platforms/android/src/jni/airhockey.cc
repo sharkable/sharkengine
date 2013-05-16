@@ -1,6 +1,9 @@
 
+#include <jni.h>
+
+
 extern "C" {
-  void init(int width, int height);
+  void init(JNIEnv *env, jobject local_store_java, int width, int height);
   void update();
   void touch(int action, double x, double y);
 }
@@ -11,12 +14,13 @@ extern "C" {
 #include "gameengine/android/modules/ad_engine_android.h"
 #include "gameengine/android/modules/analytics_engine_android.h"
 #include "gameengine/android/modules/game_engine_factory_android.h"
+#include "gameengine/android/modules/local_store_android.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
 
 static sp<GameEngine> game_engine_;
 
-void init(int width, int height) {
+void init(JNIEnv *env, jobject local_store_java, int width, int height) {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glDepthMask(false);
   glEnable(GL_CULL_FACE);
@@ -38,6 +42,9 @@ void init(int width, int height) {
 
   sp<GameEngineFactory> factory = sp<GameEngineFactory>(new GameEngineFactoryAndroid());
   game_engine_->set_factory(factory);
+
+  sp<LocalStore> local_store = sp<LocalStore>(new LocalStoreAndroid(env, local_store_java));
+  game_engine_->set_local_store(local_store);
 
   sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid());
   game_engine_->set_ad_engine(ad_engine);

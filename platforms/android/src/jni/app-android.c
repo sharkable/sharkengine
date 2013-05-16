@@ -14,8 +14,6 @@
 int   gAppAlive   = 1;
 struct zip* APKArchive;
 
-static int  sWindowWidth  = 320;
-static int  sWindowHeight = 960;
 static int  sDemoStopped  = 0;
 static long sTimeOffset   = 0;
 static int  sTimeOffsetInit = 0;
@@ -53,20 +51,21 @@ static void loadAPK (const char* apkPath) {
 
 /* Call to initialize the graphics state */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv * env, jclass cls, jstring apkPath, int w, int h)
+Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz, jobject local_store_java, jstring apkPath, int w, int h)
 {
   s_log("Here in nativeInit()");
-  const char* str;
+  const char *str;
   jboolean isCopy;
   str = (*env)->GetStringUTFChars(env, apkPath, &isCopy);
   s_log("path: %s", str);
   loadAPK(str);
+  (*env)->ReleaseStringUTFChars(env, apkPath, str);
 
 //  importGLInit();
   gAppAlive    = 1;
   sDemoStopped = 0;
   sTimeOffsetInit = 0;
-  init(w, h);
+  init(env, local_store_java, w, h);
 }
 
 // JNIEXPORT void JNICALL
@@ -81,14 +80,14 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv * env, jclass cls,
 
 /* Call to finalize the graphics state */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeDone( JNIEnv*  env )
+Java_com_sharkable_sharkengine_DemoRenderer_nativeDone(JNIEnv *env, jobject thiz)
 {
 //    appDeinit();
 //    importGLDeinit();
 }
 
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch( JNIEnv*  env, jobject  thiz, jint action, jdouble x, jdouble y)
+Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobject thiz, jint action, jdouble x, jdouble y)
 {
   s_log("touch: %d %f,%f", action, x, y);
   touch(action, x, y);
@@ -98,7 +97,7 @@ Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch( JNIEnv*  env, jobj
  * stop as soon as possible.
  */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause( JNIEnv*  env )
+Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause(JNIEnv *env, jobject thiz)
 {
     sDemoStopped = !sDemoStopped;
     if (sDemoStopped) {
@@ -114,7 +113,7 @@ Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause( JNIEnv*  env )
 
 /* Call to render the next GL frame */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeRender( JNIEnv*  env )
+Java_com_sharkable_sharkengine_DemoRenderer_nativeRender(JNIEnv *env, jobject thiz)
 {
     long   curTime;
 
