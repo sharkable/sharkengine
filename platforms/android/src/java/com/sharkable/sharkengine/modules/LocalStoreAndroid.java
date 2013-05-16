@@ -1,46 +1,51 @@
 package com.sharkable.sharkengine.modules;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 public class LocalStoreAndroid {
+  private SharedPreferences mPreferences;
+
+  public LocalStoreAndroid(Context context) {
+    // TODO use the app name for the name here.
+    mPreferences = context.getSharedPreferences("com.sharkable.sharkengine", Context.MODE_PRIVATE);
+  }
+
   public boolean hasEntryForKey(String key) {
-    Log.d("Sharkable", "hasEntryForKey: " + key);
-    return false;
+    return mPreferences.contains(key);
   }
 
   public boolean boolForKey(String key) {
-    Log.d("Sharkable", "boolForKey: " + key);
-    return false;
+    return mPreferences.getBoolean(key, false);
   }
 
   public void setBool(boolean value, String key) {
-    Log.d("Sharkable", "setBool: " + value + ", " + key);
+    mPreferences.edit().putBoolean(key, value).apply();
   }
 
   public int integerForKey(String key) {
-    Log.d("Sharkable", "integerForKey: " + key);
-    return 0;
+    return mPreferences.getInt(key, 0);
   }
 
   public void setInteger(int value, String key) {
-    Log.d("Sharkable", "setInteger: " + value + ", " + key);
+    mPreferences.edit().putInt(key, value).apply();
   }
 
   public double doubleForKey(String key) {
-    Log.d("Sharkable", "doubleForKey: " + key);
-    return 0;
+    return mPreferences.getFloat(key, 0.0f);
   }
 
   public void setDouble(double value, String key) {
-    Log.d("Sharkable", "setDouble: " + value + ", " + key);
+    // TODO do I wanna use floats or doubles generally, in this game engine?
+    mPreferences.edit().putFloat(key, (float)value).apply();
   }
 
   public String stringForKey(String key) {
-    Log.d("Sharkable", "stringForKey: " + key);
-    return "";
+    return mPreferences.getString(key, "");
   }
 
   void setString(String value, String key) {
-    Log.d("Sharkable", "setString: " + value + ", " + key);
+    mPreferences.edit().putString(key, value).apply();
   }
 }

@@ -91,10 +91,11 @@ class DemoGLSurfaceView extends GLSurfaceView {
 class DemoRenderer implements GLSurfaceView.Renderer {
   private Context mContext;
   private boolean mDidInit = false;
-  private LocalStoreAndroid mLocalStoreJava = new LocalStoreAndroid();
+  private LocalStoreAndroid mLocalStoreJava;
 
   public DemoRenderer(Context context) {
     mContext = context;
+    mLocalStoreJava = new LocalStoreAndroid(context);
   }
 
   public void onSurfaceCreated(GL10 gl, EGLConfig config) {
