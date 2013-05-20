@@ -27,7 +27,7 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/asset_reader_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/game_engine_factory_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/local_store_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/soundengine/SoundPlayer.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_player.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/animation.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/engine_view.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/animatable.cc \
@@ -105,6 +105,6 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/libzip/zip_unchange_archive.c \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/libzip/zip_unchange_data.c
 
-LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog -lz
+LOCAL_LDLIBS := -lGLESv1_CM -lOpenSLES -ldl -llog -lz
 
 include $(BUILD_SHARED_LIBRARY)

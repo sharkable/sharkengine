@@ -6,6 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_Android.h>
+
 #include "gameengine/modules/sound_player.h"
 
 class SoundPlayerImpl : public SoundPlayer {
@@ -27,5 +30,9 @@ class SoundPlayerImpl : public SoundPlayer {
   void stopSong();
   void setMusicOn(bool on);
   void setSoundEffectsOn(bool on);
-};
 
+ private:
+   SLObjectItf engine_object_;
+   SLEngineItf engine_engine_;
+   SLObjectItf output_mix_object_;
+};
