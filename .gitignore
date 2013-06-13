@@ -8,7 +8,7 @@ xcuserdata*
 
 project.xcworkspace*
 
-tools/bin
+tools/png2tx
 
 platforms/android/build/bin
 
