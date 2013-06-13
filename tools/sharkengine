@@ -1,0 +1,52 @@
+#!/bin/bash
+
+export SHARKENGINE_APP_HOME=`pwd`
+
+function error {
+  echo "Error. Usage: \"sharkengine [build | install] [ios | android]\""
+}
+
+function build_ios {
+  echo "building iOS: $SHARKENGINE_APP_HOME"
+  $SHARKENGINE_HOME/platforms/ios/build/build.sh
+}
+
+function install_ios {
+  echo "Error. Install iOS using Xcode."  
+}
+
+function build_android {
+  echo "building Android: $SHARKENGINE_APP_HOME"  
+  $SHARKENGINE_HOME/platforms/android/build/build.sh
+}
+
+function install_android {
+  echo "Installing Android."
+  $SHARKENGINE_HOME/platforms/android/build/install.sh  
+}
+
+if [ "$1" = "build" ]
+then
+  if [ "$2" = "ios" ]
+  then
+    build_ios
+  elif [ "$2" = "android" ]
+  then
+    build_android
+  else
+    error
+  fi
+elif [ $1 = "install" ]
+then
+  if [ "$2" = "ios" ]
+  then
+    install_ios
+  elif [ "$2" = "android" ]
+  then
+    install_android
+  else
+    error
+  fi
+else
+  error
+fi
