@@ -105,6 +105,6 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/libzip/zip_unchange_archive.c \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/libzip/zip_unchange_data.c
 
-LOCAL_LDLIBS := -lGLESv1_CM -lOpenSLES -ldl -llog -lz
+LOCAL_LDLIBS := -lGLESv1_CM -lOpenSLES -landroid -ldl -llog -lz
 
 include $(BUILD_SHARED_LIBRARY)

@@ -3,12 +3,14 @@
 
 
 extern "C" {
-  void init(JNIEnv *env, jobject local_store_java, int width, int height);
+  void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height);
   void update();
   void touch(int action, double x, double y);
 }
 
 
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
 #include <GLES/gl.h>
 
 #include "gameengine/android/modules/ad_engine_android.h"
@@ -17,10 +19,12 @@ extern "C" {
 #include "gameengine/android/modules/local_store_android.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
+#include "soundengine/sound_player.h"
+
 
 static sp<GameEngine> game_engine_;
 
-void init(JNIEnv *env, jobject local_store_java, int width, int height) {
+void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height) {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glDepthMask(false);
   glEnable(GL_CULL_FACE);
@@ -51,6 +55,11 @@ void init(JNIEnv *env, jobject local_store_java, int width, int height) {
 
   sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid());
   game_engine_->set_analytics_engine(analytics_engine);
+
+  AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
+  assert(NULL != mgr);
+  // TODO casting is bad
+  ((SoundPlayerImpl *)SoundPlayer::instance())->setAssetManager(mgr);
 
   sharkengine_init(game_engine_);
 }

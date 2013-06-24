@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.Log;
@@ -116,7 +117,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mLocalStoreJava, apkFilePath, w, h);
+    nativeInit(mLocalStoreJava, mContext.getAssets(), apkFilePath, w, h);
     mDidInit = true;
   }
 
@@ -124,7 +125,8 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     nativeRender();
   }
 
-  private native void nativeInit(LocalStoreAndroid localStoreJava, String apkPath, int w, int h);
+  private native void nativeInit(LocalStoreAndroid localStoreJava, AssetManager assetManager,
+                                 String apkPath, int w, int h);
   private native void nativeRender();
   private native void nativeDone();
 }

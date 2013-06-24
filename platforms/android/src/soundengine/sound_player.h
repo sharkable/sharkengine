@@ -9,6 +9,8 @@
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
 
+#include <android/asset_manager.h>
+
 #include "gameengine/modules/sound_player.h"
 
 class SoundPlayerImpl : public SoundPlayer {
@@ -31,8 +33,17 @@ class SoundPlayerImpl : public SoundPlayer {
   void setMusicOn(bool on);
   void setSoundEffectsOn(bool on);
 
+  void setAssetManager(AAssetManager *mgr) { mgr_ = mgr; }
+
  private:
+   AAssetManager *mgr_;
+   
    SLObjectItf engine_object_;
    SLEngineItf engine_engine_;
    SLObjectItf output_mix_object_;
+
+   // file descriptor player interfaces
+   SLObjectItf fdPlayerObject;
+   SLPlayItf fdPlayerPlay;
+   SLVolumeItf fdPlayerVolume;   
 };
