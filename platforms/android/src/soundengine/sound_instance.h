@@ -16,8 +16,12 @@ class SoundInstance {
  public:
   SoundInstance(SLEngineItf engine_engine, SLDataSource audioSrc, SLDataSink data_sink);
   void Play(float volume, float position);
+  void Stop();
+
+  bool is_busy() { return is_busy_; }
 
  private:
+  bool is_busy_;
   // file descriptor player interfaces
   SLObjectItf fdPlayerObject;
   SLPlayItf fdPlayerPlay;

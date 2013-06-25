@@ -69,7 +69,7 @@ void SoundPlayerImpl::initialize() {
   assert(SL_RESULT_SUCCESS == result);
   
   // configure audio sink
-  SLDataLocator_OutputMix loc_outmix = {SL_DATALOCATOR_OUTPUTMIX, output_mix_object_};
+  loc_outmix = {SL_DATALOCATOR_OUTPUTMIX, output_mix_object_};
   audioSnk = {&loc_outmix, NULL};
   
   sounds_[kSoundScore] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/score.wav");

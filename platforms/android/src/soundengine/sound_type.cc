@@ -29,7 +29,9 @@ struct SoundInstanceNode {
   }
 };
 
-SoundType::SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SLDataSink data_sink, std::string filename) {
+SoundType::SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SLDataSink data_sink,
+    std::string filename) {
+  engine_engine_ = engine_engine;
   data_sink_ = data_sink;
 
   // SLresult result;
@@ -59,9 +61,19 @@ SoundType::SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SL
   // assert(SL_RESULT_SUCCESS == result);
   // (void)result;
   sound_instance_list_head_ = new SoundInstanceNode();
-  sound_instance_list_head_->value = new SoundInstance(engine_engine, audioSrc, data_sink);
+  sound_instance_list_head_->value = new SoundInstance(engine_engine, audioSrc, data_sink_);
 }
 
 void SoundType::Play(float volume, float position) {
-  sound_instance_list_head_->value->Play(volume, position);
+  SoundInstanceNode *non_busy_node = sound_instance_list_head_;
+  while (non_busy_node->next && non_busy_node->value->is_busy()) {
+    non_busy_node = non_busy_node->next;
+  }
+  if (non_busy_node->value->is_busy()) {
+    non_busy_node->next = new SoundInstanceNode();
+    non_busy_node = non_busy_node->next;
+    non_busy_node->value = new SoundInstance(engine_engine_, audioSrc, data_sink_);
+    s_log("CREATING NEW NODE!");
+  }
+  non_busy_node->value->Play(volume, position);
 }

@@ -46,6 +46,7 @@ class SoundPlayerImpl : public SoundPlayer {
 
    std::map<Sound, SoundType *> sounds_;
 
+   SLDataLocator_OutputMix loc_outmix;
    SLDataSink audioSnk;
    SLObjectItf engine_object_;
    SLEngineItf engine_engine_;

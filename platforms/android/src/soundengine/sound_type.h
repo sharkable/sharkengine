@@ -21,6 +21,7 @@ class SoundType {
   void Play(float volume, float position);
 
  private:
+  SLEngineItf engine_engine_;
   SLDataSink data_sink_;
   SLDataLocator_AndroidFD loc_fd;
   SLDataFormat_MIME format_mime;
