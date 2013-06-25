@@ -43,10 +43,6 @@ SoundInstance::SoundInstance(SLEngineItf engine_engine, SLDataSource audioSrc, S
   assert(SL_RESULT_SUCCESS == result);
   (void)result;
 
-  // get the seek interface
-  result = (*fdPlayerObject)->GetInterface(fdPlayerObject, SL_IID_SEEK, &fdPlayerSeek);
-  assert(SL_RESULT_SUCCESS == result);
-  
   // get the volume interface
   result = (*fdPlayerObject)->GetInterface(fdPlayerObject, SL_IID_VOLUME, &fdPlayerVolume);
   assert(SL_RESULT_SUCCESS == result);

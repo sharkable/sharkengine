@@ -25,7 +25,6 @@ class SoundInstance {
   // file descriptor player interfaces
   SLObjectItf fdPlayerObject;
   SLPlayItf fdPlayerPlay;
-  SLSeekItf fdPlayerSeek;
   SLVolumeItf fdPlayerVolume;
 };
 
