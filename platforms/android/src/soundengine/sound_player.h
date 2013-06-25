@@ -1,17 +1,23 @@
 //
-//  SoundPlayer.h
+//  sound_player.h
 //  SoundEngine
 //
 //  Created by Jon Sharkey on 2013-03-21.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include <SLES/OpenSLES.h>
-#include <SLES/OpenSLES_Android.h>
+// TODO rename this file... depending on SoundEngine redesign.
+#ifndef SOUNDENGINE_SOUNDPLAYERIMPL_H
+#define SOUNDENGINE_SOUNDPLAYERIMPL_H
 
 #include <android/asset_manager.h>
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_Android.h>
+#include <map>
 
 #include "gameengine/modules/sound_player.h"
+
+#include "soundengine/sound_type.h"
 
 class SoundPlayerImpl : public SoundPlayer {
  public:
@@ -37,13 +43,13 @@ class SoundPlayerImpl : public SoundPlayer {
 
  private:
    AAssetManager *mgr_;
-   
+
+   std::map<Sound, SoundType *> sounds_;
+
+   SLDataSink audioSnk;
    SLObjectItf engine_object_;
    SLEngineItf engine_engine_;
    SLObjectItf output_mix_object_;
-
-   // file descriptor player interfaces
-   SLObjectItf fdPlayerObject;
-   SLPlayItf fdPlayerPlay;
-   SLVolumeItf fdPlayerVolume;   
 };
+
+#endif
