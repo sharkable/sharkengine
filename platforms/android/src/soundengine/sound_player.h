@@ -39,15 +39,15 @@ class SoundPlayerImpl : public SoundPlayer {
   void setMusicOn(bool on);
   void setSoundEffectsOn(bool on);
 
-  void setAssetManager(AAssetManager *mgr) { mgr_ = mgr; }
+  void setAssetManager(AAssetManager *asset_manager) { asset_manager_ = asset_manager; }
 
  private:
-   AAssetManager *mgr_;
+   AAssetManager *asset_manager_;
 
    std::map<Sound, SoundType *> sounds_;
 
-   SLDataLocator_OutputMix loc_outmix;
-   SLDataSink audioSnk;
+   SLDataLocator_OutputMix loc_outmix_;
+   SLDataSink audio_sink_;
    SLObjectItf engine_object_;
    SLEngineItf engine_engine_;
    SLObjectItf output_mix_object_;

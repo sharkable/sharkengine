@@ -69,18 +69,27 @@ void SoundPlayerImpl::initialize() {
   assert(SL_RESULT_SUCCESS == result);
   
   // configure audio sink
-  loc_outmix = {SL_DATALOCATOR_OUTPUTMIX, output_mix_object_};
-  audioSnk = {&loc_outmix, NULL};
+  loc_outmix_ = {SL_DATALOCATOR_OUTPUTMIX, output_mix_object_};
+  audio_sink_ = {&loc_outmix_, NULL};
   
-  sounds_[kSoundScore] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/score.wav");
-  sounds_[kSoundScoreFinal] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/score_final.wav");
-  sounds_[kSoundPaddleHit] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/paddle_hit.wav");
-  sounds_[kSoundPuckRinkBounce] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/puck_rink_bounce.wav");
-  sounds_[kSoundTwoPuckHit] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/puck_puck_hit.wav");
-  sounds_[kSoundButton] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/beep.wav");
-  sounds_[kSoundMultiSelect] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/button_click.wav");
-  sounds_[kSoundGetReady] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/get_ready.wav");
-  sounds_[kSoundStart] = new SoundType(mgr_, engine_engine_, audioSnk, "sounds/start.wav");
+  sounds_[kSoundScore] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/score.wav");
+  sounds_[kSoundScoreFinal] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/score_final.wav");
+  sounds_[kSoundPaddleHit] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/paddle_hit.wav");
+  sounds_[kSoundPuckRinkBounce] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/puck_rink_bounce.wav");
+  sounds_[kSoundTwoPuckHit] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/puck_puck_hit.wav");
+  sounds_[kSoundButton] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/beep.wav");
+  sounds_[kSoundMultiSelect] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/button_click.wav");
+  sounds_[kSoundGetReady] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/get_ready.wav");
+  sounds_[kSoundStart] =
+      new SoundType(asset_manager_, engine_engine_, audio_sink_, "sounds/start.wav");
 }
 
 bool SoundPlayerImpl::setGlobalVolume(float volume) {
