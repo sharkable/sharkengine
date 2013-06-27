@@ -8,58 +8,69 @@
 
 #include "soundengine/sound_instance.h"
 
-void play_callback(SLPlayItf caller, void *pContext, SLuint32 event) {
+void play_callback(SLPlayItf sl_caller_itf, void *context, SLuint32 event) {
   assert(event == SL_PLAYEVENT_HEADATEND);
-  ((SoundInstance *)pContext)->Stop();
+  ((SoundInstance *)context)->Stop();
 }
 
-SoundInstance::SoundInstance(SLEngineItf engine_engine, SLDataSource audioSrc, SLDataSink data_sink) {
-  is_busy_ = false;
+SoundInstance::SoundInstance()
+    : is_busy_(false),
+      sl_player_object_(NULL),
+      sl_play_itf_(NULL),
+      sl_volume_itf_(NULL) {
+}
 
+SoundInstance::~SoundInstance() {
+  (*sl_player_object_)->Destroy(sl_player_object_);
+}
+
+void SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source,
+                         SLDataSink sl_data_sink) {
+  assert(NULL == sl_player_object_);
   SLresult result;
 
   // create audio player
-  const SLInterfaceID ids_rename_this[3] = {SL_IID_SEEK, SL_IID_MUTESOLO, SL_IID_VOLUME};
-  const SLboolean req_rename_this[3] = {SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE};
-  fdPlayerObject = NULL;
-  result = (*engine_engine)->CreateAudioPlayer(engine_engine, &fdPlayerObject, &audioSrc, &data_sink,
-          3, ids_rename_this, req_rename_this);
-        s_log("RESULT: %d", result);
+  const SLInterfaceID interface_ids[3] = {SL_IID_SEEK, SL_IID_MUTESOLO, SL_IID_VOLUME};
+  const SLboolean interfaces_required[3] = {SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE};
+  result = (*sl_engine_itf)->CreateAudioPlayer(sl_engine_itf, &sl_player_object_, &sl_audio_source,
+                                               &sl_data_sink, 3, interface_ids,
+                                               interfaces_required);
   assert(SL_RESULT_SUCCESS == result);
-  (void)result;
-  
-  // realize the player
-  result = (*fdPlayerObject)->Realize(fdPlayerObject, SL_BOOLEAN_FALSE);
-  assert(SL_RESULT_SUCCESS == result);
-  (void)result;
-  
-  // get the play interface
-  result = (*fdPlayerObject)->GetInterface(fdPlayerObject, SL_IID_PLAY, &fdPlayerPlay);
-  assert(SL_RESULT_SUCCESS == result);
-  (void)result;
-  (*fdPlayerPlay)->RegisterCallback(fdPlayerPlay, play_callback, this);
 
-  result = (*fdPlayerPlay)->SetCallbackEventsMask(fdPlayerPlay, SL_PLAYEVENT_HEADATEND);  
+  // realize the player
+  result = (*sl_player_object_)->Realize(sl_player_object_, SL_BOOLEAN_FALSE);
   assert(SL_RESULT_SUCCESS == result);
-  (void)result;
+
+  // get the play interface
+  result = (*sl_player_object_)->GetInterface(sl_player_object_, SL_IID_PLAY, &sl_play_itf_);
+  assert(SL_RESULT_SUCCESS == result);
 
   // get the volume interface
-  result = (*fdPlayerObject)->GetInterface(fdPlayerObject, SL_IID_VOLUME, &fdPlayerVolume);
+  result = (*sl_player_object_)->GetInterface(sl_player_object_, SL_IID_VOLUME, &sl_volume_itf_);
   assert(SL_RESULT_SUCCESS == result);
-  (void)result;
+
+  // register a callback
+  result = (*sl_play_itf_)->SetCallbackEventsMask(sl_play_itf_, SL_PLAYEVENT_HEADATEND);
+  assert(SL_RESULT_SUCCESS == result);
+  (*sl_play_itf_)->RegisterCallback(sl_play_itf_, play_callback, this);
 }
 
 void SoundInstance::Play(float volume, float position) {
+  assert(NULL != sl_player_object_);
   assert(!is_busy_);
+
   is_busy_ = true;
 
-  SLresult result;
-  result = (*fdPlayerPlay)->SetPlayState(fdPlayerPlay, SL_PLAYSTATE_PLAYING);
+  SLresult result = (*sl_play_itf_)->SetPlayState(sl_play_itf_, SL_PLAYSTATE_PLAYING);
   assert(SL_RESULT_SUCCESS == result);
+  (void)result;
 }
 
 void SoundInstance::Stop() {
-  SLresult result = (*fdPlayerPlay)->SetPlayState(fdPlayerPlay, SL_PLAYSTATE_STOPPED);
+  assert(NULL != sl_player_object_);
+
+  SLresult result = (*sl_play_itf_)->SetPlayState(sl_play_itf_, SL_PLAYSTATE_STOPPED);
   assert(SL_RESULT_SUCCESS == result);
+
   is_busy_ = false;
 }

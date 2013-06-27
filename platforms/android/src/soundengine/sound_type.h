@@ -21,12 +21,14 @@ class SoundType {
   void Play(float volume, float position);
 
  private:
+  SoundInstanceNode *sound_instance_list_head_;
+
+  // OpenSL ES objects
   SLEngineItf engine_engine_;
   SLDataSink data_sink_;
   SLDataLocator_AndroidFD loc_fd;
   SLDataFormat_MIME format_mime;
   SLDataSource audioSrc;
-  SoundInstanceNode *sound_instance_list_head_;
 };
 
 #endif

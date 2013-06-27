@@ -10,11 +10,13 @@
 #define SOUNDENGINE_SOUNDINSTANCE_H
 
 #include <SLES/OpenSLES.h>
-#include <SLES/OpenSLES_Android.h>
 
 class SoundInstance {
  public:
-  SoundInstance(SLEngineItf engine_engine, SLDataSource audioSrc, SLDataSink data_sink);
+  SoundInstance();
+  ~SoundInstance();
+
+  void Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source, SLDataSink sl_data_sink);
   void Play(float volume, float position);
   void Stop();
 
@@ -22,10 +24,11 @@ class SoundInstance {
 
  private:
   bool is_busy_;
-  // file descriptor player interfaces
-  SLObjectItf fdPlayerObject;
-  SLPlayItf fdPlayerPlay;
-  SLVolumeItf fdPlayerVolume;
+
+  // OpenSL ES objects
+  SLObjectItf sl_player_object_;
+  SLPlayItf sl_play_itf_;
+  SLVolumeItf sl_volume_itf_;
 };
 
 #endif
