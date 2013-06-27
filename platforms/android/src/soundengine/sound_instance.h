@@ -16,7 +16,8 @@ class SoundInstance {
   SoundInstance();
   ~SoundInstance();
 
-  void Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source, SLDataSink sl_data_sink);
+  SoundInstance *Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source,
+                      SLDataSink sl_data_sink);
   void Play(float volume, float position);
   void Stop();
 

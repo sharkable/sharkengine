@@ -24,8 +24,8 @@ SoundInstance::~SoundInstance() {
   (*sl_player_object_)->Destroy(sl_player_object_);
 }
 
-void SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source,
-                         SLDataSink sl_data_sink) {
+SoundInstance *SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source,
+                                   SLDataSink sl_data_sink) {
   assert(NULL == sl_player_object_);
   SLresult result;
 
@@ -53,6 +53,8 @@ void SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source
   result = (*sl_play_itf_)->SetCallbackEventsMask(sl_play_itf_, SL_PLAYEVENT_HEADATEND);
   assert(SL_RESULT_SUCCESS == result);
   (*sl_play_itf_)->RegisterCallback(sl_play_itf_, play_callback, this);
+
+  return this;
 }
 
 void SoundInstance::Play(float volume, float position) {
