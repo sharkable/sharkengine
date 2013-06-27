@@ -17,18 +17,21 @@ struct SoundInstanceNode;
 
 class SoundType {
  public:
-  SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SLDataSink data_sink, std::string filename);
+  SoundType *Init(AAssetManager *asset_manager, SLEngineItf sl_engine_itf, SLDataSink sl_data_sink,
+                  std::string filename);
   void Play(float volume, float position);
 
  private:
+  void AddSoundInstance(SoundInstanceNode **node);
+
   SoundInstanceNode *sound_instance_list_head_;
 
   // OpenSL ES objects
-  SLEngineItf engine_engine_;
-  SLDataSink data_sink_;
-  SLDataLocator_AndroidFD loc_fd;
-  SLDataFormat_MIME format_mime;
-  SLDataSource audioSrc;
+  SLEngineItf sl_engine_itf_;
+  SLDataSink sl_data_sink_;
+  SLDataLocator_AndroidFD sl_data_locator_;
+  SLDataFormat_MIME sl_format_mime_;
+  SLDataSource sl_audio_source_;
 };
 
 #endif

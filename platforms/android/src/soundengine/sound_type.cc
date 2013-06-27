@@ -10,13 +10,15 @@
 
 #include "soundengine/sound_instance.h"
 
+using std::string;
+
 struct SoundInstanceNode {
   SoundInstance *value;
   SoundInstanceNode *next;
 
-  SoundInstanceNode() {
-    value = NULL;
-    next = NULL;
+  SoundInstanceNode()
+    : value(NULL),
+      next(NULL) {
   }
 
   ~SoundInstanceNode() {
@@ -25,24 +27,18 @@ struct SoundInstanceNode {
     }
     if (next) {
       delete next;
-    }    
+    }
   }
 };
 
-SoundType::SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SLDataSink data_sink,
-    std::string filename) {
-  engine_engine_ = engine_engine;
-  data_sink_ = data_sink;
+SoundType *SoundType::Init(AAssetManager *asset_manager, SLEngineItf sl_engine_itf,
+                           SLDataSink sl_data_sink, string filename) {
+  sl_engine_itf_ = sl_engine_itf;
+  sl_data_sink_ = sl_data_sink;
 
-  // SLresult result;
   assert(NULL != asset_manager);
   AAsset* asset = AAssetManager_open(asset_manager, filename.c_str(), AASSET_MODE_UNKNOWN);
-  // 
-  // // release the Java string and UTF-8
-  // (*env)->ReleaseStringUTFChars(env, filename, utf8);
-  // 
   // the asset might not be found
-  s_log("Loading sound: %s", filename.c_str());
   assert(NULL != asset);
 
   // open asset as file descriptor
@@ -52,17 +48,13 @@ SoundType::SoundType(AAssetManager *asset_manager, SLEngineItf engine_engine, SL
   AAsset_close(asset);
 
   // configure audio source
-  loc_fd = {SL_DATALOCATOR_ANDROIDFD, fd, start, length};
-  format_mime = {SL_DATAFORMAT_MIME, NULL, SL_CONTAINERTYPE_UNSPECIFIED};
-  audioSrc = {&loc_fd, &format_mime};
+  sl_data_locator_ = {SL_DATALOCATOR_ANDROIDFD, fd, start, length};
+  sl_format_mime_ = {SL_DATAFORMAT_MIME, NULL, SL_CONTAINERTYPE_UNSPECIFIED};
+  sl_audio_source_ = {&sl_data_locator_, &sl_format_mime_};
 
-  // enable whole file looping
-  // result = (*fdPlayerSeek)->SetLoop(fdPlayerSeek, SL_BOOLEAN_FALSE, 0, SL_TIME_UNKNOWN);
-  // assert(SL_RESULT_SUCCESS == result);
-  // (void)result;
-  sound_instance_list_head_ = new SoundInstanceNode();
-  sound_instance_list_head_->value = new SoundInstance();
-  sound_instance_list_head_->value->Init(engine_engine, audioSrc, data_sink_);
+  AddSoundInstance(&sound_instance_list_head_);
+
+  return this;
 }
 
 void SoundType::Play(float volume, float position) {
@@ -71,10 +63,16 @@ void SoundType::Play(float volume, float position) {
     non_busy_node = non_busy_node->next;
   }
   if (non_busy_node->value->is_busy()) {
-    non_busy_node->next = new SoundInstanceNode();
+    AddSoundInstance(&non_busy_node->next);
     non_busy_node = non_busy_node->next;
-    non_busy_node->value = new SoundInstance();
-    non_busy_node->value->Init(engine_engine_, audioSrc, data_sink_);
   }
   non_busy_node->value->Play(volume, position);
+}
+
+
+// private
+
+void SoundType::AddSoundInstance(SoundInstanceNode **node) {
+  *node = new SoundInstanceNode();
+  (*node)->value = (new SoundInstance())->Init(sl_engine_itf_, sl_audio_source_, sl_data_sink_);
 }
