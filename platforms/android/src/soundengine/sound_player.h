@@ -43,9 +43,12 @@ class SoundPlayerImpl : public SoundPlayer {
 
  private:
    AAssetManager *asset_manager_;
-
+   float global_volume_;
    std::map<Sound, SoundType *> sounds_;
+   std::map<Sound, float> sound_volumes_;
+   std::map<Sound, float> sounds_positions_;
 
+   // OpenSL ES objects
    SLDataLocator_OutputMix loc_outmix_;
    SLDataSink audio_sink_;
    SLObjectItf engine_object_;

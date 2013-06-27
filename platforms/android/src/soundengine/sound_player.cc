@@ -93,16 +93,19 @@ void SoundPlayerImpl::initialize() {
 }
 
 bool SoundPlayerImpl::setGlobalVolume(float volume) {
+  global_volume_ = volume;
 }
 
 bool SoundPlayerImpl::setVolume(Sound sound, float volume) {
+  sound_volumes_[sound] = volume;
 }
 
 bool SoundPlayerImpl::setPosition(Sound sound, float position) {
+  sound_positions_[position] = sound;
 }
 
 bool SoundPlayerImpl::playSound(Sound sound) {
-  sounds_[sound]->Play(0, 0);
+  sounds_[sound]->Play(global_volume_ * sound_volumes_[sound], sound_positions_[sound]);
 }
 
 bool SoundPlayerImpl::stopSound(Sound sound) {
