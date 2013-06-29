@@ -9,6 +9,7 @@
 #import "GameTouchWindow.h"
 
 #include <vector>
+using std::vector;
 
 #import "game_engine.h"
 #import "Touch.h"
@@ -38,22 +39,30 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   move_factor_ = 0;
-  gameEngine_->set_touches_began([self convertTouches:touches]);
+  vector<Touch> converted_touches = [self convertTouches:touches];
+  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
+    gameEngine_->AddTouchBegan(*i);
+  }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  gameEngine_->set_touches_moved([self convertTouches:touches]);
+  vector<Touch> converted_touches = [self convertTouches:touches];
+  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
+    gameEngine_->AddTouchMoved(*i);
+  }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  gameEngine_->set_touches_ended([self convertTouches:touches]);
+  vector<Touch> converted_touches = [self convertTouches:touches];
+  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
+    gameEngine_->AddTouchEnded(*i);
+  }
 }
 
 #pragma mark - Private
 
-- (std::vector<Touch>)convertTouches:(NSSet *)touches {
-
-  std::vector<Touch> converted_touches;
+- (vector<Touch>)convertTouches:(NSSet *)touches {
+  vector<Touch> converted_touches;
   for (UITouch *touch in touches) {
     Touch converted_touch;
     CGPoint location = [touch locationInView:touch.view];

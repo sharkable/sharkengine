@@ -78,6 +78,18 @@ void GameEngine::ClearTouches() {
   }
 }
 
+void GameEngine::AddTouchBegan(Touch touch) {
+  touches_began_.push_back(touch);
+}
+
+void GameEngine::AddTouchMoved(Touch touch) {
+  touches_moved_.push_back(touch);
+}
+
+void GameEngine::AddTouchEnded(Touch touch) {
+  touches_ended_.push_back(touch);
+}
+
 void GameEngine::PushView(sp<EngineView> view) {
   if (next_views_.size() == 0) {
     next_views_ = views_;

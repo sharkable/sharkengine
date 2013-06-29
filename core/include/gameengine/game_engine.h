@@ -47,6 +47,9 @@ class GameEngine {
   void Render();
   void NotifyPause();
   void ClearTouches();
+  void AddTouchBegan(Touch touch);
+  void AddTouchMoved(Touch touch);
+  void AddTouchEnded(Touch touch);
 
   void PushView(sp<EngineView> view);
   void PopView();
@@ -84,10 +87,6 @@ class GameEngine {
 
   void load_positions(AssetReader &file) { positions_->LoadFile(file); }
   GamePoint position(std::string name) { return positions_->position(name); }
-
-  void set_touches_began(std::vector<Touch> touches_began) { touches_began_ = touches_began; }
-  void set_touches_moved(std::vector<Touch> touches_moved) { touches_moved_ = touches_moved; }
-  void set_touches_ended(std::vector<Touch> touches_ended) { touches_ended_ = touches_ended; }
 
   // TODO consider refactoring this information exposure for game vs. platform, using inheritance.
   ScreenSize screen_size() { return screen_size_; }
