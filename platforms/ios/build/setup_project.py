@@ -4,7 +4,8 @@ project_home = os.environ['SHARKENGINE_APP_HOME']
 sharkengine_home = os.environ['SHARKENGINE_HOME']
 
 import imp
-imp.load_source('mod_pbxproj', sharkengine_home + '/platforms/ios/build/thirdparty/mod_pbxproj/mod_pbxproj.py')
+mod_pbxproj_source_path = '/platforms/ios/build/thirdparty/mod_pbxproj/mod_pbxproj.py';
+imp.load_source('mod_pbxproj', sharkengine_home + mod_pbxproj_source_path)
 from mod_pbxproj import XcodeProject, PBXFileReference
 
 project = XcodeProject.Load(project_home + '/out/ios/SharkengineApp.xcodeproj/project.pbxproj')
