@@ -3,4 +3,4 @@ sed "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')
   < $SHARKENGINE_HOME/platforms/ios/build/SharkengineApp.xcodeproj/project.pbxproj \
   > $SHARKENGINE_APP_HOME/out/ios/SharkengineApp.xcodeproj/project.pbxproj
 cp $SHARKENGINE_HOME/platforms/ios/build/Info.plist $SHARKENGINE_APP_HOME/out/ios
-python setup_project.py
+python $SHARKENGINE_HOME/platforms/ios/build/setup_project.py
