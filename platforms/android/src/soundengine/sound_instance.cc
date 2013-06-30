@@ -54,12 +54,21 @@ SoundInstance *SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_au
   assert(SL_RESULT_SUCCESS == result);
   (*sl_play_itf_)->RegisterCallback(sl_play_itf_, play_callback, this);
 
+  // enable position
+  (*sl_volume_itf_)->EnableStereoPosition(sl_volume_itf_, true);
+
   return this;
 }
 
 void SoundInstance::Play(float volume, float position) {
   assert(NULL != sl_player_object_);
   assert(!is_busy_);
+
+  s_log("requested volume: %f position: %f", volume, position);
+  SLmillibel max_volume;
+  (*sl_volume_itf_)->GetMaxVolumeLevel(sl_volume_itf_, &max_volume);
+  s_log("volume min: %f max: %f", SL_MILLIBEL_MIN, max_volume);
+  (*sl_volume_itf_)->SetVolumeLevel(sl_volume_itf_, volume * 4000 - 4000);
 
   is_busy_ = true;
 

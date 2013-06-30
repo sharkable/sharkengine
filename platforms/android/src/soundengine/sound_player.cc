@@ -71,7 +71,7 @@ void SoundPlayerImpl::initialize() {
   // configure audio sink
   loc_outmix_ = {SL_DATALOCATOR_OUTPUTMIX, output_mix_object_};
   audio_sink_ = {&loc_outmix_, NULL};
-  
+
   sounds_[kSoundScore] = (new SoundType())->Init(asset_manager_, engine_engine_, audio_sink_,
                                                  "sounds/score.wav");
   sounds_[kSoundScoreFinal] = (new SoundType())->Init(asset_manager_, engine_engine_, audio_sink_,
@@ -90,6 +90,16 @@ void SoundPlayerImpl::initialize() {
       (new SoundType())->Init(asset_manager_, engine_engine_, audio_sink_, "sounds/get_ready.wav");
   sounds_[kSoundStart] =
       (new SoundType())->Init(asset_manager_, engine_engine_, audio_sink_, "sounds/start.wav");
+
+  sound_volumes_[kSoundScore]  = 1;
+  sound_volumes_[kSoundScoreFinal]  = 1;
+  sound_volumes_[kSoundPaddleHit]  = 1;
+  sound_volumes_[kSoundPuckRinkBounce]  = 1;
+  sound_volumes_[kSoundTwoPuckHit]  = 1;
+  sound_volumes_[kSoundButton]  = 1;
+  sound_volumes_[kSoundMultiSelect]  = 1;
+  sound_volumes_[kSoundGetReady]  = 1;
+  sound_volumes_[kSoundStart]  = 1;
 }
 
 bool SoundPlayerImpl::setGlobalVolume(float volume) {
@@ -101,10 +111,11 @@ bool SoundPlayerImpl::setVolume(Sound sound, float volume) {
 }
 
 bool SoundPlayerImpl::setPosition(Sound sound, float position) {
-  sound_positions_[position] = sound;
+  sound_positions_[sound] = position;
 }
 
 bool SoundPlayerImpl::playSound(Sound sound) {
+  s_log("play sound. global volume: %f   sound volume: %f", global_volume_, sound_volumes_[sound]);
   sounds_[sound]->Play(global_volume_ * sound_volumes_[sound], sound_positions_[sound]);
 }
 
