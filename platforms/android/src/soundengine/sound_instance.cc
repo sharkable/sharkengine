@@ -8,6 +8,8 @@
 
 #include "soundengine/sound_instance.h"
 
+#include <math.h>
+
 void play_callback(SLPlayItf sl_caller_itf, void *context, SLuint32 event) {
   assert(event == SL_PLAYEVENT_HEADATEND);
   ((SoundInstance *)context)->Stop();
@@ -64,17 +66,15 @@ void SoundInstance::Play(float volume, float position) {
   assert(NULL != sl_player_object_);
   assert(!is_busy_);
 
-  s_log("requested volume: %f position: %f", volume, position);
-  SLmillibel max_volume;
-  (*sl_volume_itf_)->GetMaxVolumeLevel(sl_volume_itf_, &max_volume);
-  s_log("volume min: %f max: %f", SL_MILLIBEL_MIN, max_volume);
-  (*sl_volume_itf_)->SetVolumeLevel(sl_volume_itf_, volume * 4000 - 4000);
+  if (volume <= 0) {
+    return;
+  }
 
+  (*sl_volume_itf_)->SetVolumeLevel(sl_volume_itf_, 1500.0f * log(volume));
   is_busy_ = true;
 
   SLresult result = (*sl_play_itf_)->SetPlayState(sl_play_itf_, SL_PLAYSTATE_PLAYING);
   assert(SL_RESULT_SUCCESS == result);
-  (void)result;
 }
 
 void SoundInstance::Stop() {
