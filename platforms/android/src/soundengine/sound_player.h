@@ -46,7 +46,7 @@ class SoundPlayerImpl : public SoundPlayer {
    float global_volume_;
    std::map<Sound, SoundType *> sounds_;
    std::map<Sound, float> sound_volumes_;
-   std::map<Sound, float> sounds_positions_;
+   std::map<Sound, float> sound_positions_;
 
    // OpenSL ES objects
    SLDataLocator_OutputMix loc_outmix_;
