@@ -87,10 +87,10 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeDone(JNIEnv *env, jobject thiz
 }
 
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobject thiz, jint action, jdouble x, jdouble y)
-{
-  s_log("touch: %d %f,%f", action, x, y);
-  touch(action, x, y);
+Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobject thiz,
+                                                             jint touch_id, jint action, jdouble x,
+                                                             jdouble y) {
+  touch(touch_id, action, x, y);
 }
 
 /* This is called to indicate to the render loop that it should

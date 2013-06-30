@@ -5,7 +5,7 @@
 extern "C" {
   void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height);
   void update();
-  void touch(int action, double x, double y);
+  void touch(int touch_id, int action, double x, double y);
 }
 
 
@@ -88,18 +88,15 @@ void update() {
 #include <vector>
 using std::vector;
 
-void touch(int action, double x, double y) {
-  vector<Touch> touches;
-  Touch t;
-  t.set_location(game_engine_->screen_point_to_game_point(screen_point_make(x, y)));
-  t.set_identifier(0);
-  touches.push_back(t);
+void touch(int touch_id, int action, double x, double y) {
+  Touch touch;
+  touch.set_location(game_engine_->screen_point_to_game_point(screen_point_make(x, y)));
+  touch.set_identifier((void *)touch_id);
   if (action == 0) {
-    s_log("SET TOUCHES BEGAN");
-    game_engine_->set_touches_began(touches);
+    game_engine_->AddTouchBegan(touch);
   } else if (action == 1) {
-    game_engine_->set_touches_ended(touches);
+    game_engine_->AddTouchEnded(touch);
   } else if (action == 2) {
-    game_engine_->set_touches_moved(touches);
+    game_engine_->AddTouchMoved(touch);
   }
 }
