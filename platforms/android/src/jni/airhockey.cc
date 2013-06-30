@@ -91,7 +91,7 @@ using std::vector;
 void touch(int touch_id, int action, double x, double y) {
   Touch touch;
   touch.set_location(game_engine_->screen_point_to_game_point(screen_point_make(x, y)));
-  touch.set_identifier((void *)touch_id);
+  touch.set_identifier((void *)(touch_id + 100));  // We don't want NULL identifiers, so add 100.
   if (action == 0) {
     game_engine_->AddTouchBegan(touch);
   } else if (action == 1) {
