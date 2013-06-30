@@ -70,27 +70,29 @@ class DemoGLSurfaceView extends GLSurfaceView {
   }
 
   public boolean onTouchEvent(final MotionEvent event) {
-    int action = event.getActionMasked();
+    synchronized (mRenderer) {
+      int action = event.getActionMasked();
 
-    if (action == MotionEvent.ACTION_MOVE) {
-      for (int i = 0; i < event.getPointerCount(); i++) {
-        int id = event.getPointerId(i);
-        double x = event.getX(i) * 640.0 / mMeasuredWidth;
-        double y = event.getY(i) * 640.0 / mMeasuredWidth;
-        nativeTouch(id, 2, x, y);
+      if (action == MotionEvent.ACTION_MOVE) {
+        for (int i = 0; i < event.getPointerCount(); i++) {
+          int id = event.getPointerId(i);
+          double x = event.getX(i) * 640.0 / mMeasuredWidth;
+          double y = event.getY(i) * 640.0 / mMeasuredWidth;
+          nativeTouch(id, 2, x, y);
+        }
+      } else {
+        int index = event.getActionIndex();
+        int id = event.getPointerId(index);
+        double x = event.getX(index) * 640.0 / mMeasuredWidth;
+        double y = event.getY(index) * 640.0 / mMeasuredWidth;
+        if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_POINTER_DOWN) {
+          nativeTouch(id, 0, x, y);
+        } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_POINTER_UP) {
+          nativeTouch(id, 1, x, y);
+        }
       }
-    } else {
-      int index = event.getActionIndex();
-      int id = event.getPointerId(index);
-      double x = event.getX(index) * 640.0 / mMeasuredWidth;
-      double y = event.getY(index) * 640.0 / mMeasuredWidth;
-      if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_POINTER_DOWN) {
-        nativeTouch(id, 0, x, y);
-      } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_POINTER_UP) {
-        nativeTouch(id, 1, x, y);
-      }
+      return true;
     }
-    return true;
   }
 
   private native void nativeTouch(int touchId, int action, double x, double y);
@@ -130,7 +132,9 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   }
 
   public void onDrawFrame(GL10 gl) {
-    nativeRender();
+    synchronized (this) {
+      nativeRender();
+    }
   }
 
   private native void nativeInit(LocalStoreAndroid localStoreJava, AssetManager assetManager,
