@@ -17,6 +17,9 @@ import java.util.logging.Logger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import com.google.ads.Ad;
+
+import com.sharkable.sharkengine.modules.AdEngineAndroid;
 import com.sharkable.sharkengine.modules.LocalStoreAndroid;
 
 public class SharkengineActivity extends Activity {
@@ -54,9 +57,9 @@ class DemoGLSurfaceView extends GLSurfaceView {
   private DemoRenderer mRenderer;
   private int mMeasuredWidth;
 
-  public DemoGLSurfaceView(Context context) {
-    super(context);
-    mRenderer = new DemoRenderer(context);
+  public DemoGLSurfaceView(Activity activity) {
+    super(activity);
+    mRenderer = new DemoRenderer(activity);
     setRenderer(mRenderer);
   }
 
@@ -100,13 +103,15 @@ class DemoGLSurfaceView extends GLSurfaceView {
 }
 
 class DemoRenderer implements GLSurfaceView.Renderer {
-  private Context mContext;
+  private Activity mActivity;
   private boolean mDidInit = false;
-  private LocalStoreAndroid mLocalStoreJava;
+  private AdEngineAndroid mAdEngine;
+  private LocalStoreAndroid mLocalStore;
 
-  public DemoRenderer(Context context) {
-    mContext = context;
-    mLocalStoreJava = new LocalStoreAndroid(context);
+  public DemoRenderer(Activity activity) {
+    mActivity = activity;
+    mAdEngine = new AdEngineAndroid(activity);
+    mLocalStore = new LocalStoreAndroid(activity);
   }
 
   public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -118,7 +123,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     // return apk file path (or null on error)
     String apkFilePath = null;
     ApplicationInfo appInfo = null;
-    PackageManager packMgmr = mContext.getPackageManager();
+    PackageManager packMgmr = mActivity.getPackageManager();
     try {
       appInfo = packMgmr.getApplicationInfo("com.sharkable.sharkengine", 0);
     } catch (NameNotFoundException e) {
@@ -127,7 +132,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mLocalStoreJava, mContext.getAssets(), apkFilePath, w, h);
+    nativeInit(mAdEngine, mLocalStore, mActivity.getAssets(), apkFilePath, w, h);
     mDidInit = true;
   }
 
@@ -137,8 +142,8 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     }
   }
 
-  private native void nativeInit(LocalStoreAndroid localStoreJava, AssetManager assetManager,
-                                 String apkPath, int w, int h);
+  private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
+                                 AssetManager assetManager, String apkPath, int w, int h);
   private native void nativeRender();
   private native void nativeDone();
 }

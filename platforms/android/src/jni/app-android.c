@@ -51,8 +51,11 @@ static void loadAPK (const char* apkPath) {
 
 /* Call to initialize the graphics state */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz, jobject local_store_java, jobject asset_manager, jstring apkPath, int w, int h)
-{
+Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz,
+                                                       jobject ad_engine_java,
+                                                       jobject local_store_java,
+                                                       jobject asset_manager, jstring apkPath,
+                                                       int w, int h) {
   s_log("Here in nativeInit()");
   const char *str;
   jboolean isCopy;
@@ -65,7 +68,7 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
   gAppAlive    = 1;
   sDemoStopped = 0;
   sTimeOffsetInit = 0;
-  init(env, local_store_java, asset_manager, w, h);  
+  init(env, ad_engine_java, local_store_java, asset_manager, w, h);  
 }
 
 // JNIEXPORT void JNICALL

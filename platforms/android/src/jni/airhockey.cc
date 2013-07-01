@@ -3,7 +3,8 @@
 
 
 extern "C" {
-  void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height);
+  void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
+            int width, int height);
   void update();
   void touch(int touch_id, int action, double x, double y);
 }
@@ -24,7 +25,8 @@ extern "C" {
 
 static sp<GameEngine> game_engine_;
 
-void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height) {
+void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
+          int width, int height) {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glDepthMask(false);
   glEnable(GL_CULL_FACE);
@@ -50,7 +52,7 @@ void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int widt
   sp<LocalStore> local_store = sp<LocalStore>(new LocalStoreAndroid(env, local_store_java));
   game_engine_->set_local_store(local_store);
 
-  sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid());
+  sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid(env, ad_engine_java));
   game_engine_->set_ad_engine(ad_engine);
 
   sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid());

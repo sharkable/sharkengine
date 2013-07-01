@@ -5,7 +5,8 @@
 extern "C" {
 #endif
 
-void init(JNIEnv *env, jobject local_store_java, jobject asset_manager, int width, int height);
+void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
+          int width, int height);
 void update();
 void touch(int touch_id, int action, double x, double y);
 
