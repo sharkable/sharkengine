@@ -14,7 +14,7 @@ platforms/android/build/bin
 
 platforms/android/build/gen
 
-platforms/android/build/libs
+platforms/android/build/libs/armeabi
 
 platforms/android/build/obj
 
