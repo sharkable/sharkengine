@@ -115,7 +115,6 @@ bool SoundPlayerImpl::setPosition(Sound sound, float position) {
 }
 
 bool SoundPlayerImpl::playSound(Sound sound) {
-  s_log("play sound. global volume: %f   sound volume: %f", global_volume_, sound_volumes_[sound]);
   sounds_[sound]->Play(global_volume_ * sound_volumes_[sound], sound_positions_[sound]);
 }
 
