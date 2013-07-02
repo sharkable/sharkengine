@@ -55,7 +55,7 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid(env, ad_engine_java));
   game_engine_->set_ad_engine(ad_engine);
 
-  sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid());
+  sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid(env));
   game_engine_->set_analytics_engine(analytics_engine);
 
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);

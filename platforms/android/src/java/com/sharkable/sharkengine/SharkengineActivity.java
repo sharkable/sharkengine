@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import com.flurry.android.FlurryAgent;
 import com.google.ads.Ad;
 
 import com.sharkable.sharkengine.modules.AdEngineAndroid;
@@ -39,7 +40,20 @@ public class SharkengineActivity extends Activity {
     mGLView = new DemoGLSurfaceView(this);
     setContentView(mGLView);
   }
-  
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    // TODO the key should not be here.
+    FlurryAgent.onStartSession(this, "S3C3R982GNCVFY2W77GQ");
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    FlurryAgent.onEndSession(this);
+  }
+
   @Override
   protected void onPause() {
     super.onPause();
