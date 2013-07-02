@@ -120,7 +120,9 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   }
 
   public void onSurfaceChanged(GL10 gl, int w, int h) {
-    assert !mDidInit;
+    if (mDidInit) {
+      return;
+    }
 
     // return apk file path (or null on error)
     String apkFilePath = null;
