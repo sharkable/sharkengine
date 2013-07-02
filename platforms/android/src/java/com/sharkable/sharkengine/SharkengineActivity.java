@@ -59,6 +59,8 @@ class DemoGLSurfaceView extends GLSurfaceView {
 
   public DemoGLSurfaceView(Activity activity) {
     super(activity);
+    // TODO Not supported on Gingerbread. :(
+    setPreserveEGLContextOnPause(true);
     mRenderer = new DemoRenderer(activity);
     setRenderer(mRenderer);
   }
