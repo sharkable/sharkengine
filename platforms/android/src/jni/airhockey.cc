@@ -25,6 +25,9 @@ extern "C" {
 
 static sp<GameEngine> game_engine_;
 
+int backing_width__;
+int backing_height__;
+
 void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
           int width, int height) {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
@@ -36,7 +39,8 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  // TODO This shouldn't be hardcoded. Rethink this anyways.
+  backing_width__ = width;
+  backing_height__ = height;
 
   game_engine_.reset(new GameEngine());
 
@@ -44,7 +48,8 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   game_engine_->set_screen_size(screen_size_make(width, height));
 
   game_engine_->set_platform_type(kPlatformTypePhone);
-  game_engine_->set_platform_resolution(kPlatformResolutionHigh);
+  game_engine_->set_platform_resolution(
+      width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
 
   sp<GameEngineFactory> factory = sp<GameEngineFactory>(new GameEngineFactoryAndroid());
   game_engine_->set_factory(factory);
@@ -69,19 +74,16 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
 void update() {
   game_engine_->Update();
 
-    int backingWidth_ = 640;
-    int backingHeight_ = 1138;
+  glViewport(0, 0, backing_width__, backing_height__);
 
-    glViewport(0, 0, backingWidth_, backingHeight_);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrthof(0, backing_width__, 0, backing_height__, -1, 1);
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrthof(0, backingWidth_, 0, backingHeight_, -1, 1);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
 
   game_engine_->Render();
 }
