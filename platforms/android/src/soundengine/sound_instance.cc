@@ -37,23 +37,23 @@ SoundInstance *SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_au
   result = (*sl_engine_itf)->CreateAudioPlayer(sl_engine_itf, &sl_player_object_, &sl_audio_source,
                                                &sl_data_sink, 3, interface_ids,
                                                interfaces_required);
-  if (SL_RESULT_SUCCESS != result) return null;
+  if (SL_RESULT_SUCCESS != result) return NULL;
 
   // realize the player
   result = (*sl_player_object_)->Realize(sl_player_object_, SL_BOOLEAN_FALSE);
-  if (SL_RESULT_SUCCESS != result) return null;
+  if (SL_RESULT_SUCCESS != result) return NULL;
 
   // get the play interface
   result = (*sl_player_object_)->GetInterface(sl_player_object_, SL_IID_PLAY, &sl_play_itf_);
-  if (SL_RESULT_SUCCESS != result) return null;
+  if (SL_RESULT_SUCCESS != result) return NULL;
 
   // get the volume interface
   result = (*sl_player_object_)->GetInterface(sl_player_object_, SL_IID_VOLUME, &sl_volume_itf_);
-  if (SL_RESULT_SUCCESS != result) return null;
+  if (SL_RESULT_SUCCESS != result) return NULL;
 
   // register a callback
   result = (*sl_play_itf_)->SetCallbackEventsMask(sl_play_itf_, SL_PLAYEVENT_HEADATEND);
-  if (SL_RESULT_SUCCESS != result) return null;
+  if (SL_RESULT_SUCCESS != result) return NULL;
   (*sl_play_itf_)->RegisterCallback(sl_play_itf_, play_callback, this);
 
   // enable position
