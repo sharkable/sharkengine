@@ -5,19 +5,12 @@
 #include <stdint.h>
 
 #include "app.h"
-// #include "importgl.h"
 
 #include "libzip/zip.h"
 
 #include "airhockey.h"
 
-int   gAppAlive   = 1;
-struct zip* APKArchive;
-
-static int  sDemoStopped  = 0;
-static long sTimeOffset   = 0;
-static int  sTimeOffsetInit = 0;
-static long sTimeStopped  = 0;
+struct zip *APKArchive;
 
 static long
 _getTime(void)
@@ -36,7 +29,7 @@ static void loadAPK (const char* apkPath) {
     return;
   }
 
-  //Just for debug, print APK contents
+// Just for debug, print APK contents
 //  int numFiles = zip_get_num_files(APKArchive);
 //  int i;
 //  for (i=0; i<numFiles; i++) {
@@ -64,33 +57,11 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
   loadAPK(str);
   (*env)->ReleaseStringUTFChars(env, apkPath, str);
 
-//  importGLInit();
-  gAppAlive    = 1;
-  sDemoStopped = 0;
-  sTimeOffsetInit = 0;
   init(env, ad_engine_java, local_store_java, asset_manager, w, h);  
 }
 
 Java_com_sharkable_sharkengine_DemoRenderer_nativeReloadTextures(JNIEnv *env, jobject thiz) {
   reloadTextures();
-}
-
-// JNIEXPORT void JNICALL
-// Java_com_sharkable_sharkengine_DemoRenderer_nativeResize( JNIEnv*  env, jobject  thiz, jint w, jint h )
-// {
-//     sWindowWidth  = w;
-//     sWindowHeight = h;
-//     setScreenSize(w, h);
-//     s_log("resize w=%d h=%d", w, h);
-// //    game_engine_->Update();
-// }
-
-/* Call to finalize the graphics state */
-JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeDone(JNIEnv *env, jobject thiz)
-{
-//    appDeinit();
-//    importGLDeinit();
 }
 
 JNIEXPORT void JNICALL
@@ -100,46 +71,11 @@ Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobjec
   touch(touch_id, action, x, y);
 }
 
-/* This is called to indicate to the render loop that it should
- * stop as soon as possible.
- */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause(JNIEnv *env, jobject thiz)
-{
-    sDemoStopped = !sDemoStopped;
-    if (sDemoStopped) {
-        /* we paused the animation, so store the current
-         * time in sTimeStopped for future nativeRender calls */
-        sTimeStopped = _getTime();
-    } else {
-        /* we resumed the animation, so adjust the time offset
-         * to take care of the pause interval. */
-        sTimeOffset -= _getTime() - sTimeStopped;
-    }
+Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause(JNIEnv *env, jobject thiz) {
 }
 
-/* Call to render the next GL frame */
 JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoRenderer_nativeRender(JNIEnv *env, jobject thiz)
-{
-    long   curTime;
-
-    /* NOTE: if sDemoStopped is TRUE, then we re-render the same frame
-     *       on each iteration.
-     */
-    if (sDemoStopped) {
-        curTime = sTimeStopped + sTimeOffset;
-    } else {
-        curTime = _getTime() + sTimeOffset;
-        if (sTimeOffsetInit == 0) {
-            sTimeOffsetInit = 1;
-            sTimeOffset     = -curTime;
-            curTime         = 0;
-        }
-    }
-
-    //s_log("nativeRender: curTime=%ld", curTime);
-
-    update();
-    //appRender(curTime, sWindowWidth, sWindowHeight);
+Java_com_sharkable_sharkengine_DemoRenderer_nativeRender(JNIEnv *env, jobject thiz) {
+  update();
 }

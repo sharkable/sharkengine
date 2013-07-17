@@ -172,5 +172,4 @@ class DemoRenderer implements GLSurfaceView.Renderer {
                                  AssetManager assetManager, String apkPath, int w, int h);
   private native void nativeReloadTextures();
   private native void nativeRender();
-  private native void nativeDone();
 }
