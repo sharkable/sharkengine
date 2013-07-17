@@ -71,6 +71,7 @@ void SoundInstance::Play(float volume, float position) {
   }
 
   (*sl_volume_itf_)->SetVolumeLevel(sl_volume_itf_, 1500.0f * log(volume));
+  (*sl_volume_itf_)->SetStereoPosition(sl_volume_itf_, 1000.0f * position);
   is_busy_ = true;
 
   SLresult result = (*sl_play_itf_)->SetPlayState(sl_play_itf_, SL_PLAYSTATE_PLAYING);
