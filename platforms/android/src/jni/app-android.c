@@ -71,6 +71,10 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
   init(env, ad_engine_java, local_store_java, asset_manager, w, h);  
 }
 
+Java_com_sharkable_sharkengine_DemoRenderer_nativeReloadTextures(JNIEnv *env, jobject thiz) {
+  reloadTextures();
+}
+
 // JNIEXPORT void JNICALL
 // Java_com_sharkable_sharkengine_DemoRenderer_nativeResize( JNIEnv*  env, jobject  thiz, jint w, jint h )
 // {

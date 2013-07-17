@@ -93,9 +93,9 @@ typedef enum {
  */
 class Texture2D {
  public:
-  Texture2D() : name_(0) { }
+  Texture2D() : opengl_id_(0) { }
   Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
-            ScreenSize size, std::string filename);
+            ScreenSize size, std::string filename, GLuint opengl_id = 0);
 
   static void SetGlobalAlpha(GLfloat alpha);
   // TODO remove this crap. Figure out a better way to handle the coordinate system.
@@ -108,20 +108,20 @@ class Texture2D {
   void DrawAtPointAngle(ScreenPoint point, GLfloat angle);
   void Delete();
 
-  bool loaded() { return name_ != 0; }  // TODO identical to data_loaded
-  GLuint name() { return name_; }
+  bool loaded() { return opengl_id_ != 0; }  // TODO identical to data_loaded
+  GLuint opengl_id() { return opengl_id_; }
   std::string filename() { return filename_; }
-  bool data_loaded() { return name_ != 0; }
+  bool data_loaded() { return opengl_id_ != 0; }
   ScreenSize content_size() { return size_; }
 
  private:
   void Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
-            ScreenSize size, std::string filename);
+            ScreenSize size, std::string filename_, GLuint opengl_id = 0);
 
   static int nameCounter_;
   static GLfloat globalAlpha_;
   static GLfloat screen_height_;
-  GLuint name_;
+  GLuint opengl_id_;
   std::string filename_;
   ScreenSize size_;
   uint32_t width_;

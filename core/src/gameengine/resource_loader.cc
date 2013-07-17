@@ -47,7 +47,7 @@ void ResourceLoader::ReleaseResource(const string &name) {
 
 void ResourceLoader::ReleaseResource(Texture2D resource) {
   for (auto i = resources_.begin(); i != resources_.end(); i++) {
-    if (i->second.name() == resource.name()) {
+    if (i->second.opengl_id() == resource.opengl_id()) {
       ReleaseResource(i->first);
       return;
     }
@@ -55,10 +55,16 @@ void ResourceLoader::ReleaseResource(Texture2D resource) {
   assert(false);
 }
 
+void ResourceLoader::ReloadTextures() {
+  for (auto i = resources_.begin(); i != resources_.end(); i++) {
+    resources_[i->first] = Texture(i->first, i->second.opengl_id());
+  }
+}
+
 
 // private
 
-Texture2D ResourceLoader::Texture(string name) {
+Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 // TODO think about this
 #ifdef __ANDROID__
   string filename = "assets/textures/" + name;
@@ -106,7 +112,7 @@ Texture2D ResourceLoader::Texture(string name) {
 
   ScreenSize image_size = screen_size_make(image_width, image_height);
   Texture2D texture(data, kTexture2DPixelFormat_RGBA8888, texture_width, texture_height, image_size,
-                    name);
+                    name, opengl_id);
 
   free(data);
   asset_reader->Close();

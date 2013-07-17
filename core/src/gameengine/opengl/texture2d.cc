@@ -70,8 +70,8 @@ GLfloat Texture2D::globalAlpha_ = 1;
 GLfloat Texture2D::screen_height_ = 480;
 
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
-                     uint32_t height, ScreenSize size, string filename) {
-  Init(data, pixelFormat, width, height, size, filename);
+                     uint32_t height, ScreenSize size, string filename, GLuint opengl_id) {
+  Init(data, pixelFormat, width, height, size, filename, opengl_id);
 }
 
 void Texture2D::SetGlobalAlpha(GLfloat alpha) {
@@ -83,7 +83,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point) {
 }
 
 void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z) {
-  assert(name_);
+  assert(opengl_id_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
@@ -92,7 +92,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   height = (GLfloat)height_ * max_t_;
 
   glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, name_);
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
@@ -105,7 +105,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
 }
 
 void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
-  assert(name_);
+  assert(opengl_id_);
 
   // Swap vertical coordinate system.
   // TODO make this not screen size dependent.
@@ -129,7 +129,7 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
   vertices_[10] = height/2.0;
 
   glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, name_);
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
@@ -139,7 +139,7 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
 }
 
 void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
-  assert(name_);
+  assert(opengl_id_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
@@ -162,7 +162,7 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
   vertices_[10] = height/2.0;
 
   glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, name_);
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
@@ -173,7 +173,7 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
 
 
 void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
-  assert(name_);
+  assert(opengl_id_);
 
   // Swap vertical coordinate system.
   point.y = screen_height_ - point.y;
@@ -182,7 +182,7 @@ void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
   height = (GLfloat)height_ * max_t_;
 
   glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, name_);
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
@@ -193,25 +193,29 @@ void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
 }
 
 void Texture2D::Delete() {
-  assert(name_);
-  glDeleteTextures(1, &name_);
-  name_ = 0;
+  assert(opengl_id_);
+  glDeleteTextures(1, &opengl_id_);
+  opengl_id_ = 0;
 }
 
 
 // private
 
 void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
-                     uint32_t height, ScreenSize size, string filename) {
+                     uint32_t height, ScreenSize size, string filename, GLuint opengl_id) {
   GLint saveName;
   filename_ = filename;
 
   // TODO decide how we're generating names. Do some research.
-  glGenTextures(1, &name_);
-  //name_ = ++nameCounter_;
+  if (opengl_id) {
+    opengl_id_ = opengl_id;
+  } else {
+    glGenTextures(1, &opengl_id_);
+  }
+  //opengl_id_ = ++nameCounter_;
 
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
-  glBindTexture(GL_TEXTURE_2D, name_);
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   switch(pixelFormat) {
     case kTexture2DPixelFormat_RGBA8888:

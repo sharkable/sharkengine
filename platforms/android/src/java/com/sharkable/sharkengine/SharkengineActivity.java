@@ -136,6 +136,9 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   }
 
   public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    if (mDidInit) {
+      nativeReloadTextures();
+    }
   }
 
   public void onSurfaceChanged(GL10 gl, int w, int h) {
@@ -167,6 +170,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
 
   private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
                                  AssetManager assetManager, String apkPath, int w, int h);
+  private native void nativeReloadTextures();
   private native void nativeRender();
   private native void nativeDone();
 }

@@ -3,8 +3,10 @@
 
 
 extern "C" {
+  void setupOpengl();
   void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
             int width, int height);
+  void reloadTextures();
   void update();
   void touch(int touch_id, int action, double x, double y);
 }
@@ -28,8 +30,7 @@ static sp<GameEngine> game_engine_;
 int backing_width__;
 int backing_height__;
 
-void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
-          int width, int height) {
+void setup_opengl() {
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glDepthMask(false);
   glEnable(GL_CULL_FACE);
@@ -38,6 +39,11 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
+void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
+          int width, int height) {
+  setup_opengl();
 
   backing_width__ = width;
   backing_height__ = height;
@@ -69,6 +75,11 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   ((SoundPlayerImpl *)SoundPlayer::instance())->setAssetManager(mgr);
 
   sharkengine_init(game_engine_);
+}
+
+void reloadTextures() {
+  setup_opengl();
+  game_engine_->resource_loader().ReloadTextures();
 }
 
 void update() {

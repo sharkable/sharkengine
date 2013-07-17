@@ -24,9 +24,10 @@ class ResourceLoader {
   Texture2D TextureWithName(const std::string &name);
   void ReleaseResource(const std::string &name);
   void ReleaseResource(Texture2D resource);
+  void ReloadTextures();
 
  private:
-  Texture2D Texture(std::string filename);
+  Texture2D Texture(std::string filename, int opengl_id = 0);
 
   GameEngine &game_engine_;
   std::map<std::string, Texture2D> resources_;
