@@ -38,6 +38,7 @@ public class SharkengineActivity extends Activity {
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                          WindowManager.LayoutParams.FLAG_FULLSCREEN);
     mGLView = new DemoGLSurfaceView(this);
+
     setContentView(mGLView);
   }
 
@@ -69,23 +70,27 @@ public class SharkengineActivity extends Activity {
 
 class DemoGLSurfaceView extends GLSurfaceView {
   private DemoRenderer mRenderer;
-  private int mMeasuredWidth;
+  private int mScreenPixelWidth;
+  private int mGameRenderWidth;
 
   public DemoGLSurfaceView(Activity activity) {
     super(activity);
-    // TODO Not supported on Gingerbread. :(
-    setPreserveEGLContextOnPause(true);
+    // TODO I need a solution for Gingerbread. Otherwise it loses textures.
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+      setPreserveEGLContextOnPause(true);
+    }
     mRenderer = new DemoRenderer(activity);
     setRenderer(mRenderer);
   }
 
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-     mMeasuredWidth = MeasureSpec.getSize(widthMeasureSpec);
-     int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
-     this.setMeasuredDimension(mMeasuredWidth, measuredHeight);
-     int screenHeight = 640 * measuredHeight / mMeasuredWidth;
-     getHolder().setFixedSize(640, screenHeight);
+     mScreenPixelWidth = MeasureSpec.getSize(widthMeasureSpec);
+     int screenPixelHeight = MeasureSpec.getSize(heightMeasureSpec);
+     this.setMeasuredDimension(mScreenPixelWidth, screenPixelHeight);
+     mGameRenderWidth = (mScreenPixelWidth >= 640) ? 640 : 320;
+     int screenHeight = mGameRenderWidth * screenPixelHeight / mScreenPixelWidth;
+     getHolder().setFixedSize(mGameRenderWidth, screenHeight);
   }
 
   public boolean onTouchEvent(final MotionEvent event) {
@@ -95,15 +100,15 @@ class DemoGLSurfaceView extends GLSurfaceView {
       if (action == MotionEvent.ACTION_MOVE) {
         for (int i = 0; i < event.getPointerCount(); i++) {
           int id = event.getPointerId(i);
-          double x = event.getX(i) * 640.0 / mMeasuredWidth;
-          double y = event.getY(i) * 640.0 / mMeasuredWidth;
+          double x = event.getX(i) * mGameRenderWidth / mScreenPixelWidth;
+          double y = event.getY(i) * mGameRenderWidth / mScreenPixelWidth;
           nativeTouch(id, 2, x, y);
         }
       } else {
         int index = event.getActionIndex();
         int id = event.getPointerId(index);
-        double x = event.getX(index) * 640.0 / mMeasuredWidth;
-        double y = event.getY(index) * 640.0 / mMeasuredWidth;
+        double x = event.getX(index) * mGameRenderWidth / mScreenPixelWidth;
+        double y = event.getY(index) * mGameRenderWidth / mScreenPixelWidth;
         if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_POINTER_DOWN) {
           nativeTouch(id, 0, x, y);
         } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_POINTER_UP) {
