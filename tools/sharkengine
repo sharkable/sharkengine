@@ -17,12 +17,12 @@ function install_ios {
 
 function build_android {
   echo "building Android: $SHARKENGINE_APP_HOME"  
-  $SHARKENGINE_HOME/platforms/android/build/build.sh
+  $SHARKENGINE_HOME/platforms/android/build/build.sh build
 }
 
 function install_android {
   echo "Installing Android."
-  $SHARKENGINE_HOME/platforms/android/build/install.sh  
+  $SHARKENGINE_HOME/platforms/android/build/build.sh install
 }
 
 if [ "$1" = "build" ]
