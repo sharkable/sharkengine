@@ -25,6 +25,8 @@ function install_android {
   $SHARKENGINE_HOME/platforms/android/build/build.sh install
 }
 
+source $SHARKENGINE_APP_HOME/app.config
+
 if [ "$1" = "build" ]
 then
   if [ "$2" = "ios" ]

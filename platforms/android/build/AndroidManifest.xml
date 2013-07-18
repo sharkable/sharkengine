@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.sharkable.sharkengine"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+      android:versionCode="___SHARKENGINE_APP_VERSION_CODE___"
+      android:versionName="___SHARKENGINE_APP_VERSION___">
+    <application android:label="___SHARKENGINE_APP_NAME___" android:icon="@drawable/ic_launcher">
         <activity android:name="SharkengineActivity"
-                  android:label="@string/app_name"
+                  android:label="___SHARKENGINE_APP_NAME___"
                   android:screenOrientation="sensorPortrait"
                   android:configChanges="keyboardHidden|orientation">
             <intent-filter>
