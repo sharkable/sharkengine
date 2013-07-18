@@ -28,6 +28,7 @@ class EngineView {
   virtual void TouchesMoved(std::vector<Touch> touches);
   virtual void TouchesEnded(std::vector<Touch> touches);
   virtual void ClearTouches();
+  virtual bool HandleBackButton();
   // If you add an entity using this method, then this EngineView is responsible for releasing this
   // object.
   void AddEntity(ViewEntity *entity);

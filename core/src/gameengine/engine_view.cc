@@ -62,6 +62,10 @@ void EngineView::ClearTouches() {
   }
 }
 
+bool EngineView::HandleBackButton() {
+  return false;
+}
+
 void EngineView::AddEntity(ViewEntity *entity) {
   entities_.push_back(sp<ViewEntity>(entity));
 }

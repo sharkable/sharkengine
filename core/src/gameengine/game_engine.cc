@@ -90,6 +90,13 @@ void GameEngine::AddTouchEnded(Touch touch) {
   touches_ended_.push_back(touch);
 }
 
+bool GameEngine::HandleBackButton() {
+  if (views_.size() == 0) {
+    return false;
+  }
+  return views_.back()->HandleBackButton();
+}
+
 void GameEngine::PushView(sp<EngineView> view) {
   if (next_views_.size() == 0) {
     next_views_ = views_;

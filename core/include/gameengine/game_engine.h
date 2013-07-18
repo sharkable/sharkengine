@@ -50,6 +50,7 @@ class GameEngine {
   void AddTouchBegan(Touch touch);
   void AddTouchMoved(Touch touch);
   void AddTouchEnded(Touch touch);
+  bool HandleBackButton();
 
   void PushView(sp<EngineView> view);
   void PopView();

@@ -67,6 +67,11 @@ public class SharkengineActivity extends Activity {
     mGLView.onResume();
   }
 
+  @Override
+  public void onBackPressed() {
+    mGLView.onBackPressed();
+  }
+
   public void ignoreNextPause() {
     mGLView.ignoreNextPause();
   }
@@ -134,6 +139,10 @@ class DemoGLSurfaceView extends GLSurfaceView {
     }
   }
 
+  public void onBackPressed() {
+    mRenderer.onBackPressed();
+  }
+
   public void ignoreNextPause() {
     mIgnoreNextPause = true;
   }
@@ -145,6 +154,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private SharkengineActivity mActivity;
   private boolean mDidInit = false;
   private boolean mPauseOnNextFrame = false;
+  private boolean mHandleBackOnNextFrame = false;
   private AdEngineAndroid mAdEngine;
   private LocalStoreAndroid mLocalStore;
 
@@ -187,8 +197,18 @@ class DemoRenderer implements GLSurfaceView.Renderer {
         nativePause();
         mPauseOnNextFrame = false;
       }
+      if (mHandleBackOnNextFrame) {
+        if (!nativeHandleBackButton()) {
+          mActivity.finish();
+        }
+        mHandleBackOnNextFrame = false;
+      }
       nativeRender();
     }
+  }
+
+  public void onBackPressed() {
+    mHandleBackOnNextFrame = true;
   }
 
   public void pause() {
@@ -198,6 +218,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
                                  AssetManager assetManager, String apkPath, int w, int h);
   private native void nativePause();
+  private native boolean nativeHandleBackButton();
   private native void nativeReloadTextures();
   private native void nativeRender();
 }

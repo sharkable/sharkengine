@@ -6,6 +6,7 @@ extern "C" {
   void setupOpengl();
   void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
             int width, int height);
+  int handle_back_button();
   void reload_textures();
   void notify_pause();
   void update();
@@ -76,6 +77,10 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   ((SoundPlayerImpl *)SoundPlayer::instance())->setAssetManager(mgr);
 
   sharkengine_init(game_engine_);
+}
+
+int handle_back_button() {
+  return game_engine_->HandleBackButton();
 }
 
 void reload_textures() {

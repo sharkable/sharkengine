@@ -72,6 +72,11 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativePause(JNIEnv *env, jobject thi
   notify_pause();
 }
 
+JNIEXPORT int JNICALL
+Java_com_sharkable_sharkengine_DemoRenderer_nativeHandleBackButton(JNIEnv *env, jobject thiz) {
+  return handle_back_button();
+}
+
 Java_com_sharkable_sharkengine_DemoRenderer_nativeReloadTextures(JNIEnv *env, jobject thiz) {
   reload_textures();
 }
