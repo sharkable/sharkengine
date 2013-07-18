@@ -31,7 +31,7 @@ public class AnalyticsEngineAndroid {
     if (mParameters.size() == 0) {
       FlurryAgent.logEvent(mEventName);
     } else {
-      FlurryAgent.logEvent(mEventName, mParameters);
+      FlurryAgent.logEvent(mEventName, (HashMap)mParameters.clone());
     }
     mEventName = null;
     mParameters.clear();
