@@ -7,7 +7,8 @@ extern "C" {
 
 void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
           int width, int height);
-void reloadTextures();
+void reload_textures();
+void pause();
 void update();
 void touch(int touch_id, int action, double x, double y);
 

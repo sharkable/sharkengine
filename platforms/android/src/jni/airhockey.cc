@@ -6,7 +6,8 @@ extern "C" {
   void setupOpengl();
   void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
             int width, int height);
-  void reloadTextures();
+  void reload_textures();
+  void notify_pause();
   void update();
   void touch(int touch_id, int action, double x, double y);
 }
@@ -77,9 +78,13 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   sharkengine_init(game_engine_);
 }
 
-void reloadTextures() {
+void reload_textures() {
   setup_opengl();
   game_engine_->resource_loader().ReloadTextures();
+}
+
+void notify_pause() {
+  game_engine_->NotifyPause();
 }
 
 void update() {

@@ -42,6 +42,13 @@ static void loadAPK (const char* apkPath) {
 //  }
 }
 
+JNIEXPORT void JNICALL
+Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobject thiz,
+                                                             jint touch_id, jint action, jdouble x,
+                                                             jdouble y) {
+  touch(touch_id, action, x, y);
+}
+
 /* Call to initialize the graphics state */
 JNIEXPORT void JNICALL
 Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz,
@@ -60,19 +67,13 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
   init(env, ad_engine_java, local_store_java, asset_manager, w, h);  
 }
 
+JNIEXPORT void JNICALL
+Java_com_sharkable_sharkengine_DemoRenderer_nativePause(JNIEnv *env, jobject thiz) {
+  notify_pause();
+}
+
 Java_com_sharkable_sharkengine_DemoRenderer_nativeReloadTextures(JNIEnv *env, jobject thiz) {
-  reloadTextures();
-}
-
-JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativeTouch(JNIEnv *env, jobject thiz,
-                                                             jint touch_id, jint action, jdouble x,
-                                                             jdouble y) {
-  touch(touch_id, action, x, y);
-}
-
-JNIEXPORT void JNICALL
-Java_com_sharkable_sharkengine_DemoGLSurfaceView_nativePause(JNIEnv *env, jobject thiz) {
+  reload_textures();
 }
 
 JNIEXPORT void JNICALL

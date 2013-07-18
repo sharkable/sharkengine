@@ -24,7 +24,7 @@ import com.sharkable.sharkengine.modules.AdEngineAndroid;
 import com.sharkable.sharkengine.modules.LocalStoreAndroid;
 
 public class SharkengineActivity extends Activity {
-  private GLSurfaceView mGLView;
+  private DemoGLSurfaceView mGLView;
 
   static {
       System.loadLibrary("sharkengine");
@@ -66,14 +66,19 @@ public class SharkengineActivity extends Activity {
     super.onResume();
     mGLView.onResume();
   }
+
+  public void ignoreNextPause() {
+    mGLView.ignoreNextPause();
+  }
 }
 
 class DemoGLSurfaceView extends GLSurfaceView {
   private DemoRenderer mRenderer;
   private int mScreenPixelWidth;
   private int mGameRenderWidth;
+  private boolean mIgnoreNextPause = false;
 
-  public DemoGLSurfaceView(Activity activity) {
+  public DemoGLSurfaceView(SharkengineActivity activity) {
     super(activity);
     // TODO I need a solution for Gingerbread. Otherwise it loses textures.
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
@@ -81,6 +86,16 @@ class DemoGLSurfaceView extends GLSurfaceView {
     }
     mRenderer = new DemoRenderer(activity);
     setRenderer(mRenderer);
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    if (mIgnoreNextPause) {
+      mIgnoreNextPause = false;
+    } else {
+      mRenderer.pause();
+    }
   }
 
   @Override
@@ -119,17 +134,21 @@ class DemoGLSurfaceView extends GLSurfaceView {
     }
   }
 
+  public void ignoreNextPause() {
+    mIgnoreNextPause = true;
+  }
+
   private native void nativeTouch(int touchId, int action, double x, double y);
-  private native void nativePause();
 }
 
 class DemoRenderer implements GLSurfaceView.Renderer {
-  private Activity mActivity;
+  private SharkengineActivity mActivity;
   private boolean mDidInit = false;
+  private boolean mPauseOnNextFrame = false;
   private AdEngineAndroid mAdEngine;
   private LocalStoreAndroid mLocalStore;
 
-  public DemoRenderer(Activity activity) {
+  public DemoRenderer(SharkengineActivity activity) {
     mActivity = activity;
     mAdEngine = new AdEngineAndroid(activity);
     mLocalStore = new LocalStoreAndroid(activity);
@@ -164,12 +183,21 @@ class DemoRenderer implements GLSurfaceView.Renderer {
 
   public void onDrawFrame(GL10 gl) {
     synchronized (this) {
+      if (mPauseOnNextFrame) {
+        nativePause();
+        mPauseOnNextFrame = false;
+      }
       nativeRender();
     }
   }
 
+  public void pause() {
+    mPauseOnNextFrame = true;
+  }
+
   private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
                                  AssetManager assetManager, String apkPath, int w, int h);
+  private native void nativePause();
   private native void nativeReloadTextures();
   private native void nativeRender();
 }

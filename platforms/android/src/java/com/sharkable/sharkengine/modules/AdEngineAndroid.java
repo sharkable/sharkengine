@@ -8,7 +8,6 @@
 
 package com.sharkable.sharkengine.modules;
 
-import android.app.Activity;
 import android.util.Log;
 import java.util.HashSet;
 
@@ -18,6 +17,8 @@ import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
 import com.google.ads.InterstitialAd;
+
+import com.sharkable.sharkengine.SharkengineActivity;
 
 public class AdEngineAndroid {
   private class InterstitialState implements AdListener {
@@ -48,13 +49,13 @@ public class AdEngineAndroid {
     }
   }
 
-  private Activity mActivity = null;
+  private SharkengineActivity mActivity = null;
   private AdView mBannerView = null;
   private InterstitialAd mInterstitial = null;
   private InterstitialState mInterstitialState = new InterstitialState();
   private String mPublisherId = null;
 
-  public AdEngineAndroid(Activity activity) {
+  public AdEngineAndroid(SharkengineActivity activity) {
     mActivity = activity;
   }
 
@@ -114,6 +115,8 @@ public class AdEngineAndroid {
       mActivity.runOnUiThread(new Runnable() {           
         @Override
         public void run() {
+          // TODO this is kinda hacky. Avoid causing a pause notification for the ad.
+          mActivity.ignoreNextPause();
           mInterstitial.show();
           prepareFullScreenAd();
         }
