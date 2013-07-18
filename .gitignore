@@ -9,12 +9,3 @@ xcuserdata*
 project.xcworkspace*
 
 tools/png2tx
-
-platforms/android/build/bin
-
-platforms/android/build/gen
-
-platforms/android/build/libs/armeabi
-
-platforms/android/build/obj
-
