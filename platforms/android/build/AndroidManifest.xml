@@ -18,6 +18,7 @@
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
     <uses-sdk android:minSdkVersion="10"/>
     <supports-screens android:xlargeScreens="true"/>
 </manifest>
