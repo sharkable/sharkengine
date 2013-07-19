@@ -4,8 +4,8 @@
 
 extern "C" {
   void setupOpengl();
-  void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
-            int width, int height);
+  void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
+            jobject asset_manager, int width, int height);
   int handle_back_button();
   void reload_textures();
   void notify_pause();
@@ -20,6 +20,7 @@ extern "C" {
 
 #include "gameengine/android/modules/ad_engine_android.h"
 #include "gameengine/android/modules/analytics_engine_android.h"
+#include "gameengine/android/modules/app_store_engine_android.h"
 #include "gameengine/android/modules/game_engine_factory_android.h"
 #include "gameengine/android/modules/local_store_android.h"
 #include "gameengine/game_engine.h"
@@ -43,8 +44,8 @@ void setup_opengl() {
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject asset_manager,
-          int width, int height) {
+void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
+          jobject asset_manager, int width, int height) {
   setup_opengl();
 
   backing_width__ = width;
@@ -67,6 +68,10 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
 
   sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid(env, ad_engine_java));
   game_engine_->set_ad_engine(ad_engine);
+
+  sp<AppStoreEngine> app_store_engine =
+      sp<AppStoreEngine>(new AppStoreEngineAndroid(env, app_store_java));
+  game_engine_->set_app_store_engine(app_store_engine);
 
   sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid(env));
   game_engine_->set_analytics_engine(analytics_engine);

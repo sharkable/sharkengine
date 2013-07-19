@@ -21,6 +21,7 @@ import com.flurry.android.FlurryAgent;
 import com.google.ads.Ad;
 
 import com.sharkable.sharkengine.modules.AdEngineAndroid;
+import com.sharkable.sharkengine.modules.AppStoreEngineAndroid;
 import com.sharkable.sharkengine.modules.LocalStoreAndroid;
 
 public class SharkengineActivity extends Activity {
@@ -155,13 +156,16 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private boolean mDidInit = false;
   private boolean mPauseOnNextFrame = false;
   private boolean mHandleBackOnNextFrame = false;
+  // TODO make names consistent. Engine? Not engine? Also variables everywhere.
   private AdEngineAndroid mAdEngine;
   private LocalStoreAndroid mLocalStore;
+  private AppStoreEngineAndroid mAppStoreEngine;
 
   public DemoRenderer(SharkengineActivity activity) {
     mActivity = activity;
     mAdEngine = new AdEngineAndroid(activity);
     mLocalStore = new LocalStoreAndroid(activity);
+    mAppStoreEngine = new AppStoreEngineAndroid(activity);
   }
 
   public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -187,7 +191,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mAdEngine, mLocalStore, mActivity.getAssets(), apkFilePath, w, h);
+    nativeInit(mAdEngine, mLocalStore, mAppStoreEngine, mActivity.getAssets(), apkFilePath, w, h);
     mDidInit = true;
   }
 
@@ -216,7 +220,8 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   }
 
   private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
-                                 AssetManager assetManager, String apkPath, int w, int h);
+                                 AppStoreEngineAndroid appStoreJava, AssetManager assetManager,
+                                 String apkPath, int w, int h);
   private native void nativePause();
   private native boolean nativeHandleBackButton();
   private native void nativeReloadTextures();

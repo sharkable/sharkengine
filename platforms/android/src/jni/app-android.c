@@ -54,6 +54,7 @@ JNIEXPORT void JNICALL
 Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz,
                                                        jobject ad_engine_java,
                                                        jobject local_store_java,
+                                                       jobject app_store_java,
                                                        jobject asset_manager, jstring apkPath,
                                                        int w, int h) {
   s_log("Here in nativeInit()");
@@ -64,7 +65,7 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
   loadAPK(str);
   (*env)->ReleaseStringUTFChars(env, apkPath, str);
 
-  init(env, ad_engine_java, local_store_java, asset_manager, w, h);  
+  init(env, ad_engine_java, local_store_java, app_store_java, asset_manager, w, h);
 }
 
 JNIEXPORT void JNICALL

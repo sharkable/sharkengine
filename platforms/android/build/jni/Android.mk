@@ -24,6 +24,7 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/airhockey.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/ad_engine_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/analytics_engine_android.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/app_store_engine_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/asset_reader_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/game_engine_factory_android.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/local_store_android.cc \
