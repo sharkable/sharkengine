@@ -1,3 +1,6 @@
+export SHARKENGINE_BUILD_TARGET=$1
+SHARKENGINE_BUILD_INSTALL=$2
+
 export SHARKENGINE_APP_SOURCE="$(find ${SHARKENGINE_APP_HOME}/src -iname *cc | xargs echo -n)"
 
 if [ ! -d "$SHARKENGINE_APP_HOME/out/android" ]; then
@@ -25,4 +28,5 @@ cp $SHARKENGINE_APP_HOME/icons/icon-72.png \
 cp $SHARKENGINE_APP_HOME/icons/icon-96.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-xhdpi/ic_launcher.png
 
-ant $1 -buildfile $SHARKENGINE_APP_HOME/out/android/build.xml
+ant $SHARKENGINE_BUILD_TARGET $SHARKENGINE_BUILD_INSTALL -buildfile \
+    $SHARKENGINE_APP_HOME/out/android/build.xml

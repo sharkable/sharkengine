@@ -15,8 +15,8 @@ function setup_ios {
 }
 
 function build_android {
-  echo "building Android: $1 $SHARKENGINE_APP_HOME"  
-  $SHARKENGINE_HOME/platforms/android/build/build.sh "$1"
+  echo "building Android: $1 $2 $SHARKENGINE_APP_HOME"  
+  $SHARKENGINE_HOME/platforms/android/build/build.sh $1 $2
 }
 
 source $SHARKENGINE_APP_HOME/app.config
@@ -29,7 +29,7 @@ elif [ "$1" = "android" ]; then
   elif [ ! $3 = "" ] && [ ! $3 = "install" ]; then
     error
   else
-    build_android "$2 $3"
+    build_android $2 $3
   fi
 else
   error
