@@ -25,9 +25,4 @@ cp $SHARKENGINE_APP_HOME/icons/icon-72.png \
 cp $SHARKENGINE_APP_HOME/icons/icon-96.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-xhdpi/ic_launcher.png
 
-if [ "$1" = "build" ]; then
-  export SE_BUILD_OPTION=""
-else
-  export SE_BUILD_OPTION="install"
-fi
-ant debug $SE_BUILD_OPTION -buildfile $SHARKENGINE_APP_HOME/out/android/build.xml
+ant $1 -buildfile $SHARKENGINE_APP_HOME/out/android/build.xml

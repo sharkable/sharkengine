@@ -3,51 +3,33 @@
 export SHARKENGINE_APP_HOME=`pwd`
 
 function error {
-  echo "Error. Usage: \"sharkengine [build | install] [ios | android]\""
+  echo "Error. Usage:"
+  echo "    sharkengine ios setup"
+  echo "    sharkengine android debug [install]"
+  echo "    sharkengine android release [install]"
 }
 
-function build_ios {
+function setup_ios {
   echo "building iOS: $SHARKENGINE_APP_HOME"
   $SHARKENGINE_HOME/platforms/ios/build/build.sh
 }
 
-function install_ios {
-  echo "Error. Install iOS using Xcode."  
-}
-
 function build_android {
-  echo "building Android: $SHARKENGINE_APP_HOME"  
-  $SHARKENGINE_HOME/platforms/android/build/build.sh build
-}
-
-function install_android {
-  echo "Installing Android."
-  $SHARKENGINE_HOME/platforms/android/build/build.sh install
+  echo "building Android: $1 $SHARKENGINE_APP_HOME"  
+  $SHARKENGINE_HOME/platforms/android/build/build.sh "$1"
 }
 
 source $SHARKENGINE_APP_HOME/app.config
 
-if [ "$1" = "build" ]
-then
-  if [ "$2" = "ios" ]
-  then
-    build_ios
-  elif [ "$2" = "android" ]
-  then
-    build_android
-  else
+if [ "$1" = "ios" ] && [ "$2" = "setup" ]; then
+  setup_ios
+elif [ "$1" = "android" ]; then
+  if [ ! $2 = "debug" ] && [ ! $2 = "release" ]; then
     error
-  fi
-elif [ $1 = "install" ]
-then
-  if [ "$2" = "ios" ]
-  then
-    install_ios
-  elif [ "$2" = "android" ]
-  then
-    install_android
-  else
+  elif [ ! $3 = "" ] && [ ! $3 = "install" ]; then
     error
+  else
+    build_android "$2 $3"
   fi
 else
   error
