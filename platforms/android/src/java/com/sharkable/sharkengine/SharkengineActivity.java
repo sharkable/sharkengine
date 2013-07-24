@@ -106,12 +106,12 @@ class DemoGLSurfaceView extends GLSurfaceView {
 
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-     mScreenPixelWidth = MeasureSpec.getSize(widthMeasureSpec);
-     int screenPixelHeight = MeasureSpec.getSize(heightMeasureSpec);
-     this.setMeasuredDimension(mScreenPixelWidth, screenPixelHeight);
-     mGameRenderWidth = (mScreenPixelWidth >= 640) ? 640 : 320;
-     int screenHeight = mGameRenderWidth * screenPixelHeight / mScreenPixelWidth;
-     getHolder().setFixedSize(mGameRenderWidth, screenHeight);
+    mScreenPixelWidth = MeasureSpec.getSize(widthMeasureSpec);
+    int screenPixelHeight = MeasureSpec.getSize(heightMeasureSpec);
+    this.setMeasuredDimension(mScreenPixelWidth, screenPixelHeight);
+    mGameRenderWidth = (mScreenPixelWidth >= 640) ? 640 : 320;
+    int screenHeight = mGameRenderWidth * screenPixelHeight / mScreenPixelWidth;
+    getHolder().setFixedSize(mGameRenderWidth, screenHeight);
   }
 
   public boolean onTouchEvent(final MotionEvent event) {
