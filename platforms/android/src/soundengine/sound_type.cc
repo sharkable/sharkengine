@@ -72,7 +72,9 @@ void SoundType::Play(float volume, float position) {
     AddSoundInstance(&non_busy_node->next);
     non_busy_node = non_busy_node->next;
   }
-  non_busy_node->value->Play(volume, position);
+  if (non_busy_node) {
+    non_busy_node->value->Play(volume, position);
+  }
 }
 
 
@@ -81,4 +83,8 @@ void SoundType::Play(float volume, float position) {
 void SoundType::AddSoundInstance(SoundInstanceNode **node) {
   *node = new SoundInstanceNode();
   (*node)->value = (new SoundInstance())->Init(sl_engine_itf_, sl_audio_source_, sl_data_sink_);
+  if (!(*node)->value) {
+    delete *node;
+    *node = NULL;
+  }
 }

@@ -37,8 +37,12 @@ SoundPlayerImpl::~SoundPlayerImpl() {
   for (auto i = sounds_.begin(); i != sounds_.end(); i++) {
     delete i->second;
   }
-  (*output_mix_object_)->Destroy(output_mix_object_);
-  (*engine_object_)->Destroy(engine_object_);
+  if (output_mix_object_) {
+    (*output_mix_object_)->Destroy(output_mix_object_);
+  }
+  if (engine_object_) {
+    (*engine_object_)->Destroy(engine_object_);
+  }
 }
 
 //AVAudioSession *SoundPlayerImpl::session() {

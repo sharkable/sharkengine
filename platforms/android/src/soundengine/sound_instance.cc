@@ -23,7 +23,9 @@ SoundInstance::SoundInstance()
 }
 
 SoundInstance::~SoundInstance() {
-  (*sl_player_object_)->Destroy(sl_player_object_);
+  if (sl_player_object_) {
+    (*sl_player_object_)->Destroy(sl_player_object_);
+  }
 }
 
 SoundInstance *SoundInstance::Init(SLEngineItf sl_engine_itf, SLDataSource sl_audio_source,
