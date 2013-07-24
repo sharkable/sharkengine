@@ -45,8 +45,7 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   viewController_ = [[ViewController alloc] initWithGameSize:game_size_make(320, 480)];
-  sp<EngineView> rootView =
-      sp<EngineView>(new MainView(sp<GameEngine>(viewController_.gameEngine)));
+  sp<EngineView> rootView = sp<EngineView>(new MainView(viewController_.gameEngine));
   viewController_.gameEngine->PushView(rootView);
 
   return YES;
