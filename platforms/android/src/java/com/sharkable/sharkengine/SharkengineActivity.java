@@ -186,7 +186,9 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     ApplicationInfo appInfo = null;
     PackageManager packMgmr = mActivity.getPackageManager();
     try {
-      appInfo = packMgmr.getApplicationInfo("com.sharkable.sharkengine", 0);
+      // TODO make this generic. Maybe take it in the constructor from the subclass of
+      // SharkengineActivity.
+      appInfo = packMgmr.getApplicationInfo("com.sharkable.airhockey", 0);
     } catch (NameNotFoundException e) {
       Log.e("Sharkable", "failed to find package");
       e.printStackTrace();
