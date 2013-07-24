@@ -87,6 +87,7 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
 
 void shutdown() {
   game_engine_.reset();
+  SoundPlayer::shutdown();  // TODO SoundEngine should be an instance in GameEngine. singleton bad.
 }
 
 int handle_back_button() {

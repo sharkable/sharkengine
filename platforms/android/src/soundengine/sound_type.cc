@@ -31,6 +31,12 @@ struct SoundInstanceNode {
   }
 };
 
+SoundType::~SoundType() {
+  if (sound_instance_list_head_) {
+    delete sound_instance_list_head_;
+  }
+}
+
 SoundType *SoundType::Init(AAssetManager *asset_manager, SLEngineItf sl_engine_itf,
                            SLDataSink sl_data_sink, string filename) {
   sl_engine_itf_ = sl_engine_itf;

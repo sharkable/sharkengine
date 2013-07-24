@@ -22,6 +22,7 @@
 class SoundPlayerImpl : public SoundPlayer {
  public:
   SoundPlayerImpl();
+  ~SoundPlayerImpl();
 
   // AVAudioSession* session();
   bool isMusicPlayingInITunes();

@@ -17,6 +17,8 @@ struct SoundInstanceNode;
 
 class SoundType {
  public:
+  ~SoundType();
+
   SoundType *Init(AAssetManager *asset_manager, SLEngineItf sl_engine_itf, SLDataSink sl_data_sink,
                   std::string filename);
   void Play(float volume, float position);

@@ -91,6 +91,10 @@ SoundPlayer *SoundPlayer::instance() {
   return soundInstance_;
 }
 
+void SoundPlayer::shutdown() {
+  delete soundInstance_;
+}
+
 AVAudioSession *SoundPlayerImpl::session() {
   return session_;
 }

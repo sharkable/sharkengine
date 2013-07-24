@@ -22,10 +22,22 @@ SoundPlayer *SoundPlayer::instance() {
   return soundInstance_;
 }
 
+SoundPlayer *SoundPlayer::shutdown() {
+  delete soundInstance_;
+}
+
 SoundPlayerImpl::SoundPlayerImpl()
     : engine_object_(NULL),
       engine_engine_(NULL),
       output_mix_object_(NULL) {
+}
+
+SoundPlayerImpl::~SoundPlayerImpl() {
+  for (auto i = sounds_.begin(); i != sounds_.end(); i++) {
+    delete i->second;
+  }
+  (*output_mix_object_)->Destroy(output_mix_object_);
+  (*engine_object_)->Destroy(engine_object_);
 }
 
 //AVAudioSession *SoundPlayerImpl::session() {
