@@ -18,3 +18,23 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# Needed for Flurry. From their documentation.
+
+-keep class com.flurry.** { *; }
+-dontwarn com.flurry.**
+-keepattributes *Annotation*,EnclosingMethod
+
+# Keep AdMob classes.
+
+-keep class com.google.** { *; }
+
+# Keep MOST Sharkengine classes -- they need to stay the same for the NDK. But we'll want to
+# obfuscate classes related to licensing.
+
+-keep class com.sharkable.sharkengine.DemoGLSurfaceView { *; }
+-keep class com.sharkable.sharkengine.DemoRenderer { *; }
+-keep class com.sharkable.sharkengine.modules.AdEngineAndroid { *; }
+-keep class com.sharkable.sharkengine.modules.AnalyticsEngineAndroid { *; }
+-keep class com.sharkable.sharkengine.modules.AppStoreEngineAndroid { *; }
+-keep class com.sharkable.sharkengine.modules.LocalStoreAndroid { *; }
