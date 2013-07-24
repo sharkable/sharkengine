@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.sharkable.sharkengine"
+      package="com.sharkable.airhockey"
       android:versionCode="___SHARKENGINE_APP_VERSION_CODE___"
       android:versionName="___SHARKENGINE_APP_VERSION___">
     <application android:label="___SHARKENGINE_APP_NAME___" android:icon="@drawable/ic_launcher">
-        <activity android:name="SharkengineActivity"
+        <activity android:name="AirhockeyActivity"
                   android:label="___SHARKENGINE_APP_NAME___"
                   android:screenOrientation="sensorPortrait"
                   android:configChanges="keyboardHidden|orientation">
