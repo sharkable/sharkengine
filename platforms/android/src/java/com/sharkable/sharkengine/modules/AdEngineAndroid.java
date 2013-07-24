@@ -111,7 +111,7 @@ public class AdEngineAndroid {
   }
 
   public boolean showFullScreenAd() {
-    if (mInterstitial.isReady()) {
+    if (mInterstitial != null && mInterstitial.isReady()) {
       mActivity.runOnUiThread(new Runnable() {           
         @Override
         public void run() {
