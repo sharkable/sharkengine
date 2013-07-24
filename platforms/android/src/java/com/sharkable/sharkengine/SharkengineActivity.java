@@ -156,6 +156,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private boolean mDidInit = false;
   private boolean mPauseOnNextFrame = false;
   private boolean mHandleBackOnNextFrame = false;
+  private boolean mQuitOnNextFrame = false;
   // TODO make names consistent. Engine? Not engine? Also variables everywhere.
   private AdEngineAndroid mAdEngine;
   private LocalStoreAndroid mLocalStore;
@@ -178,6 +179,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     if (mDidInit) {
       return;
     }
+    mDidInit = true;
 
     // return apk file path (or null on error)
     String apkFilePath = null;
@@ -192,7 +194,6 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     }
     apkFilePath = appInfo.sourceDir;
     nativeInit(mAdEngine, mLocalStore, mAppStoreEngine, mActivity.getAssets(), apkFilePath, w, h);
-    mDidInit = true;
   }
 
   public void onDrawFrame(GL10 gl) {
@@ -203,11 +204,15 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       }
       if (mHandleBackOnNextFrame) {
         if (!nativeHandleBackButton()) {
-          mActivity.finish();
+          quit();
         }
         mHandleBackOnNextFrame = false;
       }
       nativeRender();
+      if (mQuitOnNextFrame) {
+        nativeShutdown();
+        mActivity.finish();
+      }
     }
   }
 
@@ -219,9 +224,14 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     mPauseOnNextFrame = true;
   }
 
+  public void quit() {
+    mQuitOnNextFrame = true;
+  }
+
   private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
                                  AppStoreEngineAndroid appStoreJava, AssetManager assetManager,
                                  String apkPath, int w, int h);
+  private native void nativeShutdown();
   private native void nativePause();
   private native boolean nativeHandleBackButton();
   private native void nativeReloadTextures();

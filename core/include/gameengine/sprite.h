@@ -17,14 +17,14 @@ class Sprite {
  public:
   Sprite() { }
 
-  Sprite(sp<GameEngine> game_engine) : game_engine_(game_engine) { }
+  Sprite(GameEngine *game_engine) : game_engine_(game_engine) { }
 
-  Sprite(sp<GameEngine> game_engine, Texture2D texture)
+  Sprite(GameEngine *game_engine, Texture2D texture)
     : game_engine_(game_engine),
       texture_(texture) {
   }
 
-  Sprite(sp<GameEngine> game_engine, std::string texture_name) : game_engine_(game_engine) {
+  Sprite(GameEngine *game_engine, std::string texture_name) : game_engine_(game_engine) {
     texture_ = game_engine->resource_loader().TextureWithName(texture_name);
   }
 
@@ -58,7 +58,7 @@ class Sprite {
   }
 
  private:
-  sp<GameEngine> game_engine_;
+  GameEngine *game_engine_;  // weak
   Texture2D texture_;
 };
 

@@ -36,7 +36,7 @@ class GameEngineFactory;
 class LocalStore;
 
 extern "C" {
-  void sharkengine_init(sp<GameEngine> game_engine);
+  void sharkengine_init(GameEngine *game_engine);
 }
 
 class GameEngine {

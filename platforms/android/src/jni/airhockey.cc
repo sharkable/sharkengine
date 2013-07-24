@@ -6,6 +6,7 @@ extern "C" {
   void setupOpengl();
   void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
             jobject asset_manager, int width, int height);
+  void shutdown();
   int handle_back_button();
   void reload_textures();
   void notify_pause();
@@ -81,7 +82,11 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   // TODO casting is bad
   ((SoundPlayerImpl *)SoundPlayer::instance())->setAssetManager(mgr);
 
-  sharkengine_init(game_engine_);
+  sharkengine_init(game_engine_.get());
+}
+
+void shutdown() {
+  game_engine_.reset();
 }
 
 int handle_back_button() {

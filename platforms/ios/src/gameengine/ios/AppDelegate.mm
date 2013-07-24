@@ -50,8 +50,7 @@
   viewController_.gameEngine->set_screen_size(screen_size_make(screenSize.width * scale,
                                                                screenSize.height * scale));
 
-  // TODO why is this a shared_ptr?
-  sharkengine_init(sp<GameEngine>(viewController_.gameEngine));
+  sharkengine_init(viewController_.gameEngine);
 
   SoundPlayer::instance()->syncAudioSessionForITunes();
 

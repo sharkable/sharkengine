@@ -69,6 +69,11 @@ Java_com_sharkable_sharkengine_DemoRenderer_nativeInit(JNIEnv *env, jobject thiz
 }
 
 JNIEXPORT void JNICALL
+Java_com_sharkable_sharkengine_DemoRenderer_nativeShutdown(JNIEnv *env, jobject thiz) {
+  shutdown();
+}
+
+JNIEXPORT void JNICALL
 Java_com_sharkable_sharkengine_DemoRenderer_nativePause(JNIEnv *env, jobject thiz) {
   notify_pause();
 }

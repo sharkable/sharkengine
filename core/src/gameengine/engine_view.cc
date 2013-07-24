@@ -16,7 +16,7 @@
 
 using std::vector;
 
-EngineView::EngineView(sp<GameEngine> game_engine) : game_engine_(game_engine) {
+EngineView::EngineView(GameEngine *game_engine) : game_engine_(game_engine) {
 }
 
 void EngineView::Update() {

@@ -17,7 +17,7 @@ class ViewEntity;
 
 class EngineView {
  public:
-  EngineView(sp<GameEngine> game_engine);
+  EngineView(GameEngine *game_engine);
 
   virtual void ViewIsShown() {}
   virtual void Update();
@@ -36,12 +36,12 @@ class EngineView {
   void RemoveEntity(sp<ViewEntity> entity);
   bool ContainsEntity(sp<ViewEntity> entity);
 
-  sp<GameEngine> game_engine() { return game_engine_; }
+  GameEngine *game_engine() { return game_engine_; }
 
  protected:
 
  private:
-  sp<GameEngine> game_engine_;
+  GameEngine *game_engine_;  // weak
   std::vector<sp<ViewEntity> > entities_;
 };
 
