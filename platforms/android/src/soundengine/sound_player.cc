@@ -24,6 +24,7 @@ SoundPlayer *SoundPlayer::instance() {
 
 SoundPlayer *SoundPlayer::shutdown() {
   delete soundInstance_;
+  soundInstance_ = NULL;
 }
 
 SoundPlayerImpl::SoundPlayerImpl()
