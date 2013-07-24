@@ -12,7 +12,7 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/sprite.h"
 
-MainView::MainView(sp<GameEngine> game_engine) : EngineView(game_engine) {
+MainView::MainView(GameEngine *game_engine) : EngineView(game_engine) {
   Sprite stripes_image(game_engine, "stripes");
   AddEntity(new SimpleItem(stripes_image, game_point_make(10, 10)));
 }

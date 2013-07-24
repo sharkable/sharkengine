@@ -15,7 +15,7 @@ class GameEngine;
 
 class MainView : public EngineView {
  public:
-  MainView(sp<GameEngine> game_engine);
+  MainView(GameEngine *game_engine);
 };
 
 #endif
