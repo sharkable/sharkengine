@@ -15,7 +15,7 @@ using std::string;
 AdEngineAndroid::AdEngineAndroid(JNIEnv *jni_env, jobject java_object)
     : jni_env_(jni_env) {
   java_object_ = jni_env->NewGlobalRef(java_object);
-  jclass java_class = jni_env_->FindClass("com.sharkable.sharkengine.modules.AdEngineAndroid");
+  jclass java_class = jni_env_->FindClass("com/sharkable/sharkengine/modules/AdEngineAndroid");
   assert(java_class);
   set_publisher_id_ = jni_env_->GetMethodID(java_class, "setPublisherId", "(Ljava/lang/String;)V");
   set_ad_at_point_ = jni_env_->GetMethodID(java_class, "setAdAtPoint", "(F)V");

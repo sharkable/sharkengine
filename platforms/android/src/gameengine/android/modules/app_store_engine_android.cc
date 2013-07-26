@@ -12,7 +12,7 @@ AppStoreEngineAndroid::AppStoreEngineAndroid(JNIEnv *jni_env, jobject java_objec
     : jni_env_(jni_env) {
   java_object_ = jni_env->NewGlobalRef(java_object);
   jclass java_class =
-      jni_env_->FindClass("com.sharkable.sharkengine.modules.AppStoreEngineAndroid");
+      jni_env_->FindClass("com/sharkable/sharkengine/modules/AppStoreEngineAndroid");
   ask_for_rate_ = jni_env_->GetMethodID(java_class, "askForRate", "()V");
   ask_for_upgrade_ =
       jni_env_->GetMethodID(java_class, "askForUpgrade", "(Ljava/lang/String;Ljava/lang/String;)V");

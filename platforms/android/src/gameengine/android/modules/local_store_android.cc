@@ -13,7 +13,7 @@ using std::string;
 LocalStoreAndroid::LocalStoreAndroid(JNIEnv *jni_env, jobject java_object)
     : jni_env_(jni_env) {
   java_object_ = jni_env->NewGlobalRef(java_object);
-  jclass java_class = jni_env_->FindClass("com.sharkable.sharkengine.modules.LocalStoreAndroid");
+  jclass java_class = jni_env_->FindClass("com/sharkable/sharkengine/modules/LocalStoreAndroid");
   has_entry_for_key_ = jni_env_->GetMethodID(java_class, "hasEntryForKey", "(Ljava/lang/String;)Z");
   bool_for_key_ = jni_env_->GetMethodID(java_class, "boolForKey", "(Ljava/lang/String;)Z");
   set_bool_ = jni_env_->GetMethodID(java_class, "setBool", "(ZLjava/lang/String;)V");

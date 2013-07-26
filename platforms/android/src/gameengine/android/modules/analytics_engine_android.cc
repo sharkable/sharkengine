@@ -13,7 +13,7 @@ using std::string;
 
 AnalyticsEngineAndroid::AnalyticsEngineAndroid(JNIEnv *jni_env)
   : jni_env_(jni_env) {
-  java_class_ = jni_env_->FindClass("com.sharkable.sharkengine.modules.AnalyticsEngineAndroid");
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
   assert(java_class_);
   begin_log_event_ = jni_env_->GetStaticMethodID(java_class_, "beginLogEvent",
                                                  "(Ljava/lang/String;)V");
@@ -29,6 +29,7 @@ AnalyticsEngineAndroid::AnalyticsEngineAndroid(JNIEnv *jni_env)
 // AnalyticsEngine
 
 void AnalyticsEngineAndroid::LogEvent(string event_name) {
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
   jstring java_event_name = jni_env_->NewStringUTF(event_name.c_str());
   jni_env_->CallStaticVoidMethod(java_class_, begin_log_event_, java_event_name);
   jni_env_->DeleteLocalRef(java_event_name);
@@ -37,6 +38,7 @@ void AnalyticsEngineAndroid::LogEvent(string event_name) {
 }
 
 void AnalyticsEngineAndroid::LogEvent(string event_name, map<string, string> parameters) {
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
   jstring java_event_name = jni_env_->NewStringUTF(event_name.c_str());
   jni_env_->CallStaticVoidMethod(java_class_, begin_log_event_, java_event_name);
   jni_env_->DeleteLocalRef(java_event_name);
