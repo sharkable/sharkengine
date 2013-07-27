@@ -12,7 +12,7 @@
 #include <map>
 #include <string>
 
-#include "opengl/Texture2D.h"
+#include "opengl/texture2d.h"
 
 class AssetReader;
 class GameEngine;
