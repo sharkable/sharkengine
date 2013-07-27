@@ -19,13 +19,13 @@ sed -e "s/___SHARKENGINE_APP_VERSION_CODE___/$VERSION_CODE/g" \
 mv $SHARKENGINE_APP_HOME/out/android/AndroidManifest.xml2 \
     $SHARKENGINE_APP_HOME/out/android/AndroidManifest.xml
 
-cp $SHARKENGINE_APP_HOME/icons/icon-36.png \
+cp $SHARKENGINE_APP_HOME/icons/Icon-36.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-ldpi/ic_launcher.png
-cp $SHARKENGINE_APP_HOME/icons/icon-48.png \
+cp $SHARKENGINE_APP_HOME/icons/Icon-48.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-mdpi/ic_launcher.png
-cp $SHARKENGINE_APP_HOME/icons/icon-72.png \
+cp $SHARKENGINE_APP_HOME/icons/Icon-72.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-hdpi/ic_launcher.png
-cp $SHARKENGINE_APP_HOME/icons/icon-96.png \
+cp $SHARKENGINE_APP_HOME/icons/Icon-96.png \
     $SHARKENGINE_APP_HOME/out/android/res/drawable-xhdpi/ic_launcher.png
 
 ant $SHARKENGINE_BUILD_TARGET $SHARKENGINE_BUILD_INSTALL -buildfile \
