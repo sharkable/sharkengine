@@ -40,7 +40,7 @@ class SoundPlayer {
   virtual void setSoundEffectsOn(bool on) = 0;
 
   static SoundPlayer *instance();
-  static SoundPlayer *shutdown();
+  static void shutdown();
 };
 
 #endif
