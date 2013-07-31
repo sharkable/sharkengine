@@ -779,17 +779,17 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "\"/$(SHARKENGINE_HOME)/platforms/ios/src/gameengine/ios//AirHockey_Prefix.pch\"";
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../../../../airhockey/src,
-					../../../core/include,
-					../../../core/src,
-					../src,
+					../../src,
+					"___SHARKENGINE_HOME___/core/include",
+					"___SHARKENGINE_HOME___/core/src",
+					"___SHARKENGINE_HOME___/platforms/ios/src",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -815,8 +815,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../src/gameengine/ios/thirdparty/admob\"",
-					"\"$(SRCROOT)/../src/gameengine/ios/thirdparty/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -872,17 +872,17 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../../platforms/android/src/jni/AirHockey_Prefix.pch;
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../../../../airhockey/src,
-					../../../core/include,
-					../../../core/src,
-					../src,
+					../../src,
+					"___SHARKENGINE_HOME___/core/include",
+					"___SHARKENGINE_HOME___/core/src",
+					"___SHARKENGINE_HOME___/platforms/ios/src",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -931,8 +931,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../src/gameengine/ios/thirdparty/admob\"",
-					"\"$(SRCROOT)/../src/gameengine/ios/thirdparty/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
