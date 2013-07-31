@@ -754,7 +754,7 @@ class XcodeProject(PBXDict):
 
       new_files = self.verify_files([n.get('name') for n in file_dict.values()], parent=grp)
 
-      add_files = [(k,v) for k,v in file_dict.items() if v.get('name') in new_files]
+      add_files = sorted([(k,v) for k,v in file_dict.items() if v.get('name') in new_files])
 
       for path, kwds in add_files:
         kwds.pop('name', None)
