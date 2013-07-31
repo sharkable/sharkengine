@@ -33,6 +33,9 @@ class SoundPlayerImpl : public SoundPlayer {
   void setMusicOn(bool on);
   void setSoundEffectsOn(bool on);
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   NSMutableArray* sounds_;
   AVAudio* song_;

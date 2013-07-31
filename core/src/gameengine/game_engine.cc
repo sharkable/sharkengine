@@ -10,12 +10,23 @@
 
 #include "gameengine/engine_view.h"
 
+#include "gameengine/modules/ad_engine.h"
+#include "gameengine/modules/analytics_engine.h"
+#include "gameengine/modules/app_store_engine.h"
+#include "gameengine/modules/local_store.h"
+
 GameEngine::GameEngine()
     : platform_type_(kPlatformTypePhone),
       resource_loader_(*this),
       screen_size_(kScreenSizeZero),
       screen_offset_(kScreenPointZero),
       screen_to_game_point_ratio_(1) {
+
+  local_store_.reset(new LocalStore());
+  ad_engine_.reset(new AdEngine());
+  analytics_engine_.reset(new AnalyticsEngine());
+  app_store_engine_.reset(new AppStoreEngine());
+
   positions_ = sp<Positions>(new Positions());
 }
 

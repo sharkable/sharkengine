@@ -11,6 +11,8 @@
 
 #include <string>
 
+#include "gameengine/module.h"
+
 typedef enum {
   kSoundScore = 0,
   kSoundScoreFinal,
@@ -24,23 +26,23 @@ typedef enum {
   kNumSounds
 } Sound;
 
-class SoundPlayer {
+class SoundPlayer : public Module {
  public:
-  virtual void initialize() = 0;
-  virtual void syncAudioSessionForITunes() = 0;
-  virtual void duckAudioFromITunes(bool duck) = 0;
-  virtual bool setGlobalVolume(float volume) = 0;
-  virtual bool setVolume(Sound sound, float volume) = 0;
-  virtual bool setPosition(Sound sound, float position) = 0;
-  virtual bool playSound(Sound sound) = 0;
-  virtual bool stopSound(Sound sound) = 0;
-  virtual void playSong(std::string filename) = 0;
-  virtual void stopSong() = 0;
-  virtual void setMusicOn(bool on) = 0;
-  virtual void setSoundEffectsOn(bool on) = 0;
+  virtual void initialize() {};
+  virtual void syncAudioSessionForITunes() {};
+  virtual void duckAudioFromITunes(bool duck) {};
+  virtual bool setGlobalVolume(float volume) { return false; };
+  virtual bool setVolume(Sound sound, float volume) { return false; };
+  virtual bool setPosition(Sound sound, float position) { return false; };
+  virtual bool playSound(Sound sound) { return false; };
+  virtual bool stopSound(Sound sound) { return false; };
+  virtual void playSong(std::string filename) {};
+  virtual void stopSong() {};
+  virtual void setMusicOn(bool on) {};
+  virtual void setSoundEffectsOn(bool on) {};
 
   static SoundPlayer *instance();
-  static SoundPlayer *shutdown();
+  static void shutdown();
 };
 
 #endif

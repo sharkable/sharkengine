@@ -20,6 +20,9 @@ class AnalyticsEngineIOS : public AnalyticsEngine {
   // AnalyticsEngine
   void LogEvent(std::string event_name);
   void LogEvent(std::string event_name, std::map<std::string, std::string> parameters);
+
+  // Module
+  bool IsImplemented() { return true; };
 };
 
 #endif

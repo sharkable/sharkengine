@@ -30,6 +30,9 @@ class LocalStoreAndroid : public LocalStore {
   std::string StringForKey(std::string key);
   void SetString(std::string value, std::string key);
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   JNIEnv *jni_env_;
   jobject java_object_;

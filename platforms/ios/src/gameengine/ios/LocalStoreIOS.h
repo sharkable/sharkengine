@@ -25,6 +25,9 @@ class LocalStoreIOS : public LocalStore {
   void SetDouble(double value, std::string key);
   std::string StringForKey(std::string key);
   void SetString(std::string value, std::string key);
+
+  // Module
+  bool IsImplemented() { return true; };
 };
 
 #endif

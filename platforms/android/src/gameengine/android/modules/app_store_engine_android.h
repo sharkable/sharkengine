@@ -24,6 +24,9 @@ class AppStoreEngineAndroid : public AppStoreEngine {
   void AskForUpgrade(std::string app_name, std::string purchase_id,
                      AppStoreEngineDelegate *delegate);
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   JNIEnv *jni_env_;
   jobject java_object_;

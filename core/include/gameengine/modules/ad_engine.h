@@ -11,16 +11,17 @@
 
 #include <string>
 
-struct ScreenPoint;
+#include "gameengine/coordinate_types.h"
+#include "gameengine/module.h"
 
-class AdEngine {
+class AdEngine : public Module {
  public:
-  virtual void SetPublisherId(std::string publisher_id) = 0;
-  virtual void SetAdAtPoint(ScreenPoint point) = 0;
-  virtual void RemoveAd() = 0;
-  virtual void PrepareFullScreenAd() = 0;
-  virtual bool ShowFullScreenAd() = 0;
-  virtual bool IsShowingFullScreenAd() = 0;
+  virtual void SetPublisherId(std::string publisher_id) {};
+  virtual void SetAdAtPoint(ScreenPoint point) {};
+  virtual void RemoveAd() {};
+  virtual void PrepareFullScreenAd() {};
+  virtual bool ShowFullScreenAd() { return false; };
+  virtual bool IsShowingFullScreenAd() { return false; };
 };
 
 #endif

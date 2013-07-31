@@ -22,6 +22,9 @@ class AppStoreEngineIOS : public AppStoreEngine {
   void AskForUpgrade(std::string app_name, std::string purchase_id,
                      AppStoreEngineDelegate *delegate);
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   PopupHandler *popup_handler_;
 };

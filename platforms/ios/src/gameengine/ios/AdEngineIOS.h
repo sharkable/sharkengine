@@ -30,6 +30,9 @@ class AdEngineIOS : public AdEngine {
   bool ShowFullScreenAd();
   bool IsShowingFullScreenAd();
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   std::string publisher_id_;
   GADBannerView *banner_view_;

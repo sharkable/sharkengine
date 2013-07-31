@@ -24,6 +24,9 @@ class AnalyticsEngineAndroid : public AnalyticsEngine {
   void LogEvent(std::string event_name);
   void LogEvent(std::string event_name, std::map<std::string, std::string> parameters);
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   JNIEnv *jni_env_;
   jclass java_class_;

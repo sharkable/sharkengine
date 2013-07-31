@@ -42,6 +42,9 @@ class SoundPlayerImpl : public SoundPlayer {
 
   void setAssetManager(AAssetManager *asset_manager) { asset_manager_ = asset_manager; }
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
    AAssetManager *asset_manager_;
    float global_volume_;

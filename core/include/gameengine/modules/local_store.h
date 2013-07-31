@@ -11,17 +11,19 @@
 
 #include <string>
 
-class LocalStore {
+#include "gameengine/module.h"
+
+class LocalStore : public Module {
  public:
-  virtual bool HasEntryForKey(std::string key) = 0;
-  virtual bool BoolForKey(std::string key) = 0;
-  virtual void SetBool(bool value, std::string key) = 0;
-  virtual int IntegerForKey(std::string key) = 0;
-  virtual void SetInteger(int value, std::string key) = 0;
-  virtual double DoubleForKey(std::string key) = 0;
-  virtual void SetDouble(double value, std::string key) = 0;
-  virtual std::string StringForKey(std::string key) = 0;
-  virtual void SetString(std::string value, std::string key) = 0;
+  virtual bool HasEntryForKey(std::string key) { return false; };
+  virtual bool BoolForKey(std::string key) { return false; };
+  virtual void SetBool(bool value, std::string key) {};
+  virtual int IntegerForKey(std::string key) { return 0; };
+  virtual void SetInteger(int value, std::string key) {};
+  virtual double DoubleForKey(std::string key) { return 0; };
+  virtual void SetDouble(double value, std::string key) {};
+  virtual std::string StringForKey(std::string key) { return ""; };
+  virtual void SetString(std::string value, std::string key) {};
 };
 
 #endif

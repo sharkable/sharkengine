@@ -26,6 +26,9 @@ class AdEngineAndroid : public AdEngine {
   bool ShowFullScreenAd();
   bool IsShowingFullScreenAd();
 
+  // Module
+  bool IsImplemented() { return true; };
+
  private:
   JNIEnv *jni_env_;
   jobject java_object_;
