@@ -10,8 +10,10 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioServices.h>
-#import <MediaPlayer/MPMusicPlayerController.h>
-
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
+  #import <MediaPlayer/MPMusicPlayerController.h>
+#endif
 #import "TypeUtil.h"
 
 using std::string;
@@ -20,6 +22,8 @@ static SoundPlayerImpl *soundInstance_ = NULL;
 
 static const bool thisAppDoesDucking = YES; // if this gets changed to yes then it's all set up to duck the sound when iTunes is playing with Sound effects ON
 
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
 @interface SoundHelpers : NSObject
 + (NSString *)getAudioServicesError:(OSStatus)err;
 @end
@@ -80,8 +84,9 @@ static const bool thisAppDoesDucking = YES; // if this gets changed to yes then 
 
 @end
 
-
 static AVAudioSession *session_ = nil;
+#endif  // TARGET_OS_PHONE
+
 static bool musicIsPlayingInITunes_ = false;
 
 SoundPlayer *SoundPlayer::instance() {
@@ -95,9 +100,12 @@ void SoundPlayer::shutdown() {
   delete soundInstance_;
 }
 
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
 AVAudioSession *SoundPlayerImpl::session() {
   return session_;
 }
+#endif
 
 bool SoundPlayerImpl::isMusicPlayingInITunes() {
   return musicIsPlayingInITunes_;
@@ -105,6 +113,9 @@ bool SoundPlayerImpl::isMusicPlayingInITunes() {
 
 // allow sound effects to be clear by ducking the iTunes song
 void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
+
   // note: not sure if this is for all AudioSession properties, but at least with ducking the
   // session has to be inactive to make the change so here we set the session to inactive at the top
   // of the function, and set to active at the end after setting the property
@@ -133,6 +144,7 @@ void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
   if(!sessionActive) {
     NSLog(@"ERROR setting audio session active .... \n\tERROR: %@\n", activeErr);
   }
+#endif
 }
 
 NSURL *SoundPlayerImpl::filenameToUrl(NSString *name) {
@@ -267,6 +279,9 @@ SoundPlayerImpl::SoundPlayerImpl() {
 //
 void SoundPlayerImpl::syncAudioSessionForITunes()
 {
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
+
   //
   // In order to allow iTunes songs to play under our game music/effects
   // we need to set the category of our audio session.
@@ -293,4 +308,5 @@ void SoundPlayerImpl::syncAudioSessionForITunes()
     BOOL isPlayingITunes = (currentlyPlayingItem != nil ) && ( iPodMusicPlayer.playbackState == MPMusicPlaybackStatePlaying );
     musicIsPlayingInITunes_ = isPlayingITunes;
   }
+#endif
 }

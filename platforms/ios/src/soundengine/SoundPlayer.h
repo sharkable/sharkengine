@@ -17,7 +17,10 @@ class SoundPlayerImpl : public SoundPlayer {
  public:
   SoundPlayerImpl();
 
+// TODO: Fix for OS X.
+#if TARGET_OS_PHONE
   AVAudioSession* session();
+#endif
   bool isMusicPlayingInITunes();
   void syncAudioSessionForITunes();
   void duckAudioFromITunes(bool duck);
