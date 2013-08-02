@@ -10,9 +10,9 @@
 
 #import "gameengine/ios/thirdparty/appirater/Appirater.h"
 #import "gameengine/ios/thirdparty/flurry/Flurry.h"
-#import "gameengine/ios/GameEngineFactoryIOS.h"
 #import "gameengine/ios/TypeUtil.h"
 #import "gameengine/ios/ViewController.h"
+#import "gameengine/ios/modules/GameEngineFactoryIOS.h"
 #import "gameengine/modules/sound_player.h"
 #import "gameengine/game_engine.h"
 

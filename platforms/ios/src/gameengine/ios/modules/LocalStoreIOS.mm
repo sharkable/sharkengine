@@ -6,7 +6,7 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/ios/LocalStoreIOS.h"
+#include "gameengine/ios/modules/LocalStoreIOS.h"
 
 #include "gameengine/ios/TypeUtil.h"
 

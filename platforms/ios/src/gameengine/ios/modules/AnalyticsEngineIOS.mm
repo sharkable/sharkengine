@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/ios/AnalyticsEngineIOS.h"
+#import "gameengine/ios/modules/AnalyticsEngineIOS.h"
 
 #import "gameengine/ios/thirdparty/flurry/Flurry.h"
 #import "gameengine/ios/TypeUtil.h"

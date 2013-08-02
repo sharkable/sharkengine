@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/ios/AppStoreEngineIOS.h"
+#include "gameengine/ios/modules/AppStoreEngineIOS.h"
 
 #include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>

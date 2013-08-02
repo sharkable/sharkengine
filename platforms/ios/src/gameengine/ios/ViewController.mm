@@ -8,13 +8,13 @@
 
 #import "gameengine/ios/ViewController.h"
 
-#import "gameengine/ios/AdEngineIOS.h"
-#import "gameengine/ios/AnalyticsEngineIOS.h"
-#import "gameengine/ios/AppStoreEngineIOS.h"
 #import "gameengine/ios/EAGLView.h"
 #import "gameengine/ios/GameTimer.h"
 #import "gameengine/ios/GameTouchWindow.h"
-#import "gameengine/ios/LocalStoreIOS.h"
+#import "gameengine/ios/modules/AdEngineIOS.h"
+#import "gameengine/ios/modules/AnalyticsEngineIOS.h"
+#import "gameengine/ios/modules/AppStoreEngineIOS.h"
+#import "gameengine/ios/modules/LocalStoreIOS.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
