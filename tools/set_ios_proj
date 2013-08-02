@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$1" = "generic" ]; then
+  sed -i '' -e "s/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/___SHARKENGINE_HOME___/g" \
+      $SHARKENGINE_HOME/platforms/ios/build/SharkengineApp.xcodeproj/project.pbxproj
+elif [ "$1" = "editable" ]; then
+  sed -i '' -e "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
+      $SHARKENGINE_HOME/platforms/ios/build/SharkengineApp.xcodeproj/project.pbxproj
+else
+  echo "Usage:\nset_engine_home [generic | editable]"
+fi
