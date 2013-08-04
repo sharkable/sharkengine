@@ -20,7 +20,6 @@
 
 @interface ViewController ()
 - (void)update;
-- (BOOL)isLandscape;
 @end
 
 @implementation ViewController {
@@ -80,6 +79,18 @@
   [gameTimer_ stop];
 }
 
+- (BOOL)isLandscape {
+  NSArray *supportedOrientations =
+  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
+  for (NSString *orientation in supportedOrientations) {
+    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
+        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
 
 #pragma mark - UIViewController
 
@@ -123,18 +134,6 @@
   [view_ setUpRender];
   gameEngine_->Render();
   [view_ finishRender];
-}
-
-- (BOOL)isLandscape {
-  NSArray *supportedOrientations =
-      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
-  for (NSString *orientation in supportedOrientations) {
-    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
-        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
-      return YES;
-    }
-  }
-  return NO;
 }
 
 @end
