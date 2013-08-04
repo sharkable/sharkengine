@@ -20,6 +20,5 @@ class GameEngine;
 
 - (void)start;
 - (void)stop;
-- (BOOL)isLandscape;
 
 @end

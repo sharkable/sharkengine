@@ -45,14 +45,8 @@
   viewController_ = [[ViewController alloc] init];
   viewController_.gameEngine->set_factory(sp<GameEngineFactory>(new GameEngineFactoryIOS()));
 
-  CGSize screenSize = [UIScreen mainScreen].bounds.size;
+  CGSize screenSize = viewController_.window.frame.size;
   CGFloat scale = [UIScreen mainScreen].scale;
-  // Don't trust the orientation for screenSize (it's assuming a portrait screen.)
-  if ([viewController_ isLandscape] && screenSize.width < screenSize.height) {
-    double newWidth = screenSize.height;
-    screenSize.height = screenSize.width;
-    screenSize.width = newWidth;
-  }
   viewController_.gameEngine->set_screen_size(screen_size_make(screenSize.width * scale,
                                                                screenSize.height * scale));
 

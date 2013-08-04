@@ -20,6 +20,7 @@
 
 @interface ViewController ()
 - (void)update;
+- (BOOL)isLandscape;
 @end
 
 @implementation ViewController {
@@ -37,6 +38,12 @@
   self = [super init];
   if (self) {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
+    // Don't trust the orientation for screenSize (it's assuming a portrait screen.)
+    if ([self isLandscape] && screenSize.size.width < screenSize.size.height) {
+      double newWidth = screenSize.size.height;
+      screenSize.size.height = screenSize.size.width;
+      screenSize.size.width = newWidth;
+    }
     gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:screenSize];
     [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
@@ -77,18 +84,6 @@
 
 - (void)stop {
   [gameTimer_ stop];
-}
-
-- (BOOL)isLandscape {
-  NSArray *supportedOrientations =
-  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
-  for (NSString *orientation in supportedOrientations) {
-    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
-        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
-      return YES;
-    }
-  }
-  return NO;
 }
 
 
@@ -134,6 +129,18 @@
   [view_ setUpRender];
   gameEngine_->Render();
   [view_ finishRender];
+}
+
+- (BOOL)isLandscape {
+  NSArray *supportedOrientations =
+  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
+  for (NSString *orientation in supportedOrientations) {
+    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
+        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 @end
