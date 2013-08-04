@@ -15,7 +15,8 @@ GameEngine::GameEngine()
       resource_loader_(*this),
       screen_size_(kScreenSizeZero),
       screen_offset_(kScreenPointZero),
-      screen_to_game_point_ratio_(1) {
+      screen_to_game_point_ratio_x_(1),
+      screen_to_game_point_ratio_y_(1) {
   positions_ = sp<Positions>(new Positions());
 }
 

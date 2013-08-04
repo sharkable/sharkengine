@@ -96,26 +96,28 @@ class GameEngine {
   ScreenPoint screen_offset() { return screen_offset_; }
   void set_screen_offset(ScreenPoint screen_offset) { screen_offset_ = screen_offset; }
 
-  double screen_to_game_point_ratio() { return screen_to_game_point_ratio_; }
-  void set_screen_to_game_point_ratio(double screen_to_game_point_ratio) {
-    screen_to_game_point_ratio_ = screen_to_game_point_ratio;
+  double screen_to_game_point_ratio_x() { return screen_to_game_point_ratio_x_; }
+  double screen_to_game_point_ratio_y() { return screen_to_game_point_ratio_y_; }
+  void set_screen_to_game_point_ratios(double ratio_x, double ratio_y) {
+    screen_to_game_point_ratio_x_ = ratio_x;
+    screen_to_game_point_ratio_y_ = ratio_y;
   }
 
   ScreenSize game_size_to_screen_size(GameSize game_size_) {
-    return screen_size_make(game_size_.width * screen_to_game_point_ratio_,
-                            game_size_.height * screen_to_game_point_ratio_);
+    return screen_size_make(game_size_.width * screen_to_game_point_ratio_x_,
+                            game_size_.height * screen_to_game_point_ratio_y_);
   }
   ScreenPoint game_point_to_screen_point(GamePoint game_point_) {
-    return screen_point_make(game_point_.x * screen_to_game_point_ratio_ + screen_offset_.x,
-                             game_point_.y * screen_to_game_point_ratio_ + screen_offset_.y);
+    return screen_point_make(game_point_.x * screen_to_game_point_ratio_x_ + screen_offset_.x,
+                             game_point_.y * screen_to_game_point_ratio_y_ + screen_offset_.y);
   }
   GameSize screen_size_to_game_size(ScreenSize screen_size_) {
-    return game_size_make(screen_size_.width / screen_to_game_point_ratio_,
-                          screen_size_.height / screen_to_game_point_ratio_);
+    return game_size_make(screen_size_.width / screen_to_game_point_ratio_x_,
+                          screen_size_.height / screen_to_game_point_ratio_y_);
   }
   GamePoint screen_point_to_game_point(ScreenPoint screen_point_) {
-    return game_point_make((screen_point_.x - screen_offset_.x) / screen_to_game_point_ratio_,
-                           (screen_point_.y - screen_offset_.y) / screen_to_game_point_ratio_);
+    return game_point_make((screen_point_.x - screen_offset_.x) / screen_to_game_point_ratio_x_,
+                           (screen_point_.y - screen_offset_.y) / screen_to_game_point_ratio_y_);
   }
 
  private:
@@ -140,7 +142,8 @@ class GameEngine {
   std::vector<Touch> touches_ended_;
   ScreenSize screen_size_;
   ScreenPoint screen_offset_;
-  double screen_to_game_point_ratio_;
+  double screen_to_game_point_ratio_x_;
+  double screen_to_game_point_ratio_y_;
 };
 
 #endif
