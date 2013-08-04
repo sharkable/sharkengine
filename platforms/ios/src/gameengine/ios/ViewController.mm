@@ -18,6 +18,11 @@
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
+@interface ViewController ()
+- (void)update;
+- (BOOL)isLandscape;
+@end
+
 @implementation ViewController {
  @private
   EAGLView *view_;
@@ -75,6 +80,7 @@
   [gameTimer_ stop];
 }
 
+
 #pragma mark - UIViewController
 
 - (void)loadView {
@@ -88,6 +94,10 @@
 // For iOS 5
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  if ([self isLandscape]) {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+  }
   return (interfaceOrientation == UIInterfaceOrientationPortrait ||
           interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -99,8 +109,12 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
+  if ([self isLandscape]) {
+    return UIInterfaceOrientationMaskLandscape;
+  }
   return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
+
 
 #pragma mark - Private
 
@@ -109,6 +123,18 @@
   [view_ setUpRender];
   gameEngine_->Render();
   [view_ finishRender];
+}
+
+- (BOOL)isLandscape {
+  NSArray *supportedOrientations =
+      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
+  for (NSString *orientation in supportedOrientations) {
+    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
+        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 @end

@@ -52,13 +52,13 @@
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>___SHARKENGINE_ORIENTATION_1___</string>
+		<string>___SHARKENGINE_ORIENTATION_2___</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>___SHARKENGINE_ORIENTATION_1___</string>
+		<string>___SHARKENGINE_ORIENTATION_2___</string>
 	</array>
 </dict>
 </plist>
