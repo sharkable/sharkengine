@@ -98,7 +98,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
   glTranslatef(point.x + width / 2.0, point.y - height / 2.0, 0.0);
   glScalef(zoom, zoom, 0.0);
-  glRotatef(angle, 0.0, 0.0, 1.0);
+  glRotatef(-angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glColor4f(1.0, 1.0, 1.0, alpha * globalAlpha_);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -187,7 +187,7 @@ void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
   glTranslatef(point.x + width/2.0, point.y - height/2.0, 0.0);
-  glRotatef(angle, 0.f, 0.f, 1.f);
+  glRotatef(-angle, 0.f, 0.f, 1.f);
   //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
