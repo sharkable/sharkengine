@@ -6,13 +6,13 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#import "gameengine/ios/AppDelegate.h"
+#import "gameengine/apple/ios/AppDelegate.h"
 
-#import "gameengine/ios/thirdparty/appirater/Appirater.h"
-#import "gameengine/ios/thirdparty/flurry/Flurry.h"
-#import "gameengine/ios/TypeUtil.h"
-#import "gameengine/ios/ViewController.h"
-#import "gameengine/ios/modules/GameEngineFactoryIOS.h"
+#import "gameengine/apple/TypeUtil.h"
+#import "gameengine/apple/ios/ViewController.h"
+#import "gameengine/apple/modules/GameEngineFactoryIOS.h"
+#import "gameengine/apple/thirdparty/ios/appirater/Appirater.h"
+#import "gameengine/apple/thirdparty/ios/flurry/Flurry.h"
 #import "gameengine/modules/sound_player.h"
 #import "gameengine/game_engine.h"
 

@@ -6,7 +6,7 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#import "gameengine/ios/ES1Renderer.h"
+#import "gameengine/apple/ios/ES1Renderer.h"
 
 #import "gameengine/opengl/texture2d.h"
 

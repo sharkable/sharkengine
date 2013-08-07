@@ -11,7 +11,7 @@ function error {
 
 function setup_ios {
   echo "building iOS: $SHARKENGINE_APP_HOME"
-  $SHARKENGINE_HOME/platforms/ios/build/build.sh
+  $SHARKENGINE_HOME/platforms/apple/build/build.sh
 }
 
 function build_android {

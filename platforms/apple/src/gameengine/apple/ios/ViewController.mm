@@ -6,15 +6,15 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#import "gameengine/ios/ViewController.h"
+#import "gameengine/apple/ios/ViewController.h"
 
-#import "gameengine/ios/EAGLView.h"
-#import "gameengine/ios/GameTimer.h"
-#import "gameengine/ios/GameTouchWindow.h"
-#import "gameengine/ios/modules/AdEngineIOS.h"
-#import "gameengine/ios/modules/AnalyticsEngineIOS.h"
-#import "gameengine/ios/modules/AppStoreEngineIOS.h"
-#import "gameengine/ios/modules/LocalStoreIOS.h"
+#import "gameengine/apple/ios/EAGLView.h"
+#import "gameengine/apple/ios/GameTimer.h"
+#import "gameengine/apple/ios/GameTouchWindow.h"
+#import "gameengine/apple/modules/LocalStoreIOS.h"
+#import "gameengine/apple/modules/ios/AdEngineIOS.h"
+#import "gameengine/apple/modules/ios/AnalyticsEngineIOS.h"
+#import "gameengine/apple/modules/ios/AppStoreEngineIOS.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 

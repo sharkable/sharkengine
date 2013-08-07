@@ -22,7 +22,7 @@
 		FE164D7F17AC4445006C5D88 /* AppStoreEngineIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D2F17AC4444006C5D88 /* AppStoreEngineIOS.mm */; };
 		FE164D8017AC4445006C5D88 /* LocalStoreIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D3117AC4444006C5D88 /* LocalStoreIOS.mm */; };
 		FE164D8417AC4445006C5D88 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE164D4517AC4444006C5D88 /* libGoogleAdMobAds.a */; };
-		FE164D8517AC4445006C5D88 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = FE164D4817AC4444006C5D88 /* Appirater.m */; };
+		FE164D8517AC4445006C5D88 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = FE164D4817AC4444006C5D88 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		FE164D8617AC4445006C5D88 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE164D4A17AC4444006C5D88 /* AppiraterLocalizable.strings */; };
 		FE164D8717AC4445006C5D88 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE164D6617AC4444006C5D88 /* libFlurry.a */; };
 		FE164D8817AC4445006C5D88 /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6817AC4444006C5D88 /* TypeUtil.mm */; };
@@ -821,7 +821,7 @@
 					../../src,
 					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
-					___SHARKENGINE_HOME___/platforms/ios/src,
+					___SHARKENGINE_HOME___/platforms/apple/src,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -847,8 +847,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,7 +884,7 @@
 					../../src,
 					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
-					___SHARKENGINE_HOME___/platforms/ios/src,
+					___SHARKENGINE_HOME___/platforms/apple/src,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -914,7 +914,7 @@
 					../../src,
 					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
-					___SHARKENGINE_HOME___/platforms/ios/src,
+					___SHARKENGINE_HOME___/platforms/apple/src,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -940,8 +940,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -963,8 +963,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/ios/src/gameengine/ios/thirdparty/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

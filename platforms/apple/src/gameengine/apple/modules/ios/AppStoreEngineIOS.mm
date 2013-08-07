@@ -6,13 +6,13 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/ios/modules/AppStoreEngineIOS.h"
+#include "gameengine/apple/modules/ios/AppStoreEngineIOS.h"
 
 #include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>
 
-#include "gameengine/ios/thirdparty/appirater/Appirater.h"
-#include "gameengine/ios/TypeUtil.h"
+#include "gameengine/apple/TypeUtil.h"
+#include "gameengine/apple/thirdparty/ios/appirater/Appirater.h"
 
 @interface PopupHandler : NSObject<SKPaymentTransactionObserver, SKProductsRequestDelegate,
     UIAlertViewDelegate> {

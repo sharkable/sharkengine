@@ -6,10 +6,10 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/ios/modules/AnalyticsEngineIOS.h"
+#import "gameengine/apple/modules/ios/AnalyticsEngineIOS.h"
 
-#import "gameengine/ios/thirdparty/flurry/Flurry.h"
-#import "gameengine/ios/TypeUtil.h"
+#import "gameengine/apple/TypeUtil.h"
+#import "gameengine/apple/thirdparty/ios/flurry/Flurry.h"
 
 using std::map;
 using std::string;
