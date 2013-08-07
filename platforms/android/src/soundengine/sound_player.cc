@@ -22,7 +22,7 @@ SoundPlayer *SoundPlayer::instance() {
   return soundInstance_;
 }
 
-SoundPlayer *SoundPlayer::shutdown() {
+void SoundPlayer::shutdown() {
   delete soundInstance_;
   soundInstance_ = NULL;
 }
