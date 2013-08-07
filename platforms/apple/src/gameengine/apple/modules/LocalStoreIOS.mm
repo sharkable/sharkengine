@@ -6,9 +6,9 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/ios/modules/LocalStoreIOS.h"
+#include "gameengine/apple/modules/LocalStoreIOS.h"
 
-#include "gameengine/ios/TypeUtil.h"
+#include "gameengine/apple/TypeUtil.h"
 
 using std::string;
 
