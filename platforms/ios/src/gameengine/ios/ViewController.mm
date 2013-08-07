@@ -37,14 +37,7 @@
 - (id)init {
   self = [super init];
   if (self) {
-    CGRect screenSize = [[UIScreen mainScreen] bounds];
-    // Don't trust the orientation for screenSize (it's assuming a portrait screen.)
-    if ([self isLandscape] && screenSize.size.width < screenSize.size.height) {
-      double newWidth = screenSize.size.height;
-      screenSize.size.height = screenSize.size.width;
-      screenSize.size.width = newWidth;
-    }
-    gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:screenSize];
+    gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
 
@@ -86,13 +79,24 @@
   [gameTimer_ stop];
 }
 
+- (CGRect)desiredViewFrame {
+  CGRect screenFrame = [UIScreen mainScreen].bounds;
+  // UIScreen is always in portrait mode. Swap width and height if needed.
+  if ([self isLandscape] && screenFrame.size.width < screenFrame.size.height) {
+    CGFloat newWidth = screenFrame.size.height;
+    screenFrame.size.height = screenFrame.size.width;
+    screenFrame.size.width = newWidth;
+  }
+  return screenFrame;
+}
+
 
 #pragma mark - UIViewController
 
 - (void)loadView {
   // TODO: Consider handling viewDidUnload: to free memory.
   if (!view_) {
-    view_ = [[EAGLView alloc] initWithFrame:gameTouchWindow_.frame];
+    view_ = [[EAGLView alloc] initWithFrame:[self desiredViewFrame]];
   }
   self.view = view_;
 }
