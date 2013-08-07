@@ -1,5 +1,5 @@
 //
-//  app_store_engine_android.h
+//  android_app_store_engine.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-07-19.
@@ -11,13 +11,13 @@
 
 #include "gameengine/modules/app_store_engine.h"
 
-#ifndef GAMEENGINE_IOS_APPSTOREENGINEANDROID_H_
-#define GAMEENGINE_IOS_APPSTOREENGINEANDROID_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREENGINE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREENGINE_H_
 
-class AppStoreEngineAndroid : public AppStoreEngine {
+class AndroidAppStoreEngine : public AppStoreEngine {
  public:
-  AppStoreEngineAndroid(JNIEnv *jni_env, jobject java_object);
-   ~AppStoreEngineAndroid();
+  AndroidAppStoreEngine(JNIEnv *jni_env, jobject java_object);
+   ~AndroidAppStoreEngine();
 
   // AppStoreEngine
   void AskForRate();

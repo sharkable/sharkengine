@@ -1,16 +1,16 @@
 //
-//  LocalStore.cc
+//  android_local_store.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/local_store_android.h"
+#include "gameengine/android/modules/android_local_store.h"
 
 using std::string;
 
-LocalStoreAndroid::LocalStoreAndroid(JNIEnv *jni_env, jobject java_object)
+AndroidLocalStore::AndroidLocalStore(JNIEnv *jni_env, jobject java_object)
     : jni_env_(jni_env) {
   java_object_ = jni_env->NewGlobalRef(java_object);
   jclass java_class = jni_env_->FindClass("com/sharkable/sharkengine/modules/LocalStoreAndroid");
@@ -27,60 +27,60 @@ LocalStoreAndroid::LocalStoreAndroid(JNIEnv *jni_env, jobject java_object)
       jni_env_->GetMethodID(java_class, "setString", "(Ljava/lang/String;Ljava/lang/String;)V");
 }
 
-LocalStoreAndroid::~LocalStoreAndroid() {
+AndroidLocalStore::~AndroidLocalStore() {
   jni_env_->DeleteGlobalRef(java_object_);
 }
 
 
 // LocalStore
 
-bool LocalStoreAndroid::HasEntryForKey(string key) {
+bool AndroidLocalStore::HasEntryForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   bool value = jni_env_->CallBooleanMethod(java_object_, has_entry_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-bool LocalStoreAndroid::BoolForKey(string key) {
+bool AndroidLocalStore::BoolForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   bool value = jni_env_->CallBooleanMethod(java_object_, bool_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void LocalStoreAndroid::SetBool(bool value, string key) {
+void AndroidLocalStore::SetBool(bool value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_bool_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-int LocalStoreAndroid::IntegerForKey(string key) {
+int AndroidLocalStore::IntegerForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   int value = jni_env_->CallIntMethod(java_object_, integer_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void LocalStoreAndroid::SetInteger(int value, string key) {
+void AndroidLocalStore::SetInteger(int value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_integer_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-double LocalStoreAndroid::DoubleForKey(string key) {
+double AndroidLocalStore::DoubleForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   double value = jni_env_->CallDoubleMethod(java_object_, double_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void LocalStoreAndroid::SetDouble(double value, string key) {
+void AndroidLocalStore::SetDouble(double value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_double_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-string LocalStoreAndroid::StringForKey(string key) {
+string AndroidLocalStore::StringForKey(string key) {
   // TODO this is not tested at all, and I'm not sure about the memory allocations.
   assert(false); // FAIL on this. If I start using it, test it.
 
@@ -95,7 +95,7 @@ string LocalStoreAndroid::StringForKey(string key) {
   return cpp_string;
 }
 
-void LocalStoreAndroid::SetString(string value, string key) {
+void AndroidLocalStore::SetString(string value, string key) {
   jstring java_value = jni_env_->NewStringUTF(value.c_str());
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_string_, java_value, java_key);

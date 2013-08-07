@@ -22,12 +22,12 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_APP_SOURCE) \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/app-android.c \
     $(SHARKENGINE_HOME)/platforms/android/src/jni/airhockey.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/ad_engine_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/analytics_engine_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/app_store_engine_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/asset_reader_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/game_engine_factory_android.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/local_store_android.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_ad_engine.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_analytics_engine.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_app_store_engine.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_asset_reader.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_game_engine_factory.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_local_store.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_instance.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_player.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_type.cc \

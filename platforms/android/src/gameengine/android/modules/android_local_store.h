@@ -1,23 +1,23 @@
 //
-//  LocalStoreAndroid.h
+//  android_local_store.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_LOCALSTOREANDROID_H_
-#define GAMEENGINE_IOS_LOCALSTOREANDROID_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDLOCALSTORE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDLOCALSTORE_H_
 
 #include <jni.h>
 #include <string>
 
 #include "gameengine/modules/local_store.h"
 
-class LocalStoreAndroid : public LocalStore {
+class AndroidLocalStore : public LocalStore {
  public:
-  LocalStoreAndroid(JNIEnv *jni_env, jobject java_object);
-  ~LocalStoreAndroid();
+  AndroidLocalStore(JNIEnv *jni_env, jobject java_object);
+  ~AndroidLocalStore();
 
   // LocalStore
   bool HasEntryForKey(std::string key);

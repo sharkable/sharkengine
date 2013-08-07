@@ -19,11 +19,11 @@ extern "C" {
 #include <android/asset_manager_jni.h>
 #include <GLES/gl.h>
 
-#include "gameengine/android/modules/ad_engine_android.h"
-#include "gameengine/android/modules/analytics_engine_android.h"
-#include "gameengine/android/modules/app_store_engine_android.h"
-#include "gameengine/android/modules/game_engine_factory_android.h"
-#include "gameengine/android/modules/local_store_android.h"
+#include "gameengine/android/modules/android_ad_engine.h"
+#include "gameengine/android/modules/android_analytics_engine.h"
+#include "gameengine/android/modules/android_app_store_engine.h"
+#include "gameengine/android/modules/android_game_engine_factory.h"
+#include "gameengine/android/modules/android_local_store.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
 #include "soundengine/sound_player.h"
@@ -61,20 +61,20 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   game_engine_->set_platform_resolution(
       width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
 
-  sp<GameEngineFactory> factory = sp<GameEngineFactory>(new GameEngineFactoryAndroid());
+  sp<GameEngineFactory> factory = sp<GameEngineFactory>(new AndroidGameEngineFactory());
   game_engine_->set_factory(factory);
 
-  sp<LocalStore> local_store = sp<LocalStore>(new LocalStoreAndroid(env, local_store_java));
+  sp<LocalStore> local_store = sp<LocalStore>(new AndroidLocalStore(env, local_store_java));
   game_engine_->set_local_store(local_store);
 
-  sp<AdEngine> ad_engine = sp<AdEngine>(new AdEngineAndroid(env, ad_engine_java));
+  sp<AdEngine> ad_engine = sp<AdEngine>(new AndroidAdEngine(env, ad_engine_java));
   game_engine_->set_ad_engine(ad_engine);
 
   sp<AppStoreEngine> app_store_engine =
-      sp<AppStoreEngine>(new AppStoreEngineAndroid(env, app_store_java));
+      sp<AppStoreEngine>(new AndroidAppStoreEngine(env, app_store_java));
   game_engine_->set_app_store_engine(app_store_engine);
 
-  sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AnalyticsEngineAndroid(env));
+  sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AndroidAnalyticsEngine(env));
   game_engine_->set_analytics_engine(analytics_engine);
 
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);

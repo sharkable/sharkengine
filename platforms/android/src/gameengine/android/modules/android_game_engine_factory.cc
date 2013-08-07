@@ -1,17 +1,17 @@
 //
-//  game_engine_factory_android.cc
+//  android_game_engine_factory.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-19.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/game_engine_factory_android.h"
+#include "gameengine/android/modules/android_game_engine_factory.h"
 
-#include "gameengine/android/modules/asset_reader_android.h"
+#include "gameengine/android/modules/android_asset_reader.h"
 
 using std::string;
 
-sp<AssetReader> GameEngineFactoryAndroid::createAssetReader(std::string filename) {
-  return sp<AssetReader>(new AssetReaderAndroid(filename));
+sp<AssetReader> AndroidGameEngineFactory::createAssetReader(std::string filename) {
+  return sp<AssetReader>(new AndroidAssetReader(filename));
 }

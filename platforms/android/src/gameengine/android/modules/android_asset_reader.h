@@ -1,13 +1,13 @@
 //
-//  asset_reader_android.h
+//  android_asset_reader.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-19.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ASSETREADERANDROID_H_
-#define GAMEENGINE_ASSETREADERANDROID_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDASSETREADER_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDASSETREADER_H_
 
 #include <string>
 
@@ -15,10 +15,10 @@
 
 struct zip_file;
 
-class AssetReaderAndroid : public AssetReader {
+class AndroidAssetReader : public AssetReader {
  public:
-  AssetReaderAndroid(std::string filename);
-  ~AssetReaderAndroid();
+  AndroidAssetReader(std::string filename);
+  ~AndroidAssetReader();
   size_t Size();
   size_t Read(void *ptr, size_t size, size_t count);
   bool Close();
