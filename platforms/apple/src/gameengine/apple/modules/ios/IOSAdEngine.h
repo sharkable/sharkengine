@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_IOSADENGINE_H_
-#define GAMEENGINE_IOS_IOSADENGINE_H_
+#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSADENGINE_H_
+#define GAMEENGINE_APPLE_MODULES_IOS_IOSADENGINE_H_
 
 #include <string>
 

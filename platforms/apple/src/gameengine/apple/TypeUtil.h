@@ -6,8 +6,8 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_TYPEUTIL_H_
-#define GAMEENGINE_IOS_TYPEUTIL_H_
+#ifndef GAMEENGINE_APPLE_TYPEUTIL_H_
+#define GAMEENGINE_APPLE_TYPEUTIL_H_
 
 #include <string>
 
