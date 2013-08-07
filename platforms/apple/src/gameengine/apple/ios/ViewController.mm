@@ -18,6 +18,11 @@
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
+@interface ViewController ()
+- (void)update;
+- (BOOL)isLandscape;
+@end
+
 @implementation ViewController {
  @private
   EAGLView *view_;
@@ -32,8 +37,7 @@
 - (id)init {
   self = [super init];
   if (self) {
-    CGRect screenSize = [[UIScreen mainScreen] bounds];
-    gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:screenSize];
+    gameTouchWindow_ = [[GameTouchWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
 
@@ -75,12 +79,24 @@
   [gameTimer_ stop];
 }
 
+- (CGRect)desiredViewFrame {
+  CGRect screenFrame = [UIScreen mainScreen].bounds;
+  // UIScreen is always in portrait mode. Swap width and height if needed.
+  if ([self isLandscape] && screenFrame.size.width < screenFrame.size.height) {
+    CGFloat newWidth = screenFrame.size.height;
+    screenFrame.size.height = screenFrame.size.width;
+    screenFrame.size.width = newWidth;
+  }
+  return screenFrame;
+}
+
+
 #pragma mark - UIViewController
 
 - (void)loadView {
   // TODO: Consider handling viewDidUnload: to free memory.
   if (!view_) {
-    view_ = [[EAGLView alloc] initWithFrame:gameTouchWindow_.frame];
+    view_ = [[EAGLView alloc] initWithFrame:[self desiredViewFrame]];
   }
   self.view = view_;
 }
@@ -88,6 +104,10 @@
 // For iOS 5
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  if ([self isLandscape]) {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+  }
   return (interfaceOrientation == UIInterfaceOrientationPortrait ||
           interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -99,8 +119,12 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
+  if ([self isLandscape]) {
+    return UIInterfaceOrientationMaskLandscape;
+  }
   return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
+
 
 #pragma mark - Private
 
@@ -109,6 +133,18 @@
   [view_ setUpRender];
   gameEngine_->Render();
   [view_ finishRender];
+}
+
+- (BOOL)isLandscape {
+  NSArray *supportedOrientations =
+  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
+  for (NSString *orientation in supportedOrientations) {
+    if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
+        [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
+      return YES;
+    }
+  }
+  return NO;
 }
 
 @end

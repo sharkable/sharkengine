@@ -20,5 +20,6 @@ class GameEngine;
 
 - (void)start;
 - (void)stop;
+- (CGRect)desiredViewFrame;
 
 @end

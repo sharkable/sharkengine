@@ -45,7 +45,7 @@
   viewController_ = [[ViewController alloc] init];
   viewController_.gameEngine->set_factory(sp<GameEngineFactory>(new GameEngineFactoryIOS()));
 
-  CGSize screenSize = [UIScreen mainScreen].bounds.size;
+  CGSize screenSize = [viewController_ desiredViewFrame].size;
   CGFloat scale = [UIScreen mainScreen].scale;
   viewController_.gameEngine->set_screen_size(screen_size_make(screenSize.width * scale,
                                                                screenSize.height * scale));
