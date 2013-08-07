@@ -1,19 +1,19 @@
 //
-//  LocalStoreIOS.h
+//  AppleLocalStore.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_LOCALSTOREIOS_H_
-#define GAMEENGINE_IOS_LOCALSTOREIOS_H_
+#ifndef GAMEENGINE_IOS_APPLELOCALSTORE_H_
+#define GAMEENGINE_IOS_APPLELOCALSTORE_H_
 
 #include <string>
 
 #include "gameengine/modules/local_store.h"
 
-class LocalStoreIOS : public LocalStore {
+class AppleLocalStore : public LocalStore {
  public:
   // LocalStore
   bool HasEntryForKey(std::string key);

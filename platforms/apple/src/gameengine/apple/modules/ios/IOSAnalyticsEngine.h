@@ -1,13 +1,13 @@
 //
-//  AnalyticsEngineIOS.h
+//  IOSAnalyticsEngine.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-05.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_
-#define GAMEENGINE_IOS_ANALYTICSENGINEIOS_H_
+#ifndef GAMEENGINE_IOS_IOSANALYTICSENGINE_H_
+#define GAMEENGINE_IOS_IOSANALYTICSENGINE_H_
 
 #import <map>
 #import <string>
@@ -15,7 +15,7 @@
 #import "gameengine/modules/analytics_engine.h"
 
 // TODO have this do setup as well maybe?
-class AnalyticsEngineIOS : public AnalyticsEngine {
+class IOSAnalyticsEngine : public AnalyticsEngine {
  public:
   // AnalyticsEngine
   void LogEvent(std::string event_name);

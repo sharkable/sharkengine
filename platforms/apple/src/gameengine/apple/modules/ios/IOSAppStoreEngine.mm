@@ -1,12 +1,12 @@
 //
-//  AppStoreEngineIOS.mm
+//  IOSAppStoreEngine.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/ios/AppStoreEngineIOS.h"
+#include "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
 
 #include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>
@@ -189,19 +189,19 @@
 @end
 
 
-AppStoreEngineIOS::AppStoreEngineIOS() {
+IOSAppStoreEngine::IOSAppStoreEngine() {
   popup_handler_ = [[PopupHandler alloc] init];
 }
 
-AppStoreEngineIOS::~AppStoreEngineIOS() {
+IOSAppStoreEngine::~IOSAppStoreEngine() {
   [popup_handler_ release];
 }
 
-void AppStoreEngineIOS::AskForRate() {
+void IOSAppStoreEngine::AskForRate() {
   [Appirater rateApp];
 }
 
-void AppStoreEngineIOS::AskForUpgrade(std::string app_name, std::string purchase_id,
+void IOSAppStoreEngine::AskForUpgrade(std::string app_name, std::string purchase_id,
                                       AppStoreEngineDelegate *delegate) {
   [popup_handler_ askForUpgradeAppNamed:TypeUtil::string2NSString(app_name)
                              purchaseId:TypeUtil::string2NSString(purchase_id)

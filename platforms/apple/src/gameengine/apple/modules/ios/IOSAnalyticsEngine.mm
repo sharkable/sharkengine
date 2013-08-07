@@ -1,12 +1,12 @@
 //
-//  AnalyticsEngineIOS.mm
+//  IOSAnalyticsEngine.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-05.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/modules/ios/AnalyticsEngineIOS.h"
+#import "gameengine/apple/modules/ios/IOSAnalyticsEngine.h"
 
 #import "gameengine/apple/TypeUtil.h"
 #import "gameengine/apple/thirdparty/ios/flurry/Flurry.h"
@@ -16,12 +16,12 @@ using std::string;
 
 // AnalyticsEngine
 
-void AnalyticsEngineIOS::LogEvent(string event_name) {
+void IOSAnalyticsEngine::LogEvent(string event_name) {
   NSString *event_name_nsstring = TypeUtil::string2NSString(event_name);
   [Flurry logEvent:event_name_nsstring];
 }
 
-void AnalyticsEngineIOS::LogEvent(string event_name, map<string, string> parameters) {
+void IOSAnalyticsEngine::LogEvent(string event_name, map<string, string> parameters) {
   NSString *event_name_nsstring = TypeUtil::string2NSString(event_name);
   NSMutableDictionary *parameters_nsdictionary =
       [NSMutableDictionary dictionaryWithCapacity:parameters.size()];

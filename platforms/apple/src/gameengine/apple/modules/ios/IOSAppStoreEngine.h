@@ -1,5 +1,5 @@
 //
-//  AppStoreEngineIOS.h
+//  IOSAppStoreEngine.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
@@ -8,15 +8,15 @@
 
 #import "gameengine/modules/app_store_engine.h"
 
-#ifndef GAMEENGINE_IOS_APPSTOREENGINEIOS_H_
-#define GAMEENGINE_IOS_APPSTOREENGINEIOS_H_
+#ifndef GAMEENGINE_IOS_IOSAPPSTOREENGINE_H_
+#define GAMEENGINE_IOS_IOSAPPSTOREENGINE_H_
 
 @class PopupHandler;
 
-class AppStoreEngineIOS : public AppStoreEngine {
+class IOSAppStoreEngine : public AppStoreEngine {
  public:
-  AppStoreEngineIOS();
-  ~AppStoreEngineIOS();
+  IOSAppStoreEngine();
+  ~IOSAppStoreEngine();
 
   void AskForRate();
   void AskForUpgrade(std::string app_name, std::string purchase_id,

@@ -1,12 +1,12 @@
 //
-//  AdEngineIOS.mm
+//  IOSAdEngine.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-07.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/modules/ios/AdEngineIOS.h"
+#import "gameengine/apple/modules/ios/IOSAdEngine.h"
 
 #import "gameengine/apple/TypeUtil.h"
 #import "gameengine/apple/thirdparty/ios/admob/GADBannerView.h"
@@ -44,14 +44,14 @@ using std::string;
 @end
 
 
-AdEngineIOS::AdEngineIOS(UIViewController *root_view_controller) {
+IOSAdEngine::IOSAdEngine(UIViewController *root_view_controller) {
   banner_view_ = nil;
   interstitial_ = nil;
   interstitial_state_ = [[InterstitialState alloc] init];
   root_view_controller_ = [root_view_controller retain];
 }
 
-AdEngineIOS::~AdEngineIOS() {
+IOSAdEngine::~IOSAdEngine() {
   [banner_view_ release];
   [interstitial_ release];
   [interstitial_state_ release];
@@ -61,13 +61,13 @@ AdEngineIOS::~AdEngineIOS() {
 
 // AdEngine
 
-void AdEngineIOS::SetPublisherId(string publisher_id) {
+void IOSAdEngine::SetPublisherId(string publisher_id) {
   publisher_id_ = publisher_id;
 }
 
 // TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
 // to the GameEngine.
-void AdEngineIOS::SetAdAtPoint(ScreenPoint point) {
+void IOSAdEngine::SetAdAtPoint(ScreenPoint point) {
   if (!banner_view_) {
     assert(publisher_id_.length());
     banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
@@ -83,13 +83,13 @@ void AdEngineIOS::SetAdAtPoint(ScreenPoint point) {
   banner_view_.frame = frame;
 }
 
-void AdEngineIOS::RemoveAd() {
+void IOSAdEngine::RemoveAd() {
   [banner_view_ removeFromSuperview];
   [banner_view_ release];
   banner_view_ = nil;
 }
 
-void AdEngineIOS::PrepareFullScreenAd() {
+void IOSAdEngine::PrepareFullScreenAd() {
   assert(publisher_id_.length());
   [interstitial_ release];
   interstitial_ = [[GADInterstitial alloc] init];
@@ -100,7 +100,7 @@ void AdEngineIOS::PrepareFullScreenAd() {
   [interstitial_ loadRequest:request];
 }
 
-bool AdEngineIOS::ShowFullScreenAd() {
+bool IOSAdEngine::ShowFullScreenAd() {
   if (!interstitial_.isReady) {
     return false;
   }
@@ -109,6 +109,6 @@ bool AdEngineIOS::ShowFullScreenAd() {
   return true;
 }
 
-bool AdEngineIOS::IsShowingFullScreenAd() {
+bool IOSAdEngine::IsShowingFullScreenAd() {
   return interstitial_state_.showing;
 }

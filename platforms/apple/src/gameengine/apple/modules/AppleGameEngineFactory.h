@@ -1,19 +1,19 @@
 //
-//  GameEngineFactoryIOS.h
+//  AppleGameEngineFactory.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_GAMEENGINEFACTORYIOS_H_
-#define GAMEENGINE_GAMEENGINEFACTORYIOS_H_
+#ifndef GAMEENGINE_APPLEGAMEENGINEFACTORY_H_
+#define GAMEENGINE_APPLEGAMEENGINEFACTORY_H_
 
 #include <string>
 
 #include "gameengine/game_engine_factory.h"
 
-class GameEngineFactoryIOS : public GameEngineFactory {
+class AppleGameEngineFactory : public GameEngineFactory {
  public:
   sp<AssetReader> createAssetReader(std::string filename);
 };

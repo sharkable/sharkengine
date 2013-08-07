@@ -1,17 +1,17 @@
 //
-//  GameEngineFactoryIOS.mm
+//  AppleGameEngineFactory.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/GameEngineFactoryIOS.h"
+#include "gameengine/apple/modules/AppleGameEngineFactory.h"
 
-#include "gameengine/apple/modules/AssetReaderIOS.h"
+#include "gameengine/apple/modules/AppleAssetReader.h"
 
 using std::string;
 
-sp<AssetReader> GameEngineFactoryIOS::createAssetReader(std::string filename) {
-  return sp<AssetReader>(new AssetReaderIOS(filename));
+sp<AssetReader> AppleGameEngineFactory::createAssetReader(std::string filename) {
+  return sp<AssetReader>(new AppleAssetReader(filename));
 }

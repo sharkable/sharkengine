@@ -11,10 +11,10 @@
 #import "gameengine/apple/ios/EAGLView.h"
 #import "gameengine/apple/ios/GameTimer.h"
 #import "gameengine/apple/ios/GameTouchWindow.h"
-#import "gameengine/apple/modules/LocalStoreIOS.h"
-#import "gameengine/apple/modules/ios/AdEngineIOS.h"
-#import "gameengine/apple/modules/ios/AnalyticsEngineIOS.h"
-#import "gameengine/apple/modules/ios/AppStoreEngineIOS.h"
+#import "gameengine/apple/modules/AppleLocalStore.h"
+#import "gameengine/apple/modules/ios/IOSAdEngine.h"
+#import "gameengine/apple/modules/ios/IOSAnalyticsEngine.h"
+#import "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -50,10 +50,10 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_platform_resolution(platform_resolution);
 
-    gameEngine_->set_local_store(sp<LocalStore>(new LocalStoreIOS()));
-    gameEngine_->set_ad_engine(sp<AdEngine>(new AdEngineIOS(self)));
-    gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new AnalyticsEngineIOS()));
-    gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new AppStoreEngineIOS()));
+    gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
+    gameEngine_->set_ad_engine(sp<AdEngine>(new IOSAdEngine(self)));
+    gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new IOSAnalyticsEngine()));
+    gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new IOSAppStoreEngine()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;

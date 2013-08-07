@@ -1,13 +1,13 @@
 //
-//  AdEngineIOS.h
+//  IOSAdEngine.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-07.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_IOS_ADENGINEIOS_H_
-#define GAMEENGINE_IOS_ADENGINEIOS_H_
+#ifndef GAMEENGINE_IOS_IOSADENGINE_H_
+#define GAMEENGINE_IOS_IOSADENGINE_H_
 
 #include <string>
 
@@ -17,10 +17,10 @@
 @class GADInterstitial;
 @class InterstitialState;
 
-class AdEngineIOS : public AdEngine {
+class IOSAdEngine : public AdEngine {
  public:
-  AdEngineIOS(UIViewController *root_view_controller);
-  ~AdEngineIOS();
+  IOSAdEngine(UIViewController *root_view_controller);
+  ~IOSAdEngine();
 
   // AdEngine
   void SetPublisherId(std::string publisher_id);
