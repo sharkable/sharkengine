@@ -27,10 +27,10 @@ static GameEngine *gameEngine_ = NULL;
 - (id)init {
   self = [super init];
   if (self) {
-    viewportX_ = 0;
+    viewportX_ = 0;  // TODO maybe not needed. Is |resize| always called?
     viewportY_ = 0;
     viewportWidth_ = 768;
-    viewportHeight_ = 768;
+    viewportHeight_ = 1024;
   }
   return self;
 }
