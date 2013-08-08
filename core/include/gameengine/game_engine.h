@@ -50,6 +50,7 @@ class GameEngine {
   void AddTouchBegan(Touch touch);
   void AddTouchMoved(Touch touch);
   void AddTouchEnded(Touch touch);
+  void AddMouseDelta(float delta_x, float delta_y);
   bool HandleBackButton();
 
   void PushView(sp<EngineView> view);
@@ -140,6 +141,8 @@ class GameEngine {
   std::vector<Touch> touches_began_;
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;
+  float mouse_delta_x_;
+  float mouse_delta_y_;
   ScreenSize screen_size_;
   ScreenPoint screen_offset_;
   double screen_to_game_point_ratio_x_;

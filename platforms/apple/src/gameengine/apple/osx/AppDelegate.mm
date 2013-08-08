@@ -13,6 +13,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+  [self.window setAcceptsMouseMovedEvents:YES];
   [self.window setDelegate:self.openGLView];
 }
 

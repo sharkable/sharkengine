@@ -23,6 +23,7 @@ class ViewEntity {
   virtual void TouchesMoved(GamePoint offset, std::vector<Touch> touches) {}
   virtual void TouchesEnded(GamePoint offset, std::vector<Touch> touches) {}
   virtual void ClearTouches() {}
+  virtual void HandleMouseDelta(float delta_x, float delta_y) {}
 };
 
 #endif

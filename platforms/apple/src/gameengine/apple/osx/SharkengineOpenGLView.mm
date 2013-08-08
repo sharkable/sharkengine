@@ -146,6 +146,10 @@ static GameEngine *gameEngine_ = NULL;
   gameEngine_->AddTouchEnded(t);
 }
 
+- (void)mouseMoved:(NSEvent *)theEvent {
+  gameEngine_->AddMouseDelta(theEvent.deltaX, theEvent.deltaY);
+}
+
 + (void)setGameEngine:(GameEngine *)gameEngine {
   gameEngine_ = gameEngine;
 }

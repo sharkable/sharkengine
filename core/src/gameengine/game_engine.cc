@@ -18,6 +18,8 @@
 GameEngine::GameEngine()
     : platform_type_(kPlatformTypePhone),
       resource_loader_(*this),
+      mouse_delta_x_(0),
+      mouse_delta_y_(0),
       screen_size_(kScreenSizeZero),
       screen_offset_(kScreenPointZero),
       screen_to_game_point_ratio_x_(1),
@@ -63,6 +65,10 @@ void GameEngine::Update() {
       touch_view->TouchesEnded(touches_ended_);
       touches_ended_.clear();
     }
+    // TODO should this be called if both values are 0?
+    touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
+    mouse_delta_x_ = 0;
+    mouse_delta_y_ = 0;
   }
 
   // Update views.
@@ -99,6 +105,11 @@ void GameEngine::AddTouchMoved(Touch touch) {
 
 void GameEngine::AddTouchEnded(Touch touch) {
   touches_ended_.push_back(touch);
+}
+
+void GameEngine::AddMouseDelta(float delta_x, float delta_y) {
+  mouse_delta_x_ += delta_x;
+  mouse_delta_y_ += delta_y;
 }
 
 bool GameEngine::HandleBackButton() {
