@@ -1,8 +1,14 @@
-mkdir -p $SHARKENGINE_APP_HOME/out/ios/SharkengineApp.xcodeproj
+if [ ! "$1" = "ios" ] && [ ! "$1" = "osx" ]; then
+  echo "Error. Usage:"
+  echo "    build.sh [ios | osx]"
+  exit
+fi
+
+mkdir -p $SHARKENGINE_APP_HOME/out/$1/SharkengineApp.xcodeproj
 
 sed "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
-  < $SHARKENGINE_HOME/platforms/apple/build/ios/SharkengineApp.xcodeproj/project.pbxproj \
-  > $SHARKENGINE_APP_HOME/out/ios/SharkengineApp.xcodeproj/project.pbxproj
+  < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkengineApp.xcodeproj/project.pbxproj \
+  > $SHARKENGINE_APP_HOME/out/$1/SharkengineApp.xcodeproj/project.pbxproj
 
 APP_ORIENTATION_LETTER=${APP_ORIENTATION:0:1}
 if [ $APP_ORIENTATION_LETTER ] && \
@@ -19,7 +25,7 @@ sed -e "s/___SHARKENGINE_APP_VERSION___/$VERSION/g" \
     -e "s/___SHARKENGINE_APP_NAME___/$APP_NAME/g" \
     -e "s/___SHARKENGINE_ORIENTATION_1___/$ORIENTATION_STRING_1/g" \
     -e "s/___SHARKENGINE_ORIENTATION_2___/$ORIENTATION_STRING_2/g" \
-    < $SHARKENGINE_HOME/platforms/apple/build/ios/Info.plist \
-    > $SHARKENGINE_APP_HOME/out/ios/Info.plist
+    < $SHARKENGINE_HOME/platforms/apple/build/$1/Info.plist \
+    > $SHARKENGINE_APP_HOME/out/$1/Info.plist
 
-python $SHARKENGINE_HOME/platforms/apple/build/setup_project.py
+python $SHARKENGINE_HOME/platforms/apple/build/setup_project.py $1

@@ -5,13 +5,19 @@ export SHARKENGINE_APP_HOME=`pwd`
 function error {
   echo "Error. Usage:"
   echo "    sharkengine ios setup"
+  echo "    sharkengine osx setup"
   echo "    sharkengine android debug [install]"
   echo "    sharkengine android release [install]"
 }
 
 function setup_ios {
   echo "building iOS: $SHARKENGINE_APP_HOME"
-  $SHARKENGINE_HOME/platforms/apple/build/build.sh
+  $SHARKENGINE_HOME/platforms/apple/build/build.sh ios
+}
+
+function setup_osx {
+  echo "building OS X: $SHARKENGINE_APP_HOME"
+  $SHARKENGINE_HOME/platforms/apple/build/build.sh osx
 }
 
 function build_android {
@@ -23,6 +29,8 @@ source $SHARKENGINE_APP_HOME/app.config
 
 if [ "$1" = "ios" ] && [ "$2" = "setup" ]; then
   setup_ios
+elif [ "$1" = "osx" ] && [ "$2" = "setup" ]; then
+  setup_osx
 elif [ "$1" = "android" ]; then
   if [ ! $2 = "debug" ] && [ ! $2 = "release" ]; then
     error
