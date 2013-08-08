@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Jon Sharkey. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@class SharkengineOpenGLView;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject<NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet SharkengineOpenGLView *openGLView;
 
 @end
