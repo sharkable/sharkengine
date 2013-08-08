@@ -17,11 +17,21 @@
 static GameEngine *gameEngine_ = NULL;
 
 @implementation SharkengineOpenGLView {
-  NSTimer *timer;
+  NSTimer *timer_;
+  int viewportX_;
+  int viewportY_;
+  int viewportWidth_;
+  int viewportHeight_;
 }
 
 - (id)init {
   self = [super init];
+  if (self) {
+    viewportX_ = 0;
+    viewportY_ = 0;
+    viewportWidth_ = 768;
+    viewportHeight_ = 768;
+  }
   return self;
 }
 
@@ -57,7 +67,7 @@ static GameEngine *gameEngine_ = NULL;
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glViewport(0, 0, 768, 1024);
+  glViewport(viewportX_, viewportY_, viewportWidth_, viewportHeight_);
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -87,9 +97,20 @@ static GameEngine *gameEngine_ = NULL;
 }
 
 - (void)reshape {
-  float screen_w = [self frame].size.width;
-  float screen_h = [self frame].size.height;
-  glViewport(0, 0, (int)screen_w, (int)screen_h);
+  float screenWidthFloat = [self frame].size.width;
+  float screenHeightFloat = [self frame].size.height;
+  float viewportWidthFloat = screenHeightFloat * 768.0 / 1024.0;
+  float viewportHeightFloat = screenHeightFloat;
+  if (viewportWidthFloat > screenWidthFloat) {
+    viewportWidthFloat = screenWidthFloat;
+    viewportHeightFloat = screenWidthFloat * 1024.0 / 768.0;
+  }
+
+  viewportX_ = (int)((screenWidthFloat - viewportWidthFloat) / 2);
+  viewportY_ = (int)((screenHeightFloat - viewportHeightFloat) / 2);
+  viewportWidth_ = (int)viewportWidthFloat;
+  viewportHeight_ = (int)viewportHeightFloat;
+  glViewport(viewportX_, viewportY_, viewportWidth_, viewportHeight_);
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -97,8 +118,8 @@ static GameEngine *gameEngine_ = NULL;
 }
 
 - (GamePoint)gamePointFromScreenPoint:(CGPoint)point {
-  return game_point_make(point.x * 768.0 / self.frame.size.width,
-                         1024.0 - point.y * 1024.0 / self.frame.size.height);
+  return game_point_make((point.x - viewportX_) * 768.0 / viewportWidth_,
+                         1024.0 - (point.y - viewportY_) * 1024.0 / viewportHeight_);
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
@@ -133,7 +154,7 @@ static GameEngine *gameEngine_ = NULL;
 // NSWindowDelegate
 
 - (void)windowDidResignMain:(NSNotification *)notification {
-  [timer invalidate];
+  [timer_ invalidate];
 
   // TODO freeze, pause
   [self setNeedsDisplay:YES];
@@ -143,13 +164,13 @@ static GameEngine *gameEngine_ = NULL;
   // TODO continue game.
   [self setNeedsDisplay:YES];
 
-  timer = [NSTimer timerWithTimeInterval:1.0/60.0
-                                  target:self
-                                selector:@selector(timerEvent:)
-                                userInfo:nil
-                                 repeats:YES];
+  timer_ = [NSTimer timerWithTimeInterval:1.0/60.0
+                                   target:self
+                                 selector:@selector(timerEvent:)
+                                 userInfo:nil
+                                  repeats:YES];
 
-  [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+  [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
 }
 
 - (void)timerEvent:(NSTimer *)t {
