@@ -7,8 +7,8 @@ fi
 mkdir -p $SHARKENGINE_APP_HOME/out/$1/SharkengineApp.xcodeproj
 
 sed "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
-  < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkengineApp.xcodeproj/project.pbxproj \
-  > $SHARKENGINE_APP_HOME/out/$1/SharkengineApp.xcodeproj/project.pbxproj
+    < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkengineApp.xcodeproj/project.pbxproj \
+    > $SHARKENGINE_APP_HOME/out/$1/SharkengineApp.xcodeproj/project.pbxproj
 
 APP_ORIENTATION_LETTER=${APP_ORIENTATION:0:1}
 if [ $APP_ORIENTATION_LETTER ] && \
@@ -29,3 +29,13 @@ sed -e "s/___SHARKENGINE_APP_VERSION___/$VERSION/g" \
     > $SHARKENGINE_APP_HOME/out/$1/Info.plist
 
 python $SHARKENGINE_HOME/platforms/apple/build/setup_project.py $1
+
+# Generate OS X icon file.
+if [ $1 = "osx" ]; then
+  mkdir $SHARKENGINE_APP_HOME/out/osx/icon.iconset
+  cp $SHARKENGINE_APP_HOME/icons/Icon-512.png \
+      $SHARKENGINE_APP_HOME/out/osx/icon.iconset/icon_512x512.png
+  iconutil -c icns --output $SHARKENGINE_APP_HOME/out/osx/icon.icns \
+      $SHARKENGINE_APP_HOME/out/osx/icon.iconset > /dev/null 2>&1
+  rm -rf $SHARKENGINE_APP_HOME/out/osx/icon.iconset
+fi

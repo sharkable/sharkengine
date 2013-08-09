@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE1395AC17B57C1C00F1F61C /* icon.icns */; };
 		FE64949217A315CD0051BF31 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE64949117A315CD0051BF31 /* Cocoa.framework */; };
 		FE6495AC17A469060051BF31 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AB17A469060051BF31 /* OpenGL.framework */; };
 		FE6495AE17A4690E0051BF31 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AD17A4690E0051BF31 /* OpenAL.framework */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE1395AC17B57C1C00F1F61C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FE64948E17A315CD0051BF31 /* Air Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Air Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE64949117A315CD0051BF31 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FE64949417A315CD0051BF31 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -211,6 +213,7 @@
 		FE64949717A315CD0051BF31 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FE1395AC17B57C1C00F1F61C /* icon.icns */,
 				FEF4C67B17B3FC3300D2085A /* Info.plist */,
 			);
 			name = App;
@@ -549,6 +552,7 @@
 				FEF4C68917B3FF3700D2085A /* Credits.rtf in Resources */,
 				FEF4C68A17B3FF3700D2085A /* InfoPlist.strings in Resources */,
 				FEF4C68B17B3FF3700D2085A /* MainMenu.xib in Resources */,
+				FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
