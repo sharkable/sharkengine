@@ -40,8 +40,6 @@
 		FEF4C08817B3FB0D00D2085A /* AppleGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C03417B3FB0D00D2085A /* AppleGameEngineFactory.mm */; };
 		FEF4C08917B3FB0D00D2085A /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C03617B3FB0D00D2085A /* AppleLocalStore.mm */; };
 		FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */; };
-		FEF4C08E17B3FB0D00D2085A /* SharkengineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C04217B3FB0D00D2085A /* SharkengineViewController.m */; };
-		FEF4C08F17B3FB0D00D2085A /* SharkengineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C04317B3FB0D00D2085A /* SharkengineViewController.xib */; };
 		FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */; };
 		FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07717B3FB0D00D2085A /* ALAudio.mm */; };
 		FEF4C09617B3FB0D00D2085A /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07A17B3FB0D00D2085A /* AVAudio.mm */; };
@@ -132,9 +130,6 @@
 		FEF4C03617B3FB0D00D2085A /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
 		FEF4C03F17B3FB0D00D2085A /* SharkengineOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharkengineOpenGLView.h; sourceTree = "<group>"; };
 		FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SharkengineOpenGLView.mm; sourceTree = "<group>"; };
-		FEF4C04117B3FB0D00D2085A /* SharkengineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharkengineViewController.h; sourceTree = "<group>"; };
-		FEF4C04217B3FB0D00D2085A /* SharkengineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharkengineViewController.m; sourceTree = "<group>"; };
-		FEF4C04317B3FB0D00D2085A /* SharkengineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharkengineViewController.xib; sourceTree = "<group>"; };
 		FEF4C04417B3FB0D00D2085A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		FEF4C07317B3FB0D00D2085A /* TypeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeUtil.h; sourceTree = "<group>"; };
 		FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeUtil.mm; sourceTree = "<group>"; };
@@ -445,9 +440,6 @@
 				FEF4C67F17B3FE0000D2085A /* main.m */,
 				FEF4C03F17B3FB0D00D2085A /* SharkengineOpenGLView.h */,
 				FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */,
-				FEF4C04117B3FB0D00D2085A /* SharkengineViewController.h */,
-				FEF4C04217B3FB0D00D2085A /* SharkengineViewController.m */,
-				FEF4C04317B3FB0D00D2085A /* SharkengineViewController.xib */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -553,7 +545,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEF4C08F17B3FB0D00D2085A /* SharkengineViewController.xib in Resources */,
 				FEF4C67C17B3FC3300D2085A /* Info.plist in Resources */,
 				FEF4C68917B3FF3700D2085A /* Credits.rtf in Resources */,
 				FEF4C68A17B3FF3700D2085A /* InfoPlist.strings in Resources */,
@@ -596,7 +587,6 @@
 				FEF4C08817B3FB0D00D2085A /* AppleGameEngineFactory.mm in Sources */,
 				FEF4C08917B3FB0D00D2085A /* AppleLocalStore.mm in Sources */,
 				FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */,
-				FEF4C08E17B3FB0D00D2085A /* SharkengineViewController.m in Sources */,
 				FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */,
 				FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */,
 				FEF4C09617B3FB0D00D2085A /* AVAudio.mm in Sources */,
@@ -641,7 +631,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -672,7 +662,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -680,7 +670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -704,7 +694,7 @@
 					../../../gameengine/platforms/apple/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -716,6 +706,7 @@
 				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -729,6 +720,7 @@
 				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
