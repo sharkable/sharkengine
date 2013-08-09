@@ -8,7 +8,11 @@
 
 @class SharkengineOpenGLView;
 
-@interface AppDelegate : NSObject<NSApplicationDelegate>
+@interface AppDelegate : NSObject<NSApplicationDelegate> {
+ @private
+  IBOutlet NSWindow *window;
+  IBOutlet SharkengineOpenGLView *openGLView;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet SharkengineOpenGLView *openGLView;

@@ -16,13 +16,7 @@
 
 static GameEngine *gameEngine_ = NULL;
 
-@implementation SharkengineOpenGLView {
-  NSTimer *timer_;
-  int viewportX_;
-  int viewportY_;
-  int viewportWidth_;
-  int viewportHeight_;
-}
+@implementation SharkengineOpenGLView
 
 - (id)init {
   self = [super init];
@@ -117,7 +111,7 @@ static GameEngine *gameEngine_ = NULL;
   return YES;
 }
 
-- (GamePoint)gamePointFromScreenPoint:(CGPoint)point {
+- (GamePoint)gamePointFromScreenPoint:(NSPoint)point {
   return game_point_make((point.x - viewportX_) * 768.0 / viewportWidth_,
                          1024.0 - (point.y - viewportY_) * 1024.0 / viewportHeight_);
 }
