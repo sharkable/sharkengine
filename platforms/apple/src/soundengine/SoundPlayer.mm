@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioServices.h>
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
   #import <MediaPlayer/MPMusicPlayerController.h>
 #endif
 #import "TypeUtil.h"
@@ -23,7 +23,7 @@ static SoundPlayerImpl *soundInstance_ = NULL;
 static const bool thisAppDoesDucking = YES; // if this gets changed to yes then it's all set up to duck the sound when iTunes is playing with Sound effects ON
 
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
 @interface SoundHelpers : NSObject
 + (NSString *)getAudioServicesError:(OSStatus)err;
 @end
@@ -85,7 +85,7 @@ static const bool thisAppDoesDucking = YES; // if this gets changed to yes then 
 @end
 
 static AVAudioSession *session_ = nil;
-#endif  // TARGET_OS_PHONE
+#endif  // TARGET_OS_IPHONE
 
 static bool musicIsPlayingInITunes_ = false;
 
@@ -101,7 +101,7 @@ void SoundPlayer::shutdown() {
 }
 
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
 AVAudioSession *SoundPlayerImpl::session() {
   return session_;
 }
@@ -114,7 +114,7 @@ bool SoundPlayerImpl::isMusicPlayingInITunes() {
 // allow sound effects to be clear by ducking the iTunes song
 void SoundPlayerImpl::duckAudioFromITunes(bool duck) {
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
 
   // note: not sure if this is for all AudioSession properties, but at least with ducking the
   // session has to be inactive to make the change so here we set the session to inactive at the top
@@ -280,7 +280,7 @@ SoundPlayerImpl::SoundPlayerImpl() {
 void SoundPlayerImpl::syncAudioSessionForITunes()
 {
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
 
   //
   // In order to allow iTunes songs to play under our game music/effects

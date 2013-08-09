@@ -18,7 +18,7 @@ class SoundPlayerImpl : public SoundPlayer {
   SoundPlayerImpl();
 
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
   AVAudioSession* session();
 #endif
   bool isMusicPlayingInITunes();

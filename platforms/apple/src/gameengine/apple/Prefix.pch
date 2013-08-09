@@ -13,7 +13,7 @@
   // TODO consider explicity importing these.
   #import <Availability.h>
   #import <Foundation/Foundation.h>
-  #if TARGET_OS_PHONE
+  #if TARGET_OS_IPHONE
     #import <UIKit/UIKit.h>
   #else
     #import <Cocoa/Cocoa.h>

@@ -11,7 +11,7 @@
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player
 {
 // TODO: Fix for OS X.
-#if TARGET_OS_PHONE
+#if TARGET_OS_IPHONE
   NSError* activationError = nil;
   [[AVAudioSession sharedInstance] setActive:YES error:&activationError];
 #endif
