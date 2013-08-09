@@ -20,4 +20,8 @@
   [self.window setDelegate:self.openGLView];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+  return YES;
+}
+
 @end
