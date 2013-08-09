@@ -18,7 +18,8 @@
 
 typedef enum {
   kPlatformTypePhone = 0,
-  kPlatformTypeTablet
+  kPlatformTypeTablet,
+  kPlatformTypePC,
 } PlatformType;
 
 typedef enum {

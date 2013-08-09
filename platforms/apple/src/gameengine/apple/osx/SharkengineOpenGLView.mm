@@ -46,7 +46,7 @@ static GameEngine *gameEngine_ = NULL;
 - (void)prepareOpenGL {
   // TODO should this really be here?
   gameEngine_ = new GameEngine();
-  gameEngine_->set_platform_type(kPlatformTypeTablet);
+  gameEngine_->set_platform_type(kPlatformTypePC);
   gameEngine_->set_platform_resolution(kPlatformResolutionLow);
   gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
 
