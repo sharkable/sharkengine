@@ -144,6 +144,10 @@ static GameEngine *gameEngine_ = NULL;
   gameEngine_->AddMouseDelta(theEvent.deltaX, theEvent.deltaY);
 }
 
+- (void)rightMouseDown:(NSEvent *)theEvent {
+  gameEngine_->HandleBackButton();
+}
+
 + (void)setGameEngine:(GameEngine *)gameEngine {
   gameEngine_ = gameEngine;
 }
