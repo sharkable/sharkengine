@@ -156,7 +156,8 @@ static GameEngine *gameEngine_ = NULL;
   [timer_ release];
   timer_ = nil;
 
-  // TODO freeze, pause
+  gameEngine_->NotifyPause();
+  gameEngine_->Update();
   [self setNeedsDisplay:YES];
 }
 
