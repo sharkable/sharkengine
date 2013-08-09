@@ -153,20 +153,22 @@ static GameEngine *gameEngine_ = NULL;
 
 - (void)windowDidResignMain:(NSNotification *)notification {
   [timer_ invalidate];
+  [timer_ release];
+  timer_ = nil;
 
   // TODO freeze, pause
   [self setNeedsDisplay:YES];
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)notification {
-  // TODO continue game.
   [self setNeedsDisplay:YES];
 
-  timer_ = [NSTimer timerWithTimeInterval:1.0/60.0
-                                   target:self
-                                 selector:@selector(timerEvent:)
-                                 userInfo:nil
-                                  repeats:YES];
+  [timer_ release];
+  timer_ = [[NSTimer timerWithTimeInterval:1.0/60.0
+                                    target:self
+                                  selector:@selector(timerEvent:)
+                                  userInfo:nil
+                                   repeats:YES] retain];
 
   [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
 }
