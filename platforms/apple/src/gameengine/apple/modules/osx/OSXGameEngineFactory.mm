@@ -6,9 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/AppleGameEngineFactory.h"
-
 #include "gameengine/apple/modules/osx/OSXGameEngineFactory.h"
+
 #include "gameengine/modules/zipped_asset_reader.h"
 
 using std::string;
