@@ -34,12 +34,12 @@
 		FE3CF95914F982A30063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
-		FE4F211D17B306EF005EC455 /* AppleAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211117B306EF005EC455 /* AppleAssetReader.mm */; };
-		FE4F211E17B306EF005EC455 /* AppleGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211317B306EF005EC455 /* AppleGameEngineFactory.mm */; };
 		FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211517B306EF005EC455 /* AppleLocalStore.mm */; };
 		FE4F212017B306EF005EC455 /* IOSAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211817B306EF005EC455 /* IOSAdEngine.mm */; };
 		FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */; };
 		FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */; };
+		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
+		FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
 		FE789BC814F97B34007FCBC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC714F97B34007FCBC5 /* Foundation.framework */; };
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
@@ -151,10 +151,6 @@
 		FE3CF95014F9819E0063CCA5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FE4F211017B306EF005EC455 /* AppleAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleAssetReader.h; sourceTree = "<group>"; };
-		FE4F211117B306EF005EC455 /* AppleAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleAssetReader.mm; sourceTree = "<group>"; };
-		FE4F211217B306EF005EC455 /* AppleGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleGameEngineFactory.h; sourceTree = "<group>"; };
-		FE4F211317B306EF005EC455 /* AppleGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleGameEngineFactory.mm; sourceTree = "<group>"; };
 		FE4F211417B306EF005EC455 /* AppleLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLocalStore.h; sourceTree = "<group>"; };
 		FE4F211517B306EF005EC455 /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
 		FE4F211717B306EF005EC455 /* IOSAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAdEngine.h; sourceTree = "<group>"; };
@@ -163,6 +159,10 @@
 		FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAnalyticsEngine.mm; sourceTree = "<group>"; };
 		FE4F211B17B306EF005EC455 /* IOSAppStoreEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAppStoreEngine.h; sourceTree = "<group>"; };
 		FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAppStoreEngine.mm; sourceTree = "<group>"; };
+		FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
+		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
+		FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSGameEngineFactory.h; sourceTree = "<group>"; };
+		FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSGameEngineFactory.mm; sourceTree = "<group>"; };
 		FE789BC114F97B34007FCBC5 /* AirHockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE789BC514F97B34007FCBC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FE789BC714F97B34007FCBC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -316,10 +316,6 @@
 		FE164D2417AC4444006C5D88 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				FE4F211017B306EF005EC455 /* AppleAssetReader.h */,
-				FE4F211117B306EF005EC455 /* AppleAssetReader.mm */,
-				FE4F211217B306EF005EC455 /* AppleGameEngineFactory.h */,
-				FE4F211317B306EF005EC455 /* AppleGameEngineFactory.mm */,
 				FE4F211417B306EF005EC455 /* AppleLocalStore.h */,
 				FE4F211517B306EF005EC455 /* AppleLocalStore.mm */,
 				FE4F211617B306EF005EC455 /* ios */,
@@ -424,6 +420,10 @@
 				FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */,
 				FE4F211B17B306EF005EC455 /* IOSAppStoreEngine.h */,
 				FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */,
+				FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */,
+				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
+				FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */,
+				FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -753,12 +753,12 @@
 				FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */,
 				FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */,
 				FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */,
-				FE4F211D17B306EF005EC455 /* AppleAssetReader.mm in Sources */,
-				FE4F211E17B306EF005EC455 /* AppleGameEngineFactory.mm in Sources */,
 				FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */,
 				FE4F212017B306EF005EC455 /* IOSAdEngine.mm in Sources */,
 				FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */,
 				FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */,
+				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
+				FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

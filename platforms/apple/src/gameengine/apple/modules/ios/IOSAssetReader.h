@@ -1,22 +1,22 @@
 //
-//  AppleAssetReader.h
+//  IOSAssetReader.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_APPLEASSETREADER_H_
-#define GAMEENGINE_APPLE_MODULES_APPLEASSETREADER_H_
+#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSASSETREADER_H_
+#define GAMEENGINE_APPLE_MODULES_IOS_IOSASSETREADER_H_
 
 #import <Foundation/Foundation.h>
 
 #include "gameengine/asset_reader.h"
 
-class AppleAssetReader : public AssetReader {
+class IOSAssetReader : public AssetReader {
  public:
-  AppleAssetReader(std::string filename);
-  ~AppleAssetReader();
+  IOSAssetReader(std::string filename);
+  ~IOSAssetReader();
   size_t Size();
   size_t Read(void *ptr, size_t size, size_t count);
   bool Close();

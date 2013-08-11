@@ -10,7 +10,7 @@
 
 #import "gameengine/apple/TypeUtil.h"
 #import "gameengine/apple/ios/ViewController.h"
-#import "gameengine/apple/modules/AppleGameEngineFactory.h"
+#import "gameengine/apple/modules/ios/IOSGameEngineFactory.h"
 #import "gameengine/apple/thirdparty/ios/appirater/Appirater.h"
 #import "gameengine/apple/thirdparty/ios/flurry/Flurry.h"
 #import "gameengine/modules/sound_player.h"
@@ -43,7 +43,7 @@
   [Flurry startSession:@"BGGPH5B2THWFSJHXEKRH"];
 
   viewController_ = [[ViewController alloc] init];
-  viewController_.gameEngine->set_factory(sp<GameEngineFactory>(new AppleGameEngineFactory()));
+  viewController_.gameEngine->set_factory(sp<GameEngineFactory>(new IOSGameEngineFactory()));
 
   CGSize screenSize = [viewController_ desiredViewFrame].size;
   CGFloat scale = [UIScreen mainScreen].scale;
