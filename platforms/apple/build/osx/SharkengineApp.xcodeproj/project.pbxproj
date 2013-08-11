@@ -443,7 +443,7 @@
 				FEF4BFD517B3FADA00D2085A /* src */,
 			);
 			name = core;
-			path = ___SHARKENGINE_HOME___/core;
+			path = "___SHARKENGINE_HOME___/core";
 			sourceTree = "<absolute>";
 		};
 		FEF4BFBE17B3FADA00D2085A /* include */ = {
@@ -600,7 +600,7 @@
 				FEF4C07517B3FB0D00D2085A /* soundengine */,
 			);
 			name = src;
-			path = ___SHARKENGINE_HOME___/platforms/apple/src;
+			path = "___SHARKENGINE_HOME___/platforms/apple/src";
 			sourceTree = "<absolute>";
 		};
 		FEF4C01D17B3FB0C00D2085A /* gameengine */ = {
@@ -681,6 +681,7 @@
 			buildPhases = (
 				FE64948A17A315CD0051BF31 /* Sources */,
 				FE64948B17A315CD0051BF31 /* Frameworks */,
+				FE4FAA7B17B8351F00E3B011 /* ShellScript */,
 				FE64948C17A315CD0051BF31 /* Resources */,
 			);
 			buildRules = (
@@ -757,6 +758,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE4FAA7B17B8351F00E3B011 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../..\nzip -r out/osx/asset_bundle.zip assets --exclude assets/images/* assets/sounds/* .DS_Store\nmv out/osx/asset_bundle.zip out/osx/asset_bundle";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FE64948A17A315CD0051BF31 /* Sources */ = {
@@ -961,7 +978,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -975,7 +992,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
