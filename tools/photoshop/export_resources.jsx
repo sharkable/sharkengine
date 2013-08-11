@@ -1,6 +1,6 @@
 var activeDocument = app.activeDocument;
 var outputFolder = activeDocument.path + "/textures";
-var outputPositionsFolder = activeDocument.path + "/../resources/positions";
+var outputPositionsFolder = activeDocument.path + "/../assets/positions";
 var outputPositionsFilename = "positions.xml";
 var layerVisibleMap = new Array();
 var layerPositionMap = {};
