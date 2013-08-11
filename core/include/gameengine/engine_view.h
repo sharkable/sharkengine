@@ -19,7 +19,8 @@ class EngineView {
  public:
   EngineView(GameEngine *game_engine);
 
-  virtual void ViewIsShown() {}
+  virtual void ViewDidGainFocus() {}
+  virtual void ViewDidLoseFocus() {}
   virtual void Update();
   virtual void Render();
   virtual void NotifyPause() {}

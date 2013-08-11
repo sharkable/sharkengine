@@ -13,6 +13,7 @@
 #include "gameengine/modules/ad_engine.h"
 #include "gameengine/modules/analytics_engine.h"
 #include "gameengine/modules/app_store_engine.h"
+#include "gameengine/modules/input_module.h"
 #include "gameengine/modules/local_store.h"
 
 GameEngine::GameEngine()
@@ -28,17 +29,26 @@ GameEngine::GameEngine()
   ad_engine_.reset(new AdEngine());
   analytics_engine_.reset(new AnalyticsEngine());
   app_store_engine_.reset(new AppStoreEngine());
+  input_module_.reset(new InputModule());
 
   positions_ = sp<Positions>(new Positions());
 }
 
 void GameEngine::Update() {
   if (next_views_.size() > 0) {
+    sp<EngineView> back;
     if (views_.size()) {
-      views_.back()->ClearTouches();
+      back = views_.back();
+      back->ClearTouches();
     }
     views_ = next_views_;
-    views_.back()->ViewIsShown();
+    // If the back view has changed, then call focus notificaitons.
+    if (views_.back() != back) {
+      if (back) {
+        back->ViewDidLoseFocus();
+      }
+      views_.back()->ViewDidGainFocus();
+    }
     next_views_.clear();
   }
 

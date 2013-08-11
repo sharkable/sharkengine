@@ -34,6 +34,7 @@ class AssetReader;
 class EngineView;
 class GameEngine;
 class GameEngineFactory;
+class InputModule;
 class LocalStore;
 
 extern "C" {
@@ -44,6 +45,7 @@ class GameEngine {
  public:
   GameEngine();
 
+  // Platform functions. Don't call these from an app.
   void Update();
   void Render();
   void NotifyPause();
@@ -55,6 +57,7 @@ class GameEngine {
   bool HandleBackButton();
   void HandlePauseButton();
 
+  // App functions.
   void PushView(sp<EngineView> view);
   void PopView();
   void RemoveView(EngineView *view);
@@ -86,6 +89,9 @@ class GameEngine {
   void set_app_store_engine(sp<AppStoreEngine> app_store_engine) {
     app_store_engine_ = app_store_engine;
   }
+
+  sp<InputModule> input_module() { return input_module_; }
+  void set_input_module(sp<InputModule> input_module) { input_module_ = input_module; }
 
   ResourceLoader &resource_loader() { return resource_loader_; }
 
@@ -135,6 +141,7 @@ class GameEngine {
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<AppStoreEngine> app_store_engine_;
+  sp<InputModule> input_module_;
 
   ResourceLoader resource_loader_;
   sp<Positions> positions_;

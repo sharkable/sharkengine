@@ -13,6 +13,7 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/apple/modules/AppleLocalStore.h"
 #include "gameengine/apple/modules/osx/OSXGameEngineFactory.h"
+#include "gameengine/apple/modules/osx/OSXInputModule.h"
 
 @interface SharkengineOpenGLView ()
 - (BOOL)isFullScreen;
@@ -46,6 +47,7 @@
   gameEngine_->set_platform_type(kPlatformTypePC);
   gameEngine_->set_platform_resolution(kPlatformResolutionLow);
   gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
+  gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
 
   gameEngine_->set_screen_size(screen_size_make(768, 1024));
   gameEngine_->set_factory(sp<GameEngineFactory>(new OSXGameEngineFactory()));
