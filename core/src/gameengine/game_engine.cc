@@ -119,6 +119,12 @@ bool GameEngine::HandleBackButton() {
   return views_.back()->HandleBackButton();
 }
 
+void GameEngine::HandlePauseButton() {
+  if (views_.size() != 0) {
+    views_.back()->HandlePauseButton();
+  }
+}
+
 void GameEngine::PushView(sp<EngineView> view) {
   if (next_views_.size() == 0) {
     next_views_ = views_;

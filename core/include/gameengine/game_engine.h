@@ -53,6 +53,7 @@ class GameEngine {
   void AddTouchEnded(Touch touch);
   void AddMouseDelta(float delta_x, float delta_y);
   bool HandleBackButton();
+  void HandlePauseButton();
 
   void PushView(sp<EngineView> view);
   void PopView();

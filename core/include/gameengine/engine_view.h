@@ -29,7 +29,8 @@ class EngineView {
   virtual void TouchesEnded(std::vector<Touch> touches);
   virtual void ClearTouches();
   virtual void HandleMouseDelta(float delta_x, float delta_y);
-  virtual bool HandleBackButton();
+  virtual bool HandleBackButton();  // If this returns false, the app is quit.
+  virtual void HandlePauseButton() {}
   // If you add an entity using this method, then this EngineView is responsible for releasing this
   // object.
   void AddEntity(ViewEntity *entity);

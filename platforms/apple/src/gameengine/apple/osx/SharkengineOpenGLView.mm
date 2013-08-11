@@ -14,7 +14,10 @@
 #include "gameengine/apple/modules/AppleLocalStore.h"
 #include "gameengine/apple/modules/osx/OSXGameEngineFactory.h"
 
-static GameEngine *gameEngine_ = NULL;
+@interface SharkengineOpenGLView ()
+- (BOOL)isFullScreen;
+- (void)updateEvent:(NSTimer *)timer;
+@end
 
 @implementation SharkengineOpenGLView
 
@@ -50,8 +53,6 @@ static GameEngine *gameEngine_ = NULL;
   sharkengine_init(gameEngine_);
 
   Texture2D::SetScreenHeight(1024);
-
-  [SharkengineOpenGLView setGameEngine:gameEngine_];
 
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_CULL_FACE);
@@ -144,12 +145,12 @@ static GameEngine *gameEngine_ = NULL;
   gameEngine_->AddMouseDelta(theEvent.deltaX, theEvent.deltaY);
 }
 
-- (void)rightMouseDown:(NSEvent *)theEvent {
-  gameEngine_->HandleBackButton();
-}
-
-+ (void)setGameEngine:(GameEngine *)gameEngine {
-  gameEngine_ = gameEngine;
+- (void)keyDown:(NSEvent *)theEvent {
+  if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
+    [super keyDown:theEvent];
+  } else {
+    gameEngine_->HandlePauseButton();
+  }
 }
 
 
@@ -168,17 +169,25 @@ static GameEngine *gameEngine_ = NULL;
 - (void)windowDidBecomeMain:(NSNotification *)notification {
   [self setNeedsDisplay:YES];
 
+  [timer_ invalidate];
   [timer_ release];
   timer_ = [[NSTimer timerWithTimeInterval:1.0/60.0
                                     target:self
-                                  selector:@selector(timerEvent:)
+                                  selector:@selector(updateEvent:)
                                   userInfo:nil
                                    repeats:YES] retain];
 
   [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
 }
 
-- (void)timerEvent:(NSTimer *)t {
+
+// Private
+
+- (BOOL)isFullScreen {
+  return ([self.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+}
+
+- (void)updateEvent:(NSTimer *)timer {
   if (gameEngine_) {
     gameEngine_->Update();
   }
