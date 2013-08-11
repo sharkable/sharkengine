@@ -11,8 +11,8 @@
 #include <OpenGL/gl.h>
 
 #include "gameengine/game_engine.h"
-#include "gameengine/apple/modules/AppleGameEngineFactory.h"
 #include "gameengine/apple/modules/AppleLocalStore.h"
+#include "gameengine/apple/modules/osx/OSXGameEngineFactory.h"
 
 static GameEngine *gameEngine_ = NULL;
 
@@ -45,7 +45,7 @@ static GameEngine *gameEngine_ = NULL;
   gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
 
   gameEngine_->set_screen_size(screen_size_make(768, 1024));
-  gameEngine_->set_factory(sp<GameEngineFactory>(new AppleGameEngineFactory()));
+  gameEngine_->set_factory(sp<GameEngineFactory>(new OSXGameEngineFactory()));
 
   sharkengine_init(gameEngine_);
 

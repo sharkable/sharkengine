@@ -66,7 +66,7 @@ void ResourceLoader::ReloadTextures() {
 
 Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 // TODO think about this
-#ifdef __ANDROID__
+#if __ANDROID__ || TARGET_OS_MAC
   string filename = "assets/textures/" + name;
 #else
   string filename = name;
