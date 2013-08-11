@@ -24,6 +24,10 @@ PBXFileReference.types['.wav'] = ('sound.wav', 'PBXResourcesBuildPhase')
 
 app_group = project.get_or_create_group('App')
 project.add_folder(app_home + '/src', app_group)
-project.add_folder(app_home + '/assets', app_group)
+if target == "ios":
+  project.add_folder(app_home + '/assets', app_group)
+else:
+  project.add_folder(app_home + '/assets/images', app_group)
+  project.add_folder(app_home + '/assets/sounds', app_group)
 
 project.saveFormat3_2()
