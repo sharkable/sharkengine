@@ -79,8 +79,11 @@
 }
 
 - (void)reshape {
-  float screenWidthFloat = [self frame].size.width;
-  float screenHeightFloat = [self frame].size.height;
+  if (!NSEqualRects(self.frame, self.superview.frame)) {
+    self.frame = self.superview.frame;
+  }
+  float screenWidthFloat = self.frame.size.width;
+  float screenHeightFloat = self.frame.size.height;
   float viewportWidthFloat = screenHeightFloat * 768.0 / 1024.0;
   float viewportHeightFloat = screenHeightFloat;
   if (viewportWidthFloat > screenWidthFloat) {
@@ -149,6 +152,10 @@
 
 - (void)windowDidBecomeMain:(NSNotification *)notification {
   [self start];
+}
+
+- (void)windowDidResize:(NSNotification *)notification {
+  self.frame = self.superview.frame;
 }
 
 
