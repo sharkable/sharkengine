@@ -35,6 +35,8 @@ if [ $1 = "osx" ]; then
   mkdir $SHARKENGINE_APP_HOME/out/osx/icon.iconset
   cp $SHARKENGINE_APP_HOME/icons/Icon-512.png \
       $SHARKENGINE_APP_HOME/out/osx/icon.iconset/icon_512x512.png
+  cp $SHARKENGINE_APP_HOME/icons/Icon-1024.png \
+      $SHARKENGINE_APP_HOME/out/osx/icon.iconset/icon_512x512@2x.png
   iconutil -c icns --output $SHARKENGINE_APP_HOME/out/osx/icon.icns \
       $SHARKENGINE_APP_HOME/out/osx/icon.iconset > /dev/null 2>&1
   rm -rf $SHARKENGINE_APP_HOME/out/osx/icon.iconset
