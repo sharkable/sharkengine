@@ -133,6 +133,11 @@
 
 - (void)mouseMoved:(NSEvent *)theEvent {
   gameEngine_->AddMouseDelta(theEvent.deltaX, theEvent.deltaY);
+  if (!CGCursorIsVisible()) {
+    NSRect windowFrame = self.window.frame;
+    CGPoint windowCenter = CGPointMake(NSMidX(windowFrame), NSMidY(windowFrame));
+    CGDisplayMoveCursorToPoint(kCGDirectMainDisplay, windowCenter);
+  }
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
