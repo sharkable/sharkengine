@@ -72,6 +72,7 @@
 		FE6495AE17A4690E0051BF31 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AD17A4690E0051BF31 /* OpenAL.framework */; };
 		FE6495B017A469340051BF31 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AF17A469340051BF31 /* AudioToolbox.framework */; };
 		FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495B117A4698D0051BF31 /* AVFoundation.framework */; };
+		FEAD989817B98B300084C405 /* SharkEngine.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FEAD989717B98B300084C405 /* SharkEngine.entitlements */; };
 		FEF4C00417B3FADA00D2085A /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD717B3FADA00D2085A /* animation.cc */; };
 		FEF4C00517B3FADA00D2085A /* engine_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD917B3FADA00D2085A /* engine_view.cc */; };
 		FEF4C00617B3FADA00D2085A /* animatable.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDB17B3FADA00D2085A /* animatable.cc */; };
@@ -188,6 +189,7 @@
 		FE6495AD17A4690E0051BF31 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		FE6495AF17A469340051BF31 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FE6495B117A4698D0051BF31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FEAD989717B98B300084C405 /* SharkEngine.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SharkEngine.entitlements; sourceTree = "<group>"; };
 		FEF4BFC017B3FADA00D2085A /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF4BFC117B3FADA00D2085A /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
 		FEF4BFC217B3FADA00D2085A /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				FE4FAA6817B81BE400E3B011 /* asset_bundle */,
 				FE1395AC17B57C1C00F1F61C /* icon.icns */,
 				FEF4C67B17B3FC3300D2085A /* Info.plist */,
+				FEAD989717B98B300084C405 /* SharkEngine.entitlements */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 				FEF4BFD517B3FADA00D2085A /* src */,
 			);
 			name = core;
-			path = ___SHARKENGINE_HOME___/core;
+			path = "___SHARKENGINE_HOME___/core";
 			sourceTree = "<absolute>";
 		};
 		FEF4BFBE17B3FADA00D2085A /* include */ = {
@@ -607,7 +610,7 @@
 				FEF4C07517B3FB0D00D2085A /* soundengine */,
 			);
 			name = src;
-			path = ___SHARKENGINE_HOME___/platforms/apple/src;
+			path = "___SHARKENGINE_HOME___/platforms/apple/src";
 			sourceTree = "<absolute>";
 		};
 		FEF4C01D17B3FB0C00D2085A /* gameengine */ = {
@@ -761,6 +764,7 @@
 				FEF4C68B17B3FF3700D2085A /* MainMenu.xib in Resources */,
 				FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */,
 				FE4FAA6917B81BE400E3B011 /* asset_bundle in Resources */,
+				FEAD989817B98B300084C405 /* SharkEngine.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,9 +988,11 @@
 		FE6494AC17A315CD0051BF31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SharkEngine.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -998,9 +1004,11 @@
 		FE6494AD17A315CD0051BF31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SharkEngine.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = "___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;

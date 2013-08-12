@@ -30,8 +30,12 @@ sed -e "s/___SHARKENGINE_APP_VERSION___/$VERSION/g" \
 
 python $SHARKENGINE_HOME/platforms/apple/build/setup_project.py $1
 
-# Generate OS X icon file.
 if [ $1 = "osx" ]; then
+  # Copy entitlements file.
+  cp $SHARKENGINE_HOME/platforms/apple/build/osx/SharkEngine.entitlements \
+      $SHARKENGINE_APP_HOME/out/osx
+
+  # Generate OS X icon file.
   mkdir $SHARKENGINE_APP_HOME/out/osx/icon.iconset
   cp $SHARKENGINE_APP_HOME/icons/Icon-512.png \
       $SHARKENGINE_APP_HOME/out/osx/icon.iconset/icon_512x512.png
