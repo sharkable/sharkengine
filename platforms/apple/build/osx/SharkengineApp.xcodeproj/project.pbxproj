@@ -943,7 +943,7 @@
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.7;
 			};
@@ -976,7 +976,7 @@
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx10.7;
 			};
 			name = Release;
