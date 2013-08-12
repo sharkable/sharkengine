@@ -18,28 +18,11 @@
 @interface SharkengineOpenGLView ()
 - (BOOL)isFullScreen;
 - (void)updateEvent:(NSTimer *)timer;
+- (void)start;
+- (void)stop;
 @end
 
 @implementation SharkengineOpenGLView
-
-- (id)init {
-  self = [super init];
-  if (self) {
-    viewportX_ = 0;  // TODO maybe not needed. Is |resize| always called?
-    viewportY_ = 0;
-    viewportWidth_ = 768;
-    viewportHeight_ = 1024;
-  }
-  return self;
-}
-
-- (id)initWithFrame:(NSRect)frameRect {
-  self = [super initWithFrame:frameRect];
-  if (self) {
-    [self setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-  }
-  return self;
-}
 
 - (void)prepareOpenGL {
   // TODO should this really be here?
@@ -75,6 +58,8 @@
   // Set swap interval for double buffering.
   GLint swapInt = 1;
   [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+
+  [self start];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -159,27 +144,11 @@
 // NSWindowDelegate
 
 - (void)windowDidResignMain:(NSNotification *)notification {
-  [timer_ invalidate];
-  [timer_ release];
-  timer_ = nil;
-
-  gameEngine_->NotifyPause();
-  gameEngine_->Update();
-  [self setNeedsDisplay:YES];
+  [self stop];
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)notification {
-  [self setNeedsDisplay:YES];
-
-  [timer_ invalidate];
-  [timer_ release];
-  timer_ = [[NSTimer timerWithTimeInterval:1.0/60.0
-                                    target:self
-                                  selector:@selector(updateEvent:)
-                                  userInfo:nil
-                                   repeats:YES] retain];
-
-  [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
+  [self start];
 }
 
 
@@ -193,6 +162,30 @@
   if (gameEngine_) {
     gameEngine_->Update();
   }
+  [self setNeedsDisplay:YES];
+}
+
+- (void)start {
+  if (timer_) {
+    return;
+  }
+  [self setNeedsDisplay:YES];
+  timer_ = [[NSTimer timerWithTimeInterval:1.0/60.0
+                                    target:self
+                                  selector:@selector(updateEvent:)
+                                  userInfo:nil
+                                   repeats:YES] retain];
+
+  [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
+}
+
+- (void)stop {
+  [timer_ invalidate];
+  [timer_ release];
+  timer_ = nil;
+
+  gameEngine_->NotifyPause();
+  gameEngine_->Update();
   [self setNeedsDisplay:YES];
 }
 

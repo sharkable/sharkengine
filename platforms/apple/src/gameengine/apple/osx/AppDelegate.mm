@@ -20,6 +20,10 @@
   [self.window setDelegate:self.openGLView];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification {
+  [self.window makeKeyAndOrderFront:self];
+}
+
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
   return YES;
 }
