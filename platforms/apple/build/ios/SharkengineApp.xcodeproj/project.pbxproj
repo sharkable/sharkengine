@@ -23,6 +23,8 @@
 		FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6E17AC4444006C5D88 /* AVAudio.mm */; };
 		FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D7017AC4444006C5D88 /* MyOpenALSupport.mm */; };
 		FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D7217AC4444006C5D88 /* SoundPlayer.mm */; };
+		FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2B396D17BAED5C00E6AC20 /* iAd.framework */; };
+		FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */; };
 		FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94C14F981400063CCA5 /* AudioToolbox.framework */; };
 		FE3CF95314F982A30063CCA5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */; };
 		FE3CF95414F982A30063CCA5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94814F980D00063CCA5 /* CFNetwork.framework */; };
@@ -141,6 +143,9 @@
 		FE164D7017AC4444006C5D88 /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
 		FE164D7117AC4444006C5D88 /* SoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPlayer.h; sourceTree = "<group>"; };
 		FE164D7217AC4444006C5D88 /* SoundPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundPlayer.mm; sourceTree = "<group>"; };
+		FE2B396D17BAED5C00E6AC20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdEngine.h; sourceTree = "<group>"; };
+		FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAdAdEngine.mm; sourceTree = "<group>"; };
 		FE3CF94214F9807E0063CCA5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE3CF94414F980A40063CCA5 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -238,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE65436317BA9B9600B59390 /* Security.framework in Frameworks */,
+				FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */,
 				FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */,
 				FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */,
 				FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */,
@@ -427,6 +433,8 @@
 				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
 				FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */,
 				FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */,
+				FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */,
+				FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -434,7 +442,6 @@
 		FE789BB614F97B34007FCBC5 = {
 			isa = PBXGroup;
 			children = (
-				FEF47BC616DF0C950096F3D4 /* libz.dylib */,
 				FE28F90016C9C54A00D3BBFB /* App */,
 				FE28F90116C9C56900D3BBFB /* SharkEngine */,
 				FE789BC414F97B34007FCBC5 /* Frameworks */,
@@ -460,6 +467,8 @@
 				FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */,
 				FE789BC714F97B34007FCBC5 /* Foundation.framework */,
 				FE789BCB14F97B34007FCBC5 /* GLKit.framework */,
+				FE2B396D17BAED5C00E6AC20 /* iAd.framework */,
+				FEF47BC616DF0C950096F3D4 /* libz.dylib */,
 				FE3CF94E14F981530063CCA5 /* MediaPlayer.framework */,
 				FE3CF95014F9819E0063CCA5 /* MessageUI.framework */,
 				FE3CF94414F980A40063CCA5 /* OpenAL.framework */,
@@ -763,6 +772,7 @@
 				FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */,
 				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
 				FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */,
+				FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
