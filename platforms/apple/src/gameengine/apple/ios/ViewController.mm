@@ -15,6 +15,7 @@
 #import "gameengine/apple/modules/ios/IOSAdEngine.h"
 #import "gameengine/apple/modules/ios/IOSAnalyticsEngine.h"
 #import "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
+#import "gameengine/apple/modules/ios/IOSiAdAdEngine.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -51,7 +52,12 @@
     gameEngine_->set_platform_resolution(platform_resolution);
 
     gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
-    gameEngine_->set_ad_engine(sp<AdEngine>(new IOSAdEngine(self)));
+    // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
+    if (gameEngine_->platform_type() == kPlatformTypePhone) {
+      gameEngine_->set_ad_engine(sp<AdEngine>(new IOSAdEngine(self)));
+    } else {
+      gameEngine_->set_ad_engine(sp<AdEngine>(new IOSIAdAdEngine(self)));
+    }
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new IOSAnalyticsEngine()));
     gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new IOSAppStoreEngine()));
 
@@ -99,6 +105,14 @@
     view_ = [[EAGLView alloc] initWithFrame:[self desiredViewFrame]];
   }
   self.view = view_;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [self stop];
+}
+
+-  (void)viewDidAppear:(BOOL)animated {
+  [self start];
 }
 
 // For iOS 5
