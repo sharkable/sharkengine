@@ -18,7 +18,6 @@
 		FE164D8417AC4445006C5D88 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE164D4517AC4444006C5D88 /* libGoogleAdMobAds.a */; };
 		FE164D8517AC4445006C5D88 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = FE164D4817AC4444006C5D88 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		FE164D8617AC4445006C5D88 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE164D4A17AC4444006C5D88 /* AppiraterLocalizable.strings */; };
-		FE164D8717AC4445006C5D88 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE164D6617AC4444006C5D88 /* libFlurry.a */; };
 		FE164D8817AC4445006C5D88 /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6817AC4444006C5D88 /* TypeUtil.mm */; };
 		FE164D8917AC4445006C5D88 /* ALAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6B17AC4444006C5D88 /* ALAudio.mm */; };
 		FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6E17AC4444006C5D88 /* AVAudio.mm */; };
@@ -40,6 +39,8 @@
 		FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */; };
 		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
 		FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */; };
+		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
+		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
 		FE789BC814F97B34007FCBC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC714F97B34007FCBC5 /* Foundation.framework */; };
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
@@ -129,7 +130,6 @@
 		FE164D6217AC4444006C5D88 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		FE164D6317AC4444006C5D88 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		FE164D6517AC4444006C5D88 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		FE164D6617AC4444006C5D88 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		FE164D6717AC4444006C5D88 /* TypeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeUtil.h; sourceTree = "<group>"; };
 		FE164D6817AC4444006C5D88 /* TypeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeUtil.mm; sourceTree = "<group>"; };
 		FE164D6A17AC4444006C5D88 /* ALAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAudio.h; sourceTree = "<group>"; };
@@ -163,6 +163,8 @@
 		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
 		FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSGameEngineFactory.h; sourceTree = "<group>"; };
 		FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSGameEngineFactory.mm; sourceTree = "<group>"; };
+		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		FE65436217BA9B9500B59390 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE789BC114F97B34007FCBC5 /* AirHockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE789BC514F97B34007FCBC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FE789BC714F97B34007FCBC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -235,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE65436317BA9B9600B59390 /* Security.framework in Frameworks */,
 				FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */,
 				FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */,
 				FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */,
@@ -252,7 +255,7 @@
 				FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */,
 				FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */,
 				FE164D8417AC4445006C5D88 /* libGoogleAdMobAds.a in Frameworks */,
-				FE164D8717AC4445006C5D88 /* libFlurry.a in Frameworks */,
+				FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				FE164D6517AC4444006C5D88 /* Flurry.h */,
-				FE164D6617AC4444006C5D88 /* libFlurry.a */,
+				FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */,
 			);
 			path = flurry;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				FE3CF94414F980A40063CCA5 /* OpenAL.framework */,
 				FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */,
 				FE3CF94214F9807E0063CCA5 /* QuartzCore.framework */,
+				FE65436217BA9B9500B59390 /* Security.framework */,
 				FE3F442A16C445CD00E8BEDF /* StoreKit.framework */,
 				FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */,
 				FE789BC514F97B34007FCBC5 /* UIKit.framework */,
