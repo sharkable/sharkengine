@@ -11,7 +11,7 @@
 
 #include <string>
 
-#include "gameengine/module_factory.h"
+#include "gameengine/modules/module_factory.h"
 
 class IOSModuleFactory : public ModuleFactory {
  public:

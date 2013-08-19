@@ -15,7 +15,7 @@
 #include "gameengine/modules/app_store_engine.h"
 #include "gameengine/modules/input_module.h"
 #include "gameengine/modules/local_store.h"
-#include "gameengine/module_factory.h"
+#include "gameengine/modules/module_factory.h"
 
 GameEngine::GameEngine(sp<ModuleFactory> module_factory)
     : module_factory_(module_factory),

@@ -114,7 +114,6 @@
 
 /* Begin PBXFileReference section */
 		FE1395AC17B57C1C00F1F61C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		FE40299E17C2A9AC00F0F49C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FE40299F17C2A9F500F0F49C /* OSXModuleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXModuleFactory.h; sourceTree = "<group>"; };
 		FE4029A017C2A9F500F0F49C /* OSXModuleFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSXModuleFactory.mm; sourceTree = "<group>"; };
 		FE4FA98A17B8191C00E3B011 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -191,6 +190,7 @@
 		FE6495AF17A469340051BF31 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FE6495B117A4698D0051BF31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FEAD989717B98B300084C405 /* SharkEngine.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SharkEngine.entitlements; sourceTree = "<group>"; };
+		FEDD89AD17C2B6AB0058550C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FEF4BFC017B3FADA00D2085A /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF4BFC117B3FADA00D2085A /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
 		FEF4BFC217B3FADA00D2085A /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
@@ -472,7 +472,6 @@
 				FEF4BFC317B3FADA00D2085A /* entities */,
 				FEF4BFC917B3FADA00D2085A /* game_engine.h */,
 				FEF4BFCB17B3FADA00D2085A /* module.h */,
-				FE40299E17C2A9AC00F0F49C /* module_factory.h */,
 				FEF4BFCC17B3FADA00D2085A /* modules */,
 				FEF4BFD217B3FADA00D2085A /* sprite.h */,
 				FEF4BFD317B3FADA00D2085A /* touch.h */,
@@ -501,6 +500,7 @@
 				FEF4BFCF17B3FADA00D2085A /* app_store_engine.h */,
 				FE4FAA8017B85B8500E3B011 /* input_module.h */,
 				FEF4BFD017B3FADA00D2085A /* local_store.h */,
+				FEDD89AD17C2B6AB0058550C /* module_factory.h */,
 				FEF4BFD117B3FADA00D2085A /* sound_player.h */,
 			);
 			path = modules;
