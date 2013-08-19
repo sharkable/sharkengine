@@ -35,12 +35,12 @@
 		FE3CF95914F982A30063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
+		FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */; };
 		FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211517B306EF005EC455 /* AppleLocalStore.mm */; };
 		FE4F212017B306EF005EC455 /* IOSAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211817B306EF005EC455 /* IOSAdEngine.mm */; };
 		FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */; };
 		FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */; };
 		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
-		FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */; };
 		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
 		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
@@ -156,6 +156,10 @@
 		FE3CF95014F9819E0063CCA5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FE40299917C2A96600F0F49C /* IOSModuleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSModuleFactory.h; sourceTree = "<group>"; };
+		FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSModuleFactory.mm; sourceTree = "<group>"; };
+		FE40299C17C2A97E00F0F49C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
+		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE4F211417B306EF005EC455 /* AppleLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLocalStore.h; sourceTree = "<group>"; };
 		FE4F211517B306EF005EC455 /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
 		FE4F211717B306EF005EC455 /* IOSAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAdEngine.h; sourceTree = "<group>"; };
@@ -166,8 +170,6 @@
 		FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAppStoreEngine.mm; sourceTree = "<group>"; };
 		FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
 		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
-		FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSGameEngineFactory.h; sourceTree = "<group>"; };
-		FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSGameEngineFactory.mm; sourceTree = "<group>"; };
 		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		FE65436217BA9B9500B59390 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE789BC114F97B34007FCBC5 /* AirHockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +188,6 @@
 		FEF9B80E17A9BFB400867739 /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
 		FEF9B80F17A9BFB400867739 /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
 		FEF9B81017A9BFB400867739 /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
-		FEF9B81117A9BFB400867739 /* game_engine_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine_factory.h; sourceTree = "<group>"; };
 		FEF9B81317A9BFB400867739 /* ad_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_engine.h; sourceTree = "<group>"; };
 		FEF9B81417A9BFB400867739 /* analytics_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_engine.h; sourceTree = "<group>"; };
 		FEF9B81517A9BFB400867739 /* app_store_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_engine.h; sourceTree = "<group>"; };
@@ -431,10 +432,10 @@
 				FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */,
 				FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */,
 				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
-				FE4FAA7617B8270300E3B011 /* IOSGameEngineFactory.h */,
-				FE4FAA7717B8270300E3B011 /* IOSGameEngineFactory.mm */,
 				FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */,
 				FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */,
+				FE40299917C2A96600F0F49C /* IOSModuleFactory.h */,
+				FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -507,7 +508,8 @@
 				FEF9B80917A9BFB400867739 /* engine_view.h */,
 				FEF9B80A17A9BFB400867739 /* entities */,
 				FEF9B81017A9BFB400867739 /* game_engine.h */,
-				FEF9B81117A9BFB400867739 /* game_engine_factory.h */,
+				FE40299D17C2A97E00F0F49C /* module.h */,
+				FE40299C17C2A97E00F0F49C /* module_factory.h */,
 				FEF9B81217A9BFB400867739 /* modules */,
 				FEF9B81817A9BFB400867739 /* sprite.h */,
 				FEF9B81917A9BFB400867739 /* touch.h */,
@@ -771,8 +773,8 @@
 				FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */,
 				FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */,
 				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
-				FE4FAA7917B8270300E3B011 /* IOSGameEngineFactory.mm in Sources */,
 				FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */,
+				FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
