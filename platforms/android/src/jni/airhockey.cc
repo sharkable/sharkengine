@@ -22,8 +22,8 @@ extern "C" {
 #include "gameengine/android/modules/android_ad_engine.h"
 #include "gameengine/android/modules/android_analytics_engine.h"
 #include "gameengine/android/modules/android_app_store_engine.h"
-#include "gameengine/android/modules/android_game_engine_factory.h"
 #include "gameengine/android/modules/android_local_store.h"
+#include "gameengine/android/modules/android_module_factory.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
 #include "soundengine/sound_player.h"
@@ -52,7 +52,7 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   backing_width__ = width;
   backing_height__ = height;
 
-  game_engine_.reset(new GameEngine());
+  game_engine_.reset(new GameEngine(sp<ModuleFactory>(new AndroidModuleFactory())));
 
   Texture2D::SetScreenHeight(height);
   game_engine_->set_screen_size(screen_size_make(width, height));
@@ -60,9 +60,6 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   game_engine_->set_platform_type(kPlatformTypePhone);
   game_engine_->set_platform_resolution(
       width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
-
-  sp<GameEngineFactory> factory = sp<GameEngineFactory>(new AndroidGameEngineFactory());
-  game_engine_->set_factory(factory);
 
   sp<LocalStore> local_store = sp<LocalStore>(new AndroidLocalStore(env, local_store_java));
   game_engine_->set_local_store(local_store);
