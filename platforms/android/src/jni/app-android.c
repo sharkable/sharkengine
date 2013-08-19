@@ -6,7 +6,7 @@
 
 #include "app.h"
 
-#include "libzip/zip.h"
+#include "gameengine/thirdparty/libzip/zip.h"
 
 #include "airhockey.h"
 

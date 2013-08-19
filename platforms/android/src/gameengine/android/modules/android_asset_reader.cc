@@ -7,9 +7,7 @@
 //
 
 #include "gameengine/android/modules/android_asset_reader.h"
-
-// TODO This is currently in the airhockey source. Rethink JNI... and the GameEngine in general.
-#include "jni/libzip/zip.h"
+#include "gameengine/thirdparty/libzip/zip.h"
 
 // TODO UGH this is kinda gross. This is needed for the GLOBAL variable APKArchive.
 #include "jni/app.h"
