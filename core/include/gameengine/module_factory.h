@@ -7,7 +7,7 @@
 //
 
 #ifndef GAMEENGINE_MODULEFACTORY_H_
-#define GAMEENGINE_MODILEFACTORY_H_
+#define GAMEENGINE_MODULEFACTORY_H_
 
 #include <string>
 
