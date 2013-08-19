@@ -42,7 +42,7 @@ void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ti
 }
 
 
-// ViewEntity
+#pragma mark - ViewEntity
 
 void Animatable::Update() {
   bool call_delegate = false;

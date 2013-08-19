@@ -21,7 +21,7 @@ OSXModuleFactory::~OSXModuleFactory() {
 }
 
 
-// ModuleFactory
+#pragma mark - ModuleFactory
 
 sp<AssetReader> OSXModuleFactory::CreateAssetReader(std::string filename) {
   if (!zip_) {

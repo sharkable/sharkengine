@@ -36,7 +36,7 @@ SimpleItem::~SimpleItem() {
 }
 
 
-// ViewEntity
+#pragma mark - ViewEntity
 
 void SimpleItem::Render(GamePoint offset) {
   sprites_[sprite_].Draw(position() + offset, angle(), alpha(), zoom());

@@ -199,7 +199,7 @@ void Texture2D::Delete() {
 }
 
 
-// private
+#pragma mark - private
 
 void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
                      uint32_t height, ScreenSize size, string filename, GLuint opengl_id) {

@@ -33,7 +33,7 @@ void MultiSelect::Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint po
 }
 
 
-// ViewEntity
+#pragma mark - ViewEntity
 
 void MultiSelect::Render(GamePoint offset) {
   for (int i = 0; i < normal_sprites_.size(); i++) {

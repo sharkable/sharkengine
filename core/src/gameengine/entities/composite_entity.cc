@@ -16,7 +16,7 @@ void CompositeEntity::AddEntity(sp<ViewEntity> entity) {
 }
 
 
-// ViewEntity
+#pragma mark - ViewEntity
 
 void CompositeEntity::Update() {
   Animatable::Update();

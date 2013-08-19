@@ -148,7 +148,7 @@
 }
 
 
-// NSWindowDelegate
+#pragma mark - NSWindowDelegate
 
 - (void)windowDidResignMain:(NSNotification *)notification {
   [self stop];
@@ -163,7 +163,7 @@
 }
 
 
-// Private
+#pragma mark - private
 
 - (BOOL)isFullScreen {
   return ([self.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;

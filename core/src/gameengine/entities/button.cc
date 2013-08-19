@@ -39,7 +39,7 @@ bool Button::ContainsPoint(GamePoint p) {
 }
 
 
-// ViewEntity
+#pragma mark - ViewEntity
 
 void Button::Render(GamePoint offset) {
   switch (state_) {

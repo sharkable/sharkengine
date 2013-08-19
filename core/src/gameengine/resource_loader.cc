@@ -61,7 +61,7 @@ void ResourceLoader::ReloadTextures() {
 }
 
 
-// private
+#pragma mark - private
 
 Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 // TODO think about this
