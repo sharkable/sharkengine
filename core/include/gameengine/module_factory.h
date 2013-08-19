@@ -1,19 +1,19 @@
 //
-//  game_engine_factory.h
+//  module_factory.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-19.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_GAMEENGINEFACTORY_H_
-#define GAMEENGINE_GAMEENGINEFACTORY_H_
+#ifndef GAMEENGINE_MODULEFACTORY_H_
+#define GAMEENGINE_MODILEFACTORY_H_
 
 #include <string>
 
 class AssetReader;
 
-class GameEngineFactory {
+class ModuleFactory {
  public:
   virtual sp<AssetReader> createAssetReader(std::string filename) = 0;
 };
