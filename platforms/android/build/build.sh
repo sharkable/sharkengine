@@ -8,12 +8,12 @@ if [ ! -d "$SHARKENGINE_APP_HOME/out/android" ]; then
   cp -r $SHARKENGINE_HOME/platforms/android/build/* $SHARKENGINE_APP_HOME/out/android
 fi
 
-VERSION_CODE=$((VERSION_MAJOR * 1000 + VERSION_MINOR))
-VERSION=$VERSION_MAJOR.$VERSION_MINOR
+VERSION_CODE=$((SE_APP_VERSION_MAJOR * 1000 + SE_APP_VERSION_MINOR))
+VERSION=$SE_APP_VERSION_MAJOR.$SE_APP_VERSION_MINOR
 
 sed -e "s/___SHARKENGINE_APP_VERSION_CODE___/$VERSION_CODE/g" \
     -e "s/___SHARKENGINE_APP_VERSION___/$VERSION/g" \
-    -e "s/___SHARKENGINE_APP_NAME___/$APP_NAME/g" \
+    -e "s/___SHARKENGINE_APP_NAME___/$SE_APP_NAME/g" \
     < $SHARKENGINE_APP_HOME/out/android/AndroidManifest.xml \
     > $SHARKENGINE_APP_HOME/out/android/AndroidManifest.xml2
 mv $SHARKENGINE_APP_HOME/out/android/AndroidManifest.xml2 \
