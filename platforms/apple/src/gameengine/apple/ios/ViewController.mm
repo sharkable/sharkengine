@@ -16,6 +16,7 @@
 #import "gameengine/apple/modules/ios/IOSAnalyticsEngine.h"
 #import "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
 #import "gameengine/apple/modules/ios/IOSiAdAdEngine.h"
+#import "gameengine/apple/modules/ios/IOSModuleFactory.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -42,7 +43,7 @@
     [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
 
-    gameEngine_ = new GameEngine();
+    gameEngine_ = new GameEngine(sp<ModuleFactory>(new IOSModuleFactory()));
 
     PlatformType platform_type = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ?
         kPlatformTypePhone : kPlatformTypeTablet;

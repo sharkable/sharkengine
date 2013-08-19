@@ -15,7 +15,7 @@ class AssetReader;
 
 class ModuleFactory {
  public:
-  virtual sp<AssetReader> createAssetReader(std::string filename) = 0;
+  virtual sp<AssetReader> CreateAssetReader(std::string filename) = 0;
 };
 
 #endif

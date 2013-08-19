@@ -1,26 +1,27 @@
 //
-//  OSXGameEngineFactory.h
+//  OSXModuleFactory.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-08-11.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_OSX_OSXGAMEENGINEFACTORY_H_
-#define GAMEENGINE_APPLE_MODULES_OSX_OSXGAMEENGINEFACTORY_H_
+#ifndef GAMEENGINE_APPLE_MODULES_OSX_OSXMODULEFACTORY_H_
+#define GAMEENGINE_APPLE_MODULES_OSX_OSXMODULEFACTORY_H_
 
 #include <string>
 
-#include "gameengine/game_engine_factory.h"
+#include "gameengine/module_factory.h"
 
 #include "zip.h"
 
-class OSXGameEngineFactory : public GameEngineFactory {
+class OSXModuleFactory : public ModuleFactory {
  public:
-  OSXGameEngineFactory();
-  ~OSXGameEngineFactory();
+  OSXModuleFactory();
+  ~OSXModuleFactory();
 
-  sp<AssetReader> createAssetReader(std::string filename);
+  // ModuleFactory
+  sp<AssetReader> CreateAssetReader(std::string filename);
 
  private:
   zip *zip_;

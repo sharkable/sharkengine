@@ -15,9 +15,11 @@
 #include "gameengine/modules/app_store_engine.h"
 #include "gameengine/modules/input_module.h"
 #include "gameengine/modules/local_store.h"
+#include "gameengine/module_factory.h"
 
-GameEngine::GameEngine()
-    : platform_type_(kPlatformTypePhone),
+GameEngine::GameEngine(sp<ModuleFactory> module_factory)
+    : module_factory_(module_factory),
+      platform_type_(kPlatformTypePhone),
       resource_loader_(*this),
       mouse_delta_x_(0),
       mouse_delta_y_(0),
@@ -165,4 +167,8 @@ void GameEngine::RemoveView(EngineView *view) {
 void GameEngine::SetRootView(sp<EngineView> view) {
   next_views_.clear();
   next_views_.push_back(view);
+}
+
+sp<AssetReader> GameEngine::CreateAssetReader(std::string filename) {
+  return module_factory_->CreateAssetReader(filename);
 }

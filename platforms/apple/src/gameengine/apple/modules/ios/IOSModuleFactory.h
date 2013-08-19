@@ -1,21 +1,22 @@
 //
-//  IOSGameEngineFactory.h
+//  IOSModuleFactory.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-22.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSGAMEENGINEFACTORY_H_
-#define GAMEENGINE_APPLE_MODULES_IOS_IOSGAMEENGINEFACTORY_H_
+#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSMODULEFACTORY_H_
+#define GAMEENGINE_APPLE_MODULES_IOS_IOSMODULEFACTORY_H_
 
 #include <string>
 
-#include "gameengine/game_engine_factory.h"
+#include "gameengine/module_factory.h"
 
-class IOSGameEngineFactory : public GameEngineFactory {
+class IOSModuleFactory : public ModuleFactory {
  public:
-  sp<AssetReader> createAssetReader(std::string filename);
+  // ModuleFactory
+  sp<AssetReader> CreateAssetReader(std::string filename);
 };
 
 #endif

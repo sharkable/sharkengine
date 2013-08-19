@@ -33,9 +33,9 @@ class AppStoreEngine;
 class AssetReader;
 class EngineView;
 class GameEngine;
-class GameEngineFactory;
 class InputModule;
 class LocalStore;
+class ModuleFactory;
 
 extern "C" {
   void sharkengine_init(GameEngine *game_engine);
@@ -43,7 +43,7 @@ extern "C" {
 
 class GameEngine {
  public:
-  GameEngine();
+  GameEngine(sp<ModuleFactory> module_factory);
 
   // Platform functions. Don't call these from an app.
   void Update();
@@ -62,6 +62,7 @@ class GameEngine {
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(sp<EngineView> view);
+  sp<AssetReader> CreateAssetReader(std::string filename);
 
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
@@ -70,9 +71,6 @@ class GameEngine {
   void set_platform_resolution(PlatformResolution platform_resolution) {
     platform_resolution_ = platform_resolution;
   };
-
-  sp<GameEngineFactory> factory() { return factory_; }
-  void set_factory(sp<GameEngineFactory> factory) { factory_ = factory; }
 
   sp<LocalStore> local_store() { return local_store_; }
   void set_local_store(sp<LocalStore> local_store) { local_store_ = local_store; }
@@ -136,7 +134,7 @@ class GameEngine {
   PlatformResolution platform_resolution_;
 
   // Platform specific
-  sp<GameEngineFactory> factory_;
+  sp<ModuleFactory> module_factory_;
   sp<LocalStore> local_store_;
   sp<AdEngine> ad_engine_;
   sp<AnalyticsEngine> analytics_engine_;
