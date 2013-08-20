@@ -44,4 +44,21 @@ if [ $1 = "osx" ]; then
   iconutil -c icns --output $SHARKENGINE_APP_HOME/out/osx/icon.icns \
       $SHARKENGINE_APP_HOME/out/osx/icon.iconset > /dev/null 2>&1
   rm -rf $SHARKENGINE_APP_HOME/out/osx/icon.iconset
+else
+  # Copy iOS icons and launch images.
+  mkdir $SHARKENGINE_APP_HOME/out/ios/icons
+  cp $SHARKENGINE_APP_HOME/icons/Icon-57.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPhone.png
+  cp $SHARKENGINE_APP_HOME/icons/Icon-72.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPad.png
+  cp $SHARKENGINE_APP_HOME/icons/Icon-114.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPhone@2x.png
+  cp $SHARKENGINE_APP_HOME/icons/Icon-144.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPad@2x.png
+  cp $SHARKENGINE_APP_HOME/icons/Launch-320x480.png \
+      $SHARKENGINE_APP_HOME/out/ios/icons/LaunchImage.png
+  cp $SHARKENGINE_APP_HOME/icons/Launch-640x960.png \
+      $SHARKENGINE_APP_HOME/out/ios/icons/LaunchImage@2x.png
+  cp $SHARKENGINE_APP_HOME/icons/Launch-640x1136.png \
+      $SHARKENGINE_APP_HOME/out/ios/icons/LaunchImage-568h@2x.png
+  cp $SHARKENGINE_APP_HOME/icons/Launch-768x1024.png \
+      $SHARKENGINE_APP_HOME/out/ios/icons/LaunchImage-Portrait~ipad.png
+  cp $SHARKENGINE_APP_HOME/icons/Launch-1536x2048.png \
+      $SHARKENGINE_APP_HOME/out/ios/icons/LaunchImage-Portrait@2x~ipad.png  
 fi

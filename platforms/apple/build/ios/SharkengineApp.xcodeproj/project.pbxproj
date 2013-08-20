@@ -23,6 +23,15 @@
 		FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6E17AC4444006C5D88 /* AVAudio.mm */; };
 		FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D7017AC4444006C5D88 /* MyOpenALSupport.mm */; };
 		FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D7217AC4444006C5D88 /* SoundPlayer.mm */; };
+		FE2AA98817C3BC2F007BDF25 /* IconPad.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA97F17C3BC2F007BDF25 /* IconPad.png */; };
+		FE2AA98917C3BC2F007BDF25 /* IconPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98017C3BC2F007BDF25 /* IconPad@2x.png */; };
+		FE2AA98A17C3BC2F007BDF25 /* IconPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98117C3BC2F007BDF25 /* IconPhone.png */; };
+		FE2AA98B17C3BC2F007BDF25 /* IconPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98217C3BC2F007BDF25 /* IconPhone@2x.png */; };
+		FE2AA98C17C3BC2F007BDF25 /* LaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98317C3BC2F007BDF25 /* LaunchImage-568h@2x.png */; };
+		FE2AA98D17C3BC2F007BDF25 /* LaunchImage-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98417C3BC2F007BDF25 /* LaunchImage-Portrait@2x~ipad.png */; };
+		FE2AA98E17C3BC2F007BDF25 /* LaunchImage-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98517C3BC2F007BDF25 /* LaunchImage-Portrait~ipad.png */; };
+		FE2AA98F17C3BC2F007BDF25 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98617C3BC2F007BDF25 /* LaunchImage.png */; };
+		FE2AA99017C3BC2F007BDF25 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98717C3BC2F007BDF25 /* LaunchImage@2x.png */; };
 		FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2B396D17BAED5C00E6AC20 /* iAd.framework */; };
 		FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */; };
 		FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94C14F981400063CCA5 /* AudioToolbox.framework */; };
@@ -143,6 +152,15 @@
 		FE164D7017AC4444006C5D88 /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
 		FE164D7117AC4444006C5D88 /* SoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPlayer.h; sourceTree = "<group>"; };
 		FE164D7217AC4444006C5D88 /* SoundPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundPlayer.mm; sourceTree = "<group>"; };
+		FE2AA97F17C3BC2F007BDF25 /* IconPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconPad.png; sourceTree = "<group>"; };
+		FE2AA98017C3BC2F007BDF25 /* IconPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPad@2x.png"; sourceTree = "<group>"; };
+		FE2AA98117C3BC2F007BDF25 /* IconPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconPhone.png; sourceTree = "<group>"; };
+		FE2AA98217C3BC2F007BDF25 /* IconPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconPhone@2x.png"; sourceTree = "<group>"; };
+		FE2AA98317C3BC2F007BDF25 /* LaunchImage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-568h@2x.png"; sourceTree = "<group>"; };
+		FE2AA98417C3BC2F007BDF25 /* LaunchImage-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		FE2AA98517C3BC2F007BDF25 /* LaunchImage-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Portrait~ipad.png"; sourceTree = "<group>"; };
+		FE2AA98617C3BC2F007BDF25 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		FE2AA98717C3BC2F007BDF25 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
 		FE2B396D17BAED5C00E6AC20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdEngine.h; sourceTree = "<group>"; };
 		FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAdAdEngine.mm; sourceTree = "<group>"; };
@@ -408,6 +426,7 @@
 		FE28F90016C9C54A00D3BBFB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FE2AA97E17C3BC2F007BDF25 /* icons */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -421,6 +440,22 @@
 			name = SharkEngine;
 			path = ___SHARKENGINE_HOME___;
 			sourceTree = "<absolute>";
+		};
+		FE2AA97E17C3BC2F007BDF25 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				FE2AA97F17C3BC2F007BDF25 /* IconPad.png */,
+				FE2AA98017C3BC2F007BDF25 /* IconPad@2x.png */,
+				FE2AA98117C3BC2F007BDF25 /* IconPhone.png */,
+				FE2AA98217C3BC2F007BDF25 /* IconPhone@2x.png */,
+				FE2AA98317C3BC2F007BDF25 /* LaunchImage-568h@2x.png */,
+				FE2AA98417C3BC2F007BDF25 /* LaunchImage-Portrait@2x~ipad.png */,
+				FE2AA98517C3BC2F007BDF25 /* LaunchImage-Portrait~ipad.png */,
+				FE2AA98617C3BC2F007BDF25 /* LaunchImage.png */,
+				FE2AA98717C3BC2F007BDF25 /* LaunchImage@2x.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
 		};
 		FE4F211617B306EF005EC455 /* ios */ = {
 			isa = PBXGroup;
@@ -722,6 +757,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE164D8617AC4445006C5D88 /* AppiraterLocalizable.strings in Resources */,
+				FE2AA98817C3BC2F007BDF25 /* IconPad.png in Resources */,
+				FE2AA98917C3BC2F007BDF25 /* IconPad@2x.png in Resources */,
+				FE2AA98A17C3BC2F007BDF25 /* IconPhone.png in Resources */,
+				FE2AA98B17C3BC2F007BDF25 /* IconPhone@2x.png in Resources */,
+				FE2AA98C17C3BC2F007BDF25 /* LaunchImage-568h@2x.png in Resources */,
+				FE2AA98D17C3BC2F007BDF25 /* LaunchImage-Portrait@2x~ipad.png in Resources */,
+				FE2AA98E17C3BC2F007BDF25 /* LaunchImage-Portrait~ipad.png in Resources */,
+				FE2AA98F17C3BC2F007BDF25 /* LaunchImage.png in Resources */,
+				FE2AA99017C3BC2F007BDF25 /* LaunchImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
