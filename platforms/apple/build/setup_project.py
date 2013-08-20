@@ -6,16 +6,17 @@ if len(sys.argv) <= 1 or (sys.argv[1] != "ios" and sys.argv[1] != "osx"):
 
 target=sys.argv[1]
 
-app_home = os.environ['SHARKENGINE_APP_HOME']
 sharkengine_home = os.environ['SHARKENGINE_HOME']
+app_home = os.environ['SHARKENGINE_APP_HOME']
+app_codename = os.environ['SE_APP_CODENAME']
 
 import imp
 mod_pbxproj_source_path = '/platforms/apple/build/thirdparty/mod_pbxproj/mod_pbxproj.py';
 imp.load_source('mod_pbxproj', sharkengine_home + mod_pbxproj_source_path)
 from mod_pbxproj import XcodeProject, PBXFileReference
 
-project = XcodeProject.Load(app_home + '/out/' + target + \
-                            '/SharkengineApp.xcodeproj/project.pbxproj')
+project = XcodeProject.Load(app_home + '/out/' + target + '/' + app_codename + '_' + target + \
+                            '.xcodeproj/project.pbxproj')
 
 PBXFileReference.types['.cc'] = ('sourcecode.cpp.cpp', 'PBXSourcesBuildPhase')
 PBXFileReference.types['.tx'] = ('texture.tx', 'PBXResourcesBuildPhase')
