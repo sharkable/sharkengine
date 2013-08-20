@@ -46,7 +46,7 @@ if [ $1 = "osx" ]; then
   rm -rf $SHARKENGINE_APP_HOME/out/osx/icon.iconset
 else
   # Copy iOS icons and launch images.
-  mkdir $SHARKENGINE_APP_HOME/out/ios/icons
+  mkdir -p $SHARKENGINE_APP_HOME/out/ios/icons
   cp $SHARKENGINE_APP_HOME/icons/Icon-57.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPhone.png
   cp $SHARKENGINE_APP_HOME/icons/Icon-72.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPad.png
   cp $SHARKENGINE_APP_HOME/icons/Icon-114.png $SHARKENGINE_APP_HOME/out/ios/icons/IconPhone@2x.png
