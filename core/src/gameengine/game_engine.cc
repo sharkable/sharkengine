@@ -11,7 +11,7 @@
 #include "gameengine/engine_view.h"
 
 #include "gameengine/modules/ad_module.h"
-#include "gameengine/modules/analytics_engine.h"
+#include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_engine.h"
 #include "gameengine/modules/input_module.h"
 #include "gameengine/modules/local_store.h"
@@ -29,7 +29,7 @@ GameEngine::GameEngine(sp<ModuleFactory> module_factory)
       screen_to_game_point_ratio_y_(1) {
   local_store_.reset(new LocalStore());
   ad_module_.reset(new AdModule());
-  analytics_engine_.reset(new AnalyticsEngine());
+  analytics_module_.reset(new AnalyticsModule());
   app_store_engine_.reset(new AppStoreEngine());
   input_module_.reset(new InputModule());
 

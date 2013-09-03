@@ -1,5 +1,5 @@
 //
-//  AnalyticsEngineAndroid.java
+//  AndroidAnalyticsModule.java
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-07-01. (Oh Canada!)
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import com.flurry.android.FlurryAgent;
 
 // TODO I don't think should be all static just because Flurry is.
-public class AnalyticsEngineAndroid {
+public class AndroidAnalyticsModule {
   private static String mEventName = null;
   private static HashMap mParameters = new HashMap();
 

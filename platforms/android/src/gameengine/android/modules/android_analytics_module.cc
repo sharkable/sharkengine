@@ -1,19 +1,19 @@
 //
-//  android_analytics_engine.cc
+//  android_analytics_module.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-16.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_analytics_engine.h"
+#include "gameengine/android/modules/android_analytics_module.h"
 
 using std::map;
 using std::string;
 
-AndroidAnalyticsEngine::AndroidAnalyticsEngine(JNIEnv *jni_env)
+AndroidAnalyticsModule::AndroidAnalyticsModule(JNIEnv *jni_env)
   : jni_env_(jni_env) {
-  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AndroidAnalyticsModule");
   assert(java_class_);
   begin_log_event_ = jni_env_->GetStaticMethodID(java_class_, "beginLogEvent",
                                                  "(Ljava/lang/String;)V");
@@ -26,10 +26,10 @@ AndroidAnalyticsEngine::AndroidAnalyticsEngine(JNIEnv *jni_env)
 }
 
 
-// AnalyticsEngine
+// AnalyticsModule
 
-void AndroidAnalyticsEngine::LogEvent(string event_name) {
-  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
+void AndroidAnalyticsModule::LogEvent(string event_name) {
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AndroidAnalyticsModule");
   jstring java_event_name = jni_env_->NewStringUTF(event_name.c_str());
   jni_env_->CallStaticVoidMethod(java_class_, begin_log_event_, java_event_name);
   jni_env_->DeleteLocalRef(java_event_name);
@@ -37,8 +37,8 @@ void AndroidAnalyticsEngine::LogEvent(string event_name) {
   jni_env_->CallStaticVoidMethod(java_class_, commit_log_event_);
 }
 
-void AndroidAnalyticsEngine::LogEvent(string event_name, map<string, string> parameters) {
-  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AnalyticsEngineAndroid");
+void AndroidAnalyticsModule::LogEvent(string event_name, map<string, string> parameters) {
+  java_class_ = jni_env_->FindClass("com/sharkable/sharkengine/modules/AndroidAnalyticsModule");
   jstring java_event_name = jni_env_->NewStringUTF(event_name.c_str());
   jni_env_->CallStaticVoidMethod(java_class_, begin_log_event_, java_event_name);
   jni_env_->DeleteLocalRef(java_event_name);

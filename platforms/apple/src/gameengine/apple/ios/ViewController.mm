@@ -13,7 +13,7 @@
 #import "gameengine/apple/ios/GameTouchWindow.h"
 #import "gameengine/apple/modules/AppleLocalStore.h"
 #import "gameengine/apple/modules/ios/IOSAdModule.h"
-#import "gameengine/apple/modules/ios/IOSAnalyticsEngine.h"
+#import "gameengine/apple/modules/ios/IOSAnalyticsModule.h"
 #import "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
 #import "gameengine/apple/modules/ios/IOSModuleFactory.h"
@@ -59,7 +59,7 @@
     } else {
       gameEngine_->set_ad_module(sp<AdModule>(new IOSIAdAdModule(self)));
     }
-    gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new IOSAnalyticsEngine()));
+    gameEngine_->set_analytics_module(sp<AnalyticsModule>(new IOSAnalyticsModule()));
     gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new IOSAppStoreEngine()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];

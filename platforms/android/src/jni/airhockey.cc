@@ -20,7 +20,7 @@ extern "C" {
 #include <GLES/gl.h>
 
 #include "gameengine/android/modules/android_ad_module.h"
-#include "gameengine/android/modules/android_analytics_engine.h"
+#include "gameengine/android/modules/android_analytics_module.h"
 #include "gameengine/android/modules/android_app_store_engine.h"
 #include "gameengine/android/modules/android_local_store.h"
 #include "gameengine/android/modules/android_module_factory.h"
@@ -71,8 +71,8 @@ void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject
       sp<AppStoreEngine>(new AndroidAppStoreEngine(env, app_store_java));
   game_engine_->set_app_store_engine(app_store_engine);
 
-  sp<AnalyticsEngine> analytics_engine = sp<AnalyticsEngine>(new AndroidAnalyticsEngine(env));
-  game_engine_->set_analytics_engine(analytics_engine);
+  sp<AnalyticsModule> analytics_module = sp<AnalyticsModule>(new AndroidAnalyticsModule(env));
+  game_engine_->set_analytics_module(analytics_module);
 
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
   assert(NULL != mgr);

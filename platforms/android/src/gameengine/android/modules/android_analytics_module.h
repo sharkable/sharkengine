@@ -1,26 +1,26 @@
 //
-//  android_analytics_engine.h
+//  android_analytics_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-16.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDANALYTICSENGINE_H_
-#define GAMEENGINE_ANDROID_MODULES_ANDROIDANALYTICSENGINE_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDANALYTICSMODULE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDANALYTICSMODULE_H_
 
 #include <jni.h>
 #include <map>
 #include <string>
 
-#include "gameengine/modules/analytics_engine.h"
+#include "gameengine/modules/analytics_module.h"
 
 // TODO have this do setup as well maybe?
-class AndroidAnalyticsEngine : public AnalyticsEngine {
+class AndroidAnalyticsModule : public AnalyticsModule {
  public:
-  AndroidAnalyticsEngine(JNIEnv *jni_env);
+  AndroidAnalyticsModule(JNIEnv *jni_env);
 
-  // AnalyticsEngine
+  // AnalyticsModule
   void LogEvent(std::string event_name);
   void LogEvent(std::string event_name, std::map<std::string, std::string> parameters);
 

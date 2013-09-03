@@ -28,7 +28,7 @@ typedef enum {
 } PlatformResolution;
 
 class AdModule;
-class AnalyticsEngine;
+class AnalyticsModule;
 class AppStoreEngine;
 class AssetReader;
 class EngineView;
@@ -78,9 +78,9 @@ class GameEngine {
   sp<AdModule> ad_module() { return ad_module_; }
   void set_ad_module(sp<AdModule> ad_module) { ad_module_ = ad_module; }
 
-  sp<AnalyticsEngine> analytics_engine() { return analytics_engine_; }
-  void set_analytics_engine(sp<AnalyticsEngine> analytics_engine) {
-    analytics_engine_ = analytics_engine;
+  sp<AnalyticsModule> analytics_module() { return analytics_module_; }
+  void set_analytics_module(sp<AnalyticsModule> analytics_module) {
+    analytics_module_ = analytics_module;
   }
 
   sp<AppStoreEngine> app_store_engine() { return app_store_engine_; }
@@ -137,7 +137,7 @@ class GameEngine {
   sp<ModuleFactory> module_factory_;
   sp<LocalStore> local_store_;
   sp<AdModule> ad_module_;
-  sp<AnalyticsEngine> analytics_engine_;
+  sp<AnalyticsModule> analytics_module_;
   sp<AppStoreEngine> app_store_engine_;
   sp<InputModule> input_module_;
 
