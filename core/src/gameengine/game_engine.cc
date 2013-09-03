@@ -28,7 +28,7 @@ GameEngine::GameEngine(sp<ModuleFactory> module_factory)
       screen_to_game_point_ratio_x_(1),
       screen_to_game_point_ratio_y_(1) {
   local_store_.reset(new LocalStore());
-  ad_engine_.reset(new AdEngine());
+  ad_module_.reset(new AdModule());
   analytics_engine_.reset(new AnalyticsEngine());
   app_store_engine_.reset(new AppStoreEngine());
   input_module_.reset(new InputModule());

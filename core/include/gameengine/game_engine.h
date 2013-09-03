@@ -27,7 +27,7 @@ typedef enum {
   kPlatformResolutionHigh
 } PlatformResolution;
 
-class AdEngine;
+class AdModule;
 class AnalyticsEngine;
 class AppStoreEngine;
 class AssetReader;
@@ -75,8 +75,8 @@ class GameEngine {
   sp<LocalStore> local_store() { return local_store_; }
   void set_local_store(sp<LocalStore> local_store) { local_store_ = local_store; }
 
-  sp<AdEngine> ad_engine() { return ad_engine_; }
-  void set_ad_engine(sp<AdEngine> ad_engine) { ad_engine_ = ad_engine; }
+  sp<AdModule> ad_module() { return ad_module_; }
+  void set_ad_module(sp<AdModule> ad_module) { ad_module_ = ad_module; }
 
   sp<AnalyticsEngine> analytics_engine() { return analytics_engine_; }
   void set_analytics_engine(sp<AnalyticsEngine> analytics_engine) {
@@ -136,7 +136,7 @@ class GameEngine {
   // Platform specific
   sp<ModuleFactory> module_factory_;
   sp<LocalStore> local_store_;
-  sp<AdEngine> ad_engine_;
+  sp<AdModule> ad_module_;
   sp<AnalyticsEngine> analytics_engine_;
   sp<AppStoreEngine> app_store_engine_;
   sp<InputModule> input_module_;

@@ -1,5 +1,5 @@
 //
-//  IOSAdEngine.mm
+//  IOSAdModule.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-07.
@@ -44,14 +44,14 @@ using std::string;
 @end
 
 
-IOSAdEngine::IOSAdEngine(UIViewController *root_view_controller) {
+IOSAdModule::IOSAdModule(UIViewController *root_view_controller) {
   banner_view_ = nil;
   interstitial_ = nil;
   interstitial_state_ = [[InterstitialState alloc] init];
   root_view_controller_ = [root_view_controller retain];
 }
 
-IOSAdEngine::~IOSAdEngine() {
+IOSAdModule::~IOSAdModule() {
   [banner_view_ release];
   [interstitial_ release];
   [interstitial_state_ release];
@@ -59,15 +59,15 @@ IOSAdEngine::~IOSAdEngine() {
 }
 
 
-// AdEngine
+// AdModule
 
-void IOSAdEngine::SetPublisherId(string publisher_id) {
+void IOSAdModule::SetPublisherId(string publisher_id) {
   publisher_id_ = publisher_id;
 }
 
 // TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
 // to the GameEngine.
-void IOSAdEngine::SetAdAtPoint(ScreenPoint point) {
+void IOSAdModule::SetAdAtPoint(ScreenPoint point) {
   if (!banner_view_) {
     assert(publisher_id_.length());
     banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
@@ -83,13 +83,13 @@ void IOSAdEngine::SetAdAtPoint(ScreenPoint point) {
   banner_view_.frame = frame;
 }
 
-void IOSAdEngine::RemoveAd() {
+void IOSAdModule::RemoveAd() {
   [banner_view_ removeFromSuperview];
   [banner_view_ release];
   banner_view_ = nil;
 }
 
-void IOSAdEngine::PrepareFullScreenAd() {
+void IOSAdModule::PrepareFullScreenAd() {
   assert(publisher_id_.length());
   [interstitial_ release];
   interstitial_ = [[GADInterstitial alloc] init];
@@ -100,7 +100,7 @@ void IOSAdEngine::PrepareFullScreenAd() {
   [interstitial_ loadRequest:request];
 }
 
-bool IOSAdEngine::ShowFullScreenAd() {
+bool IOSAdModule::ShowFullScreenAd() {
   if (!interstitial_.isReady) {
     return false;
   }
@@ -109,6 +109,6 @@ bool IOSAdEngine::ShowFullScreenAd() {
   return true;
 }
 
-bool IOSAdEngine::IsShowingFullScreenAd() {
+bool IOSAdModule::IsShowingFullScreenAd() {
   return interstitial_state_.showing;
 }

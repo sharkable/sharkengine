@@ -1,20 +1,20 @@
 //
-//  ad_engine.h
+//  ad_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2012-02-25.
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ADENGINE_H_
-#define GAMEENGINE_ADENGINE_H_
+#ifndef GAMEENGINE_ADMODULE_H_
+#define GAMEENGINE_ADMODULE_H_
 
 #include <string>
 
 #include "gameengine/coordinate_types.h"
 #include "gameengine/module.h"
 
-class AdEngine : public Module {
+class AdModule : public Module {
  public:
   virtual void SetPublisherId(std::string publisher_id) {};
   virtual void SetAdAtPoint(ScreenPoint point) {};

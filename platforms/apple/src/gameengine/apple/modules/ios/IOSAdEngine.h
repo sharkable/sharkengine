@@ -1,13 +1,13 @@
 //
-//  IOSAdEngine.h
+//  IOSAdModule.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-07.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSADENGINE_H_
-#define GAMEENGINE_APPLE_MODULES_IOS_IOSADENGINE_H_
+#ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSADMODULE_H_
+#define GAMEENGINE_APPLE_MODULES_IOS_IOSADMODULE_H_
 
 #include <string>
 
@@ -17,12 +17,12 @@
 @class GADInterstitial;
 @class InterstitialState;
 
-class IOSAdEngine : public AdEngine {
+class IOSAdModule : public AdModule {
  public:
-  IOSAdEngine(UIViewController *root_view_controller);
-  ~IOSAdEngine();
+  IOSAdModule(UIViewController *root_view_controller);
+  ~IOSAdModule();
 
-  // AdEngine
+  // AdModule
   void SetPublisherId(std::string publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();

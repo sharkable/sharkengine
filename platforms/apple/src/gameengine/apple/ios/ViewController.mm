@@ -55,9 +55,9 @@
     gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
     // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
     if (gameEngine_->platform_type() == kPlatformTypePhone) {
-      gameEngine_->set_ad_engine(sp<AdEngine>(new IOSAdEngine(self)));
+      gameEngine_->set_ad_module(sp<AdModule>(new IOSAdModule(self)));
     } else {
-      gameEngine_->set_ad_engine(sp<AdEngine>(new IOSIAdAdEngine(self)));
+      gameEngine_->set_ad_module(sp<AdModule>(new IOSIAdAdModule(self)));
     }
     gameEngine_->set_analytics_engine(sp<AnalyticsEngine>(new IOSAnalyticsEngine()));
     gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new IOSAppStoreEngine()));

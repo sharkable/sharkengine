@@ -1,5 +1,5 @@
 //
-//  IOSIAdAdEngine.h
+//  IOSIAdAdModule.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-08-13.
@@ -94,39 +94,39 @@ using std::string;
 @end
 
 
-IOSIAdAdEngine::IOSIAdAdEngine(UIViewController *root_view_controller) {
+IOSIAdAdModule::IOSIAdAdModule(UIViewController *root_view_controller) {
   interstitial_state_ = [[IAdInterstitialState alloc] init];
   root_view_controller_ = [root_view_controller retain];
 }
 
-IOSIAdAdEngine::~IOSIAdAdEngine() {
+IOSIAdAdModule::~IOSIAdAdModule() {
   [interstitial_state_ release];
   [root_view_controller_ release];
 }
 
 
-// AdEngine
+// AdModule
 
-void IOSIAdAdEngine::SetPublisherId(std::string publisher_id) {
+void IOSIAdAdModule::SetPublisherId(std::string publisher_id) {
   // TODO...
 }
 
-void IOSIAdAdEngine::SetAdAtPoint(ScreenPoint point) {
+void IOSIAdAdModule::SetAdAtPoint(ScreenPoint point) {
   // TODO
 }
 
-void IOSIAdAdEngine::RemoveAd() {
+void IOSIAdAdModule::RemoveAd() {
   // TODO
 }
 
-void IOSIAdAdEngine::PrepareFullScreenAd() {
+void IOSIAdAdModule::PrepareFullScreenAd() {
   [interstitial_state_ prepareFullScreenAd];
 }
 
-bool IOSIAdAdEngine::ShowFullScreenAd() {
+bool IOSIAdAdModule::ShowFullScreenAd() {
   return [interstitial_state_ showFullScreenAdFromViewController:root_view_controller_];
 }
 
-bool IOSIAdAdEngine::IsShowingFullScreenAd() {
+bool IOSIAdAdModule::IsShowingFullScreenAd() {
   return interstitial_state_.showing;
 }
