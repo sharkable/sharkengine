@@ -1,5 +1,5 @@
 //
-//  AdEngineAndroid.java
+//  AndroidAdModule.java
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-06-30.
@@ -20,7 +20,7 @@ import com.google.ads.InterstitialAd;
 
 import com.sharkable.sharkengine.SharkengineActivity;
 
-public class AdEngineAndroid {
+public class AndroidAdModule {
   private class InterstitialState implements AdListener {
     private boolean mIsShowing = false;
 
@@ -55,7 +55,7 @@ public class AdEngineAndroid {
   private InterstitialState mInterstitialState = new InterstitialState();
   private String mPublisherId = null;
 
-  public AdEngineAndroid(SharkengineActivity activity) {
+  public AndroidAdModule(SharkengineActivity activity) {
     mActivity = activity;
   }
 

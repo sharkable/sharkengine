@@ -4,7 +4,7 @@
 
 extern "C" {
   void setupOpengl();
-  void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
+  void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject app_store_java,
             jobject asset_manager, int width, int height);
   void shutdown();
   int handle_back_button();
@@ -19,7 +19,7 @@ extern "C" {
 #include <android/asset_manager_jni.h>
 #include <GLES/gl.h>
 
-#include "gameengine/android/modules/android_ad_engine.h"
+#include "gameengine/android/modules/android_ad_module.h"
 #include "gameengine/android/modules/android_analytics_engine.h"
 #include "gameengine/android/modules/android_app_store_engine.h"
 #include "gameengine/android/modules/android_local_store.h"
@@ -45,7 +45,7 @@ void setup_opengl() {
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
+void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject app_store_java,
           jobject asset_manager, int width, int height) {
   setup_opengl();
 
@@ -64,8 +64,8 @@ void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject
   sp<LocalStore> local_store = sp<LocalStore>(new AndroidLocalStore(env, local_store_java));
   game_engine_->set_local_store(local_store);
 
-  sp<AdEngine> ad_engine = sp<AdEngine>(new AndroidAdEngine(env, ad_engine_java));
-  game_engine_->set_ad_engine(ad_engine);
+  sp<AdModule> ad_module = sp<AdModule>(new AndroidAdModule(env, ad_module_java));
+  game_engine_->set_ad_module(ad_module);
 
   sp<AppStoreEngine> app_store_engine =
       sp<AppStoreEngine>(new AndroidAppStoreEngine(env, app_store_java));

@@ -1,24 +1,24 @@
 //
-//  android_ad_engine.h
+//  android_ad_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-09.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDADENGINE_H_
-#define GAMEENGINE_ANDROID_MODULES_ANDROIDADENGINE_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDADMODULE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDADMODULE_H_
 
 #include <jni.h>
 
-#include "gameengine/modules/ad_engine.h"
+#include "gameengine/modules/ad_module.h"
 
-class AndroidAdEngine : public AdEngine {
+class AndroidAdModule : public AdModule {
  public:
-  AndroidAdEngine(JNIEnv *jni_env, jobject java_object);
-  ~AndroidAdEngine();
+  AndroidAdModule(JNIEnv *jni_env, jobject java_object);
+  ~AndroidAdModule();
 
-  // AdEngine
+  // AdModule
   void SetPublisherId(std::string publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();

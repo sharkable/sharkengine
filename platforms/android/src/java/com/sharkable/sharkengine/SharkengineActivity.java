@@ -20,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
 import com.flurry.android.FlurryAgent;
 import com.google.ads.Ad;
 
-import com.sharkable.sharkengine.modules.AdEngineAndroid;
+import com.sharkable.sharkengine.modules.AndroidAdModule;
 import com.sharkable.sharkengine.modules.AppStoreEngineAndroid;
 import com.sharkable.sharkengine.modules.LocalStoreAndroid;
 
@@ -158,13 +158,13 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private boolean mHandleBackOnNextFrame = false;
   private boolean mQuitOnNextFrame = false;
   // TODO make names consistent. Engine? Not engine? Also variables everywhere.
-  private AdEngineAndroid mAdEngine;
+  private AndroidAdModule mAdModule;
   private LocalStoreAndroid mLocalStore;
   private AppStoreEngineAndroid mAppStoreEngine;
 
   public DemoRenderer(SharkengineActivity activity) {
     mActivity = activity;
-    mAdEngine = new AdEngineAndroid(activity);
+    mAdModule = new AndroidAdModule(activity);
     mLocalStore = new LocalStoreAndroid(activity);
     mAppStoreEngine = new AppStoreEngineAndroid(activity);
   }
@@ -195,7 +195,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mAdEngine, mLocalStore, mAppStoreEngine, mActivity.getAssets(), apkFilePath, w, h);
+    nativeInit(mAdModule, mLocalStore, mAppStoreEngine, mActivity.getAssets(), apkFilePath, w, h);
   }
 
   public void onDrawFrame(GL10 gl) {
@@ -230,7 +230,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     mQuitOnNextFrame = true;
   }
 
-  private native void nativeInit(AdEngineAndroid adEngineJava, LocalStoreAndroid localStoreJava,
+  private native void nativeInit(AndroidAdModule adModuleJava, LocalStoreAndroid localStoreJava,
                                  AppStoreEngineAndroid appStoreJava, AssetManager assetManager,
                                  String apkPath, int w, int h);
   private native void nativeShutdown();

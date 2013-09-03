@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void init(JNIEnv *env, jobject ad_engine_java, jobject local_store_java, jobject app_store_java,
+void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject app_store_java,
           jobject asset_manager, int width, int height);
 void shutdown();
 int handle_back_button();
