@@ -1,5 +1,5 @@
 //
-//  android_app_store_engine.h
+//  android_app_store_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-07-19.
@@ -9,20 +9,20 @@
 #include <jni.h>
 #include <string>
 
-#include "gameengine/modules/app_store_engine.h"
+#include "gameengine/modules/app_store_module.h"
 
-#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREENGINE_H_
-#define GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREENGINE_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREMODULE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDAPPSTOREMODULE_H_
 
-class AndroidAppStoreEngine : public AppStoreEngine {
+class AndroidAppStoreModule : public AppStoreModule {
  public:
-  AndroidAppStoreEngine(JNIEnv *jni_env, jobject java_object);
-   ~AndroidAppStoreEngine();
+  AndroidAppStoreModule(JNIEnv *jni_env, jobject java_object);
+   ~AndroidAppStoreModule();
 
-  // AppStoreEngine
+  // AppStoreModule
   void AskForRate();
   void AskForUpgrade(std::string app_name, std::string purchase_id,
-                     AppStoreEngineDelegate *delegate);
+                     AppStoreModuleDelegate *delegate);
 
   // Module
   bool IsImplemented() { return true; };

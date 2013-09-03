@@ -14,7 +14,7 @@
 #import "gameengine/apple/modules/AppleLocalStore.h"
 #import "gameengine/apple/modules/ios/IOSAdModule.h"
 #import "gameengine/apple/modules/ios/IOSAnalyticsModule.h"
-#import "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
+#import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
 #import "gameengine/apple/modules/ios/IOSModuleFactory.h"
 #import "gameengine/opengl/texture2d.h"
@@ -60,7 +60,7 @@
       gameEngine_->set_ad_module(sp<AdModule>(new IOSIAdAdModule(self)));
     }
     gameEngine_->set_analytics_module(sp<AnalyticsModule>(new IOSAnalyticsModule()));
-    gameEngine_->set_app_store_engine(sp<AppStoreEngine>(new IOSAppStoreEngine()));
+    gameEngine_->set_app_store_module(sp<AppStoreModule>(new IOSAppStoreModule()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;

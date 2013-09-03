@@ -1,26 +1,26 @@
 //
-//  app_store_engine.h
+//  app_store_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPSTOREENGINE_H_
-#define GAMEENGINE_APPSTOREENGINE_H_
+#ifndef GAMEENGINE_APPSTOREMODULE_H_
+#define GAMEENGINE_APPSTOREMODULE_H_
 
 #include "gameengine/module.h"
 
-class AppStoreEngineDelegate {
+class AppStoreModuleDelegate {
  public:
   virtual void UpgradeSucceeded() = 0;
 };
 
-class AppStoreEngine : public Module {
+class AppStoreModule : public Module {
  public:
   virtual void AskForRate() {};
   virtual void AskForUpgrade(std::string app_name, std::string app_id,
-                             AppStoreEngineDelegate *delegate) {};
+                             AppStoreModuleDelegate *delegate) {};
 };
 
 #endif

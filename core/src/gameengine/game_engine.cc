@@ -12,7 +12,7 @@
 
 #include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_module.h"
-#include "gameengine/modules/app_store_engine.h"
+#include "gameengine/modules/app_store_module.h"
 #include "gameengine/modules/input_module.h"
 #include "gameengine/modules/local_store.h"
 #include "gameengine/modules/module_factory.h"
@@ -30,7 +30,7 @@ GameEngine::GameEngine(sp<ModuleFactory> module_factory)
   local_store_.reset(new LocalStore());
   ad_module_.reset(new AdModule());
   analytics_module_.reset(new AnalyticsModule());
-  app_store_engine_.reset(new AppStoreEngine());
+  app_store_module_.reset(new AppStoreModule());
   input_module_.reset(new InputModule());
 
   positions_ = sp<Positions>(new Positions());

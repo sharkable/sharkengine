@@ -1,5 +1,5 @@
 //
-//  AppStoreEngineAndroid.java
+//  AndroidAppStoreModule.java
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-07-19.
@@ -12,10 +12,10 @@ import android.util.Log;
 
 import com.sharkable.sharkengine.SharkengineActivity;
 
-public class AppStoreEngineAndroid {
+public class AndroidAppStoreModule {
   private SharkengineActivity mActivity = null;
 
-  public AppStoreEngineAndroid(SharkengineActivity activity) {
+  public AndroidAppStoreModule(SharkengineActivity activity) {
     mActivity = activity;
   }
 

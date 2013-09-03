@@ -21,7 +21,7 @@ import com.flurry.android.FlurryAgent;
 import com.google.ads.Ad;
 
 import com.sharkable.sharkengine.modules.AndroidAdModule;
-import com.sharkable.sharkengine.modules.AppStoreEngineAndroid;
+import com.sharkable.sharkengine.modules.AndroidAppStoreModule;
 import com.sharkable.sharkengine.modules.LocalStoreAndroid;
 
 public class SharkengineActivity extends Activity {
@@ -160,13 +160,13 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   // TODO make names consistent. Engine? Not engine? Also variables everywhere.
   private AndroidAdModule mAdModule;
   private LocalStoreAndroid mLocalStore;
-  private AppStoreEngineAndroid mAppStoreEngine;
+  private AndroidAppStoreModule mAppStoreModule;
 
   public DemoRenderer(SharkengineActivity activity) {
     mActivity = activity;
     mAdModule = new AndroidAdModule(activity);
     mLocalStore = new LocalStoreAndroid(activity);
-    mAppStoreEngine = new AppStoreEngineAndroid(activity);
+    mAppStoreModule = new AndroidAppStoreModule(activity);
   }
 
   public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -195,7 +195,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mAdModule, mLocalStore, mAppStoreEngine, mActivity.getAssets(), apkFilePath, w, h);
+    nativeInit(mAdModule, mLocalStore, mAppStoreModule, mActivity.getAssets(), apkFilePath, w, h);
   }
 
   public void onDrawFrame(GL10 gl) {
@@ -231,7 +231,7 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   }
 
   private native void nativeInit(AndroidAdModule adModuleJava, LocalStoreAndroid localStoreJava,
-                                 AppStoreEngineAndroid appStoreJava, AssetManager assetManager,
+                                 AndroidAppStoreModule appStoreJava, AssetManager assetManager,
                                  String apkPath, int w, int h);
   private native void nativeShutdown();
   private native void nativePause();

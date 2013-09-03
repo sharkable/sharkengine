@@ -21,7 +21,7 @@ extern "C" {
 
 #include "gameengine/android/modules/android_ad_module.h"
 #include "gameengine/android/modules/android_analytics_module.h"
-#include "gameengine/android/modules/android_app_store_engine.h"
+#include "gameengine/android/modules/android_app_store_module.h"
 #include "gameengine/android/modules/android_local_store.h"
 #include "gameengine/android/modules/android_module_factory.h"
 #include "gameengine/game_engine.h"
@@ -67,9 +67,9 @@ void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject
   sp<AdModule> ad_module = sp<AdModule>(new AndroidAdModule(env, ad_module_java));
   game_engine_->set_ad_module(ad_module);
 
-  sp<AppStoreEngine> app_store_engine =
-      sp<AppStoreEngine>(new AndroidAppStoreEngine(env, app_store_java));
-  game_engine_->set_app_store_engine(app_store_engine);
+  sp<AppStoreModule> app_store_module =
+      sp<AppStoreModule>(new AndroidAppStoreModule(env, app_store_java));
+  game_engine_->set_app_store_module(app_store_module);
 
   sp<AnalyticsModule> analytics_module = sp<AnalyticsModule>(new AndroidAnalyticsModule(env));
   game_engine_->set_analytics_module(analytics_module);

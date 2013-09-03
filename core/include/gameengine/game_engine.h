@@ -29,7 +29,7 @@ typedef enum {
 
 class AdModule;
 class AnalyticsModule;
-class AppStoreEngine;
+class AppStoreModule;
 class AssetReader;
 class EngineView;
 class GameEngine;
@@ -83,9 +83,9 @@ class GameEngine {
     analytics_module_ = analytics_module;
   }
 
-  sp<AppStoreEngine> app_store_engine() { return app_store_engine_; }
-  void set_app_store_engine(sp<AppStoreEngine> app_store_engine) {
-    app_store_engine_ = app_store_engine;
+  sp<AppStoreModule> app_store_module() { return app_store_module_; }
+  void set_app_store_module(sp<AppStoreModule> app_store_module) {
+    app_store_module_ = app_store_module;
   }
 
   sp<InputModule> input_module() { return input_module_; }
@@ -138,7 +138,7 @@ class GameEngine {
   sp<LocalStore> local_store_;
   sp<AdModule> ad_module_;
   sp<AnalyticsModule> analytics_module_;
-  sp<AppStoreEngine> app_store_engine_;
+  sp<AppStoreModule> app_store_module_;
   sp<InputModule> input_module_;
 
   ResourceLoader resource_loader_;

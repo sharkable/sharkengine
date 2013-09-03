@@ -1,12 +1,12 @@
 //
-//  IOSAppStoreEngine.mm
+//  IOSAppStoreModule.mm
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/ios/IOSAppStoreEngine.h"
+#include "gameengine/apple/modules/ios/IOSAppStoreModule.h"
 
 #include <StoreKit/StoreKit.h>
 #include <UIKit/UIKit.h>
@@ -21,7 +21,7 @@
   NSString *_appId;
   SKProductsRequest *_request;
   SKProduct *_product;
-  AppStoreEngineDelegate *_delegate;  // weak
+  AppStoreModuleDelegate *_delegate;  // weak
 }
 
 - (void)upgradeApp;
@@ -51,7 +51,7 @@
 
 - (void)askForUpgradeAppNamed:(NSString *)appName
     purchaseId:(NSString *)purchaseId
-    delegate:(AppStoreEngineDelegate *)delegate {
+    delegate:(AppStoreModuleDelegate *)delegate {
   _delegate = delegate;
   if (![SKPaymentQueue canMakePayments]) {
     [[[[UIAlertView alloc] initWithTitle:@"Cannot upgrade"
@@ -189,20 +189,20 @@
 @end
 
 
-IOSAppStoreEngine::IOSAppStoreEngine() {
+IOSAppStoreModule::IOSAppStoreModule() {
   popup_handler_ = [[PopupHandler alloc] init];
 }
 
-IOSAppStoreEngine::~IOSAppStoreEngine() {
+IOSAppStoreModule::~IOSAppStoreModule() {
   [popup_handler_ release];
 }
 
-void IOSAppStoreEngine::AskForRate() {
+void IOSAppStoreModule::AskForRate() {
   [Appirater rateApp];
 }
 
-void IOSAppStoreEngine::AskForUpgrade(std::string app_name, std::string purchase_id,
-                                      AppStoreEngineDelegate *delegate) {
+void IOSAppStoreModule::AskForUpgrade(std::string app_name, std::string purchase_id,
+                                      AppStoreModuleDelegate *delegate) {
   [popup_handler_ askForUpgradeAppNamed:TypeUtil::string2NSString(app_name)
                              purchaseId:TypeUtil::string2NSString(purchase_id)
                                delegate:delegate];
