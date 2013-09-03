@@ -33,7 +33,6 @@
 		FE2AA98F17C3BC2F007BDF25 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98617C3BC2F007BDF25 /* LaunchImage.png */; };
 		FE2AA99017C3BC2F007BDF25 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA98717C3BC2F007BDF25 /* LaunchImage@2x.png */; };
 		FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2B396D17BAED5C00E6AC20 /* iAd.framework */; };
-		FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */; };
 		FE3CF95214F982A30063CCA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94C14F981400063CCA5 /* AudioToolbox.framework */; };
 		FE3CF95314F982A30063CCA5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */; };
 		FE3CF95414F982A30063CCA5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94814F980D00063CCA5 /* CFNetwork.framework */; };
@@ -46,7 +45,6 @@
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
 		FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */; };
 		FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211517B306EF005EC455 /* AppleLocalStore.mm */; };
-		FE4F212017B306EF005EC455 /* IOSAdEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211817B306EF005EC455 /* IOSAdEngine.mm */; };
 		FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */; };
 		FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */; };
 		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
@@ -57,6 +55,8 @@
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
 		FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
 		FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
+		FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD0817D66229006EE538 /* IOSAdModule.mm */; };
+		FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */; };
 		FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47BC616DF0C950096F3D4 /* libz.dylib */; };
 		FEF9B84A17A9BFB400867739 /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B81D17A9BFB400867739 /* animation.cc */; };
 		FEF9B84B17A9BFB400867739 /* engine_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B81F17A9BFB400867739 /* engine_view.cc */; };
@@ -162,8 +162,6 @@
 		FE2AA98617C3BC2F007BDF25 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		FE2AA98717C3BC2F007BDF25 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
 		FE2B396D17BAED5C00E6AC20 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdEngine.h; sourceTree = "<group>"; };
-		FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAdAdEngine.mm; sourceTree = "<group>"; };
 		FE3CF94214F9807E0063CCA5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE3CF94414F980A40063CCA5 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -179,8 +177,6 @@
 		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE4F211417B306EF005EC455 /* AppleLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLocalStore.h; sourceTree = "<group>"; };
 		FE4F211517B306EF005EC455 /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
-		FE4F211717B306EF005EC455 /* IOSAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAdEngine.h; sourceTree = "<group>"; };
-		FE4F211817B306EF005EC455 /* IOSAdEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAdEngine.mm; sourceTree = "<group>"; };
 		FE4F211917B306EF005EC455 /* IOSAnalyticsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAnalyticsEngine.h; sourceTree = "<group>"; };
 		FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAnalyticsEngine.mm; sourceTree = "<group>"; };
 		FE4F211B17B306EF005EC455 /* IOSAppStoreEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAppStoreEngine.h; sourceTree = "<group>"; };
@@ -195,6 +191,10 @@
 		FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FE789BCB14F97B34007FCBC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FEB9DD0717D66229006EE538 /* IOSAdModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAdModule.h; sourceTree = "<group>"; };
+		FEB9DD0817D66229006EE538 /* IOSAdModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAdModule.mm; sourceTree = "<group>"; };
+		FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdModule.h; sourceTree = "<group>"; };
+		FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAdAdModule.mm; sourceTree = "<group>"; };
 		FEDD89AB17C2B6940058550C /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
 		FEDD89AC17C2B6940058550C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -460,16 +460,16 @@
 		FE4F211617B306EF005EC455 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				FE4F211717B306EF005EC455 /* IOSAdEngine.h */,
-				FE4F211817B306EF005EC455 /* IOSAdEngine.mm */,
+				FEB9DD0717D66229006EE538 /* IOSAdModule.h */,
+				FEB9DD0817D66229006EE538 /* IOSAdModule.mm */,
 				FE4F211917B306EF005EC455 /* IOSAnalyticsEngine.h */,
 				FE4F211A17B306EF005EC455 /* IOSAnalyticsEngine.mm */,
 				FE4F211B17B306EF005EC455 /* IOSAppStoreEngine.h */,
 				FE4F211C17B306EF005EC455 /* IOSAppStoreEngine.mm */,
 				FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */,
 				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
-				FE2B396F17BAEDC200E6AC20 /* IOSIAdAdEngine.h */,
-				FE2B397017BAEDC200E6AC20 /* IOSIAdAdEngine.mm */,
+				FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */,
+				FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */,
 				FE40299917C2A96600F0F49C /* IOSModuleFactory.h */,
 				FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */,
 			);
@@ -710,7 +710,7 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = FE789BBB14F97B34007FCBC5 /* Build configuration list for PBXProject "SharkengineApp" */;
+			buildConfigurationList = FE789BBB14F97B34007FCBC5 /* Build configuration list for PBXProject "SharkEngine_ios" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -815,12 +815,12 @@
 				FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */,
 				FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */,
 				FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */,
-				FE4F212017B306EF005EC455 /* IOSAdEngine.mm in Sources */,
 				FE4F212117B306EF005EC455 /* IOSAnalyticsEngine.mm in Sources */,
 				FE4F212217B306EF005EC455 /* IOSAppStoreEngine.mm in Sources */,
 				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
-				FE2B397117BAEDC200E6AC20 /* IOSIAdAdEngine.mm in Sources */,
 				FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */,
+				FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */,
+				FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,7 +1038,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE789BBB14F97B34007FCBC5 /* Build configuration list for PBXProject "SharkengineApp" */ = {
+		FE789BBB14F97B34007FCBC5 /* Build configuration list for PBXProject "SharkEngine_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE789BE814F97B34007FCBC5 /* Debug */,

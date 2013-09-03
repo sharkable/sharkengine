@@ -11,7 +11,7 @@
 
 #include <string>
 
-#include "gameengine/modules/ad_engine.h"
+#include "gameengine/modules/ad_module.h"
 
 @class IAdInterstitialState;
 

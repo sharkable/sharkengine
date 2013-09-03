@@ -10,7 +10,7 @@
 
 #include "gameengine/engine_view.h"
 
-#include "gameengine/modules/ad_engine.h"
+#include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_engine.h"
 #include "gameengine/modules/app_store_engine.h"
 #include "gameengine/modules/input_module.h"

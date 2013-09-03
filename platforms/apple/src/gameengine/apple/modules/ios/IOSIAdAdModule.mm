@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/ios/IOSIAdAdEngine.h"
+#include "gameengine/apple/modules/ios/IOSIAdAdModule.h"
 
 #import <iAd/ADInterstitialAd.h>
 

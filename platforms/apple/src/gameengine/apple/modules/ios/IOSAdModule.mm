@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/modules/ios/IOSAdEngine.h"
+#import "gameengine/apple/modules/ios/IOSAdModule.h"
 
 #import "gameengine/apple/TypeUtil.h"
 #import "gameengine/apple/thirdparty/ios/admob/GADBannerView.h"
