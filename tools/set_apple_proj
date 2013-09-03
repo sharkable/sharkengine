@@ -12,10 +12,10 @@ fi
 
 if [ "$2" = "generic" ]; then
   sed -i '' -e "s/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/___SHARKENGINE_HOME___/g" \
-      $SHARKENGINE_HOME/platforms/apple/build/$1/SharkengineApp.xcodeproj/project.pbxproj
+      $SHARKENGINE_HOME/platforms/apple/build/$1/Sharkengine_$1.xcodeproj/project.pbxproj
 elif [ "$2" = "editable" ]; then
   sed -i '' -e "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
-      $SHARKENGINE_HOME/platforms/apple/build/$1/SharkengineApp.xcodeproj/project.pbxproj
+      $SHARKENGINE_HOME/platforms/apple/build/$1/Sharkengine_$1.xcodeproj/project.pbxproj
 else
   error
 fi
