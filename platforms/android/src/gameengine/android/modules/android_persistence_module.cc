@@ -1,19 +1,20 @@
 //
-//  android_local_store.cc
+//  android_persistence_module.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_local_store.h"
+#include "gameengine/android/modules/android_persistence_module.h"
 
 using std::string;
 
-AndroidLocalStore::AndroidLocalStore(JNIEnv *jni_env, jobject java_object)
+AndroidPersistenceModule::AndroidPersistenceModule(JNIEnv *jni_env, jobject java_object)
     : jni_env_(jni_env) {
   java_object_ = jni_env->NewGlobalRef(java_object);
-  jclass java_class = jni_env_->FindClass("com/sharkable/sharkengine/modules/LocalStoreAndroid");
+  jclass java_class =
+      jni_env_->FindClass("com/sharkable/sharkengine/modules/AndroidPersistenceModule");
   has_entry_for_key_ = jni_env_->GetMethodID(java_class, "hasEntryForKey", "(Ljava/lang/String;)Z");
   bool_for_key_ = jni_env_->GetMethodID(java_class, "boolForKey", "(Ljava/lang/String;)Z");
   set_bool_ = jni_env_->GetMethodID(java_class, "setBool", "(ZLjava/lang/String;)V");
@@ -27,60 +28,60 @@ AndroidLocalStore::AndroidLocalStore(JNIEnv *jni_env, jobject java_object)
       jni_env_->GetMethodID(java_class, "setString", "(Ljava/lang/String;Ljava/lang/String;)V");
 }
 
-AndroidLocalStore::~AndroidLocalStore() {
+AndroidPersistenceModule::~AndroidPersistenceModule() {
   jni_env_->DeleteGlobalRef(java_object_);
 }
 
 
-// LocalStore
+// PersistenceModule
 
-bool AndroidLocalStore::HasEntryForKey(string key) {
+bool AndroidPersistenceModule::HasEntryForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   bool value = jni_env_->CallBooleanMethod(java_object_, has_entry_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-bool AndroidLocalStore::BoolForKey(string key) {
+bool AndroidPersistenceModule::BoolForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   bool value = jni_env_->CallBooleanMethod(java_object_, bool_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void AndroidLocalStore::SetBool(bool value, string key) {
+void AndroidPersistenceModule::SetBool(bool value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_bool_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-int AndroidLocalStore::IntegerForKey(string key) {
+int AndroidPersistenceModule::IntegerForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   int value = jni_env_->CallIntMethod(java_object_, integer_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void AndroidLocalStore::SetInteger(int value, string key) {
+void AndroidPersistenceModule::SetInteger(int value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_integer_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-double AndroidLocalStore::DoubleForKey(string key) {
+double AndroidPersistenceModule::DoubleForKey(string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   double value = jni_env_->CallDoubleMethod(java_object_, double_for_key_, java_key);
   jni_env_->DeleteLocalRef(java_key);
   return value;
 }
 
-void AndroidLocalStore::SetDouble(double value, string key) {
+void AndroidPersistenceModule::SetDouble(double value, string key) {
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_double_, value, java_key);
   jni_env_->DeleteLocalRef(java_key);
 }
 
-string AndroidLocalStore::StringForKey(string key) {
+string AndroidPersistenceModule::StringForKey(string key) {
   // TODO this is not tested at all, and I'm not sure about the memory allocations.
   assert(false); // FAIL on this. If I start using it, test it.
 
@@ -95,7 +96,7 @@ string AndroidLocalStore::StringForKey(string key) {
   return cpp_string;
 }
 
-void AndroidLocalStore::SetString(string value, string key) {
+void AndroidPersistenceModule::SetString(string value, string key) {
   jstring java_value = jni_env_->NewStringUTF(value.c_str());
   jstring java_key = jni_env_->NewStringUTF(key.c_str());
   jni_env_->CallVoidMethod(java_object_, set_string_, java_value, java_key);

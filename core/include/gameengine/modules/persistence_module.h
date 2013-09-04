@@ -1,19 +1,19 @@
 //
-//  local_store.h
+//  persistence_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2010-05-02.
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_LOCALSTORE_H_
-#define GAMEENGINE_LOCALSTORE_H_
+#ifndef GAMEENGINE_MODULES_PERSISTENCEMODULE_H_
+#define GAMEENGINE_MODULES_PERSISTENCEMODULE_H_
 
 #include <string>
 
 #include "gameengine/module.h"
 
-class LocalStore : public Module {
+class PersistenceModule : public Module {
  public:
   virtual bool HasEntryForKey(std::string key) { return false; };
   virtual bool BoolForKey(std::string key) { return false; };

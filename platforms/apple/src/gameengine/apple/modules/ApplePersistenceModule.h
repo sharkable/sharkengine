@@ -1,21 +1,21 @@
 //
-//  AppleLocalStore.h
+//  ApplePersistenceModule.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_APPLELOCALSTORE_H_
-#define GAMEENGINE_APPLE_MODULES_APPLELOCALSTORE_H_
+#ifndef GAMEENGINE_APPLE_MODULES_APPLEPERSISTENCEMODULE_H_
+#define GAMEENGINE_APPLE_MODULES_APPLEPERSISTENCEMODULE_H_
 
 #include <string>
 
-#include "gameengine/modules/local_store.h"
+#include "gameengine/modules/persistence_module.h"
 
-class AppleLocalStore : public LocalStore {
+class ApplePersistenceModule : public PersistenceModule {
  public:
-  // LocalStore
+  // PersistenceModule
   bool HasEntryForKey(std::string key);
   bool BoolForKey(std::string key);
   void SetBool(bool value, std::string key);

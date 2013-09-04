@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-public class LocalStoreAndroid {
+public class AndroidPersistenceModule {
   private SharedPreferences mPreferences;
 
-  public LocalStoreAndroid(Context context) {
+  public AndroidPersistenceModule(Context context) {
     // TODO use the app name for the name here.
     mPreferences = context.getSharedPreferences("com.sharkable.sharkengine", Context.MODE_PRIVATE);
   }

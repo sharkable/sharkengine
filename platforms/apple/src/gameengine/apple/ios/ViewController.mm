@@ -11,7 +11,7 @@
 #import "gameengine/apple/ios/EAGLView.h"
 #import "gameengine/apple/ios/GameTimer.h"
 #import "gameengine/apple/ios/GameTouchWindow.h"
-#import "gameengine/apple/modules/AppleLocalStore.h"
+#import "gameengine/apple/modules/ApplePersistenceModule.h"
 #import "gameengine/apple/modules/ios/IOSAdModule.h"
 #import "gameengine/apple/modules/ios/IOSAnalyticsModule.h"
 #import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
@@ -52,7 +52,7 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_platform_resolution(platform_resolution);
 
-    gameEngine_->set_local_store(sp<LocalStore>(new AppleLocalStore()));
+    gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
     // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
     if (gameEngine_->platform_type() == kPlatformTypePhone) {
       gameEngine_->set_ad_module(sp<AdModule>(new IOSAdModule(self)));

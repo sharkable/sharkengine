@@ -44,7 +44,6 @@
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
 		FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */; };
-		FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4F211517B306EF005EC455 /* AppleLocalStore.mm */; };
 		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
 		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
 		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
@@ -57,6 +56,7 @@
 		FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */; };
 		FEB9DD1117D678A7006EE538 /* IOSAnalyticsModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1017D678A7006EE538 /* IOSAnalyticsModule.mm */; };
 		FEB9DD1517D68F67006EE538 /* IOSAppStoreModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1417D68F67006EE538 /* IOSAppStoreModule.mm */; };
+		FEB9DD1917D6A870006EE538 /* ApplePersistenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */; };
 		FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47BC616DF0C950096F3D4 /* libz.dylib */; };
 		FEF9B84A17A9BFB400867739 /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B81D17A9BFB400867739 /* animation.cc */; };
 		FEF9B84B17A9BFB400867739 /* engine_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B81F17A9BFB400867739 /* engine_view.cc */; };
@@ -175,8 +175,6 @@
 		FE40299917C2A96600F0F49C /* IOSModuleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSModuleFactory.h; sourceTree = "<group>"; };
 		FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSModuleFactory.mm; sourceTree = "<group>"; };
 		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
-		FE4F211417B306EF005EC455 /* AppleLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLocalStore.h; sourceTree = "<group>"; };
-		FE4F211517B306EF005EC455 /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
 		FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
 		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
 		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
@@ -198,6 +196,9 @@
 		FEB9DD1217D68F51006EE538 /* app_store_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_module.h; sourceTree = "<group>"; };
 		FEB9DD1317D68F67006EE538 /* IOSAppStoreModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAppStoreModule.h; sourceTree = "<group>"; };
 		FEB9DD1417D68F67006EE538 /* IOSAppStoreModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAppStoreModule.mm; sourceTree = "<group>"; };
+		FEB9DD1617D6A85B006EE538 /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
+		FEB9DD1717D6A870006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
+		FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
 		FEDD89AB17C2B6940058550C /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
 		FEDD89AC17C2B6940058550C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -210,7 +211,6 @@
 		FEF9B80E17A9BFB400867739 /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
 		FEF9B80F17A9BFB400867739 /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
 		FEF9B81017A9BFB400867739 /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
-		FEF9B81617A9BFB400867739 /* local_store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = local_store.h; sourceTree = "<group>"; };
 		FEF9B81717A9BFB400867739 /* sound_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_player.h; sourceTree = "<group>"; };
 		FEF9B81817A9BFB400867739 /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
 		FEF9B81917A9BFB400867739 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
@@ -345,8 +345,8 @@
 		FE164D2417AC4444006C5D88 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				FE4F211417B306EF005EC455 /* AppleLocalStore.h */,
-				FE4F211517B306EF005EC455 /* AppleLocalStore.mm */,
+				FEB9DD1717D6A870006EE538 /* ApplePersistenceModule.h */,
+				FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */,
 				FE4F211617B306EF005EC455 /* ios */,
 			);
 			path = modules;
@@ -572,8 +572,8 @@
 				FEB9DD0E17D67897006EE538 /* analytics_module.h */,
 				FEB9DD1217D68F51006EE538 /* app_store_module.h */,
 				FEDD89AB17C2B6940058550C /* input_module.h */,
-				FEF9B81617A9BFB400867739 /* local_store.h */,
 				FEDD89AC17C2B6940058550C /* module_factory.h */,
+				FEB9DD1617D6A85B006EE538 /* persistence_module.h */,
 				FEF9B81717A9BFB400867739 /* sound_player.h */,
 			);
 			path = modules;
@@ -814,13 +814,13 @@
 				FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */,
 				FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */,
 				FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */,
-				FE4F211F17B306EF005EC455 /* AppleLocalStore.mm in Sources */,
 				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
 				FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */,
 				FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */,
 				FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */,
 				FEB9DD1117D678A7006EE538 /* IOSAnalyticsModule.mm in Sources */,
 				FEB9DD1517D68F67006EE538 /* IOSAppStoreModule.mm in Sources */,
+				FEB9DD1917D6A870006EE538 /* ApplePersistenceModule.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

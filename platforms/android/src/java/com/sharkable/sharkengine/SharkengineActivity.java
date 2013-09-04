@@ -22,7 +22,7 @@ import com.google.ads.Ad;
 
 import com.sharkable.sharkengine.modules.AndroidAdModule;
 import com.sharkable.sharkengine.modules.AndroidAppStoreModule;
-import com.sharkable.sharkengine.modules.LocalStoreAndroid;
+import com.sharkable.sharkengine.modules.AndroidPersistenceModule;
 
 public class SharkengineActivity extends Activity {
   private DemoGLSurfaceView mGLView;
@@ -159,13 +159,13 @@ class DemoRenderer implements GLSurfaceView.Renderer {
   private boolean mQuitOnNextFrame = false;
   // TODO make names consistent. Engine? Not engine? Also variables everywhere.
   private AndroidAdModule mAdModule;
-  private LocalStoreAndroid mLocalStore;
+  private AndroidPersistenceModule mPersistenceModule;
   private AndroidAppStoreModule mAppStoreModule;
 
   public DemoRenderer(SharkengineActivity activity) {
     mActivity = activity;
     mAdModule = new AndroidAdModule(activity);
-    mLocalStore = new LocalStoreAndroid(activity);
+    mPersistenceModule = new AndroidPersistenceModule(activity);
     mAppStoreModule = new AndroidAppStoreModule(activity);
   }
 
@@ -195,7 +195,8 @@ class DemoRenderer implements GLSurfaceView.Renderer {
       throw new RuntimeException("Unable to locate assets, aborting...");
     }
     apkFilePath = appInfo.sourceDir;
-    nativeInit(mAdModule, mLocalStore, mAppStoreModule, mActivity.getAssets(), apkFilePath, w, h);
+    nativeInit(mAdModule, mPersistenceModule, mAppStoreModule, mActivity.getAssets(), apkFilePath,
+               w, h);
   }
 
   public void onDrawFrame(GL10 gl) {
@@ -230,8 +231,10 @@ class DemoRenderer implements GLSurfaceView.Renderer {
     mQuitOnNextFrame = true;
   }
 
-  private native void nativeInit(AndroidAdModule adModuleJava, LocalStoreAndroid localStoreJava,
-                                 AndroidAppStoreModule appStoreJava, AssetManager assetManager,
+  private native void nativeInit(AndroidAdModule adModuleJava,
+                                 AndroidPersistenceModule persistenceModuleJava,
+                                 AndroidAppStoreModule appStoreModuleJava,
+                                 AssetManager assetManager,
                                  String apkPath, int w, int h);
   private native void nativeShutdown();
   private native void nativePause();

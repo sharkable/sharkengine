@@ -4,8 +4,8 @@
 
 extern "C" {
   void setupOpengl();
-  void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject app_store_java,
-            jobject asset_manager, int width, int height);
+  void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
+            jobject app_store_module_java, jobject asset_manager, int width, int height);
   void shutdown();
   int handle_back_button();
   void reload_textures();
@@ -22,8 +22,8 @@ extern "C" {
 #include "gameengine/android/modules/android_ad_module.h"
 #include "gameengine/android/modules/android_analytics_module.h"
 #include "gameengine/android/modules/android_app_store_module.h"
-#include "gameengine/android/modules/android_local_store.h"
 #include "gameengine/android/modules/android_module_factory.h"
+#include "gameengine/android/modules/android_persistence_module.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
 #include "soundengine/sound_player.h"
@@ -45,8 +45,8 @@ void setup_opengl() {
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject app_store_java,
-          jobject asset_manager, int width, int height) {
+void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
+          jobject app_store_module_java, jobject asset_manager, int width, int height) {
   setup_opengl();
 
   backing_width__ = width;
@@ -61,14 +61,15 @@ void init(JNIEnv *env, jobject ad_module_java, jobject local_store_java, jobject
   game_engine_->set_platform_resolution(
       width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
 
-  sp<LocalStore> local_store = sp<LocalStore>(new AndroidLocalStore(env, local_store_java));
-  game_engine_->set_local_store(local_store);
+  sp<PersistenceModule> persistence_module =
+      sp<PersistenceModule>(new AndroidPersistenceModule(env, persistence_module_java));
+  game_engine_->set_persistence_module(persistence_module);
 
   sp<AdModule> ad_module = sp<AdModule>(new AndroidAdModule(env, ad_module_java));
   game_engine_->set_ad_module(ad_module);
 
   sp<AppStoreModule> app_store_module =
-      sp<AppStoreModule>(new AndroidAppStoreModule(env, app_store_java));
+      sp<AppStoreModule>(new AndroidAppStoreModule(env, app_store_module_java));
   game_engine_->set_app_store_module(app_store_module);
 
   sp<AnalyticsModule> analytics_module = sp<AnalyticsModule>(new AndroidAnalyticsModule(env));

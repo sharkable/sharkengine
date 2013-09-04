@@ -1,25 +1,25 @@
 //
-//  android_local_store.h
+//  android_persistence_module.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-05-15.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDLOCALSTORE_H_
-#define GAMEENGINE_ANDROID_MODULES_ANDROIDLOCALSTORE_H_
+#ifndef GAMEENGINE_ANDROID_MODULES_ANDROIDPERSISTENCEMODULE_H_
+#define GAMEENGINE_ANDROID_MODULES_ANDROIDPERSISTENCEMODULE_H_
 
 #include <jni.h>
 #include <string>
 
-#include "gameengine/modules/local_store.h"
+#include "gameengine/modules/persistence_module.h"
 
-class AndroidLocalStore : public LocalStore {
+class AndroidPersistenceModule : public PersistenceModule {
  public:
-  AndroidLocalStore(JNIEnv *jni_env, jobject java_object);
-  ~AndroidLocalStore();
+  AndroidPersistenceModule(JNIEnv *jni_env, jobject java_object);
+  ~AndroidPersistenceModule();
 
-  // LocalStore
+  // PersistenceModule
   bool HasEntryForKey(std::string key);
   bool BoolForKey(std::string key);
   void SetBool(bool value, std::string key);

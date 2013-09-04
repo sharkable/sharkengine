@@ -14,8 +14,8 @@
 #include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_module.h"
 #include "gameengine/modules/input_module.h"
-#include "gameengine/modules/local_store.h"
 #include "gameengine/modules/module_factory.h"
+#include "gameengine/modules/persistence_module.h"
 
 GameEngine::GameEngine(sp<ModuleFactory> module_factory)
     : module_factory_(module_factory),
@@ -27,7 +27,7 @@ GameEngine::GameEngine(sp<ModuleFactory> module_factory)
       screen_offset_(kScreenPointZero),
       screen_to_game_point_ratio_x_(1),
       screen_to_game_point_ratio_y_(1) {
-  local_store_.reset(new LocalStore());
+  persistence_module_.reset(new PersistenceModule());
   ad_module_.reset(new AdModule());
   analytics_module_.reset(new AnalyticsModule());
   app_store_module_.reset(new AppStoreModule());

@@ -73,6 +73,7 @@
 		FE6495B017A469340051BF31 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AF17A469340051BF31 /* AudioToolbox.framework */; };
 		FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495B117A4698D0051BF31 /* AVFoundation.framework */; };
 		FEAD989817B98B300084C405 /* SharkEngine.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FEAD989717B98B300084C405 /* SharkEngine.entitlements */; };
+		FEB9DD2017D6B291006EE538 /* ApplePersistenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */; };
 		FEF4C00417B3FADA00D2085A /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD717B3FADA00D2085A /* animation.cc */; };
 		FEF4C00517B3FADA00D2085A /* engine_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD917B3FADA00D2085A /* engine_view.cc */; };
 		FEF4C00617B3FADA00D2085A /* animatable.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDB17B3FADA00D2085A /* animatable.cc */; };
@@ -97,7 +98,6 @@
 		FEF4C01917B3FADA00D2085A /* Quint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFFD17B3FADA00D2085A /* Quint.cpp */; };
 		FEF4C01A17B3FADA00D2085A /* Sine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFFF17B3FADA00D2085A /* Sine.cpp */; };
 		FEF4C01B17B3FADA00D2085A /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C00217B3FADA00D2085A /* tinyxml2.cpp */; };
-		FEF4C08917B3FB0D00D2085A /* AppleLocalStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C03617B3FB0D00D2085A /* AppleLocalStore.mm */; };
 		FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */; };
 		FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */; };
 		FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07717B3FB0D00D2085A /* ALAudio.mm */; };
@@ -190,6 +190,12 @@
 		FE6495AF17A469340051BF31 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FE6495B117A4698D0051BF31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FEAD989717B98B300084C405 /* SharkEngine.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SharkEngine.entitlements; sourceTree = "<group>"; };
+		FEB9DD1A17D6B274006EE538 /* ad_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_module.h; sourceTree = "<group>"; };
+		FEB9DD1B17D6B274006EE538 /* analytics_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_module.h; sourceTree = "<group>"; };
+		FEB9DD1C17D6B274006EE538 /* app_store_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_module.h; sourceTree = "<group>"; };
+		FEB9DD1D17D6B274006EE538 /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
+		FEB9DD1E17D6B291006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
+		FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
 		FEDD89AD17C2B6AB0058550C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FEF4BFC017B3FADA00D2085A /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF4BFC117B3FADA00D2085A /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
@@ -201,10 +207,6 @@
 		FEF4BFC817B3FADA00D2085A /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
 		FEF4BFC917B3FADA00D2085A /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
 		FEF4BFCB17B3FADA00D2085A /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
-		FEF4BFCD17B3FADA00D2085A /* ad_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_engine.h; sourceTree = "<group>"; };
-		FEF4BFCE17B3FADA00D2085A /* analytics_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_engine.h; sourceTree = "<group>"; };
-		FEF4BFCF17B3FADA00D2085A /* app_store_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_engine.h; sourceTree = "<group>"; };
-		FEF4BFD017B3FADA00D2085A /* local_store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = local_store.h; sourceTree = "<group>"; };
 		FEF4BFD117B3FADA00D2085A /* sound_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_player.h; sourceTree = "<group>"; };
 		FEF4BFD217B3FADA00D2085A /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
 		FEF4BFD317B3FADA00D2085A /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
@@ -249,8 +251,6 @@
 		FEF4C00017B3FADA00D2085A /* Sine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sine.h; sourceTree = "<group>"; };
 		FEF4C00217B3FADA00D2085A /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
 		FEF4C00317B3FADA00D2085A /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
-		FEF4C03517B3FB0D00D2085A /* AppleLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleLocalStore.h; sourceTree = "<group>"; };
-		FEF4C03617B3FB0D00D2085A /* AppleLocalStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleLocalStore.mm; sourceTree = "<group>"; };
 		FEF4C03F17B3FB0D00D2085A /* SharkengineOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharkengineOpenGLView.h; sourceTree = "<group>"; };
 		FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SharkengineOpenGLView.mm; sourceTree = "<group>"; };
 		FEF4C04417B3FB0D00D2085A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -495,12 +495,12 @@
 		FEF4BFCC17B3FADA00D2085A /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				FEF4BFCD17B3FADA00D2085A /* ad_engine.h */,
-				FEF4BFCE17B3FADA00D2085A /* analytics_engine.h */,
-				FEF4BFCF17B3FADA00D2085A /* app_store_engine.h */,
+				FEB9DD1A17D6B274006EE538 /* ad_module.h */,
+				FEB9DD1B17D6B274006EE538 /* analytics_module.h */,
+				FEB9DD1C17D6B274006EE538 /* app_store_module.h */,
 				FE4FAA8017B85B8500E3B011 /* input_module.h */,
-				FEF4BFD017B3FADA00D2085A /* local_store.h */,
 				FEDD89AD17C2B6AB0058550C /* module_factory.h */,
+				FEB9DD1D17D6B274006EE538 /* persistence_module.h */,
 				FEF4BFD117B3FADA00D2085A /* sound_player.h */,
 			);
 			path = modules;
@@ -636,8 +636,8 @@
 		FEF4C03017B3FB0D00D2085A /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				FEF4C03517B3FB0D00D2085A /* AppleLocalStore.h */,
-				FEF4C03617B3FB0D00D2085A /* AppleLocalStore.mm */,
+				FEB9DD1E17D6B291006EE538 /* ApplePersistenceModule.h */,
+				FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */,
 				FE4FAA7017B8226800E3B011 /* osx */,
 			);
 			path = modules;
@@ -712,7 +712,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jon Sharkey";
 			};
-			buildConfigurationList = FE64948917A315CD0051BF31 /* Build configuration list for PBXProject "SharkengineApp" */;
+			buildConfigurationList = FE64948917A315CD0051BF31 /* Build configuration list for PBXProject "SharkEngine_osx" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -815,7 +815,6 @@
 				FEF4C01917B3FADA00D2085A /* Quint.cpp in Sources */,
 				FEF4C01A17B3FADA00D2085A /* Sine.cpp in Sources */,
 				FEF4C01B17B3FADA00D2085A /* tinyxml2.cpp in Sources */,
-				FEF4C08917B3FB0D00D2085A /* AppleLocalStore.mm in Sources */,
 				FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */,
 				FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */,
 				FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */,
@@ -881,6 +880,7 @@
 				FE4FAA6F17B81E3A00E3B011 /* zipped_asset_reader.cc in Sources */,
 				FE4FAA8317B85B9E00E3B011 /* OSXInputModule.mm in Sources */,
 				FE4029A117C2A9F500F0F49C /* OSXModuleFactory.mm in Sources */,
+				FEB9DD2017D6B291006EE538 /* ApplePersistenceModule.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,7 +1020,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE64948917A315CD0051BF31 /* Build configuration list for PBXProject "SharkengineApp" */ = {
+		FE64948917A315CD0051BF31 /* Build configuration list for PBXProject "SharkEngine_osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE6494A917A315CD0051BF31 /* Debug */,

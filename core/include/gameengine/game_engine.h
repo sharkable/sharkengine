@@ -34,8 +34,8 @@ class AssetReader;
 class EngineView;
 class GameEngine;
 class InputModule;
-class LocalStore;
 class ModuleFactory;
+class PersistenceModule;
 
 extern "C" {
   void sharkengine_init(GameEngine *game_engine);
@@ -72,8 +72,10 @@ class GameEngine {
     platform_resolution_ = platform_resolution;
   };
 
-  sp<LocalStore> local_store() { return local_store_; }
-  void set_local_store(sp<LocalStore> local_store) { local_store_ = local_store; }
+  sp<PersistenceModule> persistence_module() { return persistence_module_; }
+  void set_persistence_module(sp<PersistenceModule> persistence_module) {
+    persistence_module_ = persistence_module;
+  }
 
   sp<AdModule> ad_module() { return ad_module_; }
   void set_ad_module(sp<AdModule> ad_module) { ad_module_ = ad_module; }
@@ -135,7 +137,7 @@ class GameEngine {
 
   // Platform specific
   sp<ModuleFactory> module_factory_;
-  sp<LocalStore> local_store_;
+  sp<PersistenceModule> persistence_module_;
   sp<AdModule> ad_module_;
   sp<AnalyticsModule> analytics_module_;
   sp<AppStoreModule> app_store_module_;
