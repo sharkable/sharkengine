@@ -81,10 +81,10 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
   high_res_filename += ".tx";
   filename += ".tx";
 
-  sp<AssetReader> asset_reader = game_engine_.CreateAssetReader(high_res_filename);
+  sp<AssetReader> asset_reader = game_engine_.LoadAsset(high_res_filename);
   if (!asset_reader->IsOpen()) {
     std::cout << "No high res file for " << name << std::endl;
-    asset_reader = game_engine_.CreateAssetReader(filename);
+    asset_reader = game_engine_.LoadAsset(filename);
   }
 
   uint16_t image_width, image_height;

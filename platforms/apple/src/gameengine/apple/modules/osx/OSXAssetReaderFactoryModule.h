@@ -1,26 +1,29 @@
 //
-//  OSXModuleFactory.h
+//  OSXAssetReaderFactoryModule.h
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-08-11.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_OSX_OSXMODULEFACTORY_H_
-#define GAMEENGINE_APPLE_MODULES_OSX_OSXMODULEFACTORY_H_
+#ifndef GAMEENGINE_APPLE_MODULES_OSX_OSXASSETREADERFACTORYMODULE_H_
+#define GAMEENGINE_APPLE_MODULES_OSX_OSXASSETREADERFACTORYMODULE_H_
 
 #include <string>
 
-#include "gameengine/modules/module_factory.h"
+#include "gameengine/modules/asset_reader_factory_module.h"
 
 #include "zip.h"
 
-class OSXModuleFactory : public ModuleFactory {
+class OSXAssetReaderFactoryModule : public AssetReaderFactoryModule {
  public:
-  OSXModuleFactory();
-  ~OSXModuleFactory();
+  OSXAssetReaderFactoryModule();
+  ~OSXAssetReaderFactoryModule();
 
-  // ModuleFactory
+  // Module
+  bool IsImplemented() { return true; };
+
+  // AssetReaderFactoryModule
   sp<AssetReader> CreateAssetReader(std::string filename);
 
  private:

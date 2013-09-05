@@ -26,7 +26,7 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_analytics_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_app_store_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_asset_reader.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_module_factory.cc \
+    $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_asset_reader_factory_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_persistence_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_instance.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_player.cc \

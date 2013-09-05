@@ -13,13 +13,12 @@
 #include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_module.h"
+#include "gameengine/modules/asset_reader_factory_module.h"
 #include "gameengine/modules/input_module.h"
-#include "gameengine/modules/module_factory.h"
 #include "gameengine/modules/persistence_module.h"
 
-GameEngine::GameEngine(sp<ModuleFactory> module_factory)
-    : module_factory_(module_factory),
-      platform_type_(kPlatformTypePhone),
+GameEngine::GameEngine()
+    : platform_type_(kPlatformTypePhone),
       resource_loader_(*this),
       mouse_delta_x_(0),
       mouse_delta_y_(0),
@@ -169,6 +168,6 @@ void GameEngine::SetRootView(sp<EngineView> view) {
   next_views_.push_back(view);
 }
 
-sp<AssetReader> GameEngine::CreateAssetReader(std::string filename) {
-  return module_factory_->CreateAssetReader(filename);
+sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
+  return asset_reader_factory_module_->CreateAssetReader(filename);
 }

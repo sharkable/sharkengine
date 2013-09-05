@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/modules/zipped_asset_reader.h"
+#include "gameengine/zipped_asset_reader.h"
 
 #include "gameengine/thirdparty/libzip/zip.h"
 

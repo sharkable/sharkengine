@@ -15,8 +15,8 @@
 #import "gameengine/apple/modules/ios/IOSAdModule.h"
 #import "gameengine/apple/modules/ios/IOSAnalyticsModule.h"
 #import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
+#import "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
-#import "gameengine/apple/modules/ios/IOSModuleFactory.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -43,7 +43,7 @@
     [gameTouchWindow_ setRootViewController:self];
     [gameTouchWindow_ makeKeyAndVisible];
 
-    gameEngine_ = new GameEngine(sp<ModuleFactory>(new IOSModuleFactory()));
+    gameEngine_ = new GameEngine();
 
     PlatformType platform_type = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ?
         kPlatformTypePhone : kPlatformTypeTablet;
@@ -52,6 +52,8 @@
     gameEngine_->set_platform_type(platform_type);
     gameEngine_->set_platform_resolution(platform_resolution);
 
+    gameEngine_->set_asset_reader_factory_module(
+        sp<AssetReaderFactoryModule>(new IOSAssetReaderFactoryModule()));
     gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
     // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
     if (gameEngine_->platform_type() == kPlatformTypePhone) {

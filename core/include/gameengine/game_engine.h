@@ -31,10 +31,10 @@ class AdModule;
 class AnalyticsModule;
 class AppStoreModule;
 class AssetReader;
+class AssetReaderFactoryModule;
 class EngineView;
 class GameEngine;
 class InputModule;
-class ModuleFactory;
 class PersistenceModule;
 
 extern "C" {
@@ -43,7 +43,7 @@ extern "C" {
 
 class GameEngine {
  public:
-  GameEngine(sp<ModuleFactory> module_factory);
+  GameEngine();
 
   // Platform functions. Don't call these from an app.
   void Update();
@@ -62,7 +62,7 @@ class GameEngine {
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(sp<EngineView> view);
-  sp<AssetReader> CreateAssetReader(std::string filename);
+  sp<AssetReader> LoadAsset(std::string filename);
 
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
@@ -71,6 +71,10 @@ class GameEngine {
   void set_platform_resolution(PlatformResolution platform_resolution) {
     platform_resolution_ = platform_resolution;
   };
+
+  void set_asset_reader_factory_module(sp<AssetReaderFactoryModule> asset_reader_factory_module) {
+    asset_reader_factory_module_ = asset_reader_factory_module;
+  }
 
   sp<PersistenceModule> persistence_module() { return persistence_module_; }
   void set_persistence_module(sp<PersistenceModule> persistence_module) {
@@ -136,7 +140,7 @@ class GameEngine {
   PlatformResolution platform_resolution_;
 
   // Platform specific
-  sp<ModuleFactory> module_factory_;
+  sp<AssetReaderFactoryModule> asset_reader_factory_module_;
   sp<PersistenceModule> persistence_module_;
   sp<AdModule> ad_module_;
   sp<AnalyticsModule> analytics_module_;

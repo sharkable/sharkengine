@@ -22,7 +22,7 @@ extern "C" {
 #include "gameengine/android/modules/android_ad_module.h"
 #include "gameengine/android/modules/android_analytics_module.h"
 #include "gameengine/android/modules/android_app_store_module.h"
-#include "gameengine/android/modules/android_module_factory.h"
+#include "gameengine/android/modules/android_asset_reader_factory_module.h"
 #include "gameengine/android/modules/android_persistence_module.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
@@ -52,7 +52,7 @@ void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
   backing_width__ = width;
   backing_height__ = height;
 
-  game_engine_.reset(new GameEngine(sp<ModuleFactory>(new AndroidModuleFactory())));
+  game_engine_.reset(new GameEngine());
 
   Texture2D::SetScreenHeight(height);
   game_engine_->set_screen_size(screen_size_make(width, height));
@@ -60,6 +60,10 @@ void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
   game_engine_->set_platform_type(kPlatformTypePhone);
   game_engine_->set_platform_resolution(
       width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
+
+  sp<AssetReaderFactoryModule> asset_reader_factory_module =
+      sp<AssetReaderFactoryModule>(new AndroidAssetReaderFactoryModule());
+  game_engine_->set_asset_reader_factory_module(asset_reader_factory_module);
 
   sp<PersistenceModule> persistence_module =
       sp<PersistenceModule>(new AndroidPersistenceModule(env, persistence_module_java));

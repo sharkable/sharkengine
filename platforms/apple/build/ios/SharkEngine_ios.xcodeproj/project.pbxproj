@@ -43,8 +43,8 @@
 		FE3CF95914F982A30063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
-		FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */; };
 		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
+		FE616C5617D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */; };
 		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
 		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
@@ -172,11 +172,12 @@
 		FE3CF95014F9819E0063CCA5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FE40299917C2A96600F0F49C /* IOSModuleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSModuleFactory.h; sourceTree = "<group>"; };
-		FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSModuleFactory.mm; sourceTree = "<group>"; };
 		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
 		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
+		FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader_factory_module.h; sourceTree = "<group>"; };
+		FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReaderFactoryModule.h; sourceTree = "<group>"; };
+		FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReaderFactoryModule.mm; sourceTree = "<group>"; };
 		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		FE65436217BA9B9500B59390 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE789BC114F97B34007FCBC5 /* AirHockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +201,6 @@
 		FEB9DD1717D6A870006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
 		FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
 		FEDD89AB17C2B6940058550C /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
-		FEDD89AC17C2B6940058550C /* module_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module_factory.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FEF9B80717A9BFB400867739 /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF9B80817A9BFB400867739 /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
@@ -468,10 +468,10 @@
 				FEB9DD1417D68F67006EE538 /* IOSAppStoreModule.mm */,
 				FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */,
 				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
+				FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */,
+				FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */,
 				FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */,
 				FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */,
-				FE40299917C2A96600F0F49C /* IOSModuleFactory.h */,
-				FE40299A17C2A96600F0F49C /* IOSModuleFactory.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -571,8 +571,8 @@
 				FEB9DD0D17D67897006EE538 /* ad_module.h */,
 				FEB9DD0E17D67897006EE538 /* analytics_module.h */,
 				FEB9DD1217D68F51006EE538 /* app_store_module.h */,
+				FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */,
 				FEDD89AB17C2B6940058550C /* input_module.h */,
-				FEDD89AC17C2B6940058550C /* module_factory.h */,
 				FEB9DD1617D6A85B006EE538 /* persistence_module.h */,
 				FEF9B81717A9BFB400867739 /* sound_player.h */,
 			);
@@ -815,12 +815,12 @@
 				FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */,
 				FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */,
 				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
-				FE40299B17C2A96600F0F49C /* IOSModuleFactory.mm in Sources */,
 				FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */,
 				FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */,
 				FEB9DD1117D678A7006EE538 /* IOSAnalyticsModule.mm in Sources */,
 				FEB9DD1517D68F67006EE538 /* IOSAppStoreModule.mm in Sources */,
 				FEB9DD1917D6A870006EE538 /* ApplePersistenceModule.mm in Sources */,
+				FE616C5617D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
