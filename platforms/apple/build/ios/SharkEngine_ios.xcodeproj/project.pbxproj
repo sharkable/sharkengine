@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE148AFC17D91E0400F85DBD /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE148AFB17D91E0400F85DBD /* IOSAssetReader.mm */; };
 		FE164D7317AC4444006C5D88 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1517AC4444006C5D88 /* AppDelegate.mm */; };
 		FE164D7417AC4445006C5D88 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1717AC4444006C5D88 /* EAGLView.mm */; };
 		FE164D7517AC4445006C5D88 /* ES1Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1917AC4444006C5D88 /* ES1Renderer.mm */; };
@@ -43,7 +44,6 @@
 		FE3CF95914F982A30063CCA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3CF94A14F9810B0063CCA5 /* SystemConfiguration.framework */; };
 		FE3F442B16C445CD00E8BEDF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442916C445CD00E8BEDF /* AdSupport.framework */; };
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
-		FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */; };
 		FE616C5617D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */; };
 		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
 		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
@@ -85,6 +85,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE148AFA17D91E0400F85DBD /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
+		FE148AFB17D91E0400F85DBD /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
 		FE164D1417AC4444006C5D88 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE164D1517AC4444006C5D88 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		FE164D1617AC4444006C5D88 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
@@ -173,8 +175,6 @@
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
-		FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReader.h; sourceTree = "<group>"; };
-		FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReader.mm; sourceTree = "<group>"; };
 		FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader_factory_module.h; sourceTree = "<group>"; };
 		FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReaderFactoryModule.h; sourceTree = "<group>"; };
 		FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReaderFactoryModule.mm; sourceTree = "<group>"; };
@@ -335,6 +335,8 @@
 				FE164D1E17AC4444006C5D88 /* GameTimer.mm */,
 				FE164D1F17AC4444006C5D88 /* GameTouchWindow.h */,
 				FE164D2017AC4444006C5D88 /* GameTouchWindow.mm */,
+				FE148AFA17D91E0400F85DBD /* IOSAssetReader.h */,
+				FE148AFB17D91E0400F85DBD /* IOSAssetReader.mm */,
 				FE164D2117AC4444006C5D88 /* main.m */,
 				FE164D2217AC4444006C5D88 /* ViewController.h */,
 				FE164D2317AC4444006C5D88 /* ViewController.mm */,
@@ -466,8 +468,6 @@
 				FEB9DD1017D678A7006EE538 /* IOSAnalyticsModule.mm */,
 				FEB9DD1317D68F67006EE538 /* IOSAppStoreModule.h */,
 				FEB9DD1417D68F67006EE538 /* IOSAppStoreModule.mm */,
-				FE4FAA7417B8270100E3B011 /* IOSAssetReader.h */,
-				FE4FAA7517B8270100E3B011 /* IOSAssetReader.mm */,
 				FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */,
 				FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */,
 				FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */,
@@ -814,13 +814,13 @@
 				FE164D8A17AC4445006C5D88 /* AVAudio.mm in Sources */,
 				FE164D8B17AC4445006C5D88 /* MyOpenALSupport.mm in Sources */,
 				FE164D8C17AC4445006C5D88 /* SoundPlayer.mm in Sources */,
-				FE4FAA7817B8270300E3B011 /* IOSAssetReader.mm in Sources */,
 				FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */,
 				FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */,
 				FEB9DD1117D678A7006EE538 /* IOSAnalyticsModule.mm in Sources */,
 				FEB9DD1517D68F67006EE538 /* IOSAppStoreModule.mm in Sources */,
 				FEB9DD1917D6A870006EE538 /* ApplePersistenceModule.mm in Sources */,
 				FE616C5617D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm in Sources */,
+				FE148AFC17D91E0400F85DBD /* IOSAssetReader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

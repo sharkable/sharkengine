@@ -6,7 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_asset_reader.h"
+#include "gameengine/android/android_asset_reader.h"
+
 #include "gameengine/thirdparty/libzip/zip.h"
 
 // TODO UGH this is kinda gross. This is needed for the GLOBAL variable APKArchive.

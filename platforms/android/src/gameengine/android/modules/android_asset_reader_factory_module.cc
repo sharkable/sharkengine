@@ -8,7 +8,7 @@
 
 #include "gameengine/android/modules/android_asset_reader_factory_module.h"
 
-#include "gameengine/android/modules/android_asset_reader.h"
+#include "gameengine/android/android_asset_reader.h"
 
 using std::string;
 

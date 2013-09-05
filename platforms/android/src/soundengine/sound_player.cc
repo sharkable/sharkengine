@@ -9,7 +9,7 @@
 #include "soundengine/sound_player.h"
 
 // TODO this is now tied to gameengine.
-#include "gameengine/android/modules/android_asset_reader.h"
+#include "gameengine/android/android_asset_reader.h"
 
 using std::string;
 

@@ -8,7 +8,7 @@
 
 #include "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
 
-#include "gameengine/apple/modules/ios/IOSAssetReader.h"
+#include "gameengine/apple/ios/IOSAssetReader.h"
 
 using std::string;
 
