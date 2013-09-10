@@ -15,6 +15,8 @@
 #include "gameengine/coordinate_types.h"
 #include "gameengine/sprite.h"
 
+#include "sharksound/sound_player.h"
+
 class Touch;
 
 typedef enum {
@@ -31,8 +33,8 @@ class ButtonDelegate {
 
 class Button : public Animatable {
  public:
-  Button() : state_(kButtonStateNormal) {}
-  Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
+  Button(GameEngine *game_engine);
+  Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
 
   // ViewEntity
@@ -48,11 +50,15 @@ class Button : public Animatable {
   GameSize size() { return normal_sprite_.content_size(); }
 
  private:
+  void Init();
+
+  GameEngine *game_engine_;  // weak
   Sprite normal_sprite_;
   Sprite pressed_sprite_;
   int state_;
   ButtonDelegate *delegate_;
   void *start_touch_;
+  Sound *beep_sound_;
 };
 
 #endif

@@ -36,6 +36,7 @@ class EngineView;
 class GameEngine;
 class InputModule;
 class PersistenceModule;
+class SoundPlayer;
 
 extern "C" {
   void sharkengine_init(GameEngine *game_engine);
@@ -97,6 +98,9 @@ class GameEngine {
   sp<InputModule> input_module() { return input_module_; }
   void set_input_module(sp<InputModule> input_module) { input_module_ = input_module; }
 
+  sp<SoundPlayer> sound_player() { return sound_player_; }
+  void set_sound_player(sp<SoundPlayer> sound_player) { sound_player_ = sound_player; }
+
   ResourceLoader &resource_loader() { return resource_loader_; }
 
   void load_positions(AssetReader &file) { positions_->LoadFile(file); }
@@ -146,6 +150,7 @@ class GameEngine {
   sp<AnalyticsModule> analytics_module_;
   sp<AppStoreModule> app_store_module_;
   sp<InputModule> input_module_;
+  sp<SoundPlayer> sound_player_;
 
   ResourceLoader resource_loader_;
   sp<Positions> positions_;

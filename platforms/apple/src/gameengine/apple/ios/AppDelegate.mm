@@ -12,7 +12,7 @@
 #import "gameengine/apple/ios/ViewController.h"
 #import "gameengine/apple/thirdparty/ios/appirater/Appirater.h"
 #import "gameengine/apple/thirdparty/ios/flurry/Flurry.h"
-#import "gameengine/modules/sound_player.h"
+//#import "gameengine/modules/sound_player.h"
 #import "gameengine/game_engine.h"
 
 @implementation AppDelegate {
@@ -50,7 +50,7 @@
 
   sharkengine_init(viewController_.gameEngine);
 
-  SoundPlayer::instance()->syncAudioSessionForITunes();
+//  SoundPlayer::instance()->syncAudioSessionForITunes();
 
   [Appirater appLaunched:YES];
 

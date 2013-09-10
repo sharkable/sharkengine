@@ -20,6 +20,8 @@
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
+#import "sharksound/apple/AppleSoundPlayer.h"
+
 @interface ViewController ()
 - (void)update;
 - (BOOL)isLandscape;
@@ -63,6 +65,7 @@
     }
     gameEngine_->set_analytics_module(sp<AnalyticsModule>(new IOSAnalyticsModule()));
     gameEngine_->set_app_store_module(sp<AppStoreModule>(new IOSAppStoreModule()));
+    gameEngine_->set_sound_player(sp<SoundPlayer>(new AppleSoundPlayer()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;

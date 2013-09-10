@@ -8,18 +8,28 @@
 
 #include "gameengine/entities/button.h"
 
-#include "gameengine/modules/sound_player.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
 
+#include "sharksound/sound.h"
+#include "sharksound/sound_player.h"
+
 using std::vector;
 
-Button::Button(Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
+Button::Button(GameEngine *game_engine)
+    : game_engine_(game_engine),
+      state_(kButtonStateNormal) {
+  Init();
+}
+
+Button::Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
     : Animatable(position),
+      game_engine_(game_engine),
       normal_sprite_(normal_sprite),
       pressed_sprite_(pressed_sprite),
       state_(kButtonStateNormal),
       delegate_(NULL) {
+  Init();
 }
 
 Button::~Button() {
@@ -59,7 +69,7 @@ bool Button::TouchesBegan(GamePoint offset, vector<Touch> touches) {
     for (int i = 0; i < touches.size(); i++) {
       if (ContainsPoint(touches[i].location() - offset)) {
         state_ = kButtonStatePressed;
-        SoundPlayer::instance()->playSound(kSoundButton);
+        beep_sound_->Play();
         start_touch_ = touches[i].identifier();
         return true;
       }
@@ -82,4 +92,10 @@ void Button::TouchesEnded(GamePoint offset, vector<Touch> touches) {
       }
     }
   }
+}
+
+#pragma mark - private
+
+void Button::Init() {
+  beep_sound_ = game_engine_->sound_player()->getSound("beep.wav");
 }
