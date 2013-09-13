@@ -36,7 +36,12 @@ for (var i = 0; i < layerIndexes.length; i++) {
   activeDocument.activeLayer.visible = layerVisibleMap[index];
 }
 
-if ((!isPhone && !isRetina) || (isPhone && isRetina)) {
+var layerPositionMapIsEmpty = true;
+for (var key in layerPositionMap) {
+  layerPositionMapIsEmpty = false;
+  break;
+}
+if (!layerPositionMapIsEmpty && ((!isPhone && !isRetina) || (isPhone && isRetina))) {
   var positionsFile = new File(outputPositionsFolder + "/" + outputPositionsFilename);
   positionsFile.open('w');
   positionsFile.writeln('<positions>');
