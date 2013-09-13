@@ -8,11 +8,11 @@
 
 #include "gameengine/entities/button.h"
 
+#include "sharksound/sound.h"
+#include "sharksound/sound_controller.h"
+
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
-
-#include "sharksound/sound.h"
-#include "sharksound/sound_player.h"
 
 using std::vector;
 
@@ -97,5 +97,5 @@ void Button::TouchesEnded(GamePoint offset, vector<Touch> touches) {
 #pragma mark - private
 
 void Button::Init() {
-  beep_sound_ = game_engine_->sound_player()->getSound("beep.wav");
+  beep_sound_ = game_engine_->sound()->GetSound("sounds/beep.wav");
 }

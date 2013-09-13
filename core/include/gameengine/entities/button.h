@@ -11,11 +11,12 @@
 
 #include <vector>
 
+#include "sharksound/sound_controller.h"
+
 #include "gameengine/entities/animatable.h"
 #include "gameengine/coordinate_types.h"
 #include "gameengine/sprite.h"
 
-#include "sharksound/sound_player.h"
 
 class Touch;
 
@@ -58,7 +59,7 @@ class Button : public Animatable {
   int state_;
   ButtonDelegate *delegate_;
   void *start_touch_;
-  Sound *beep_sound_;
+  SharkSound::Sound *beep_sound_;
 };
 
 #endif

@@ -6,7 +6,8 @@ fi
 
 mkdir -p $SHARKENGINE_APP_HOME/out/$1/${SE_APP_CODENAME}_${1}.xcodeproj
 
-sed "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
+sed -e "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
+    -e "s/___SHARKSOUND_HOME___/$(echo $SHARKSOUND_HOME | sed -e 's/[\/&]/\\&/g')/g" \
     < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkEngine_$1.xcodeproj/project.pbxproj \
     > $SHARKENGINE_APP_HOME/out/$1/${SE_APP_CODENAME}_${1}.xcodeproj/project.pbxproj
 

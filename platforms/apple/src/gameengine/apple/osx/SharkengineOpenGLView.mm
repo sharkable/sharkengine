@@ -10,6 +10,8 @@
 
 #include <OpenGL/gl.h>
 
+#include "sharksound/apple/AppleSoundController.h"
+
 #include "gameengine/game_engine.h"
 #include "gameengine/apple/modules/ApplePersistenceModule.h"
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
@@ -33,6 +35,7 @@
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
   gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
   gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
+  gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
   gameEngine_->set_screen_size(screen_size_make(768, 1024));
 

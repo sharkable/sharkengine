@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE1395AC17B57C1C00F1F61C /* icon.icns */; };
+		FE23DC4817E2A06600F28FF5 /* sound_controller.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4617E2A06600F28FF5 /* sound_controller.cc */; };
+		FE23DC4917E2A06600F28FF5 /* sound.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4717E2A06600F28FF5 /* sound.cc */; };
 		FE4FA9FB17B8191D00E3B011 /* mkstemp.c in Sources */ = {isa = PBXBuildFile; fileRef = FE4FA98C17B8191C00E3B011 /* mkstemp.c */; };
 		FE4FA9FC17B8191D00E3B011 /* zip_add.c in Sources */ = {isa = PBXBuildFile; fileRef = FE4FA98E17B8191C00E3B011 /* zip_add.c */; };
 		FE4FA9FE17B8191D00E3B011 /* zip_add_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = FE4FA99017B8191C00E3B011 /* zip_add_dir.c */; };
@@ -100,20 +102,21 @@
 		FEF4C01B17B3FADA00D2085A /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C00217B3FADA00D2085A /* tinyxml2.cpp */; };
 		FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */; };
 		FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */; };
-		FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07717B3FB0D00D2085A /* ALAudio.mm */; };
-		FEF4C09617B3FB0D00D2085A /* AVAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07A17B3FB0D00D2085A /* AVAudio.mm */; };
-		FEF4C09717B3FB0D00D2085A /* MyOpenALSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07C17B3FB0D00D2085A /* MyOpenALSupport.mm */; };
-		FEF4C09817B3FB0D00D2085A /* SoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07E17B3FB0D00D2085A /* SoundPlayer.mm */; };
 		FEF4C67C17B3FC3300D2085A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C67B17B3FC3300D2085A /* Info.plist */; };
 		FEF4C68017B3FE0000D2085A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C67E17B3FE0000D2085A /* AppDelegate.mm */; };
 		FEF4C68117B3FE0000D2085A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C67F17B3FE0000D2085A /* main.m */; };
 		FEF4C68917B3FF3700D2085A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C68317B3FF3700D2085A /* Credits.rtf */; };
 		FEF4C68A17B3FF3700D2085A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C68517B3FF3700D2085A /* InfoPlist.strings */; };
 		FEF4C68B17B3FF3700D2085A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C68717B3FF3700D2085A /* MainMenu.xib */; };
+		FEF91D2617E01FD700018432 /* AppleSound.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF91D1C17E01FD700018432 /* AppleSound.mm */; };
+		FEF91D2717E01FD700018432 /* AppleSoundController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF91D1E17E01FD700018432 /* AppleSoundController.mm */; };
+		FEF91D2817E01FD700018432 /* MyOpenALSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF91D2017E01FD700018432 /* MyOpenALSupport.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FE1395AC17B57C1C00F1F61C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		FE23DC4617E2A06600F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
+		FE23DC4717E2A06600F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
 		FE4FA98A17B8191C00E3B011 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		FE4FA98C17B8191C00E3B011 /* mkstemp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkstemp.c; sourceTree = "<group>"; };
 		FE4FA98D17B8191C00E3B011 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
@@ -207,7 +210,6 @@
 		FEF4BFC817B3FADA00D2085A /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
 		FEF4BFC917B3FADA00D2085A /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
 		FEF4BFCB17B3FADA00D2085A /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
-		FEF4BFD117B3FADA00D2085A /* sound_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_player.h; sourceTree = "<group>"; };
 		FEF4BFD217B3FADA00D2085A /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
 		FEF4BFD317B3FADA00D2085A /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
 		FEF4BFD417B3FADA00D2085A /* view_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = view_entity.h; sourceTree = "<group>"; };
@@ -256,15 +258,6 @@
 		FEF4C04417B3FB0D00D2085A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		FEF4C07317B3FB0D00D2085A /* TypeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeUtil.h; sourceTree = "<group>"; };
 		FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeUtil.mm; sourceTree = "<group>"; };
-		FEF4C07617B3FB0D00D2085A /* ALAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAudio.h; sourceTree = "<group>"; };
-		FEF4C07717B3FB0D00D2085A /* ALAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALAudio.mm; sourceTree = "<group>"; };
-		FEF4C07817B3FB0D00D2085A /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
-		FEF4C07917B3FB0D00D2085A /* AVAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAudio.h; sourceTree = "<group>"; };
-		FEF4C07A17B3FB0D00D2085A /* AVAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVAudio.mm; sourceTree = "<group>"; };
-		FEF4C07B17B3FB0D00D2085A /* MyOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenALSupport.h; sourceTree = "<group>"; };
-		FEF4C07C17B3FB0D00D2085A /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
-		FEF4C07D17B3FB0D00D2085A /* SoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundPlayer.h; sourceTree = "<group>"; };
-		FEF4C07E17B3FB0D00D2085A /* SoundPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundPlayer.mm; sourceTree = "<group>"; };
 		FEF4C67B17B3FC3300D2085A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEF4C67D17B3FE0000D2085A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FEF4C67E17B3FE0000D2085A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -272,6 +265,14 @@
 		FEF4C68417B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
 		FEF4C68617B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		FEF4C68817B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainMenu.xib; sourceTree = "<group>"; };
+		FEF91D1B17E01FD700018432 /* AppleSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSound.h; sourceTree = "<group>"; };
+		FEF91D1C17E01FD700018432 /* AppleSound.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleSound.mm; sourceTree = "<group>"; };
+		FEF91D1D17E01FD700018432 /* AppleSoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSoundController.h; sourceTree = "<group>"; };
+		FEF91D1E17E01FD700018432 /* AppleSoundController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleSoundController.mm; sourceTree = "<group>"; };
+		FEF91D1F17E01FD700018432 /* MyOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenALSupport.h; sourceTree = "<group>"; };
+		FEF91D2017E01FD700018432 /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
+		FEF91D2117E01FD700018432 /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = "<group>"; };
+		FEF91D2217E01FD700018432 /* sound_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_controller.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +372,7 @@
 			children = (
 				FE64949717A315CD0051BF31 /* App */,
 				FEF4BFBA17B3FA9B00D2085A /* SharkEngine */,
+				FEF91D1017E01FBB00018432 /* SharkSound */,
 				FE64949017A315CD0051BF31 /* Frameworks */,
 				FE64948F17A315CD0051BF31 /* Products */,
 			);
@@ -492,7 +494,6 @@
 				FE616C5717D7CB1E00FF061B /* asset_reader_factory_module.h */,
 				FE4FAA8017B85B8500E3B011 /* input_module.h */,
 				FEB9DD1D17D6B274006EE538 /* persistence_module.h */,
-				FEF4BFD117B3FADA00D2085A /* sound_player.h */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -599,7 +600,6 @@
 			isa = PBXGroup;
 			children = (
 				FEF4C01D17B3FB0C00D2085A /* gameengine */,
-				FEF4C07517B3FB0D00D2085A /* soundengine */,
 			);
 			name = src;
 			path = ___SHARKENGINE_HOME___/platforms/apple/src;
@@ -648,22 +648,6 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
-		FEF4C07517B3FB0D00D2085A /* soundengine */ = {
-			isa = PBXGroup;
-			children = (
-				FEF4C07617B3FB0D00D2085A /* ALAudio.h */,
-				FEF4C07717B3FB0D00D2085A /* ALAudio.mm */,
-				FEF4C07817B3FB0D00D2085A /* Audio.h */,
-				FEF4C07917B3FB0D00D2085A /* AVAudio.h */,
-				FEF4C07A17B3FB0D00D2085A /* AVAudio.mm */,
-				FEF4C07B17B3FB0D00D2085A /* MyOpenALSupport.h */,
-				FEF4C07C17B3FB0D00D2085A /* MyOpenALSupport.mm */,
-				FEF4C07D17B3FB0D00D2085A /* SoundPlayer.h */,
-				FEF4C07E17B3FB0D00D2085A /* SoundPlayer.mm */,
-			);
-			path = soundengine;
-			sourceTree = "<group>";
-		};
 		FEF4C68217B3FF3700D2085A /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +656,48 @@
 				FEF4C68717B3FF3700D2085A /* MainMenu.xib */,
 			);
 			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		FEF91D1017E01FBB00018432 /* SharkSound */ = {
+			isa = PBXGroup;
+			children = (
+				FEF91D1117E01FD700018432 /* src */,
+			);
+			name = SharkSound;
+			path = ___SHARKSOUND_HOME___;
+			sourceTree = "<absolute>";
+		};
+		FEF91D1117E01FD700018432 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FEF91D1217E01FD700018432 /* sharksound */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FEF91D1217E01FD700018432 /* sharksound */ = {
+			isa = PBXGroup;
+			children = (
+				FEF91D1A17E01FD700018432 /* apple */,
+				FE23DC4717E2A06600F28FF5 /* sound.cc */,
+				FEF91D2117E01FD700018432 /* sound.h */,
+				FE23DC4617E2A06600F28FF5 /* sound_controller.cc */,
+				FEF91D2217E01FD700018432 /* sound_controller.h */,
+			);
+			path = sharksound;
+			sourceTree = "<group>";
+		};
+		FEF91D1A17E01FD700018432 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				FEF91D1B17E01FD700018432 /* AppleSound.h */,
+				FEF91D1C17E01FD700018432 /* AppleSound.mm */,
+				FEF91D1D17E01FD700018432 /* AppleSoundController.h */,
+				FEF91D1E17E01FD700018432 /* AppleSoundController.mm */,
+				FEF91D1F17E01FD700018432 /* MyOpenALSupport.h */,
+				FEF91D2017E01FD700018432 /* MyOpenALSupport.mm */,
+			);
+			path = apple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -809,10 +835,6 @@
 				FEF4C01B17B3FADA00D2085A /* tinyxml2.cpp in Sources */,
 				FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */,
 				FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */,
-				FEF4C09517B3FB0D00D2085A /* ALAudio.mm in Sources */,
-				FEF4C09617B3FB0D00D2085A /* AVAudio.mm in Sources */,
-				FEF4C09717B3FB0D00D2085A /* MyOpenALSupport.mm in Sources */,
-				FEF4C09817B3FB0D00D2085A /* SoundPlayer.mm in Sources */,
 				FEF4C68017B3FE0000D2085A /* AppDelegate.mm in Sources */,
 				FEF4C68117B3FE0000D2085A /* main.m in Sources */,
 				FE4FA9FB17B8191D00E3B011 /* mkstemp.c in Sources */,
@@ -873,6 +895,11 @@
 				FEB9DD2017D6B291006EE538 /* ApplePersistenceModule.mm in Sources */,
 				FE616C5A17D7CB3300FF061B /* zipped_asset_reader.cc in Sources */,
 				FE616C5D17D7CB4A00FF061B /* OSXAssetReaderFactoryModule.mm in Sources */,
+				FEF91D2617E01FD700018432 /* AppleSound.mm in Sources */,
+				FEF91D2717E01FD700018432 /* AppleSoundController.mm in Sources */,
+				FEF91D2817E01FD700018432 /* MyOpenALSupport.mm in Sources */,
+				FE23DC4817E2A06600F28FF5 /* sound_controller.cc in Sources */,
+				FE23DC4917E2A06600F28FF5 /* sound.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,6 +965,7 @@
 					../../../gameengine/core/include,
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
+					../../../sharksound/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -971,6 +999,7 @@
 					../../../gameengine/core/include,
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
+					../../../sharksound/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx10.7;

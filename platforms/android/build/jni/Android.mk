@@ -14,7 +14,8 @@ LOCAL_C_INCLUDES += \
     $(SHARKENGINE_APP_HOME)/src \
     $(SHARKENGINE_HOME)/core/src \
     $(SHARKENGINE_HOME)/core/include \
-    $(SHARKENGINE_HOME)/platforms/android/src
+    $(SHARKENGINE_HOME)/platforms/android/src \
+    $(SHARKSOUND_HOME)/src
 
 LOCAL_CPP_EXTENSION := .cc .cpp
 
@@ -28,9 +29,6 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_asset_reader_factory_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/modules/android_persistence_module.cc \
     $(SHARKENGINE_HOME)/platforms/android/src/gameengine/android/android_asset_reader.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_instance.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_player.cc \
-    $(SHARKENGINE_HOME)/platforms/android/src/soundengine/sound_type.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/animation.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/engine_view.cc \
     $(SHARKENGINE_HOME)/core/src/gameengine/entities/animatable.cc \
@@ -106,7 +104,12 @@ LOCAL_SRC_FILES := \
     $(SHARKENGINE_HOME)/core/src/gameengine/thirdparty/PennerEasing/Quart.cpp \
     $(SHARKENGINE_HOME)/core/src/gameengine/thirdparty/PennerEasing/Quint.cpp \
     $(SHARKENGINE_HOME)/core/src/gameengine/thirdparty/PennerEasing/Sine.cpp \
-    $(SHARKENGINE_HOME)/core/src/gameengine/thirdparty/tinyxml2/tinyxml2.cpp
+    $(SHARKENGINE_HOME)/core/src/gameengine/thirdparty/tinyxml2/tinyxml2.cpp \
+    $(SHARKSOUND_HOME)/src/sharksound/sound.cc \
+    $(SHARKSOUND_HOME)/src/sharksound/sound_controller.cc \
+    $(SHARKSOUND_HOME)/src/sharksound/android/android_sound.cc \
+    $(SHARKSOUND_HOME)/src/sharksound/android/android_sound_controller.cc \
+    $(SHARKSOUND_HOME)/src/sharksound/android/android_sound_instance.cc
 
 LOCAL_LDLIBS := -lGLESv1_CM -lOpenSLES -landroid -ldl -llog -lz
 

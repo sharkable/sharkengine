@@ -19,6 +19,8 @@ extern "C" {
 #include <android/asset_manager_jni.h>
 #include <GLES/gl.h>
 
+#include "sharksound/android/android_sound_controller.h"
+
 #include "gameengine/android/modules/android_ad_module.h"
 #include "gameengine/android/modules/android_analytics_module.h"
 #include "gameengine/android/modules/android_app_store_module.h"
@@ -26,8 +28,6 @@ extern "C" {
 #include "gameengine/android/modules/android_persistence_module.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/game_engine.h"
-#include "soundengine/sound_player.h"
-
 
 static sp<GameEngine> game_engine_;
 
@@ -81,15 +81,15 @@ void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
 
   AAssetManager *mgr = AAssetManager_fromJava(env, asset_manager);
   assert(NULL != mgr);
-  // TODO casting is bad
-  ((SoundPlayerImpl *)SoundPlayer::instance())->setAssetManager(mgr);
+  sp<SharkSound::SoundController> sound_controller =
+      sp<SharkSound::SoundController>(new SharkSound::AndroidSoundController(mgr));
+  game_engine_->set_sound(sound_controller);
 
   sharkengine_init(game_engine_.get());
 }
 
 void shutdown() {
   game_engine_.reset();
-  SoundPlayer::shutdown();  // TODO SoundEngine should be an instance in GameEngine. singleton bad.
 }
 
 int handle_back_button() {

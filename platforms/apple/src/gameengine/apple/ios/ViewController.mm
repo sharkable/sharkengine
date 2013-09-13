@@ -8,6 +8,8 @@
 
 #import "gameengine/apple/ios/ViewController.h"
 
+#import "sharksound/apple/AppleSoundController.h"
+
 #import "gameengine/apple/ios/EAGLView.h"
 #import "gameengine/apple/ios/GameTimer.h"
 #import "gameengine/apple/ios/GameTouchWindow.h"
@@ -19,8 +21,6 @@
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
-
-#import "sharksound/apple/AppleSoundPlayer.h"
 
 @interface ViewController ()
 - (void)update;
@@ -65,7 +65,7 @@
     }
     gameEngine_->set_analytics_module(sp<AnalyticsModule>(new IOSAnalyticsModule()));
     gameEngine_->set_app_store_module(sp<AppStoreModule>(new IOSAppStoreModule()));
-    gameEngine_->set_sound_player(sp<SoundPlayer>(new AppleSoundPlayer()));
+    gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
     gameTimer_ = [[GameTimer alloc] initWithTarget:self selector:@selector(update)];
     gameTouchWindow_.gameEngine = gameEngine_;
