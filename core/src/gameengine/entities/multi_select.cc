@@ -8,13 +8,20 @@
 
 #include "gameengine/entities/multi_select.h"
 
-//#include "gameengine/modules/sound_player.h"
+#include "sharksound/sound.h"
+#include "sharksound/sound_controller.h"
+
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/sprite.h"
 #include "gameengine/touch.h"
 
 using std::vector;
+
+MultiSelect::MultiSelect(GameEngine *game_engine)
+    : selected_value_(0) {
+  click_sound_ = game_engine->sound()->GetSound("sounds/button_click.wav");
+}
 
 MultiSelect::~MultiSelect() {
   for (int i = 0; i < normal_sprites_.size(); i++) {
@@ -57,7 +64,7 @@ bool MultiSelect::TouchesBegan(GamePoint offset, vector<Touch> touches) {
           touchPoint.y < y + size.height) {
         if (selected_value_ != i) {
           selected_value_ = i;
-//          SoundPlayer::instance()->playSound(kSoundMultiSelect);
+          click_sound_->Play();
         };
         return true;
       }

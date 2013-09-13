@@ -14,12 +14,16 @@
 #include "gameengine/entities/animatable.h"
 #include "gameengine/coordinate_types.h"
 
+class GameEngine;
 class Sprite;
 class Touch;
+namespace SharkSound {
+  class Sound;
+}
 
 class MultiSelect : public Animatable {
  public:
-  MultiSelect() {}
+  MultiSelect(GameEngine *game_engine);
   ~MultiSelect();
 
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);
@@ -37,6 +41,7 @@ class MultiSelect : public Animatable {
   std::vector<Sprite> selected_sprites_;
   std::vector<double> positions_x_;
   std::vector<double> positions_y_;
+  SharkSound::Sound *click_sound_;
   int selected_value_;
 };
 
