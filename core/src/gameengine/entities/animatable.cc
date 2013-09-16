@@ -25,20 +25,20 @@ Animatable::Animatable(GamePoint position)
 }
 
 void Animatable::AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks) {
-  x_animation_.Reset(position_.x, position.x - position_.x, ticks, animation_type);
-  y_animation_.Reset(position_.y, position.y - position_.y, ticks, animation_type);
+  x_animation_.Reset(position_.x, position.x, ticks, animation_type);
+  y_animation_.Reset(position_.y, position.y, ticks, animation_type);
 }
 
 void Animatable::AnimateToAngle(double angle, AnimationType animation_type, int ticks) {
-  angle_animation_.Reset(angle_, angle - angle_, ticks, animation_type);
+  angle_animation_.Reset(angle_, angle, ticks, animation_type);
 }
 
 void Animatable::AnimateToAlpha(double alpha, AnimationType animation_type, int ticks) {
-  alpha_animation_.Reset(alpha_, alpha - alpha_, ticks, animation_type);
+  alpha_animation_.Reset(alpha_, alpha, ticks, animation_type);
 }
 
 void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ticks) {
-  zoom_animation_.Reset(zoom_, zoom - zoom_, ticks, animation_type);
+  zoom_animation_.Reset(zoom_, zoom, ticks, animation_type);
 }
 
 

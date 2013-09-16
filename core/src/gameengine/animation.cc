@@ -20,9 +20,10 @@ Animation::Animation()
       type_(kAnimationTypeLinear) {
 }
 
-void Animation::Reset(float start, float distance, int ticks, AnimationType type) {
+void Animation::Reset(float start, float end, int ticks, AnimationType type) {
   start_ = start;
-  distance_ = distance;
+  end_ = end;
+  distance_ = end - start;
   ticks_ = 0;
   totalTicks_ = ticks;
   type_ = type;
@@ -30,6 +31,9 @@ void Animation::Reset(float start, float distance, int ticks, AnimationType type
 
 double Animation::Update() {
   ticks_++;
+  if (ticks_ >= totalTicks_) {
+    return end_;
+  }
   switch (type_) {
     case kAnimationTypeLinear:
       return Linear::easeNone(ticks_, start_, distance_, totalTicks_);

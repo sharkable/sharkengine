@@ -23,12 +23,13 @@ class Animation {
  public:
   Animation();
 
-  void Reset(float start, float distance, int ticks, AnimationType type);
+  void Reset(float start, float end, int ticks, AnimationType type);
   double Update();
   bool IsActive();
 
  private:
   float start_;
+  float end_;
   float distance_;
   int ticks_;
   int totalTicks_;
