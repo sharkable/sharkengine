@@ -71,6 +71,9 @@ bool Button::TouchesBegan(GamePoint offset, vector<Touch> touches) {
         state_ = kButtonStatePressed;
         beep_sound_->Play();
         start_touch_ = touches[i].identifier();
+        if (delegate_) {
+          delegate_->ButtonDown(this);
+        }
         return true;
       }
     }
@@ -86,7 +89,7 @@ void Button::TouchesEnded(GamePoint offset, vector<Touch> touches) {
       if (touches[i].identifier() == start_touch_) {
         state_ = kButtonStateNormal;
         if (delegate_) {
-          delegate_->ButtonPressed(this);
+          delegate_->ButtonUp(this);
         }
         break;
       }

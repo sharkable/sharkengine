@@ -29,7 +29,8 @@ class Button;
 
 class ButtonDelegate {
  public:
-  virtual void ButtonPressed(Button *button) = 0;
+  virtual void ButtonDown(Button *button) {};
+  virtual void ButtonUp(Button *button) {};
 };
 
 class Button : public Animatable {
