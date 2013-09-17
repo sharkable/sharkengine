@@ -81,6 +81,36 @@ void EngineView::AddEntity(sp<ViewEntity> entity) {
   entities_.push_back(entity);
 }
 
+void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity) {
+  InsertEntityBefore(sp<ViewEntity>(entity), existing_entity);
+}
+
+void EngineView::InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity) {
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    if (i->get() == existing_entity) {
+      entities_.insert(i, entity);
+      return;
+    }
+  }
+  // Failed to find |existing_entity|.
+  assert(false);
+}
+
+void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity) {
+  InsertEntityAfter(sp<ViewEntity>(entity), existing_entity);
+}
+
+void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity) {
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    if (i->get() == existing_entity) {
+      entities_.insert(i + 1, entity);
+      return;
+    }
+  }
+  // Failed to find |existing_entity|.
+  assert(false);
+}
+
 void EngineView::RemoveEntity(sp<ViewEntity> entity) {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (*i == entity) {

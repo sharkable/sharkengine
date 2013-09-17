@@ -36,6 +36,10 @@ class EngineView {
   // object.
   void AddEntity(ViewEntity *entity);
   void AddEntity(sp<ViewEntity> entity);
+  void InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity);
+  void InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity);
+  void InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity);
+  void InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity);
   void RemoveEntity(sp<ViewEntity> entity);
   bool ContainsEntity(sp<ViewEntity> entity);
 
