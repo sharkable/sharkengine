@@ -16,6 +16,7 @@ IOSLabel::IOSLabel(string text, GamePoint position, UIView *parent_view)
     : Label(position) {
   parent_view_ = [parent_view retain];
   uikit_label_ = [[UILabel alloc] init];
+  uikit_label_.textColor = [UIColor whiteColor];
   [parent_view_ addSubview:uikit_label_];
   SetText(text);
 }
