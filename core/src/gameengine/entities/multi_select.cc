@@ -1,5 +1,5 @@
 //
-//  multi_select.m
+//  multi_select.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2010-04-30.
