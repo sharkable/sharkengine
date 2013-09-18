@@ -15,6 +15,7 @@
 #include "gameengine/modules/app_store_module.h"
 #include "gameengine/modules/asset_reader_factory_module.h"
 #include "gameengine/modules/input_module.h"
+#include "gameengine/modules/label_factory_module.h"
 #include "gameengine/modules/persistence_module.h"
 
 GameEngine::GameEngine()
@@ -170,4 +171,8 @@ void GameEngine::SetRootView(sp<EngineView> view) {
 
 sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
   return asset_reader_factory_module_->CreateAssetReader(filename);
+}
+
+sp<Label> GameEngine::CreateLabel(const std::string &text, GamePoint position) {
+  return label_factory_module_->CreateLabel(text, position);
 }

@@ -19,6 +19,7 @@
 #import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
 #import "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
+#import "gameengine/apple/modules/ios/IOSLabelFactoryModule.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 
@@ -56,6 +57,8 @@
 
     gameEngine_->set_asset_reader_factory_module(
         sp<AssetReaderFactoryModule>(new IOSAssetReaderFactoryModule()));
+    gameEngine_->set_label_factory_module(
+        sp<LabelFactoryModule>(new IOSLabelFactoryModule(self.view)));
     gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
     // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
     if (gameEngine_->platform_type() == kPlatformTypePhone) {
