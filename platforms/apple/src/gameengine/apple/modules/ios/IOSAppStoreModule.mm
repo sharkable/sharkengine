@@ -8,8 +8,8 @@
 
 #include "gameengine/apple/modules/ios/IOSAppStoreModule.h"
 
-#include <StoreKit/StoreKit.h>
-#include <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
+#import <UIKit/UIKit.h>
 
 #include "gameengine/apple/TypeUtil.h"
 #include "gameengine/apple/thirdparty/ios/appirater/Appirater.h"
