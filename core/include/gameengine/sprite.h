@@ -80,8 +80,8 @@ class Sprite {
         return game_engine_->game_point_to_screen_point(point);
       case kSpriteAnchorCenter:
         GameSize size = content_size();
-        point.x -= size.width / 2.f * zoom;
-        point.y -= size.height / 2.f * zoom;
+        point.x -= size.width / 2.f;
+        point.y -= size.height / 2.f;
         return game_engine_->game_point_to_screen_point(point);
     }
   }
