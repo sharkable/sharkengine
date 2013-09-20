@@ -13,18 +13,33 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 
+typedef enum {
+  kSpriteAnchorTopLeft,
+  kSpriteAnchorCenter,
+} SpriteAnchor;
+
 class Sprite {
  public:
-  Sprite() { }
+  // The default constructor will result in a useless |Sprite| object with no |GameEngine|.
+  // This is allowed so that classes can delay initialization of their |Sprite| ivars.
+  Sprite() : game_engine_(NULL) {
+  }
 
-  Sprite(GameEngine *game_engine) : game_engine_(game_engine) { }
-
-  Sprite(GameEngine *game_engine, Texture2D texture)
+  Sprite(GameEngine *game_engine, SpriteAnchor anchor = kSpriteAnchorTopLeft)
     : game_engine_(game_engine),
+      anchor_(anchor) {
+  }
+
+  Sprite(GameEngine *game_engine, Texture2D texture, SpriteAnchor anchor = kSpriteAnchorTopLeft)
+    : game_engine_(game_engine),
+      anchor_(anchor),
       texture_(texture) {
   }
 
-  Sprite(GameEngine *game_engine, std::string texture_name) : game_engine_(game_engine) {
+  Sprite(GameEngine *game_engine, std::string texture_name,
+         SpriteAnchor anchor = kSpriteAnchorTopLeft)
+    : game_engine_(game_engine),
+      anchor_(anchor) {
     texture_ = game_engine->resource_loader().TextureWithName(texture_name);
   }
 
@@ -38,27 +53,41 @@ class Sprite {
   }
 
   void DrawAtPoint(GamePoint position) {
-    texture_.DrawAtPoint(game_engine_->game_point_to_screen_point(position));
+    texture_.DrawAtPoint(anchor_point_to_screen_point(position, 1.f));
   }
 
   void DrawAtPointAngle(GamePoint position, GLfloat angle) {
-    texture_.DrawAtPointAngle(game_engine_->game_point_to_screen_point(position), angle);
+    texture_.DrawAtPointAngle(anchor_point_to_screen_point(position, 1.f), angle);
   }
 
   void Draw(GamePoint position, GLfloat angle, GLfloat alpha, GLfloat zoom) {
-    texture_.DrawAtPoint(game_engine_->game_point_to_screen_point(position), alpha, zoom, angle, 0);
+    texture_.DrawAtPoint(anchor_point_to_screen_point(position, zoom), alpha, zoom, angle, 0);
   }
 
   void DrawAtPointLeftRatio(GamePoint position, GLfloat left_ratio) {
-    texture_.DrawAtPointLeftRatio(game_engine_->game_point_to_screen_point(position), left_ratio);
+    texture_.DrawAtPointLeftRatio(anchor_point_to_screen_point(position, 1.f), left_ratio);
   }
 
   void DrawAtPointRightRatio(GamePoint position, GLfloat right_ratio) {
-    texture_.DrawAtPointRightRatio(game_engine_->game_point_to_screen_point(position), right_ratio);
+    texture_.DrawAtPointRightRatio(anchor_point_to_screen_point(position, 1.f), right_ratio);
   }
 
  private:
+  ScreenPoint anchor_point_to_screen_point(GamePoint point, GLfloat zoom) {
+    assert(game_engine_);
+    switch (anchor_) {
+      case kSpriteAnchorTopLeft:
+        return game_engine_->game_point_to_screen_point(point);
+      case kSpriteAnchorCenter:
+        GameSize size = content_size();
+        point.x -= size.width / 2.f * zoom;
+        point.y -= size.height / 2.f * zoom;
+        return game_engine_->game_point_to_screen_point(point);
+    }
+  }
+
   GameEngine *game_engine_;  // weak
+  SpriteAnchor anchor_;
   Texture2D texture_;
 };
 
