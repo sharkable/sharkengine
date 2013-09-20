@@ -62,5 +62,7 @@
 		<string>___SHARKENGINE_ORIENTATION_1___</string>
 		<string>___SHARKENGINE_ORIENTATION_2___</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
