@@ -141,6 +141,7 @@ void GameEngine::PushView(sp<EngineView> view) {
   if (next_views_.size() == 0) {
     next_views_ = views_;
   }
+  view->set_is_visible(true);
   next_views_.push_back(view);
 }
 
@@ -149,6 +150,7 @@ void GameEngine::PopView() {
   if (next_views_.size() == 0) {
     next_views_ = views_;
   }
+  next_views_.back()->set_is_visible(false);
   next_views_.pop_back();
 }
 
@@ -158,6 +160,7 @@ void GameEngine::RemoveView(EngineView *view) {
   }
   for (auto i = next_views_.begin(); i != next_views_.end(); i++) {
     if (i->get() == view) {
+      view->set_is_visible(false);
       i = next_views_.erase(i);
       break;
     }
@@ -165,6 +168,7 @@ void GameEngine::RemoveView(EngineView *view) {
 }
 
 void GameEngine::SetRootView(sp<EngineView> view) {
+  view->set_is_visible(true);
   next_views_.clear();
   next_views_.push_back(view);
 }

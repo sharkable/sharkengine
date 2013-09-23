@@ -9,7 +9,8 @@
 #include "gameengine/entities/animatable.h"
 
 Animatable::Animatable()
-    : delegate_(NULL),
+    : ViewEntity(),
+      delegate_(NULL),
       position_(kGamePointZero),
       angle_(0),
       alpha_(1),
@@ -17,7 +18,8 @@ Animatable::Animatable()
 }
 
 Animatable::Animatable(GamePoint position)
-    : delegate_(NULL),
+    : ViewEntity(),
+      delegate_(NULL),
       position_(position),
       angle_(0),
       alpha_(1),

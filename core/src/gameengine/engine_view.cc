@@ -16,7 +16,9 @@
 
 using std::vector;
 
-EngineView::EngineView(GameEngine *game_engine) : game_engine_(game_engine) {
+EngineView::EngineView(GameEngine *game_engine)
+    : game_engine_(game_engine),
+      is_visible_(false) {
 }
 
 void EngineView::Update() {
@@ -73,11 +75,13 @@ bool EngineView::HandleBackButton() {
 }
 
 void EngineView::AddEntity(ViewEntity *entity) {
+  entity->set_engine_view(this);
   entities_.push_back(sp<ViewEntity>(entity));
 }
 
 void EngineView::AddEntity(sp<ViewEntity> entity) {
   assert(entity);
+  entity->set_engine_view(this);
   entities_.push_back(entity);
 }
 
@@ -88,6 +92,7 @@ void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_ent
 void EngineView::InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity) {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (i->get() == existing_entity) {
+      entity->set_engine_view(this);
       entities_.insert(i, entity);
       return;
     }
@@ -103,6 +108,7 @@ void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_enti
 void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity) {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (i->get() == existing_entity) {
+      entity->set_engine_view(this);
       entities_.insert(i + 1, entity);
       return;
     }
@@ -114,12 +120,10 @@ void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_e
 void EngineView::RemoveEntity(sp<ViewEntity> entity) {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (*i == entity) {
+      entity->set_engine_view(NULL);
       entities_.erase(i);
       break;
     }
   }
 }
 
-bool EngineView::ContainsEntity(sp<ViewEntity> entity) {
-  return std::find(entities_.begin(), entities_.end(), entity) != entities_.end();
-}

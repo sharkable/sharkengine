@@ -41,15 +41,17 @@ class EngineView {
   void InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity);
   void InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity);
   void RemoveEntity(sp<ViewEntity> entity);
-  bool ContainsEntity(sp<ViewEntity> entity);
 
   GameEngine *game_engine() { return game_engine_; }
-
- protected:
+  bool is_visible() { return is_visible_; }
 
  private:
+  void set_is_visible(bool is_visible) { is_visible_ = is_visible; }
+  friend class GameEngine;
+
   GameEngine *game_engine_;  // weak
   std::vector<sp<ViewEntity> > entities_;
+  bool is_visible_;
 };
 
 #endif

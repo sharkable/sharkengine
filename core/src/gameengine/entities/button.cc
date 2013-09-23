@@ -17,7 +17,8 @@
 using std::vector;
 
 Button::Button(GameEngine *game_engine)
-    : game_engine_(game_engine),
+    : Animatable(),
+      game_engine_(game_engine),
       state_(kButtonStateNormal) {
   Init();
 }

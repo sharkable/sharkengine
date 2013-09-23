@@ -8,6 +8,7 @@
 
 #include "gameengine/apple/entities/ios/IOSLabel.h"
 
+#include "gameengine/engine_view.h"
 #include "gameengine/apple/TypeUtil.h"
 
 using std::string;
@@ -17,7 +18,6 @@ IOSLabel::IOSLabel(string text, GamePoint position, UIView *parent_view)
   parent_view_ = [parent_view retain];
   uikit_label_ = [[UILabel alloc] init];
   uikit_label_.textColor = [UIColor whiteColor];
-  [parent_view_ addSubview:uikit_label_];
   SetText(text);
 }
 
@@ -40,6 +40,15 @@ void IOSLabel::SetText(const std::string &text) {
 // ViewEntity
 
 void IOSLabel::Render(GamePoint offset) {
+  if (uikit_label_.superview == parent_view_) {
+    if (!view() || !view()->is_visible()) {
+      [uikit_label_ removeFromSuperview];
+    }
+  } else {
+    if (view() && view()->is_visible()) {
+      [parent_view_ addSubview:uikit_label_];
+    }
+  }
   CGRect frame = uikit_label_.frame;
   frame.origin.x = position().x / 2;  // TODO. Do a proper conversion.
   frame.origin.y = position().y / 2;
