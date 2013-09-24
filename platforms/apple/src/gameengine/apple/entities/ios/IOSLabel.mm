@@ -22,6 +22,7 @@ IOSLabel::IOSLabel(string text, GamePoint position, UIView *parent_view)
 }
 
 IOSLabel::~IOSLabel() {
+  [uikit_label_ removeFromSuperview];
   [uikit_label_ release];
   [parent_view_ release];
 }
@@ -40,6 +41,8 @@ void IOSLabel::SetText(const std::string &text) {
 // ViewEntity
 
 void IOSLabel::Render(GamePoint offset) {
+  // TODO The label won't go away if the view is removed and the |EngineView| is not desctructed.
+  // reconsider the callback solution.
   if (uikit_label_.superview == parent_view_) {
     if (!view() || !view()->is_visible()) {
       [uikit_label_ removeFromSuperview];
