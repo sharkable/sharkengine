@@ -11,6 +11,7 @@
 
 #include <string>
 
+#include "gameengine/apple/modules/ios/IOSAdModule.h"
 #include "gameengine/modules/ad_module.h"
 
 @class IAdInterstitialState;
@@ -34,6 +35,8 @@ class IOSIAdAdModule : public AdModule {
  private:
   IAdInterstitialState *interstitial_state_;
   UIViewController *root_view_controller_;
+  // Back up to AdMob if iAd doesn't work.
+  IOSAdModule admob_module_;
 };
 
 #endif

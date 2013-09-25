@@ -94,7 +94,8 @@ using std::string;
 @end
 
 
-IOSIAdAdModule::IOSIAdAdModule(UIViewController *root_view_controller) {
+IOSIAdAdModule::IOSIAdAdModule(UIViewController *root_view_controller)
+    : admob_module_(root_view_controller) {
   interstitial_state_ = [[IAdInterstitialState alloc] init];
   root_view_controller_ = [root_view_controller retain];
 }
@@ -108,23 +109,27 @@ IOSIAdAdModule::~IOSIAdAdModule() {
 // AdModule
 
 void IOSIAdAdModule::SetPublisherId(std::string publisher_id) {
-  // TODO...
+  admob_module_.SetPublisherId(publisher_id);
 }
 
 void IOSIAdAdModule::SetAdAtPoint(ScreenPoint point) {
-  // TODO
+  admob_module_.SetAdAtPoint(point);
 }
 
 void IOSIAdAdModule::RemoveAd() {
-  // TODO
+  admob_module_.RemoveAd();
 }
 
 void IOSIAdAdModule::PrepareFullScreenAd() {
+  admob_module_.PrepareFullScreenAd();
   [interstitial_state_ prepareFullScreenAd];
 }
 
 bool IOSIAdAdModule::ShowFullScreenAd() {
-  return [interstitial_state_ showFullScreenAdFromViewController:root_view_controller_];
+  if (![interstitial_state_ showFullScreenAdFromViewController:root_view_controller_]) {
+    return admob_module_.ShowFullScreenAd();
+  }
+  return false;
 }
 
 bool IOSIAdAdModule::IsShowingFullScreenAd() {
