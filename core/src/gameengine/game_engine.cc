@@ -56,32 +56,7 @@ void GameEngine::Update() {
 
   assert(views_.size() > 0);
 
-  // Process input.
-  sp<EngineView> touch_view;
-  for (auto i = views_.rbegin(); i != views_.rend(); i++) {
-    if ((*i)->IsCapturingTouches()) {
-      touch_view = *i;
-      break;
-    }
-  }
-  if (touch_view) {
-    if (touches_began_.size() > 0) {
-      touch_view->TouchesBegan(touches_began_);
-      touches_began_.clear();
-    }
-    if (touches_moved_.size() > 0) {
-      touch_view->TouchesMoved(touches_moved_);
-      touches_moved_.clear();
-    }
-    if (touches_ended_.size() > 0) {
-      touch_view->TouchesEnded(touches_ended_);
-      touches_ended_.clear();
-    }
-    // TODO should this be called if both values are 0?
-    touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
-    mouse_delta_x_ = 0;
-    mouse_delta_y_ = 0;
-  }
+  ProcessInput();
 
   // Update views.
   for (int i = 0; i < views_.size(); i++) {
@@ -179,4 +154,35 @@ sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
 
 sp<Label> GameEngine::CreateLabel(const std::string &text, GamePoint position) {
   return label_factory_module_->CreateLabel(text, position);
+}
+
+
+#pragma mark - private
+
+void GameEngine::ProcessInput() {
+  sp<EngineView> touch_view;
+  for (auto i = views_.rbegin(); i != views_.rend(); i++) {
+    if ((*i)->IsCapturingTouches()) {
+      touch_view = *i;
+      break;
+    }
+  }
+  if (touch_view) {
+    if (touches_began_.size() > 0) {
+      touch_view->TouchesBegan(touches_began_);
+      touches_began_.clear();
+    }
+    if (touches_moved_.size() > 0) {
+      touch_view->TouchesMoved(touches_moved_);
+      touches_moved_.clear();
+    }
+    if (touches_ended_.size() > 0) {
+      touch_view->TouchesEnded(touches_ended_);
+      touches_ended_.clear();
+    }
+    // TODO should this be called if both values are 0?
+    touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
+    mouse_delta_x_ = 0;
+    mouse_delta_y_ = 0;
+  }
 }

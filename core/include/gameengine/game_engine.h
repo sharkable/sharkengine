@@ -149,6 +149,7 @@ class GameEngine {
   }
 
  private:
+  void ProcessInput();
 
   PlatformType platform_type_;
   PlatformResolution platform_resolution_;
