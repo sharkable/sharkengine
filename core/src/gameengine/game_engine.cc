@@ -167,7 +167,31 @@ void GameEngine::ProcessInput() {
       break;
     }
   }
+
   if (touch_view) {
+    if (touches_began_.size() > 0) {
+      potential_tap_touches_.insert(potential_tap_touches_.end(), touches_began_.begin(),
+                                    touches_began_.end());
+    }
+    for (auto i = touches_moved_.begin(); i != touches_moved_.end(); i++) {
+      for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end(); j++) {
+        if (i->identifier() == j->identifier()) {
+          potential_tap_touches_.erase(j);
+          break;
+        }
+      }
+    }
+    for (auto i = touches_ended_.begin(); i != touches_ended_.end(); i++) {
+      for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end();) {
+        if (i->identifier() == j->identifier()) {
+          touch_view->TouchTapped(*i);
+          j = potential_tap_touches_.erase(j);
+        } else {
+          j++;
+        }
+      }
+    }
+
     if (touches_began_.size() > 0) {
       touch_view->TouchesBegan(touches_began_);
       touches_began_.clear();

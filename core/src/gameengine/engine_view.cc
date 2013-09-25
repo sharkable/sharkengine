@@ -58,6 +58,12 @@ void EngineView::TouchesEnded(vector<Touch> touches) {
   }
 }
 
+void EngineView::TouchTapped(Touch touch) {
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->TouchTapped(kGamePointZero, touch);
+  }
+}
+
 void EngineView::HandleMouseDelta(float delta_x, float delta_y) {
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     (*i)->HandleMouseDelta(delta_x, delta_y);

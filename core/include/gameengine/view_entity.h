@@ -12,9 +12,9 @@
 #include <vector>
 
 #include "gameengine/coordinate_types.h"
+#include "gameengine/touch.h"
 
 class EngineView;
-class Touch;
 
 class ViewEntity {
  public:
@@ -25,6 +25,7 @@ class ViewEntity {
   virtual bool TouchesBegan(GamePoint offset, std::vector<Touch> touches) { return false; }
   virtual void TouchesMoved(GamePoint offset, std::vector<Touch> touches) {}
   virtual void TouchesEnded(GamePoint offset, std::vector<Touch> touches) {}
+  virtual void TouchTapped(GamePoint offset, Touch touch) {}
   virtual void ClearTouches() {}
   virtual void HandleMouseDelta(float delta_x, float delta_y) {}
 

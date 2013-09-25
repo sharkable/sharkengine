@@ -28,6 +28,7 @@ class EngineView {
   virtual void TouchesBegan(std::vector<Touch> touches);
   virtual void TouchesMoved(std::vector<Touch> touches);
   virtual void TouchesEnded(std::vector<Touch> touches);
+  virtual void TouchTapped(Touch touch);
   virtual void ClearTouches();
   virtual void HandleMouseDelta(float delta_x, float delta_y);
   virtual bool HandleBackButton();  // If this returns false, the app is quit.
