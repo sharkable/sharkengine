@@ -16,7 +16,7 @@
 
 class AdModule : public Module {
  public:
-  virtual void SetPublisherId(std::string publisher_id) {};
+  virtual void SetPublisherId(const std::string & publisher_id) {};
   virtual void SetAdAtPoint(ScreenPoint point) {};
   virtual void RemoveAd() {};
   virtual void PrepareFullScreenAd() {};

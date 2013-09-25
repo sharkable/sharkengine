@@ -61,7 +61,7 @@ IOSAdModule::~IOSAdModule() {
 
 // AdModule
 
-void IOSAdModule::SetPublisherId(string publisher_id) {
+void IOSAdModule::SetPublisherId(const std::string & publisher_id) {
   publisher_id_ = publisher_id;
 }
 

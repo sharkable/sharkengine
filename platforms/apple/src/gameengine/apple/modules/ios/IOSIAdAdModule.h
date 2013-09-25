@@ -22,7 +22,7 @@ class IOSIAdAdModule : public AdModule {
   ~IOSIAdAdModule();
 
   // AdModule
-  void SetPublisherId(std::string publisher_id);
+  void SetPublisherId(const std::string & publisher_id);
   void SetAdAtPoint(ScreenPoint point);
   void RemoveAd();
   void PrepareFullScreenAd();

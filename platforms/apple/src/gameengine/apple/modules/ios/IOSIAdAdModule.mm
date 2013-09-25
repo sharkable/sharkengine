@@ -108,7 +108,7 @@ IOSIAdAdModule::~IOSIAdAdModule() {
 
 // AdModule
 
-void IOSIAdAdModule::SetPublisherId(std::string publisher_id) {
+void IOSIAdAdModule::SetPublisherId(const std::string & publisher_id) {
   admob_module_.SetPublisherId(publisher_id);
 }
 
