@@ -149,7 +149,6 @@ class GameEngine {
   }
 
  private:
-  void UpdateSizeRatios();
 
   PlatformType platform_type_;
   PlatformResolution platform_resolution_;
