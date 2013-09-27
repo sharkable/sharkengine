@@ -12,6 +12,7 @@
 using std::vector;
 
 void CompositeEntity::AddEntity(sp<ViewEntity> entity) {
+  entity->SetEngineView(view());
   entities_.push_back(entity);
 }
 
@@ -59,5 +60,12 @@ void CompositeEntity::TouchesEnded(GamePoint offset, vector<Touch> touches) {
 void CompositeEntity::ClearTouches() {
   for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
     (*i)->ClearTouches();
+  }
+}
+
+void CompositeEntity::SetEngineView(EngineView *engine_view) {
+  ViewEntity::SetEngineView(engine_view);
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    (*i)->SetEngineView(engine_view);
   }
 }

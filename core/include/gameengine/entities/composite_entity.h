@@ -29,6 +29,7 @@ class CompositeEntity : public Animatable {
   void TouchesMoved(GamePoint offset, std::vector<Touch> touches);
   void TouchesEnded(GamePoint offset, std::vector<Touch> touches);
   void ClearTouches();
+  void SetEngineView(EngineView *engine_view);
 
  private:
   std::vector<sp<ViewEntity> > entities_;
