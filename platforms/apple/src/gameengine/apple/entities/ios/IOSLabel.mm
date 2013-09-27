@@ -53,7 +53,7 @@ void IOSLabel::Render(GamePoint offset) {
     }
   }
   CGRect frame = uikit_label_.frame;
-  frame.origin.x = position().x / 2;  // TODO. Do a proper conversion.
-  frame.origin.y = position().y / 2;
+  frame.origin.x = (position().x + offset.x) / 2;  // TODO. Do a proper conversion.
+  frame.origin.y = (position().y + offset.y) / 2;
   uikit_label_.frame = frame;
 }
