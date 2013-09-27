@@ -22,6 +22,10 @@ EngineView::EngineView(GameEngine *game_engine)
 }
 
 void EngineView::Update() {
+  if (next_entities_.size() > 0) {
+    entities_ = next_entities_;
+    next_entities_.clear();
+  }
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     (*i)->Update();
   }
@@ -82,13 +86,19 @@ bool EngineView::HandleBackButton() {
 
 void EngineView::AddEntity(ViewEntity *entity) {
   entity->SetEngineView(this);
-  entities_.push_back(sp<ViewEntity>(entity));
+  if (next_entities_.size() == 0) {
+    next_entities_ = entities_;
+  }
+  next_entities_.push_back(sp<ViewEntity>(entity));
 }
 
 void EngineView::AddEntity(sp<ViewEntity> entity) {
   assert(entity);
   entity->SetEngineView(this);
-  entities_.push_back(entity);
+  if (next_entities_.size() == 0) {
+    next_entities_ = entities_;
+  }
+  next_entities_.push_back(entity);
 }
 
 void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity) {
@@ -96,10 +106,13 @@ void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_ent
 }
 
 void EngineView::InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity) {
+  if (next_entities_.size() == 0) {
+    next_entities_ = entities_;
+  }
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (i->get() == existing_entity) {
       entity->SetEngineView(this);
-      entities_.insert(i, entity);
+      next_entities_.insert(i, entity);
       return;
     }
   }
@@ -112,10 +125,13 @@ void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_enti
 }
 
 void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity) {
+  if (next_entities_.size() == 0) {
+    next_entities_ = entities_;
+  }
   for (auto i = entities_.begin(); i != entities_.end(); i++) {
     if (i->get() == existing_entity) {
       entity->SetEngineView(this);
-      entities_.insert(i + 1, entity);
+      next_entities_.insert(i + 1, entity);
       return;
     }
   }
@@ -124,10 +140,13 @@ void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_e
 }
 
 void EngineView::RemoveEntity(sp<ViewEntity> entity) {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  if (next_entities_.size() == 0) {
+    next_entities_ = entities_;
+  }
+  for (auto i = next_entities_.begin(); i != next_entities_.end(); i++) {
     if (*i == entity) {
       entity->SetEngineView(NULL);
-      entities_.erase(i);
+      next_entities_.erase(i);
       break;
     }
   }

@@ -52,6 +52,7 @@ class EngineView {
 
   GameEngine *game_engine_;  // weak
   std::vector<sp<ViewEntity> > entities_;
+  std::vector<sp<ViewEntity> > next_entities_;
   bool is_visible_;
 };
 
