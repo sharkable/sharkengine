@@ -9,6 +9,7 @@ var rulerOffset = getRulerOffset();
 var response = prompt("It this for Retina Display? iPhone?", 'nn');
 var isRetina = response[0] != 'n' && response[0] != 'N';
 var isPhone = response[1] != 'n' && response[1] != 'N';
+var useIPadGameSize = false;
 
 var layerIndexes = getLayerSetsIndex();
 
@@ -25,7 +26,10 @@ for (var i = 0; i < layerIndexes.length; i++) {
   if (layerName.length >= 2 && (layerName[0] == '_' || layerName[0] == '@')) {
     createResourceFromLayerSet(activeDocument.activeLayer, isRetina);
   }
-  if (layerName.length >= 2 && layerName[0] == '#') {
+  if (layerName.length >= 2 && (layerName[0] == '#' || layerName[0] == '^')) {
+    if (layerName[0] == '#') {
+      useIPadGameSize = true;
+    }
     outputPositionsFilename = layerName.substring(1) + (isPhone ? "_iphone" : "") + ".xml";
   }
 }
@@ -189,7 +193,7 @@ function createResourceFromLayerSet(layerSet, isRetina) {
   if (savePosition) {
     // documentName might include a path, but we just want the filename.
     var positionName = originalLayerName.split("/").pop();
-    if (isPhone) {
+    if (isPhone && useIPadGameSize) {
       layerPositionMap[positionName] = [x * (768.0 / 320.0 / 2), y * (768.0 / 320.0 / 2)];
     } else {
       layerPositionMap[positionName] = [x, y];      
