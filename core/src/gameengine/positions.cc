@@ -8,16 +8,8 @@
 
 #include "gameengine/positions.h"
 
-#include "thirdparty/tinyxml2/tinyxml2.h"
-
 #include "gameengine/asset_reader.h"
-
-double str2double(const char *str) {
-  char *end_ptr;
-  double value = strtod(str, &end_ptr);
-  if (*end_ptr) return 0;
-  return value;
-}
+#include "gameengine/thirdparty/tinyxml2/tinyxml2.h"
 
 void Positions::LoadFile(AssetReader &asset_reader) {
   tinyxml2::XMLDocument doc;
@@ -37,8 +29,8 @@ void Positions::LoadFile(AssetReader &asset_reader) {
   tinyxml2::XMLNode *position = positionsNode->FirstChild();
   while (position) {
     const char *name = position->ToElement()->Attribute("name");
-    double x = str2double(position->FirstChildElement("x")->GetText());
-    double y = str2double(position->FirstChildElement("y")->GetText());
+    double x = strtod(position->FirstChildElement("x")->GetText(), NULL);
+    double y = strtod(position->FirstChildElement("y")->GetText(), NULL);
     assert(positions_.find(name) == positions_.end());
     positions_[name] = game_point_make(x, y);
 
