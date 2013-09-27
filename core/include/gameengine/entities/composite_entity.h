@@ -18,6 +18,8 @@ class Touch;
 
 class CompositeEntity : public Animatable {
  public:
+  CompositeEntity() : Animatable() {};
+  CompositeEntity(GamePoint position) : Animatable(position) {};
   void AddEntity(sp<ViewEntity> entity);
 
   // ViewEntity
