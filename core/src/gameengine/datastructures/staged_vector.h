@@ -14,8 +14,23 @@
 
 template <class T>
 class StagedVector {
+ typedef typename std::vector<T *>::iterator iterator;
+ typedef typename std::vector<T *>::reverse_iterator reverse_iterator;
+
  public:
   StagedVector() : next_values_initialized_(false), has_staged_changes_(false) {}
+
+  ~StagedVector() {
+    ConsiderInitialization();
+    for (auto i = next_values_.begin(); i != next_values_.end(); i++) {
+      if (ManageMemoryForValue(*i)) {
+        delete *i;
+      }
+    }
+    for (iterator i = to_erase_.begin(); i != to_erase_.end(); i++) {
+      delete *i;
+    }
+  }
 
   size_t Size() {
     return values_.size();
@@ -35,25 +50,47 @@ class StagedVector {
     return next_values_.back();
   }
 
-  typename std::vector<T *>::iterator Begin() {
+  iterator Begin() {
     return values_.begin();
   }
 
-  typename std::vector<T *>::iterator End() {
+  iterator End() {
     return values_.end();
   }
 
-  typename std::vector<T *>::reverse_iterator ReverseBegin() {
+  reverse_iterator ReverseBegin() {
     return values_.rbegin();
   }
 
-  typename std::vector<T *>::reverse_iterator ReverseEnd() {
+  reverse_iterator ReverseEnd() {
     return values_.rend();
   }
 
   void PushBack(T *value, bool manage_memory = false) {
     ConsiderInitialization();
     next_values_.push_back(value);
+    if (manage_memory) {
+      managed_memory_values_.insert(value);
+    }
+    has_staged_changes_ = true;
+  }
+
+  void InsertBefore(T *value, T *existing_value, bool manage_memory = false) {
+    ConsiderInitialization();
+    iterator i = std::find(next_values_.begin(), next_values_.end(), existing_value);
+    assert(i != next_values_.end());
+    next_values_.insert(i, value);
+    if (manage_memory) {
+      managed_memory_values_.insert(value);
+    }
+    has_staged_changes_ = true;
+  }
+
+  void InsertAfter(T *value, T *existing_value, bool manage_memory = false) {
+    ConsiderInitialization();
+    iterator i = std::find(next_values_.begin(), next_values_.end(), existing_value);
+    assert(i != next_values_.end());
+    next_values_.insert(i + 1, value);
     if (manage_memory) {
       managed_memory_values_.insert(value);
     }
