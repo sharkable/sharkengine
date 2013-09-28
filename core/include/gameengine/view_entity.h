@@ -19,6 +19,7 @@ class EngineView;
 class ViewEntity {
  public:
   ViewEntity() : engine_view_(NULL) {}
+  virtual ~ViewEntity() {}
 
   virtual void Update() = 0;
   virtual void Render(GamePoint offset) = 0;

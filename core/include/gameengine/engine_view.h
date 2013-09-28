@@ -18,6 +18,7 @@ class ViewEntity;
 class EngineView {
  public:
   EngineView(GameEngine *game_engine);
+  virtual ~EngineView() {}
 
   virtual void ViewDidGainFocus() {}
   virtual void ViewDidLoseFocus() {}
