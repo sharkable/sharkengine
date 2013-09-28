@@ -15,6 +15,7 @@
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
+#include "gameengine/datastructures/staged_vector.h"
 
 typedef enum {
   kPlatformTypePhone = 0,
@@ -63,10 +64,10 @@ class GameEngine {
   void HandlePauseButton();
 
   // App functions.
-  void PushView(sp<EngineView> view);
+  void PushView(EngineView *view);
   void PopView();
   void RemoveView(EngineView *view);
-  void SetRootView(sp<EngineView> view);
+  void SetRootView(EngineView *view);
   sp<AssetReader> LoadAsset(std::string filename);
   sp<Label> CreateLabel(const std::string &text = "", GamePoint position = kGamePointZero);
 
@@ -166,8 +167,7 @@ class GameEngine {
 
   ResourceLoader resource_loader_;
   sp<Positions> positions_;
-  std::vector<sp<EngineView> > views_;
-  std::vector<sp<EngineView> > next_views_;
+  StagedVector<EngineView> views_;
   std::vector<Touch> touches_began_;
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;

@@ -9,7 +9,6 @@
 #include "gameengine/game_engine.h"
 
 #include "gameengine/engine_view.h"
-
 #include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_module.h"
@@ -37,48 +36,40 @@ GameEngine::GameEngine()
 }
 
 void GameEngine::Update() {
-  if (next_views_.size() > 0) {
-    sp<EngineView> back;
-    if (views_.size()) {
-      back = views_.back();
-      back->ClearTouches();
+  if (views_.HasStagedChanges()) {
+    if (views_.Size() > 0) {
+      views_.Back()->ViewDidLoseFocus();
+      views_.Back()->ClearTouches();
     }
-    views_ = next_views_;
-    // If the back view has changed, then call focus notificaitons.
-    if (views_.back() != back) {
-      if (back) {
-        back->ViewDidLoseFocus();
-      }
-      views_.back()->ViewDidGainFocus();
-    }
-    next_views_.clear();
+    views_.StagedBack()->ViewDidGainFocus();
+    views_.Commit();
   }
 
-  assert(views_.size() > 0);
+  assert(views_.Size() > 0);
 
   ProcessInput();
 
   // Update views.
-  for (int i = 0; i < views_.size(); i++) {
-    views_[i]->Update();
+  for (auto i = views_.Begin(); i != views_.End(); i++) {
+    (*i)->Update();
   }
 }
 
 void GameEngine::Render() {
-  for (int i = 0; i < views_.size(); i++) {
-    views_[i]->Render();
+  for (auto i = views_.Begin(); i != views_.End(); i++) {
+    (*i)->Render();
   }
 }
 
 void GameEngine::NotifyPause() {
-  for (int i = 0; i < views_.size(); i++) {
-    views_[i]->NotifyPause();
+  for (auto i = views_.Begin(); i != views_.End(); i++) {
+    (*i)->NotifyPause();
   }
 }
 
 void GameEngine::ClearTouches() {
-  for (int i = 0; i < views_.size(); i++) {
-    views_[i]->ClearTouches();
+  for (auto i = views_.Begin(); i != views_.End(); i++) {
+    (*i)->ClearTouches();
   }
 }
 
@@ -100,52 +91,38 @@ void GameEngine::AddMouseDelta(float delta_x, float delta_y) {
 }
 
 bool GameEngine::HandleBackButton() {
-  if (views_.size() == 0) {
+  if (views_.Size() == 0) {
     return false;
   }
-  return views_.back()->HandleBackButton();
+  return views_.Back()->HandleBackButton();
 }
 
 void GameEngine::HandlePauseButton() {
-  if (views_.size() != 0) {
-    views_.back()->HandlePauseButton();
+  if (views_.Size() != 0) {
+    views_.Back()->HandlePauseButton();
   }
 }
 
-void GameEngine::PushView(sp<EngineView> view) {
-  if (next_views_.size() == 0) {
-    next_views_ = views_;
-  }
+void GameEngine::PushView(EngineView *view) {
   view->set_is_visible(true);
-  next_views_.push_back(view);
+  views_.PushBack(view, true);
 }
 
 void GameEngine::PopView() {
-  assert(views_.size() > 0);
-  if (next_views_.size() == 0) {
-    next_views_ = views_;
-  }
-  next_views_.back()->set_is_visible(false);
-  next_views_.pop_back();
+  assert(views_.StagedSize() > 0);
+  views_.StagedBack()->set_is_visible(false);
+  views_.PopBack();
 }
 
 void GameEngine::RemoveView(EngineView *view) {
-  if (next_views_.size() == 0) {
-    next_views_ = views_;
-  }
-  for (auto i = next_views_.begin(); i != next_views_.end(); i++) {
-    if (i->get() == view) {
-      view->set_is_visible(false);
-      i = next_views_.erase(i);
-      break;
-    }
-  }
+  view->set_is_visible(false);
+  views_.Erase(view);
 }
 
-void GameEngine::SetRootView(sp<EngineView> view) {
+void GameEngine::SetRootView(EngineView *view) {
   view->set_is_visible(true);
-  next_views_.clear();
-  next_views_.push_back(view);
+  views_.Clear();
+  views_.PushBack(view, true);
 }
 
 sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
@@ -160,8 +137,8 @@ sp<Label> GameEngine::CreateLabel(const std::string &text, GamePoint position) {
 #pragma mark - private
 
 void GameEngine::ProcessInput() {
-  sp<EngineView> touch_view;
-  for (auto i = views_.rbegin(); i != views_.rend(); i++) {
+  EngineView *touch_view = NULL;
+  for (auto i = views_.ReverseBegin(); i != views_.ReverseEnd(); i++) {
     if ((*i)->IsCapturingTouches()) {
       touch_view = *i;
       break;
