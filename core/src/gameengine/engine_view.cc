@@ -80,19 +80,21 @@ bool EngineView::HandleBackButton() {
   return false;
 }
 
-void EngineView::AddEntity(ViewEntity *entity) {
+void EngineView::AddEntity(ViewEntity *entity, bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.PushBack(entity, true);
+  entities_.PushBack(entity, managed_memory);
 }
 
-void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity) {
+void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity,
+                                    bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.InsertBefore(entity, existing_entity);
+  entities_.InsertBefore(entity, existing_entity, managed_memory);
 }
 
-void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity) {
+void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity,
+                                   bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.InsertAfter(entity, existing_entity);
+  entities_.InsertAfter(entity, existing_entity, managed_memory);
 }
 
 void EngineView::RemoveEntity(ViewEntity *entity) {

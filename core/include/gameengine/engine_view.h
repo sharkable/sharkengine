@@ -38,9 +38,11 @@ class EngineView {
   virtual void HandlePauseButton() {}
   // If you add an entity using this method, then this EngineView is responsible for releasing this
   // object.
-  void AddEntity(ViewEntity *entity);
-  void InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity);
-  void InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity);
+  void AddEntity(ViewEntity *entity, bool managed_memory = true);
+  void InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity,
+                          bool managed_memory = true);
+  void InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity,
+                         bool managed_memory = true);
   void RemoveEntity(ViewEntity *entity);
 
   GameEngine *game_engine() { return game_engine_; }
