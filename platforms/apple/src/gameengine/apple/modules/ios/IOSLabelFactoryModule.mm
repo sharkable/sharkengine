@@ -23,6 +23,6 @@ IOSLabelFactoryModule::~IOSLabelFactoryModule() {
 
 // LabelFactoryModule
 
-sp<Label> IOSLabelFactoryModule::CreateLabel(string text, GamePoint position) {
-  return sp<Label>(new IOSLabel(text, position, parent_view_));
+Label * IOSLabelFactoryModule::CreateLabel(string text, GamePoint position) {
+  return new IOSLabel(text, position, parent_view_);
 }

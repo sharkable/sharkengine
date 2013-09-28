@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "gameengine/coordinate_types.h"
+#include "gameengine/engine_view.h"
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
@@ -33,7 +34,6 @@ class AnalyticsModule;
 class AppStoreModule;
 class AssetReader;
 class AssetReaderFactoryModule;
-class EngineView;
 class GameEngine;
 class InputModule;
 class Label;
@@ -68,8 +68,8 @@ class GameEngine {
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(EngineView *view);
-  sp<AssetReader> LoadAsset(std::string filename);
-  sp<Label> CreateLabel(const std::string &text = "", GamePoint position = kGamePointZero);
+  AssetReader * LoadAsset(std::string filename);
+  Label * CreateLabel(const std::string &text = "", GamePoint position = kGamePointZero);
 
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };

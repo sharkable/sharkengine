@@ -19,7 +19,7 @@ class IOSAssetReaderFactoryModule : public AssetReaderFactoryModule {
   bool IsImplemented() { return true; };
 
   // AssetReaderFactoryModule
-  sp<AssetReader> CreateAssetReader(std::string filename);
+  AssetReader * CreateAssetReader(std::string filename);
 };
 
 #endif

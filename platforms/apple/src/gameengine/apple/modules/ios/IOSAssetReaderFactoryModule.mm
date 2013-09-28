@@ -14,6 +14,6 @@ using std::string;
 
 // AssetReaderFactoryModule
 
-sp<AssetReader> IOSAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
-  return sp<AssetReader>(new IOSAssetReader(filename));
+AssetReader * IOSAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
+  return new IOSAssetReader(filename);
 }

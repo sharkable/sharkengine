@@ -22,7 +22,7 @@ class IOSLabelFactoryModule : public LabelFactoryModule {
   ~IOSLabelFactoryModule();
 
   // LabelFactoryModule
-  sp<Label> CreateLabel(std::string text, GamePoint position);
+  Label * CreateLabel(std::string text, GamePoint position);
 
  private:
   UIView *parent_view_;

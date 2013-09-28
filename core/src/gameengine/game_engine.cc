@@ -8,7 +8,6 @@
 
 #include "gameengine/game_engine.h"
 
-#include "gameengine/engine_view.h"
 #include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_module.h"
@@ -125,11 +124,11 @@ void GameEngine::SetRootView(EngineView *view) {
   views_.PushBack(view, true);
 }
 
-sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
+AssetReader * GameEngine::LoadAsset(std::string filename) {
   return asset_reader_factory_module_->CreateAssetReader(filename);
 }
 
-sp<Label> GameEngine::CreateLabel(const std::string &text, GamePoint position) {
+Label * GameEngine::CreateLabel(const std::string &text, GamePoint position) {
   return label_factory_module_->CreateLabel(text, position);
 }
 

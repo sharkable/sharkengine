@@ -18,7 +18,7 @@ class Label;
 
 class LabelFactoryModule : Module {
  public:
-  virtual sp<Label> CreateLabel(std::string text, GamePoint position) = 0;
+  virtual Label * CreateLabel(std::string text, GamePoint position) = 0;
 };
 
 #endif
