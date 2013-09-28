@@ -12,7 +12,6 @@
 
 #include "gameengine/game_engine.h"
 #include "gameengine/touch.h"
-#include "gameengine/view_entity.h"
 
 using std::vector;
 
@@ -22,17 +21,14 @@ EngineView::EngineView(GameEngine *game_engine)
 }
 
 void EngineView::Update() {
-  if (next_entities_.size() > 0) {
-    entities_ = next_entities_;
-    next_entities_.clear();
-  }
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  entities_.Commit();
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->Update();
   }
 }
 
 void EngineView::Render() {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->Render(kGamePointZero);
   }
 }
@@ -43,7 +39,7 @@ bool EngineView::IsCapturingTouches() {
 
 void EngineView::TouchesBegan(vector<Touch> touches) {
   // Iterate backwards. The items on top get priority to capture touches.
-  for (auto i = entities_.rbegin(); i != entities_.rend(); i++) {
+  for (auto i = entities_.ReverseBegin(); i != entities_.ReverseEnd(); i++) {
     if ((*i)->TouchesBegan(kGamePointZero, touches)) {
       break;
     }
@@ -51,31 +47,31 @@ void EngineView::TouchesBegan(vector<Touch> touches) {
 }
 
 void EngineView::TouchesMoved(vector<Touch> touches) {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->TouchesMoved(kGamePointZero, touches);
   }
 }
 
 void EngineView::TouchesEnded(vector<Touch> touches) {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->TouchesEnded(kGamePointZero, touches);
   }
 }
 
 void EngineView::TouchTapped(Touch touch) {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->TouchTapped(kGamePointZero, touch);
   }
 }
 
 void EngineView::HandleMouseDelta(float delta_x, float delta_y) {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->HandleMouseDelta(delta_x, delta_y);
   }
 }
 
 void EngineView::ClearTouches() {
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->ClearTouches();
   }
 }
@@ -86,69 +82,20 @@ bool EngineView::HandleBackButton() {
 
 void EngineView::AddEntity(ViewEntity *entity) {
   entity->SetEngineView(this);
-  if (next_entities_.size() == 0) {
-    next_entities_ = entities_;
-  }
-  next_entities_.push_back(sp<ViewEntity>(entity));
-}
-
-void EngineView::AddEntity(sp<ViewEntity> entity) {
-  assert(entity);
-  entity->SetEngineView(this);
-  if (next_entities_.size() == 0) {
-    next_entities_ = entities_;
-  }
-  next_entities_.push_back(entity);
+  entities_.PushBack(entity, true);
 }
 
 void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity) {
-  InsertEntityBefore(sp<ViewEntity>(entity), existing_entity);
-}
-
-void EngineView::InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity) {
-  if (next_entities_.size() == 0) {
-    next_entities_ = entities_;
-  }
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
-    if (i->get() == existing_entity) {
-      entity->SetEngineView(this);
-      next_entities_.insert(i, entity);
-      return;
-    }
-  }
-  // Failed to find |existing_entity|.
-  assert(false);
+  entity->SetEngineView(this);
+  entities_.InsertBefore(entity, existing_entity);
 }
 
 void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity) {
-  InsertEntityAfter(sp<ViewEntity>(entity), existing_entity);
+  entity->SetEngineView(this);
+  entities_.InsertAfter(entity, existing_entity);
 }
 
-void EngineView::InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity) {
-  if (next_entities_.size() == 0) {
-    next_entities_ = entities_;
-  }
-  for (auto i = entities_.begin(); i != entities_.end(); i++) {
-    if (i->get() == existing_entity) {
-      entity->SetEngineView(this);
-      next_entities_.insert(i + 1, entity);
-      return;
-    }
-  }
-  // Failed to find |existing_entity|.
-  assert(false);
+void EngineView::RemoveEntity(ViewEntity *entity) {
+  entity->SetEngineView(NULL);
+  entities_.Erase(entity);
 }
-
-void EngineView::RemoveEntity(sp<ViewEntity> entity) {
-  if (next_entities_.size() == 0) {
-    next_entities_ = entities_;
-  }
-  for (auto i = next_entities_.begin(); i != next_entities_.end(); i++) {
-    if (*i == entity) {
-      entity->SetEngineView(NULL);
-      next_entities_.erase(i);
-      break;
-    }
-  }
-}
-

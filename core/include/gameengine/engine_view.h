@@ -11,9 +11,11 @@
 
 #include <vector>
 
+#include "gameengine/view_entity.h"
+#include "gameengine/datastructures/staged_vector.h"
+
 class GameEngine;
 class Touch;
-class ViewEntity;
 
 class EngineView {
  public:
@@ -37,12 +39,9 @@ class EngineView {
   // If you add an entity using this method, then this EngineView is responsible for releasing this
   // object.
   void AddEntity(ViewEntity *entity);
-  void AddEntity(sp<ViewEntity> entity);
   void InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity);
-  void InsertEntityBefore(sp<ViewEntity> entity, ViewEntity *existing_entity);
   void InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity);
-  void InsertEntityAfter(sp<ViewEntity> entity, ViewEntity *existing_entity);
-  void RemoveEntity(sp<ViewEntity> entity);
+  void RemoveEntity(ViewEntity *entity);
 
   GameEngine *game_engine() { return game_engine_; }
   bool is_visible() { return is_visible_; }
@@ -52,8 +51,7 @@ class EngineView {
   friend class GameEngine;
 
   GameEngine *game_engine_;  // weak
-  std::vector<sp<ViewEntity> > entities_;
-  std::vector<sp<ViewEntity> > next_entities_;
+  StagedVector<ViewEntity> entities_;
   bool is_visible_;
 };
 
