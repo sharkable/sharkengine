@@ -11,7 +11,13 @@
 
 using std::vector;
 
-void CompositeEntity::AddEntity(sp<ViewEntity> entity) {
+CompositeEntity::~CompositeEntity() {
+  for (auto i = entities_.begin(); i != entities_.end(); i++) {
+    delete *i;
+  }
+}
+
+void CompositeEntity::AddEntity(ViewEntity *entity) {
   entity->SetEngineView(view());
   entities_.push_back(entity);
 }

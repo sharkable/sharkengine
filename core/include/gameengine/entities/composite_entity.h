@@ -20,7 +20,9 @@ class CompositeEntity : public Animatable {
  public:
   CompositeEntity() : Animatable() {};
   CompositeEntity(GamePoint position) : Animatable(position) {};
-  void AddEntity(sp<ViewEntity> entity);
+  ~CompositeEntity();
+
+  void AddEntity(ViewEntity *entity);
 
   // ViewEntity
   void Update();
@@ -32,7 +34,7 @@ class CompositeEntity : public Animatable {
   void SetEngineView(EngineView *engine_view);
 
  private:
-  std::vector<sp<ViewEntity> > entities_;
+  std::vector<ViewEntity *> entities_;
 };
 
 #endif
