@@ -17,6 +17,7 @@
 class Label : public Animatable {
  public:
   Label(GamePoint position);
+  virtual ~Label() {};
 
   virtual const std::string & Text() = 0;
   virtual void SetText(const std::string &text) = 0;
