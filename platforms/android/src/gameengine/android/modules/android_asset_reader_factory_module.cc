@@ -14,6 +14,6 @@ using std::string;
 
 // AssetReaderFactoryModule
 
-sp<AssetReader> AndroidAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
-  return sp<AssetReader>(new AndroidAssetReader(filename));
+AssetReader * AndroidAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
+  return new AndroidAssetReader(filename);
 }

@@ -9,6 +9,7 @@
 #ifndef GAMEENGINE_DATASTRUCTURES_STAGEDVECTOR_H_
 #define GAMEENGINE_DATASTRUCTURES_STAGEDVECTOR_H_
 
+#include <algorithm>
 #include <set>
 #include <vector>
 
