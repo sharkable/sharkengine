@@ -171,6 +171,7 @@
 		FE3CF95014F9819E0063CCA5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FE3FB6DD17F7A7C900FC5CFB /* staged_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = staged_vector.h; sourceTree = "<group>"; };
 		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader_factory_module.h; sourceTree = "<group>"; };
 		FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReaderFactoryModule.h; sourceTree = "<group>"; };
@@ -454,6 +455,14 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		FE3FB6DC17F7A7C900FC5CFB /* datastructures */ = {
+			isa = PBXGroup;
+			children = (
+				FE3FB6DD17F7A7C900FC5CFB /* staged_vector.h */,
+			);
+			path = datastructures;
+			sourceTree = "<group>";
+		};
 		FE4F211617B306EF005EC455 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +607,7 @@
 			children = (
 				FEF9B80717A9BFB400867739 /* animation.h */,
 				FEF9B80817A9BFB400867739 /* coordinate_types.h */,
+				FE3FB6DC17F7A7C900FC5CFB /* datastructures */,
 				FEF9B80917A9BFB400867739 /* engine_view.h */,
 				FEF9B80A17A9BFB400867739 /* entities */,
 				FEF9B81017A9BFB400867739 /* game_engine.h */,
@@ -768,6 +778,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				TargetAttributes = {
+					FE789BC014F97B34007FCBC5 = {
+						DevelopmentTeam = XEZYQ6Z7W7;
+					};
+				};
 			};
 			buildConfigurationList = FE789BBB14F97B34007FCBC5 /* Build configuration list for PBXProject "SharkEngine_ios" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -963,6 +978,8 @@
 		FE5DF90D16E96AA400C0E399 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IS_FREE=false",
@@ -978,6 +995,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1058,6 +1076,8 @@
 		FE789BEB14F97B34007FCBC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IS_FREE=false",
@@ -1073,6 +1093,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1081,6 +1102,8 @@
 		FE789BEC14F97B34007FCBC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IS_FREE=false",
@@ -1096,6 +1119,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WARNING_CFLAGS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
