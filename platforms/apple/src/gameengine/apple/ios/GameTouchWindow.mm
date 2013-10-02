@@ -67,6 +67,8 @@ using std::vector;
     Touch converted_touch;
     CGPoint location = [touch locationInView:touch.view];
 
+// TODO: Should this be a game option? I was using it in Air Hockey.
+#if 0
     // Fudge the point by some factor of the velocity, to prevent the lag in movement.
     CGPoint previous_location = [touch previousLocationInView:touch.view];
     double diff_x = location.x - previous_location.x;
@@ -81,6 +83,7 @@ using std::vector;
     move_factor_ = (move_factor_ + new_factor) / 2;
     location.x = location.x + diff_x * move_factor_;
     location.y = location.y + diff_y * move_factor_;
+#endif
 
     ScreenPoint l = screen_point_make(location.x * scale_, location.y * scale_);
     GamePoint p = gameEngine_->screen_point_to_game_point(l);
