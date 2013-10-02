@@ -178,6 +178,7 @@ class GameEngine {
   ScreenPoint screen_offset_;
   double screen_to_game_point_ratio_x_;
   double screen_to_game_point_ratio_y_;
+  unsigned int game_tick_;
 };
 
 #endif

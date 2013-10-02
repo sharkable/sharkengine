@@ -24,7 +24,8 @@ GameEngine::GameEngine()
       screen_size_(kScreenSizeZero),
       screen_offset_(kScreenPointZero),
       screen_to_game_point_ratio_x_(1),
-      screen_to_game_point_ratio_y_(1) {
+      screen_to_game_point_ratio_y_(1),
+      game_tick_(0) {
   persistence_module_.reset(new PersistenceModule());
   ad_module_.reset(new AdModule());
   analytics_module_.reset(new AnalyticsModule());
@@ -52,6 +53,7 @@ void GameEngine::Update() {
   for (auto i = views_.Begin(); i != views_.End(); i++) {
     (*i)->Update();
   }
+  game_tick_++;
 }
 
 void GameEngine::Render() {
