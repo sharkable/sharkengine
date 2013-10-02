@@ -76,8 +76,6 @@ bool Button::TouchBegan(GamePoint offset, Touch touch) {
       }
       return true;
     }
-  } else if (state_ == kButtonStatePressed) {
-    state_ = kButtonStateNormal;
   }
   return false;
 }
