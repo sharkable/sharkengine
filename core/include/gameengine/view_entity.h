@@ -23,9 +23,9 @@ class ViewEntity {
 
   virtual void Update() = 0;
   virtual void Render(GamePoint offset) = 0;
-  virtual bool TouchesBegan(GamePoint offset, std::vector<Touch> touches) { return false; }
-  virtual void TouchesMoved(GamePoint offset, std::vector<Touch> touches) {}
-  virtual void TouchesEnded(GamePoint offset, std::vector<Touch> touches) {}
+  virtual bool TouchBegan(GamePoint offset, Touch touch) { return false; }
+  virtual void TouchMoved(GamePoint offset, Touch touch) {}
+  virtual void TouchEnded(GamePoint offset, Touch touch) {}
   virtual void TouchTapped(GamePoint offset, Touch touch) {}
   virtual void ClearTouches() {}
   virtual void HandleMouseDelta(float delta_x, float delta_y) {}

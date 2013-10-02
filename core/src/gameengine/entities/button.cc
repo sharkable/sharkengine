@@ -65,18 +65,16 @@ void Button::Render(GamePoint offset) {
   }
 }
 
-bool Button::TouchesBegan(GamePoint offset, vector<Touch> touches) {
+bool Button::TouchBegan(GamePoint offset, Touch touch) {
   if (state_ == kButtonStateNormal) {
-    for (int i = 0; i < touches.size(); i++) {
-      if (ContainsPoint(touches[i].location() - offset)) {
-        state_ = kButtonStatePressed;
-        beep_sound_->Play();
-        start_touch_ = touches[i].identifier();
-        if (delegate_) {
-          delegate_->ButtonDown(this);
-        }
-        return true;
+    if (ContainsPoint(touch.location() - offset)) {
+      state_ = kButtonStatePressed;
+      beep_sound_->Play();
+      start_touch_ = touch.identifier();
+      if (delegate_) {
+        delegate_->ButtonDown(this);
       }
+      return true;
     }
   } else if (state_ == kButtonStatePressed) {
     state_ = kButtonStateNormal;
@@ -84,16 +82,11 @@ bool Button::TouchesBegan(GamePoint offset, vector<Touch> touches) {
   return false;
 }
 
-void Button::TouchesEnded(GamePoint offset, vector<Touch> touches) {
-  if (state_ == kButtonStatePressed) {
-    for (int i = 0; i < touches.size(); i++) {
-      if (touches[i].identifier() == start_touch_) {
-        state_ = kButtonStateNormal;
-        if (delegate_) {
-          delegate_->ButtonUp(this);
-        }
-        break;
-      }
+void Button::TouchEnded(GamePoint offset, Touch touch) {
+  if (state_ == kButtonStatePressed && touch.identifier() == start_touch_) {
+    state_ = kButtonStateNormal;
+    if (delegate_) {
+      delegate_->ButtonUp(this);
     }
   }
 }
