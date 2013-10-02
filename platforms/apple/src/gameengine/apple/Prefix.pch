@@ -37,5 +37,5 @@
   #include <android/log.h>
   #define s_log(...)  __android_log_print(ANDROID_LOG_DEBUG, "Sharkable", __VA_ARGS__);
 #else
-  #define s_log(...)  printf(__VA_ARGS__); printf("\n");
+  #define s_log(...)  { printf(__VA_ARGS__); printf("\n"); }
 #endif
