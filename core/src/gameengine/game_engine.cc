@@ -148,6 +148,21 @@ void GameEngine::ProcessInput() {
     }
   }
 
+  if (touches_began_.size() > 0) {
+    // This removes captures touches, so they can't use considered for taps.
+    touch_view->TouchesBegan(touches_began_);
+  }
+  if (touches_moved_.size() > 0) {
+    touch_view->TouchesMoved(touches_moved_);
+  }
+  if (touches_ended_.size() > 0) {
+    touch_view->TouchesEnded(touches_ended_);
+  }
+  // TODO should this be called if both values are 0?
+  touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
+  mouse_delta_x_ = 0;
+  mouse_delta_y_ = 0;
+
   if (touch_view) {
     // Erase presses that have existed too long to be a tap.
     for (auto i = potential_tap_touches_.begin(); i != potential_tap_touches_.end();) {
@@ -185,22 +200,9 @@ void GameEngine::ProcessInput() {
         }
       }
     }
-
-    if (touches_began_.size() > 0) {
-      touch_view->TouchesBegan(touches_began_);
-      touches_began_.clear();
-    }
-    if (touches_moved_.size() > 0) {
-      touch_view->TouchesMoved(touches_moved_);
-      touches_moved_.clear();
-    }
-    if (touches_ended_.size() > 0) {
-      touch_view->TouchesEnded(touches_ended_);
-      touches_ended_.clear();
-    }
-    // TODO should this be called if both values are 0?
-    touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
-    mouse_delta_x_ = 0;
-    mouse_delta_y_ = 0;
   }
+
+  touches_began_.clear();
+  touches_moved_.clear();
+  touches_ended_.clear();
 }

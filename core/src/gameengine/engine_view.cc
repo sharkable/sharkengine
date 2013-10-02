@@ -37,18 +37,25 @@ bool EngineView::IsCapturingTouches() {
   return true;
 }
 
-void EngineView::TouchesBegan(vector<Touch> touches) {
-  for (auto i = touches.begin(); i != touches.end(); i++) {
+void EngineView::TouchesBegan(vector<Touch> &touches) {
+  for (auto i = touches.begin(); i != touches.end();) {
+    bool touch_captured = false;
     // Iterate backwards. The items on top get priority to capture touches.
     for (auto j = entities_.ReverseBegin(); j != entities_.ReverseEnd(); j++) {
       if ((*j)->TouchBegan(kGamePointZero, *i)) {
+        touch_captured = true;
         break;
       }
+    }
+    if (touch_captured) {
+      i = touches.erase(i);
+    } else {
+      i++;
     }
   }
 }
 
-void EngineView::TouchesMoved(vector<Touch> touches) {
+void EngineView::TouchesMoved(vector<Touch> const &touches) {
   for (auto i = touches.begin(); i != touches.end(); i++) {
     for (auto j = entities_.Begin(); j != entities_.End(); j++) {
       (*j)->TouchMoved(kGamePointZero, *i);
@@ -56,7 +63,7 @@ void EngineView::TouchesMoved(vector<Touch> touches) {
   }
 }
 
-void EngineView::TouchesEnded(vector<Touch> touches) {
+void EngineView::TouchesEnded(vector<Touch> const &touches) {
   for (auto i = touches.begin(); i != touches.end(); i++) {
     for (auto j = entities_.Begin(); j != entities_.End(); j++) {
       (*j)->TouchEnded(kGamePointZero, *i);

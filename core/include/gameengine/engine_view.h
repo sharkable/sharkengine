@@ -28,9 +28,9 @@ class EngineView {
   virtual void Render();
   virtual void NotifyPause() {}
   virtual bool IsCapturingTouches();
-  virtual void TouchesBegan(std::vector<Touch> touches);
-  virtual void TouchesMoved(std::vector<Touch> touches);
-  virtual void TouchesEnded(std::vector<Touch> touches);
+  virtual void TouchesBegan(std::vector<Touch> &touches);  // Removes captured touches.
+  virtual void TouchesMoved(std::vector<Touch> const &touches);
+  virtual void TouchesEnded(std::vector<Touch> const &touches);
   virtual void TouchTapped(Touch touch);
   virtual void ClearTouches();
   virtual void HandleMouseDelta(float delta_x, float delta_y);
