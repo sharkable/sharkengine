@@ -18,6 +18,8 @@ IOSLabel::IOSLabel(string text, GamePoint position, UIView *parent_view)
   parent_view_ = [parent_view retain];
   uikit_label_ = [[UILabel alloc] init];
   uikit_label_.textColor = [UIColor whiteColor];
+  uikit_label_.numberOfLines = 0;
+  uikit_label_.lineBreakMode = NSLineBreakByWordWrapping;
   SetText(text);
 }
 
