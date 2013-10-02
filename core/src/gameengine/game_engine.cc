@@ -8,6 +8,8 @@
 
 #include "gameengine/game_engine.h"
 
+#include <cmath>
+
 #include "gameengine/modules/ad_module.h"
 #include "gameengine/modules/analytics_module.h"
 #include "gameengine/modules/app_store_module.h"
@@ -147,21 +149,35 @@ void GameEngine::ProcessInput() {
   }
 
   if (touch_view) {
+    // Erase presses that have existed too long to be a tap.
+    for (auto i = potential_tap_touches_.begin(); i != potential_tap_touches_.end();) {
+      if (game_tick_ - i->second > 10) {
+        i = potential_tap_touches_.erase(i);
+      } else {
+        i++;
+      }
+    }
+    // Add new touches as potential taps.
     if (touches_began_.size() > 0) {
-      potential_tap_touches_.insert(potential_tap_touches_.end(), touches_began_.begin(),
-                                    touches_began_.end());
+      for (auto i = touches_began_.begin(); i != touches_began_.end(); i++) {
+        potential_tap_touches_.push_back(std::make_pair(*i, game_tick_));
+      }
     }
     for (auto i = touches_moved_.begin(); i != touches_moved_.end(); i++) {
       for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end(); j++) {
-        if (i->identifier() == j->identifier()) {
-          potential_tap_touches_.erase(j);
+        if (i->identifier() == j->first.identifier()) {
+          float dx = i->location().x - j->first.location().x;
+          float dy = i->location().y - j->first.location().y;
+          if (fabs(dx) >= 20.f || fabs(dy) >= 20.f) {
+            potential_tap_touches_.erase(j);
+          }
           break;
         }
       }
     }
     for (auto i = touches_ended_.begin(); i != touches_ended_.end(); i++) {
       for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end();) {
-        if (i->identifier() == j->identifier()) {
+        if (i->identifier() == j->first.identifier()) {
           touch_view->TouchTapped(*i);
           j = potential_tap_touches_.erase(j);
         } else {

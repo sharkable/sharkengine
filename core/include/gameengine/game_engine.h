@@ -9,6 +9,7 @@
 #ifndef GAMEENGINE_GAMEENGINE_H_
 #define GAMEENGINE_GAMEENGINE_H_
 
+#include <utility>
 #include <vector>
 
 #include "gameengine/coordinate_types.h"
@@ -171,7 +172,7 @@ class GameEngine {
   std::vector<Touch> touches_began_;
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;
-  std::vector<Touch> potential_tap_touches_;
+  std::vector<std::pair<Touch, unsigned int> > potential_tap_touches_;
   float mouse_delta_x_;
   float mouse_delta_y_;
   ScreenSize screen_size_;
