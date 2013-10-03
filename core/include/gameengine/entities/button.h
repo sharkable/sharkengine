@@ -48,6 +48,7 @@ class Button : public Animatable {
 
   void set_normal_sprite(Sprite normal_sprite) { normal_sprite_ = normal_sprite; }
   void set_pressed_sprite(Sprite pressed_sprite) { pressed_sprite_ = pressed_sprite; }
+  void set_pressed_offset(GamePoint offset) { pressed_offset_ = offset; }
   void set_delegate(ButtonDelegate *delegate) { delegate_ = delegate; }
   GameSize size() { return normal_sprite_.content_size(); }
 
@@ -57,6 +58,7 @@ class Button : public Animatable {
   GameEngine *game_engine_;  // weak
   Sprite normal_sprite_;
   Sprite pressed_sprite_;
+  GamePoint pressed_offset_;
   int state_;
   ButtonDelegate *delegate_;
   void *start_touch_;

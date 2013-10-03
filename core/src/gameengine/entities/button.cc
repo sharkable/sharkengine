@@ -19,15 +19,18 @@ using std::vector;
 Button::Button(GameEngine *game_engine)
     : Animatable(),
       game_engine_(game_engine),
+      pressed_offset_(kGamePointZero),
       state_(kButtonStateNormal) {
   Init();
 }
 
-Button::Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position)
+Button::Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite,
+               GamePoint position)
     : Animatable(position),
       game_engine_(game_engine),
       normal_sprite_(normal_sprite),
       pressed_sprite_(pressed_sprite),
+      pressed_offset_(kGamePointZero),
       state_(kButtonStateNormal),
       delegate_(NULL) {
   Init();
@@ -55,11 +58,11 @@ bool Button::ContainsPoint(GamePoint p) {
 void Button::Render(GamePoint offset) {
   switch (state_) {
     case kButtonStateNormal: {
-      normal_sprite_.Draw(position() + offset, angle(), alpha(), zoom());
+      normal_sprite_.Draw(position() + pressed_offset_ + offset, angle(), alpha(), zoom());
       break;
     }
     case kButtonStatePressed: {
-      pressed_sprite_.Draw(position() + offset, angle(), alpha(), zoom());
+      pressed_sprite_.Draw(position() + pressed_offset_ + offset, angle(), alpha(), zoom());
       break;
     }
   }
