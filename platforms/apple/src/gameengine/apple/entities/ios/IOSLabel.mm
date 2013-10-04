@@ -18,6 +18,7 @@ IOSLabel::IOSLabel(string text, GamePoint position, UIView *parent_view)
   parent_view_ = [parent_view retain];
   uikit_label_ = [[UILabel alloc] init];
   uikit_label_.textColor = [UIColor whiteColor];
+  uikit_label_.font = [UIFont fontWithName:@"Helvetica" size:16];
   uikit_label_.numberOfLines = 0;
   uikit_label_.lineBreakMode = NSLineBreakByWordWrapping;
   SetText(text);
@@ -36,6 +37,13 @@ const std::string & IOSLabel::Text() {
 void IOSLabel::SetText(const std::string &text) {
   text_ = text;
   uikit_label_.text = TypeUtil::string2NSString(text);
+  uikit_label_.frame = CGRectMake(0, 0, 3000, 3000);
+  [uikit_label_ sizeToFit];
+}
+
+void IOSLabel::SetFontSize(float font_size) {
+  uikit_label_.font = [UIFont fontWithName:@"Helvetica" size:font_size];
+  uikit_label_.frame = CGRectMake(0, 0, 3000, 3000);
   [uikit_label_ sizeToFit];
 }
 

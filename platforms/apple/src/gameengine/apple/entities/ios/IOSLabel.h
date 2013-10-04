@@ -24,6 +24,7 @@ class IOSLabel : public Label {
   // Label
   const std::string & Text();
   void SetText(const std::string &text);
+  void SetFontSize(float font_size);
 
   // ViewEntity
   void Render(GamePoint offset);

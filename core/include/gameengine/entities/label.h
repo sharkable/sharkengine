@@ -21,6 +21,7 @@ class Label : public Animatable {
 
   virtual const std::string & Text() = 0;
   virtual void SetText(const std::string &text) = 0;
+  virtual void SetFontSize(float font_size) = 0;
 };
 
 #endif
