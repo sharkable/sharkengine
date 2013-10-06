@@ -22,7 +22,7 @@ class Sprite {
  public:
   // The default constructor will result in a useless |Sprite| object with no |GameEngine|.
   // This is allowed so that classes can delay initialization of their |Sprite| ivars.
-  Sprite() : game_engine_(NULL) {
+  Sprite() : game_engine_(NULL), anchor_(kSpriteAnchorTopLeft) {
   }
 
   Sprite(GameEngine *game_engine, SpriteAnchor anchor = kSpriteAnchorTopLeft)
