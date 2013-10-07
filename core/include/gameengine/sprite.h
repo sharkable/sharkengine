@@ -43,6 +43,8 @@ class Sprite {
     texture_ = game_engine->resource_loader().TextureWithName(texture_name);
   }
 
+  void set_game_engine(GameEngine *game_engine) { game_engine_ = game_engine; }
+
   // TODO consider removing this.
   Texture2D texture() { return texture_; }
 
