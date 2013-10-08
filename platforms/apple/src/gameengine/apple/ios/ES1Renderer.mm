@@ -21,6 +21,7 @@
   // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
   GLuint defaultFramebuffer_;
   GLuint colorRenderbuffer_;
+  GLuint depthRenderbuffer_;
 }
 
 // Create an OpenGL ES 1.1 context
@@ -43,10 +44,18 @@
     glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES,
                                  colorRenderbuffer_);
 
+    // TODO how do I do this properly?
+    glGenRenderbuffers(1, &depthRenderbuffer_);
+    glBindRenderbuffer(GL_RENDERBUFFER, depthRenderbuffer_);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, 1136, 640);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderbuffer_);
+
+
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glEnable(GL_TEXTURE_2D);
+    glDisable(GL_DEPTH_TEST);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -90,7 +99,7 @@
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 - (void)finishRender {
