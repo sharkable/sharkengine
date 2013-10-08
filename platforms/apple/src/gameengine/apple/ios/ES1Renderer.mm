@@ -55,6 +55,7 @@
     glEnable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glEnable(GL_TEXTURE_2D);
+    glEnable(GL_POLYGON_OFFSET_FILL);
     glDisable(GL_DEPTH_TEST);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
     glEnableClientState(GL_VERTEX_ARRAY);
