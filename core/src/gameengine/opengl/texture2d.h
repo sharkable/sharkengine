@@ -118,6 +118,9 @@ class Texture2D {
   bool data_loaded() { return opengl_id_ != 0; }
   ScreenSize content_size() { return size_; }
 
+  GLfloat * vertices() { return vertices_; }
+  GLfloat * coordinates() { return coordinates_; }
+
  private:
   void Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
             ScreenSize size, std::string filename_, GLuint opengl_id = 0);
