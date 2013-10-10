@@ -121,7 +121,6 @@ inline std::string to_string(GameRect rect) {
   char buffer[kBufferSize];
   sprintf(buffer, "{{%g, %g}, {%g, %g}}", rect.origin.x, rect.origin.y, rect.size.width,
           rect.size.height);
-  s_log("result: %s", buffer);
   return std::string(buffer);
 }
 
