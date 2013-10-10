@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_COORDINATETYPES_H
-#define GAMEENGINE_COORDINATETYPES_H
+#ifndef GAMEENGINE_COORDINATETYPES_H_
+#define GAMEENGINE_COORDINATETYPES_H_
 
 // "Game" - coordinates in the game world.
 
