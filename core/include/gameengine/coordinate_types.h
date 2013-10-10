@@ -43,6 +43,27 @@ inline GamePoint operator-(const GamePoint &point_1, const GamePoint &point_2) {
   return game_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
 }
 
+struct GameRect {
+  GamePoint origin;
+  GameSize size;
+};
+
+inline GameRect game_rect_make(double x, double y, double width, double height) {
+  GameRect rect;
+  rect.origin.x = x;
+  rect.origin.y = y;
+  rect.size.width = width;
+  rect.size.height = height;
+  return rect;
+}
+
+inline GameRect game_rect_make(GamePoint origin, GameSize size) {
+  GameRect rect;
+  rect.origin = origin;
+  rect.size = size;
+  return rect;
+}
+
 static const GameSize kGameSizeZero = game_size_make(0, 0);
 static const GamePoint kGamePointZero = game_point_make(0, 0);
 
