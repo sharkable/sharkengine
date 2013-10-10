@@ -9,6 +9,8 @@
 #ifndef GAMEENGINE_COORDINATETYPES_H_
 #define GAMEENGINE_COORDINATETYPES_H_
 
+#include <string>
+
 // "Game" - coordinates in the game world.
 
 struct GameSize {
@@ -96,5 +98,43 @@ inline ScreenPoint screen_point_make(double x, double y) {
 
 static const ScreenSize kScreenSizeZero = screen_size_make(0, 0);
 static const ScreenPoint kScreenPointZero = screen_point_make(0, 0);
+
+
+
+#pragma mark - debug
+
+static const int kBufferSize = 1024;
+
+inline std::string to_string(GameSize size) {
+  char buffer[kBufferSize];
+  sprintf(buffer, "{%f, %f}", size.width, size.height);
+  return std::string(buffer);
+}
+
+inline std::string to_string(GamePoint point) {
+  char buffer[kBufferSize];
+  sprintf(buffer, "{%f, %f}", point.x, point.y);
+  return std::string(buffer);
+}
+
+inline std::string to_string(GameRect rect) {
+  char buffer[kBufferSize];
+  sprintf(buffer, "{{%g, %g}, {%g, %g}}", rect.origin.x, rect.origin.y, rect.size.width,
+          rect.size.height);
+  s_log("result: %s", buffer);
+  return std::string(buffer);
+}
+
+inline std::string to_string(ScreenSize size) {
+  char buffer[kBufferSize];
+  sprintf(buffer, "{%f, %f}", size.width, size.height);
+  return std::string(buffer);
+}
+
+inline std::string to_string(ScreenPoint point) {
+  char buffer[kBufferSize];
+  sprintf(buffer, "{%f, %f}", point.x, point.y);
+  return std::string(buffer);
+}
 
 #endif
