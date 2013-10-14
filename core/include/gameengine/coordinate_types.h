@@ -45,6 +45,18 @@ inline GamePoint operator-(const GamePoint &point_1, const GamePoint &point_2) {
   return game_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
 }
 
+inline GamePoint & operator+=(GamePoint &point_1, const GamePoint &point_2) {
+  point_1.x += point_2.x;
+  point_1.y += point_2.y;
+  return point_1;
+}
+
+inline GamePoint & operator-=(GamePoint &point_1, const GamePoint &point_2) {
+  point_1.x -= point_2.x;
+  point_1.y -= point_2.y;
+  return point_1;
+}
+
 struct GameRect {
   GamePoint origin;
   GameSize size;
