@@ -24,7 +24,7 @@ class OSXAssetReaderFactoryModule : public AssetReaderFactoryModule {
   bool IsImplemented() { return true; };
 
   // AssetReaderFactoryModule
-  sp<AssetReader> CreateAssetReader(std::string filename);
+  AssetReader * CreateAssetReader(std::string filename);
 
  private:
   zip *zip_;

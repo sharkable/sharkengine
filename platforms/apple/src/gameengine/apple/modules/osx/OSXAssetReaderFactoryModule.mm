@@ -23,12 +23,12 @@ OSXAssetReaderFactoryModule::~OSXAssetReaderFactoryModule() {
 
 #pragma mark - AssetReaderFactoryModule
 
-sp<AssetReader> OSXAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
+AssetReader * OSXAssetReaderFactoryModule::CreateAssetReader(std::string filename) {
   if (!zip_) {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"asset_bundle" ofType:@""];
     zip_ = zip_open([path UTF8String], 0, NULL);
     assert(zip_);
   }
 
-  return sp<AssetReader>(new ZippedAssetReader(zip_, filename));
+  return new ZippedAssetReader(zip_, filename);
 }

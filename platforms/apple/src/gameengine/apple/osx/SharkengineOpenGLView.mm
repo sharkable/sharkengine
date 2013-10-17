@@ -16,6 +16,7 @@
 #include "gameengine/apple/modules/ApplePersistenceModule.h"
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
+#include "gameengine/apple/modules/osx/OSXLabelFactoryModule.h"
 
 @interface SharkengineOpenGLView ()
 - (BOOL)isFullScreen;
@@ -30,18 +31,20 @@
   // TODO should this really be here?
   gameEngine_ = new GameEngine();
   gameEngine_->set_platform_type(kPlatformTypePC);
-  gameEngine_->set_platform_resolution(kPlatformResolutionLow);
+  gameEngine_->set_platform_resolution(kPlatformResolutionHigh);
   gameEngine_->set_asset_reader_factory_module(
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
+  gameEngine_->set_label_factory_module(
+      sp<LabelFactoryModule>(new OSXLabelFactoryModule()));
   gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
   gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
   gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
-  gameEngine_->set_screen_size(screen_size_make(768, 1024));
+  gameEngine_->set_screen_size(screen_size_make(1136, 640));
 
   sharkengine_init(gameEngine_);
 
-  Texture2D::SetScreenHeight(1024);
+  Texture2D::SetScreenHeight(640);
 
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_CULL_FACE);
@@ -55,7 +58,7 @@
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, 768, 0, 1024, -1, 1);
+  glOrtho(0, 1136, 0, 640, -1, 1);
 
   glMatrixMode(GL_MODELVIEW);
 
@@ -88,11 +91,11 @@
   }
   float screenWidthFloat = self.frame.size.width;
   float screenHeightFloat = self.frame.size.height;
-  float viewportWidthFloat = screenHeightFloat * 768.0 / 1024.0;
+  float viewportWidthFloat = screenHeightFloat * 1136.0 / 640.0;
   float viewportHeightFloat = screenHeightFloat;
   if (viewportWidthFloat > screenWidthFloat) {
     viewportWidthFloat = screenWidthFloat;
-    viewportHeightFloat = screenWidthFloat * 1024.0 / 768.0;
+    viewportHeightFloat = screenWidthFloat * 640.0 / 1136.0;
   }
 
   viewportX_ = (int)((screenWidthFloat - viewportWidthFloat) / 2);
@@ -107,8 +110,8 @@
 }
 
 - (GamePoint)gamePointFromScreenPoint:(NSPoint)point {
-  return game_point_make((point.x - viewportX_) * 768.0 / viewportWidth_,
-                         1024.0 - (point.y - viewportY_) * 1024.0 / viewportHeight_);
+  return game_point_make((point.x - viewportX_) * 1136.0 / viewportWidth_,
+                         640.0 - (point.y - viewportY_) * 640.0 / viewportHeight_);
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {

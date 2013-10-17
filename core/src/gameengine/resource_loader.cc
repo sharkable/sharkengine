@@ -70,7 +70,8 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 #else
   string filename = name;
 #endif
-  if (game_engine_.platform_type() == kPlatformTypePhone) {
+  if (game_engine_.platform_type() == kPlatformTypePhone ||
+      game_engine_.platform_type() == kPlatformTypePC) {
     filename += "_iphone";
   }
   string high_res_filename = filename;
