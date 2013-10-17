@@ -77,15 +77,23 @@ void EngineView::TouchTapped(Touch touch) {
   }
 }
 
-void EngineView::HandleMouseDelta(float delta_x, float delta_y) {
-  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
-    (*i)->HandleMouseDelta(delta_x, delta_y);
-  }
-}
-
 void EngineView::ClearTouches() {
   for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->ClearTouches();
+  }
+}
+
+void EngineView::KeysPressed(std::vector<int> const &keys) {
+  for (auto i = keys.begin(); i != keys.end(); i++) {
+    for (auto j = entities_.Begin(); j != entities_.End(); j++) {
+      (*j)->KeyPressed(*i);
+    }
+  }
+}
+
+void EngineView::HandleMouseDelta(float delta_x, float delta_y) {
+  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
+    (*i)->HandleMouseDelta(delta_x, delta_y);
   }
 }
 

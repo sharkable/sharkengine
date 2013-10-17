@@ -151,7 +151,7 @@
   if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
     [super keyDown:theEvent];
   } else {
-    gameEngine_->HandlePauseButton();
+    gameEngine_->AddKeyPressed(theEvent.keyCode);
   }
 }
 

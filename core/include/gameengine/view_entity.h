@@ -28,6 +28,7 @@ class ViewEntity {
   virtual void TouchEnded(GamePoint offset, Touch touch) {}
   virtual void TouchTapped(GamePoint offset, Touch touch) {}
   virtual void ClearTouches() {}
+  virtual void KeyPressed(int key) {}
   virtual void HandleMouseDelta(float delta_x, float delta_y) {}
 
   // Accessors

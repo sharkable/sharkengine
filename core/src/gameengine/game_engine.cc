@@ -88,6 +88,10 @@ void GameEngine::AddTouchEnded(Touch touch) {
   touches_ended_.push_back(touch);
 }
 
+void GameEngine::AddKeyPressed(int key) {
+  keys_pressed_.push_back(key);
+}
+
 void GameEngine::AddMouseDelta(float delta_x, float delta_y) {
   mouse_delta_x_ += delta_x;
   mouse_delta_y_ += delta_y;
@@ -158,6 +162,9 @@ void GameEngine::ProcessInput() {
   if (touches_ended_.size() > 0) {
     touch_view->TouchesEnded(touches_ended_);
   }
+  if (keys_pressed_.size() > 0) {
+    touch_view->KeysPressed(keys_pressed_);
+  }
   // TODO should this be called if both values are 0?
   touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
   mouse_delta_x_ = 0;
@@ -205,4 +212,5 @@ void GameEngine::ProcessInput() {
   touches_began_.clear();
   touches_moved_.clear();
   touches_ended_.clear();
+  keys_pressed_.clear();
 }

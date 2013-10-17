@@ -60,6 +60,7 @@ class GameEngine {
   void AddTouchBegan(Touch touch);
   void AddTouchMoved(Touch touch);
   void AddTouchEnded(Touch touch);
+  void AddKeyPressed(int key);
   void AddMouseDelta(float delta_x, float delta_y);
   bool HandleBackButton();
   void HandlePauseButton();
@@ -173,6 +174,7 @@ class GameEngine {
   std::vector<Touch> touches_moved_;
   std::vector<Touch> touches_ended_;
   std::vector<std::pair<Touch, unsigned int> > potential_tap_touches_;
+  std::vector<int> keys_pressed_;
   float mouse_delta_x_;
   float mouse_delta_y_;
   ScreenSize screen_size_;
