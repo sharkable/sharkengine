@@ -69,22 +69,6 @@
   [self start];
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-  glClear(GL_COLOR_BUFFER_BIT);
-  glLoadIdentity();
-
-  if (gameEngine_) {
-    gameEngine_->Render();
-  }
-
-  [[self openGLContext] flushBuffer];
-
-  int err;
-  if ((err = glGetError()) != 0) {
-    NSLog(@"glGetError(): %d", err);
-  }
-}
-
 - (void)reshape {
   if (!NSEqualRects(self.frame, self.superview.frame)) {
     self.frame = self.superview.frame;
@@ -178,10 +162,20 @@
 }
 
 - (void)updateEvent:(NSTimer *)timer {
+  glClear(GL_COLOR_BUFFER_BIT);
+  glLoadIdentity();
+
   if (gameEngine_) {
     gameEngine_->Update();
+    gameEngine_->Render();
   }
-  [self setNeedsDisplay:YES];
+
+  [[self openGLContext] flushBuffer];
+
+  int err;
+  if ((err = glGetError()) != 0) {
+    NSLog(@"glGetError(): %d", err);
+  }
 }
 
 - (void)start {
