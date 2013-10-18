@@ -16,7 +16,6 @@
 #include "gameengine/apple/modules/ApplePersistenceModule.h"
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
-#include "gameengine/apple/modules/osx/OSXLabelFactoryModule.h"
 
 @interface SharkengineOpenGLView ()
 - (BOOL)isFullScreen;
@@ -34,8 +33,6 @@
   gameEngine_->set_platform_resolution(kPlatformResolutionHigh);
   gameEngine_->set_asset_reader_factory_module(
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
-  gameEngine_->set_label_factory_module(
-      sp<LabelFactoryModule>(new OSXLabelFactoryModule()));
   gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
   gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
   gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));

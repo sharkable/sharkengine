@@ -16,12 +16,16 @@
 
 class Label : public Animatable {
  public:
-  Label(GamePoint position);
-  virtual ~Label() {};
+  Label(GameEngine *game_engine, GamePoint position);
 
-  virtual const std::string & Text() = 0;
-  virtual void SetText(const std::string &text) = 0;
-  virtual void SetFontSize(float font_size) = 0;
+  const std::string & text() { return text_; }
+  void set_text(const std::string &text) { text_ = text; }
+
+  // ViewEntity
+  void Render(GamePoint offset);
+
+ private:
+  std::string text_;
 };
 
 #endif

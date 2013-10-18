@@ -38,7 +38,6 @@ class AssetReaderFactoryModule;
 class GameEngine;
 class InputModule;
 class Label;
-class LabelFactoryModule;
 class PersistenceModule;
 namespace SharkSound {
   class SoundController;
@@ -71,7 +70,6 @@ class GameEngine {
   void RemoveView(EngineView *view);
   void SetRootView(EngineView *view);
   AssetReader * LoadAsset(std::string filename);
-  Label * CreateLabel(const std::string &text = "", GamePoint position = kGamePointZero);
 
   PlatformType platform_type() { return platform_type_; }
   void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
@@ -83,10 +81,6 @@ class GameEngine {
 
   void set_asset_reader_factory_module(sp<AssetReaderFactoryModule> asset_reader_factory_module) {
     asset_reader_factory_module_ = asset_reader_factory_module;
-  }
-
-  void set_label_factory_module(sp<LabelFactoryModule> label_factory_module) {
-    label_factory_module_ = label_factory_module;
   }
 
   sp<PersistenceModule> persistence_module() { return persistence_module_; }
@@ -159,7 +153,6 @@ class GameEngine {
 
   // Platform specific
   sp<AssetReaderFactoryModule> asset_reader_factory_module_;
-  sp<LabelFactoryModule> label_factory_module_;
   sp<PersistenceModule> persistence_module_;
   sp<AdModule> ad_module_;
   sp<AnalyticsModule> analytics_module_;
