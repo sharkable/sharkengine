@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE1395AC17B57C1C00F1F61C /* icon.icns */; };
+		FE1DB9651811BFEC009D1C3D /* font.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE1DB9631811BFEC009D1C3D /* font.cc */; };
+		FE1DB9681811C092009D1C3D /* label.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE1DB9671811C092009D1C3D /* label.cc */; };
 		FE23DC4817E2A06600F28FF5 /* sound_controller.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4617E2A06600F28FF5 /* sound_controller.cc */; };
 		FE23DC4917E2A06600F28FF5 /* sound.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4717E2A06600F28FF5 /* sound.cc */; };
 		FE4FA9FB17B8191D00E3B011 /* mkstemp.c in Sources */ = {isa = PBXBuildFile; fileRef = FE4FA98C17B8191C00E3B011 /* mkstemp.c */; };
@@ -115,6 +117,10 @@
 
 /* Begin PBXFileReference section */
 		FE1395AC17B57C1C00F1F61C /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		FE1DB9631811BFEC009D1C3D /* font.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font.cc; sourceTree = "<group>"; };
+		FE1DB9641811BFEC009D1C3D /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = "<group>"; };
+		FE1DB9661811C087009D1C3D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
+		FE1DB9671811C092009D1C3D /* label.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cc; sourceTree = "<group>"; };
 		FE23DC4617E2A06600F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
 		FE23DC4717E2A06600F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
 		FE4FA98A17B8191C00E3B011 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -479,6 +485,7 @@
 				FEF4BFC417B3FADA00D2085A /* animatable.h */,
 				FEF4BFC517B3FADA00D2085A /* button.h */,
 				FEF4BFC617B3FADA00D2085A /* composite_entity.h */,
+				FE1DB9661811C087009D1C3D /* label.h */,
 				FEF4BFC717B3FADA00D2085A /* multi_select.h */,
 				FEF4BFC817B3FADA00D2085A /* simple_item.h */,
 			);
@@ -513,6 +520,8 @@
 				FEF4BFD817B3FADA00D2085A /* asset_reader.h */,
 				FEF4BFD917B3FADA00D2085A /* engine_view.cc */,
 				FEF4BFDA17B3FADA00D2085A /* entities */,
+				FE1DB9631811BFEC009D1C3D /* font.cc */,
+				FE1DB9641811BFEC009D1C3D /* font.h */,
 				FEF4BFE017B3FADA00D2085A /* game_engine.cc */,
 				FEF4BFE117B3FADA00D2085A /* mt19937ar.c */,
 				FEF4BFE217B3FADA00D2085A /* opengl */,
@@ -533,6 +542,7 @@
 				FEF4BFDB17B3FADA00D2085A /* animatable.cc */,
 				FEF4BFDC17B3FADA00D2085A /* button.cc */,
 				FEF4BFDD17B3FADA00D2085A /* composite_entity.cc */,
+				FE1DB9671811C092009D1C3D /* label.cc */,
 				FEF4BFDE17B3FADA00D2085A /* multi_select.cc */,
 				FEF4BFDF17B3FADA00D2085A /* simple_item.cc */,
 			);
@@ -851,8 +861,10 @@
 				FE4FAA1017B8191D00E3B011 /* zip_error_get.c in Sources */,
 				FE4FAA1217B8191D00E3B011 /* zip_error_get_sys_type.c in Sources */,
 				FE4FAA1417B8191D00E3B011 /* zip_error_strerror.c in Sources */,
+				FE1DB9651811BFEC009D1C3D /* font.cc in Sources */,
 				FE4FAA1617B8191D00E3B011 /* zip_error_to_str.c in Sources */,
 				FE4FAA1817B8191D00E3B011 /* zip_fclose.c in Sources */,
+				FE1DB9681811C092009D1C3D /* label.cc in Sources */,
 				FE4FAA1A17B8191D00E3B011 /* zip_file_error_clear.c in Sources */,
 				FE4FAA1C17B8191D00E3B011 /* zip_file_error_get.c in Sources */,
 				FE4FAA1E17B8191D00E3B011 /* zip_file_get_offset.c in Sources */,
@@ -1002,7 +1014,7 @@
 					../../../sharksound/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
