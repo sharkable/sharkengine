@@ -6,26 +6,31 @@ fi
 
 mkdir -p $SHARKENGINE_APP_HOME/out/$1/${SE_APP_CODENAME}_${1}.xcodeproj
 
-sed -e "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
-    -e "s/___SHARKSOUND_HOME___/$(echo $SHARKSOUND_HOME | sed -e 's/[\/&]/\\&/g')/g" \
-    < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkEngine_$1.xcodeproj/project.pbxproj \
-    > $SHARKENGINE_APP_HOME/out/$1/${SE_APP_CODENAME}_${1}.xcodeproj/project.pbxproj
-
 APP_ORIENTATION_LETTER=${SE_APP_ORIENTATION:0:1}
 if [ $APP_ORIENTATION_LETTER ] && \
     ([ $APP_ORIENTATION_LETTER = "L" ] || [ $APP_ORIENTATION_LETTER = "l" ];) then
   ORIENTATION_STRING_1="UIInterfaceOrientationLandscapeLeft"
   ORIENTATION_STRING_2="UIInterfaceOrientationLandscapeRight"
+  ORIENTATION_STRING_XIB="Landscape"
 else
   ORIENTATION_STRING_1="UIInterfaceOrientationPortrait"
   ORIENTATION_STRING_2="UIInterfaceOrientationPortraitUpsideDown"
+  ORIENTATION_STRING_XIB="Portrait"
 fi
 
 VERSION=$SE_APP_VERSION_MAJOR.$SE_APP_VERSION_MINOR
+
+sed -e "s/___SHARKENGINE_HOME___/$(echo $SHARKENGINE_HOME | sed -e 's/[\/&]/\\&/g')/g" \
+    -e "s/___SHARKSOUND_HOME___/$(echo $SHARKSOUND_HOME | sed -e 's/[\/&]/\\&/g')/g" \
+    -e "s/___SHARKENGINE_ORIENTATION_XIB___/$ORIENTATION_STRING_XIB/g" \
+    < $SHARKENGINE_HOME/platforms/apple/build/$1/SharkEngine_$1.xcodeproj/project.pbxproj \
+    > $SHARKENGINE_APP_HOME/out/$1/${SE_APP_CODENAME}_${1}.xcodeproj/project.pbxproj
+
 sed -e "s/___SHARKENGINE_APP_VERSION___/$VERSION/g" \
     -e "s/___SHARKENGINE_APP_NAME___/$SE_APP_NAME/g" \
     -e "s/___SHARKENGINE_ORIENTATION_1___/$ORIENTATION_STRING_1/g" \
     -e "s/___SHARKENGINE_ORIENTATION_2___/$ORIENTATION_STRING_2/g" \
+    -e "s/___SHARKENGINE_ORIENTATION_XIB___/$ORIENTATION_STRING_XIB/g" \
     < $SHARKENGINE_HOME/platforms/apple/build/$1/Info.plist \
     > $SHARKENGINE_APP_HOME/out/$1/Info.plist
 

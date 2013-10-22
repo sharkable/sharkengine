@@ -29,7 +29,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013 Sharkable. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>MainMenu-___SHARKENGINE_ORIENTATION_XIB___</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
