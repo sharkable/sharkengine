@@ -30,7 +30,7 @@
 - (void)prepareOpenGL {
   // The original XIB view size determines the render size.
   renderSize_.width = self.frame.size.width;
-  renderSize_.height = self.frame.size.width;
+  renderSize_.height = self.frame.size.height;
 
   // TODO should this really be here?
   gameEngine_ = new GameEngine();
