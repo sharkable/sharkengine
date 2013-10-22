@@ -18,8 +18,7 @@
 #include "gameengine/modules/persistence_module.h"
 
 GameEngine::GameEngine()
-    : platform_type_(kPlatformTypePhone),
-      resource_loader_(*this),
+    : resource_loader_(*this),
       mouse_delta_x_(0),
       mouse_delta_y_(0),
       screen_size_(kScreenSizeZero),

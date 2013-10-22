@@ -13,6 +13,7 @@
 #include "sharksound/apple/AppleSoundController.h"
 
 #include "gameengine/game_engine.h"
+#include "gameengine/platform.h"
 #include "gameengine/apple/modules/ApplePersistenceModule.h"
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
@@ -33,14 +34,11 @@
 
   // TODO should this really be here?
   gameEngine_ = new GameEngine();
-  gameEngine_->set_platform_type(kPlatformTypePC);
-  // For now, use low res for potrait mode games (comes from iPad 1), high res for landscape (comes
-  // from iPhone 5.)
-  if (renderSize_.width > renderSize_.height) {
-    gameEngine_->set_platform_resolution(kPlatformResolutionHigh);
-  } else {
-    gameEngine_->set_platform_resolution(kPlatformResolutionLow);
-  }
+  gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
+  gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
+  gameEngine_->platform().set_input_group(Platform::kInputGroupPC);
+  gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
+
   gameEngine_->set_asset_reader_factory_module(
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
   gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));

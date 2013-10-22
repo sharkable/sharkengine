@@ -10,6 +10,7 @@
 
 #include "gameengine/asset_reader.h"
 #include "gameengine/game_engine.h"
+#include "gameengine/platform.h"
 
 using std::map;
 using std::string;
@@ -65,29 +66,20 @@ void ResourceLoader::ReloadTextures() {
 
 Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 // TODO think about this
-#if __ANDROID__ || TARGET_OS_MAC
-  string filename = "assets/textures/" + name;
-#else
-  string filename = name;
-#endif
-  if (game_engine_.platform_type() == kPlatformTypePhone ||
-      game_engine_.platform_type() == kPlatformTypePC) {
-    filename += "_iphone";
+  string filename;
+  if (game_engine_.platform().os_group() != Platform::kOSGroupIOS) {
+    filename = "assets/textures/" + name;
+  } else {
+    filename = name;
   }
-  string high_res_filename = filename;
-  if (game_engine_.platform_resolution() == kPlatformResolutionHigh) {
-    high_res_filename += "@2x";
-  }
-
-  high_res_filename += ".tx";
+  filename += texture_name_extention_;
   filename += ".tx";
 
-  AssetReader *asset_reader = game_engine_.LoadAsset(high_res_filename);
+  AssetReader *asset_reader = game_engine_.LoadAsset(filename);
   if (!asset_reader->IsOpen()) {
-    std::cout << "No high res file for " << name << std::endl;
+    std::cout << "No texture file for " << name << std::endl;
     delete asset_reader;
-    asset_reader = game_engine_.LoadAsset(filename);
-    assert(asset_reader->IsOpen());
+    assert(false);
   }
 
   uint16_t image_width, image_height;

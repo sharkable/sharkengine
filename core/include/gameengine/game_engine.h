@@ -14,21 +14,11 @@
 
 #include "gameengine/coordinate_types.h"
 #include "gameengine/engine_view.h"
+#include "gameengine/platform.h"
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
 #include "gameengine/datastructures/staged_vector.h"
-
-typedef enum {
-  kPlatformTypePhone = 0,
-  kPlatformTypeTablet,
-  kPlatformTypePC,
-} PlatformType;
-
-typedef enum {
-  kPlatformResolutionLow = 0,
-  kPlatformResolutionHigh
-} PlatformResolution;
 
 class AdModule;
 class AnalyticsModule;
@@ -71,13 +61,7 @@ class GameEngine {
   void SetRootView(EngineView *view);
   AssetReader * LoadAsset(std::string filename);
 
-  PlatformType platform_type() { return platform_type_; }
-  void set_platform_type(PlatformType platform_type) { platform_type_ = platform_type; };
-
-  PlatformResolution platform_resolution() { return platform_resolution_; }
-  void set_platform_resolution(PlatformResolution platform_resolution) {
-    platform_resolution_ = platform_resolution;
-  };
+  Platform & platform() { return platform_; }
 
   void set_asset_reader_factory_module(sp<AssetReaderFactoryModule> asset_reader_factory_module) {
     asset_reader_factory_module_ = asset_reader_factory_module;
@@ -148,10 +132,8 @@ class GameEngine {
  private:
   void ProcessInput();
 
-  PlatformType platform_type_;
-  PlatformResolution platform_resolution_;
-
   // Platform specific
+  Platform platform_;
   sp<AssetReaderFactoryModule> asset_reader_factory_module_;
   sp<PersistenceModule> persistence_module_;
   sp<AdModule> ad_module_;

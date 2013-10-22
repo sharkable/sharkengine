@@ -26,10 +26,16 @@ class ResourceLoader {
   void ReleaseResource(Texture2D resource);
   void ReloadTextures();
 
+  void set_texture_name_extention(std::string const & extention) {
+    texture_name_extention_ = extention;
+  }
+  std::string const & texture_name_extention() { return texture_name_extention_; }
+
  private:
   Texture2D Texture(std::string filename, int opengl_id = 0);
 
   GameEngine &game_engine_;
+  std::string texture_name_extention_;
   std::map<std::string, Texture2D> resources_;
   std::map<std::string, int> resource_counter_;
 };
