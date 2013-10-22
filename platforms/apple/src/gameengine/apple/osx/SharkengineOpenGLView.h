@@ -8,6 +8,8 @@
 
 class GameEngine;
 
+#include "gameengine/coordinate_types.h"
+
 @interface SharkengineOpenGLView : NSOpenGLView<NSWindowDelegate> {
   GameEngine *gameEngine_;
   NSTimer *timer_;
@@ -15,6 +17,7 @@ class GameEngine;
   int viewportY_;
   int viewportWidth_;
   int viewportHeight_;
+  ScreenSize renderSize_;
 }
 
 @end
