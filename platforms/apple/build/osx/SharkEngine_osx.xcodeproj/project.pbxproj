@@ -10,6 +10,7 @@
 		FE1395AD17B57C1C00F1F61C /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE1395AC17B57C1C00F1F61C /* icon.icns */; };
 		FE1DB9651811BFEC009D1C3D /* font.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE1DB9631811BFEC009D1C3D /* font.cc */; };
 		FE1DB9681811C092009D1C3D /* label.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE1DB9671811C092009D1C3D /* label.cc */; };
+		FE1FEF4A181755FF0033D5E9 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1FEF49181755FF0033D5E9 /* AudioUnit.framework */; };
 		FE23DC4817E2A06600F28FF5 /* sound_controller.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4617E2A06600F28FF5 /* sound_controller.cc */; };
 		FE23DC4917E2A06600F28FF5 /* sound.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4717E2A06600F28FF5 /* sound.cc */; };
 		FE4FA9FB17B8191D00E3B011 /* mkstemp.c in Sources */ = {isa = PBXBuildFile; fileRef = FE4FA98C17B8191C00E3B011 /* mkstemp.c */; };
@@ -122,6 +123,7 @@
 		FE1DB9661811C087009D1C3D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
 		FE1DB9671811C092009D1C3D /* label.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cc; sourceTree = "<group>"; };
 		FE1FEF4718174A7E0033D5E9 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		FE1FEF49181755FF0033D5E9 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		FE23DC4617E2A06600F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
 		FE23DC4717E2A06600F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
 		FE4FA98A17B8191C00E3B011 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1FEF4A181755FF0033D5E9 /* AudioUnit.framework in Frameworks */,
 				FE4FAA6B17B81DD200E3B011 /* libz.dylib in Frameworks */,
 				FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */,
 				FE6495B017A469340051BF31 /* AudioToolbox.framework in Frameworks */,
@@ -396,10 +399,11 @@
 		FE64949017A315CD0051BF31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FE4FAA6A17B81DD200E3B011 /* libz.dylib */,
 				FE6495AF17A469340051BF31 /* AudioToolbox.framework */,
+				FE1FEF49181755FF0033D5E9 /* AudioUnit.framework */,
 				FE6495B117A4698D0051BF31 /* AVFoundation.framework */,
 				FE64949117A315CD0051BF31 /* Cocoa.framework */,
+				FE4FAA6A17B81DD200E3B011 /* libz.dylib */,
 				FE6495AD17A4690E0051BF31 /* OpenAL.framework */,
 				FE6495AB17A469060051BF31 /* OpenGL.framework */,
 				FE64949317A315CD0051BF31 /* Other Frameworks */,
