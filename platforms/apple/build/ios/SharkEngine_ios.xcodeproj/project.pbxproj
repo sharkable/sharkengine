@@ -150,6 +150,7 @@
 		FE164D6817AC4444006C5D88 /* TypeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeUtil.mm; sourceTree = "<group>"; };
 		FE1DB9601811BF50009D1C3D /* font.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font.cc; sourceTree = "<group>"; };
 		FE1DB9611811BF50009D1C3D /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = "<group>"; };
+		FE1FEF4818174AA90033D5E9 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		FE23DC4217E29FB800F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
 		FE23DC4317E29FB800F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
 		FE2AA97F17C3BC2F007BDF25 /* IconPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconPad.png; sourceTree = "<group>"; };
@@ -589,6 +590,7 @@
 				FEF9B81017A9BFB400867739 /* game_engine.h */,
 				FE40299D17C2A97E00F0F49C /* module.h */,
 				FEF9B81217A9BFB400867739 /* modules */,
+				FE1FEF4818174AA90033D5E9 /* platform.h */,
 				FEF9B81817A9BFB400867739 /* sprite.h */,
 				FEF9B81917A9BFB400867739 /* touch.h */,
 				FEF9B81A17A9BFB400867739 /* view_entity.h */,

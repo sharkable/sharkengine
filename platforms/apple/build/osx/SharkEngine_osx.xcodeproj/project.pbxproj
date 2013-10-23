@@ -121,6 +121,7 @@
 		FE1DB9641811BFEC009D1C3D /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = "<group>"; };
 		FE1DB9661811C087009D1C3D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
 		FE1DB9671811C092009D1C3D /* label.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cc; sourceTree = "<group>"; };
+		FE1FEF4718174A7E0033D5E9 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		FE23DC4617E2A06600F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
 		FE23DC4717E2A06600F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
 		FE4FA98A17B8191C00E3B011 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -270,7 +271,7 @@
 		FEF4C67F17B3FE0000D2085A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FEF4C68417B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
 		FEF4C68617B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
-		FEF4C68817B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainMenu-___SHARKENGINE_ORIENTATION_XIB___.xib; sourceTree = "<group>"; };
+		FEF4C68817B3FF3700D2085A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "MainMenu-___SHARKENGINE_ORIENTATION_XIB___.xib"; sourceTree = "<group>"; };
 		FEF91D1B17E01FD700018432 /* AppleSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSound.h; sourceTree = "<group>"; };
 		FEF91D1C17E01FD700018432 /* AppleSound.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleSound.mm; sourceTree = "<group>"; };
 		FEF91D1D17E01FD700018432 /* AppleSoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSoundController.h; sourceTree = "<group>"; };
@@ -472,6 +473,7 @@
 				FEF4BFC917B3FADA00D2085A /* game_engine.h */,
 				FEF4BFCB17B3FADA00D2085A /* module.h */,
 				FEF4BFCC17B3FADA00D2085A /* modules */,
+				FE1FEF4718174A7E0033D5E9 /* platform.h */,
 				FEF4BFD217B3FADA00D2085A /* sprite.h */,
 				FEF4BFD317B3FADA00D2085A /* touch.h */,
 				FEF4BFD417B3FADA00D2085A /* view_entity.h */,
@@ -939,7 +941,7 @@
 			children = (
 				FEF4C68817B3FF3700D2085A /* en */,
 			);
-			name = MainMenu-___SHARKENGINE_ORIENTATION_XIB___.xib;
+			name = "MainMenu-___SHARKENGINE_ORIENTATION_XIB___.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
