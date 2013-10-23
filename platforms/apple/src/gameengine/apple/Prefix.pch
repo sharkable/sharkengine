@@ -35,7 +35,9 @@
 
 #if __ANDROID__
   #include <android/log.h>
-  #define s_log(...)  __android_log_print(ANDROID_LOG_DEBUG, "Sharkable", __VA_ARGS__);
+  #define shark_log(...)  __android_log_print(ANDROID_LOG_DEBUG, "Sharkable", __VA_ARGS__);
 #else
-  #define s_log(...)  { printf(__VA_ARGS__); printf("\n"); }
+  #define shark_log(...)  { printf(__VA_ARGS__); printf("\n"); }
 #endif
+
+#define shark_assert(check, ...) { if (!(check)) { shark_log(__VA_ARGS__); assert(false); } }
