@@ -27,7 +27,7 @@ extern "C" {
 #include "gameengine/android/modules/android_asset_reader_factory_module.h"
 #include "gameengine/android/modules/android_persistence_module.h"
 #include "gameengine/game_engine.h"
-#include "gameengine/game_engine.h"
+#include "gameengine/platform.h"
 
 static sp<GameEngine> game_engine_;
 
@@ -57,9 +57,11 @@ void init(JNIEnv *env, jobject ad_module_java, jobject persistence_module_java,
   Texture2D::SetScreenHeight(height);
   game_engine_->set_screen_size(screen_size_make(width, height));
 
-  game_engine_->set_platform_type(kPlatformTypePhone);
-  game_engine_->set_platform_resolution(
-      width >= 640 ? kPlatformResolutionHigh : kPlatformResolutionLow);
+  game_engine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPhone);
+  game_engine_->platform().set_os_group(Platform::kOSGroupAndroid);
+  game_engine_->platform().set_input_group(Platform::kInputGroupTouchScreen);
+  game_engine_->platform().set_texture_group(
+      width >= 640 ? Platform::kTextureGroupAndroidHighRes : Platform::kTextureGroupAndroidLowRes);
 
   sp<AssetReaderFactoryModule> asset_reader_factory_module =
       sp<AssetReaderFactoryModule>(new AndroidAssetReaderFactoryModule());
