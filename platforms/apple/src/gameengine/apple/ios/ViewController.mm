@@ -21,6 +21,7 @@
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
+#import "gameengine/platform.h"
 
 @interface ViewController ()
 - (void)update;
@@ -47,18 +48,42 @@
 
     gameEngine_ = new GameEngine();
 
-    PlatformType platform_type = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ?
-        kPlatformTypePhone : kPlatformTypeTablet;
-    PlatformResolution platform_resolution = [UIScreen mainScreen].scale == 2 ?
-        kPlatformResolutionHigh : kPlatformResolutionLow;
-    gameEngine_->set_platform_type(platform_type);
-    gameEngine_->set_platform_resolution(platform_resolution);
+    bool is_phone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    bool is_high_res = [UIScreen mainScreen].scale == 2;
+    bool is_4_inch = [UIScreen mainScreen].bounds.size.height > 480;
+
+    Platform::ScreenSizeGroup screen_size_group;
+    Platform::TextureGroup texture_group;
+    if (is_phone) {
+      screen_size_group = Platform::kScreenSizeGroupPhone;
+      if (is_high_res) {
+        if (is_4_inch) {
+          texture_group = Platform::kTextureGroupIPhone40cmHighRes;
+        } else {
+          texture_group = Platform::kTextureGroupIPhone35cmHighRes;
+        }
+      } else {
+        texture_group = Platform::kTextureGroupIPhone35cmLowRes;
+      }
+    } else {
+      screen_size_group = Platform::kScreenSizeGroupTablet;
+      if (is_high_res) {
+        texture_group = Platform::kTextureGroupIPadHighRes;
+      } else {
+        texture_group = Platform::kTextureGroupIPadLowRes;
+      }
+    }
+
+    gameEngine_->platform().set_screen_size_group(screen_size_group);
+    gameEngine_->platform().set_os_group(Platform::kOSGroupIOS);
+    gameEngine_->platform().set_input_group(Platform::kInputGroupTouchScreen);
+    gameEngine_->platform().set_texture_group(texture_group);
 
     gameEngine_->set_asset_reader_factory_module(
         sp<AssetReaderFactoryModule>(new IOSAssetReaderFactoryModule()));
     gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
     // Use iAd on iPad, and AdMob on iPhone. iAd only supports full screen ads on iPad.
-    if (gameEngine_->platform_type() == kPlatformTypePhone) {
+    if (screen_size_group == Platform::kScreenSizeGroupPhone) {
       gameEngine_->set_ad_module(sp<AdModule>(new IOSAdModule(self)));
     } else {
       gameEngine_->set_ad_module(sp<AdModule>(new IOSIAdAdModule(self)));
