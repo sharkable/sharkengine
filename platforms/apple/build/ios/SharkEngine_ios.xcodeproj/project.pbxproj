@@ -21,7 +21,6 @@
 		FE164D8617AC4445006C5D88 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE164D4A17AC4444006C5D88 /* AppiraterLocalizable.strings */; };
 		FE164D8817AC4445006C5D88 /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D6817AC4444006C5D88 /* TypeUtil.mm */; };
 		FE1DB9621811BF50009D1C3D /* font.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE1DB9601811BF50009D1C3D /* font.cc */; };
-		FE1FEF4C1817562F0033D5E9 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1FEF4B1817562F0033D5E9 /* AudioUnit.framework */; };
 		FE23DC4417E29FB800F28FF5 /* sound_controller.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4217E29FB800F28FF5 /* sound_controller.cc */; };
 		FE23DC4517E29FB800F28FF5 /* sound.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE23DC4317E29FB800F28FF5 /* sound.cc */; };
 		FE2AA98817C3BC2F007BDF25 /* IconPad.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2AA97F17C3BC2F007BDF25 /* IconPad.png */; };
@@ -273,7 +272,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1FEF4C1817562F0033D5E9 /* AudioUnit.framework in Frameworks */,
 				FE65436317BA9B9600B59390 /* Security.framework in Frameworks */,
 				FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */,
 				FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */,
