@@ -52,10 +52,12 @@ IOSAdModule::IOSAdModule(UIViewController *root_view_controller) {
 }
 
 IOSAdModule::~IOSAdModule() {
-  [banner_view_ release];
-  [interstitial_ release];
-  [interstitial_state_ release];
-  [root_view_controller_ release];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [banner_view_ release];
+      [interstitial_ release];
+      [interstitial_state_ release];
+      [root_view_controller_ release];
+  });
 }
 
 
@@ -68,44 +70,52 @@ void IOSAdModule::SetPublisherId(const std::string & publisher_id) {
 // TODO This is NOT really a ScreenPoint... nor is it a GamePoint. We need access
 // to the GameEngine.
 void IOSAdModule::SetAdAtPoint(ScreenPoint point) {
-  if (!banner_view_) {
-    assert(publisher_id_.length());
-    banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-    banner_view_.adUnitID = TypeUtil::string2NSString(publisher_id_);
-    banner_view_.rootViewController = root_view_controller_;
-    GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
-    [banner_view_ loadRequest:request];
-  }
-  [banner_view_.rootViewController.view addSubview:banner_view_];
-  CGRect frame = banner_view_.frame;
-  frame.origin = CGPointMake(point.x, point.y);
-  banner_view_.frame = frame;
+  dispatch_async(dispatch_get_main_queue(), ^{
+      if (!banner_view_) {
+        assert(publisher_id_.length());
+        banner_view_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        banner_view_.adUnitID = TypeUtil::string2NSString(publisher_id_);
+        banner_view_.rootViewController = root_view_controller_;
+        GADRequest *request = [GADRequest request];
+        request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
+        [banner_view_ loadRequest:request];
+      }
+      [banner_view_.rootViewController.view addSubview:banner_view_];
+      CGRect frame = banner_view_.frame;
+      frame.origin = CGPointMake(point.x, point.y);
+      banner_view_.frame = frame;
+  });
 }
 
 void IOSAdModule::RemoveAd() {
-  [banner_view_ removeFromSuperview];
-  [banner_view_ release];
-  banner_view_ = nil;
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [banner_view_ removeFromSuperview];
+      [banner_view_ release];
+      banner_view_ = nil;
+  });
 }
 
 void IOSAdModule::PrepareFullScreenAd() {
-  assert(publisher_id_.length());
-  [interstitial_ release];
-  interstitial_ = [[GADInterstitial alloc] init];
-  interstitial_.delegate = interstitial_state_;
-  interstitial_.adUnitID = TypeUtil::string2NSString(publisher_id_);
-  GADRequest *request = [GADRequest request];
-  request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
-  [interstitial_ loadRequest:request];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      assert(publisher_id_.length());
+      [interstitial_ release];
+      interstitial_ = [[GADInterstitial alloc] init];
+      interstitial_.delegate = interstitial_state_;
+      interstitial_.adUnitID = TypeUtil::string2NSString(publisher_id_);
+      GADRequest *request = [GADRequest request];
+      request.testDevices = [NSArray arrayWithObject:GAD_SIMULATOR_ID];
+      [interstitial_ loadRequest:request];
+  });
 }
 
 bool IOSAdModule::ShowFullScreenAd() {
   if (!interstitial_.isReady) {
     return false;
   }
-  [interstitial_ presentFromRootViewController:root_view_controller_];
-  PrepareFullScreenAd();
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [interstitial_ presentFromRootViewController:root_view_controller_];
+      PrepareFullScreenAd();
+  });
   return true;
 }
 

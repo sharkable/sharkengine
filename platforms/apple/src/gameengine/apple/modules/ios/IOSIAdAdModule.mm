@@ -101,8 +101,10 @@ IOSIAdAdModule::IOSIAdAdModule(UIViewController *root_view_controller)
 }
 
 IOSIAdAdModule::~IOSIAdAdModule() {
-  [interstitial_state_ release];
-  [root_view_controller_ release];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [interstitial_state_ release];
+      [root_view_controller_ release];
+  });
 }
 
 
@@ -122,14 +124,20 @@ void IOSIAdAdModule::RemoveAd() {
 
 void IOSIAdAdModule::PrepareFullScreenAd() {
   admob_module_.PrepareFullScreenAd();
-  [interstitial_state_ prepareFullScreenAd];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [interstitial_state_ prepareFullScreenAd];
+  });
 }
 
 bool IOSIAdAdModule::ShowFullScreenAd() {
-  if (![interstitial_state_ showFullScreenAdFromViewController:root_view_controller_]) {
-    return admob_module_.ShowFullScreenAd();
-  }
-  return false;
+  __block bool result = false;
+  dispatch_sync(dispatch_get_main_queue(), ^{
+      result = [interstitial_state_ showFullScreenAdFromViewController:root_view_controller_];
+      if (!result) {
+        result = admob_module_.ShowFullScreenAd();
+      }
+  });
+  return result;
 }
 
 bool IOSIAdAdModule::IsShowingFullScreenAd() {
