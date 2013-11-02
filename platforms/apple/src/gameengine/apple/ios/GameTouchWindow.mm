@@ -68,6 +68,8 @@ using std::vector;
     CGPoint location = [touch locationInView:touch.view];
 
 // TODO: Should this be a game option? I was using it in Air Hockey.
+// TODO: Compare new threading method input to this and to old method. Maybe the new
+//     threading method is enough to fix this.
 #if 0
     // Fudge the point by some factor of the velocity, to prevent the lag in movement.
     CGPoint previous_location = [touch previousLocationInView:touch.view];
