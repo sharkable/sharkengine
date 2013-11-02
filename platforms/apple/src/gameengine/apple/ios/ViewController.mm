@@ -182,7 +182,7 @@
 
 - (BOOL)isLandscape {
   NSArray *supportedOrientations =
-  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
+      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UISupportedInterfaceOrientations"];
   for (NSString *orientation in supportedOrientations) {
     if ([orientation isEqualToString:@"UIInterfaceOrientationLandscapeLeft"] ||
         [orientation isEqualToString:@"UIInterfaceOrientationLandscapeRight"]) {
