@@ -43,13 +43,6 @@
 
   viewController_ = [[ViewController alloc] init];
 
-  CGSize screenSize = [viewController_ desiredViewFrame].size;
-  CGFloat scale = [UIScreen mainScreen].scale;
-  viewController_.gameEngine->set_screen_size(screen_size_make(screenSize.width * scale,
-                                                               screenSize.height * scale));
-
-  sharkengine_init(viewController_.gameEngine);
-
 //  SoundPlayer::instance()->syncAudioSessionForITunes();
 
   [Appirater appLaunched:YES];
@@ -62,8 +55,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-  viewController_.gameEngine->NotifyPause();
-  [viewController_ stop];
+  [viewController_ pause];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -72,7 +64,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-  [viewController_ stop];
+  [viewController_ pause];
 }
 
 - (UIWindow *)window {

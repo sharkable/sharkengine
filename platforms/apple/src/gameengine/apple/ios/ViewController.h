@@ -18,8 +18,7 @@ class GameEngine;
 @property(nonatomic, readonly) GameEngine *gameEngine;
 @property(nonatomic, readonly) UIWindow *window;
 
+- (void)pause;
 - (void)start;
-- (void)stop;
-- (CGRect)desiredViewFrame;
 
 @end

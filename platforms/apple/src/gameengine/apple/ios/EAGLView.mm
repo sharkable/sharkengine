@@ -38,17 +38,6 @@
          kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
          nil];
 
-    renderer_ = [[ES2Renderer alloc] init];
-
-    if (!renderer_) {
-      renderer_ = [[ES1Renderer alloc] init];
-
-      if (!renderer_) {
-        [self release];
-        return nil;
-      }
-    }
-    [renderer_ resizeFromLayer:(CAEAGLLayer *)self.layer];
   }
 
   return self;
@@ -58,6 +47,19 @@
   [renderer_ release];
 
   [super dealloc];
+}
+
+- (void)initRenderer {
+  renderer_ = [[ES2Renderer alloc] init];
+
+  if (!renderer_) {
+    renderer_ = [[ES1Renderer alloc] init];
+
+    if (!renderer_) {
+      [self release];
+    }
+  }
+  [renderer_ resizeFromLayer:(CAEAGLLayer *)self.layer];
 }
 
 - (void)setUpRender {

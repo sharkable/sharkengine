@@ -13,6 +13,9 @@
 // Note that setting the view non-opaque will only work if the EAGL surface has an alpha channel.
 @interface EAGLView : UIView
 
+// Call once at the start of the game thread.
+- (void)initRenderer;
+
 // Call these at the start and end of rendering a frame.
 // Call |setUpRender| to clear the scene and set up the coordinate system.
 // After that, make OpenGL calls to render all of the objects within the scene.
