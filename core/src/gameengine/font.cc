@@ -27,6 +27,9 @@ void Font::RenderGlyph(char glyph, GamePoint position) {
   if (glyph == ' ') {
     return;
   }
+#if DEBUG
+  shark_assert(glyphs_[glyph].data_loaded(), "Cannot draw character: %c %d", glyph, glyph);
+#endif
   glyphs_[glyph].DrawAtPoint(game_engine_->game_point_to_screen_point(position));
 }
 
@@ -34,7 +37,7 @@ float Font::GlyphWidth(char glyph) {
   if (glyph == ' ') {
     return 15;
   }
-  return glyphs_[glyph].content_size().width;
+  return glyphs_[glyph].content_size().width - 3;  // TODO HACK
 }
 
 float Font::GlyphHeight() {
