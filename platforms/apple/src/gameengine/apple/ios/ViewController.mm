@@ -187,7 +187,10 @@
   while (true) {
     if (paused_) {
       gameEngine_->NotifyPause();
-      while(paused_);
+      while (paused_) {
+        // TODO This is needed, or this is an infinite loop in release mode. Investigate.
+        [NSThread sleepForTimeInterval:0.1];
+      }
       last_system_time = CACurrentMediaTime();
     }
 
