@@ -35,6 +35,9 @@ GameEngine::GameEngine()
   positions_ = sp<Positions>(new Positions());
 }
 
+
+#pragma mark - Platform functions
+
 void GameEngine::Update() {
   if (views_.HasStagedChanges()) {
     if (views_.Size() > 0) {
@@ -107,6 +110,9 @@ void GameEngine::HandlePauseButton() {
     views_.Back()->HandlePauseButton();
   }
 }
+
+
+#pragma mark - App functions
 
 void GameEngine::PushView(EngineView *view) {
   view->set_is_visible(true);

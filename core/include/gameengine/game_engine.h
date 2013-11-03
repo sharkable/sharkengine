@@ -41,7 +41,8 @@ class GameEngine {
  public:
   GameEngine();
 
-  // Platform functions. Don't call these from an app.
+  // Platform functions
+  // Don't call these from an app.
   void Update();
   void Render();
   void NotifyPause();
@@ -54,7 +55,7 @@ class GameEngine {
   bool HandleBackButton();
   void HandlePauseButton();
 
-  // App functions.
+  // App functions
   void PushView(EngineView *view);
   void PopView();
   void RemoveView(EngineView *view);
