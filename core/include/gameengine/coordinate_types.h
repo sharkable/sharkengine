@@ -108,6 +108,26 @@ inline ScreenPoint screen_point_make(double x, double y) {
   return point;
 }
 
+inline ScreenPoint operator+(const ScreenPoint &point_1, const ScreenPoint &point_2) {
+  return screen_point_make(point_1.x + point_2.x, point_1.y + point_2.y);
+}
+
+inline ScreenPoint operator-(const ScreenPoint &point_1, const ScreenPoint &point_2) {
+  return screen_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
+}
+
+inline ScreenPoint & operator+=(ScreenPoint &point_1, const ScreenPoint &point_2) {
+  point_1.x += point_2.x;
+  point_1.y += point_2.y;
+  return point_1;
+}
+
+inline ScreenPoint & operator-=(ScreenPoint &point_1, const ScreenPoint &point_2) {
+  point_1.x -= point_2.x;
+  point_1.y -= point_2.y;
+  return point_1;
+}
+
 static const ScreenSize kScreenSizeZero = screen_size_make(0, 0);
 static const ScreenPoint kScreenPointZero = screen_point_make(0, 0);
 
