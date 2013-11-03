@@ -76,7 +76,10 @@
   if (!view_) {
     view_ = [[EAGLView alloc] initWithFrame:[self desiredViewFrame]];
     [self setup];
-    while (!renderedAtLeastOnce_);
+    while (!renderedAtLeastOnce_) {
+      // TODO This is needed, or this is an infinite loop in release mode. Investigate.
+      [NSThread sleepForTimeInterval:0.1];
+    }
   }
   self.view = view_;
 }
