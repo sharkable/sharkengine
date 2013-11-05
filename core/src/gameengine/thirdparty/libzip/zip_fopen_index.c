@@ -154,11 +154,11 @@ _zip_file_fillbuf(void *buf, size_t buflen, struct zip_file *zf)
 	return -1;
     }
     if (buflen < zf->cbytes_left)
-	i = buflen;
+	i = (unsigned int)buflen;  // #sharkable
     else
-	i = zf->cbytes_left;
+	i = (unsigned int)zf->cbytes_left;  // #sharkable
 
-    j = fread(buf, 1, i, zf->za->zp);
+    j = (unsigned int)fread(buf, 1, i, zf->za->zp);  // #sharkable
     if (j == 0) {
 	_zip_error_set(&zf->error, ZIP_ER_EOF, 0);
 	j = -1;

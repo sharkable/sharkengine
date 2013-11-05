@@ -226,7 +226,7 @@ zip_close(struct zip *za)
 	    cd->entry[j].comment_len = za->entry[i].ch_comment_len;
 	}
 
-	cd->entry[j].offset = ftello(out);
+	cd->entry[j].offset = (unsigned int)ftello(out);  // #sharkable
 
 	if (ZIP_ENTRY_DATA_CHANGED(za->entry+i) || new_torrentzip) {
 	    struct zip_source *zs;
@@ -370,8 +370,8 @@ add_data(struct zip *za, struct zip_source *zs, struct zip_dirent *de, FILE *ft)
     de->last_mod = st.mtime;
     de->comp_method = st.comp_method;
     de->crc = st.crc;
-    de->uncomp_size = st.size;
-    de->comp_size = st.comp_size;
+    de->uncomp_size = (unsigned int)st.size;  // #sharkable
+    de->comp_size = (unsigned int)st.comp_size;  // #sharkable
 
     if (zip_get_archive_flag(za, ZIP_AFL_TORRENT, 0))
 	_zip_dirent_torrent_normalize(de);
@@ -428,7 +428,7 @@ add_data_uncomp(struct zip *za, zip_source_callback cb, void *ud,
 
     st->comp_method = ZIP_CM_DEFLATE;
     st->comp_size = st->size = 0;
-    st->crc = crc32(0, NULL, 0);
+    st->crc = (unsigned int)crc32(0, NULL, 0);  // #sharkable
 
     zstr.zalloc = Z_NULL;
     zstr.zfree = Z_NULL;
@@ -460,10 +460,10 @@ add_data_uncomp(struct zip *za, zip_source_callback cb, void *ud,
 		return -1;
 	    }
 	    if (n > 0) {
-		zstr.avail_in = n;
+		zstr.avail_in = (unsigned int)n;  // #sharkable
 		zstr.next_in = (Bytef *)b1;
 		st->size += n;
-		st->crc = crc32(st->crc, (Bytef *)b1, n);
+		st->crc = (unsigned int)crc32(st->crc, (Bytef *)b1, (unsigned int)n);  // #sharkable
 	    }
 	    else
 		flush = Z_FINISH;
@@ -526,8 +526,8 @@ copy_data(FILE *fs, off_t len, FILE *ft, struct zip_error *error)
 	return 0;
 
     while (len > 0) {
-	nn = len > sizeof(buf) ? sizeof(buf) : len;
-	if ((n=fread(buf, 1, nn, fs)) < 0) {
+	nn = len > (unsigned int)(sizeof(buf) ? sizeof(buf) : len);  // #sharkable
+	if ((n=(unsigned int)fread(buf, 1, nn, fs)) < 0) {  // #sharkable
 	    _zip_error_set(error, ZIP_ER_READ, errno);
 	    return -1;
 	}

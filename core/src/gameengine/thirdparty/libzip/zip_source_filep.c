@@ -140,11 +140,11 @@ read_file(void *state, void *data, size_t len, enum zip_source_cmd cmd)
 	
     case ZIP_SOURCE_READ:
 	if (z->remain != -1)
-	    n = len > z->remain ? z->remain : len;
+	    n = (int)(len > z->remain ? z->remain : len);  // #sharkable
 	else
-	    n = len;
+	    n = (int)len;  // #sharkable
 	
-	if ((i=fread(buf, 1, n, z->f)) < 0) {
+	if ((i=(int)fread(buf, 1, n, z->f)) < 0) {  // #sharkable
 	    z->e[0] = ZIP_ER_READ;
 	    z->e[1] = errno;
 	    return -1;

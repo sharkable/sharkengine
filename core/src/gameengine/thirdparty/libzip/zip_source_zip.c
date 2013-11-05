@@ -128,8 +128,8 @@ read_zip(void *state, void *data, size_t len, enum zip_source_cmd cmd)
     switch (cmd) {
     case ZIP_SOURCE_OPEN:
 	for (n=0; n<z->off; n+= i) {
-	    i = (z->off-n > sizeof(b) ? sizeof(b) : z->off-n);
-	    if ((i=zip_fread(z->zf, b, i)) < 0) {
+	    i = (int)(z->off-n > sizeof(b) ? sizeof(b) : z->off-n);  // #sharkable
+	    if ((i=(int)zip_fread(z->zf, b, i)) < 0) {  // #sharkable
 		zip_fclose(z->zf);
 		z->zf = NULL;
 		return -1;
@@ -139,12 +139,12 @@ read_zip(void *state, void *data, size_t len, enum zip_source_cmd cmd)
 	
     case ZIP_SOURCE_READ:
 	if (z->len != -1)
-	    n = len > z->len ? z->len : len;
+	    n = (int)(len > z->len ? z->len : len);  // #sharkable
 	else
-	    n = len;
+	    n = (int)len;  // #sharkable
 	
 
-	if ((i=zip_fread(z->zf, buf, n)) < 0)
+	if ((i=(int)zip_fread(z->zf, buf, n)) < 0)  // #sharkable
 	    return -1;
 
 	if (z->len != -1)
