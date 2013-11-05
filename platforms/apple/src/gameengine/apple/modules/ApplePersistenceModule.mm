@@ -31,7 +31,7 @@ void ApplePersistenceModule::SetBool(bool value, string key) {
 
 int ApplePersistenceModule::IntegerForKey(string key) {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  return [userDefaults integerForKey:TypeUtil::string2NSString(key)];
+  return (int)[userDefaults integerForKey:TypeUtil::string2NSString(key)];
 }
 
 void ApplePersistenceModule::SetInteger(int value, string key) {
