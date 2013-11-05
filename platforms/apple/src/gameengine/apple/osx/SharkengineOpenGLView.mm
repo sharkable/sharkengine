@@ -68,8 +68,6 @@
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glViewport(viewportX_, viewportY_, viewportWidth_, viewportHeight_);
-
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glOrtho(0, renderSize_.width, 0, renderSize_.height, -1, 1);
@@ -81,6 +79,7 @@
   [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
 
   [self start];
+  [self performSelector:@selector(reshape) withObject:nil afterDelay:0.1];
 }
 
 - (void)reshape {
