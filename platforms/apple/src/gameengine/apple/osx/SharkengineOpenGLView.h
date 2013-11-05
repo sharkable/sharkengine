@@ -18,6 +18,8 @@ class GameEngine;
   int viewportWidth_;
   int viewportHeight_;
   ScreenSize renderSize_;
+  NSSize windowSize_;
+  CGFloat screenScale_;
 }
 
 @end

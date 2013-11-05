@@ -20,6 +20,7 @@
 
 @interface SharkengineOpenGLView ()
 - (BOOL)isFullScreen;
+- (NSSize)defaultWindowSize;
 - (void)updateEvent:(NSTimer *)timer;
 - (void)start;
 - (void)stop;
@@ -28,16 +29,24 @@
 @implementation SharkengineOpenGLView
 
 - (void)prepareOpenGL {
+  [self setWantsBestResolutionOpenGLSurface:YES];
+
   // The original XIB view size determines the render size.
-  renderSize_.width = self.frame.size.width;
-  renderSize_.height = self.frame.size.height;
+  windowSize_ = [self defaultWindowSize];
+  screenScale_ = self.window.backingScaleFactor;
+  renderSize_ = screen_size_make(windowSize_.width * screenScale_,
+                                 windowSize_.height * screenScale_);
 
   // TODO should this really be here?
   gameEngine_ = new GameEngine();
   gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
   gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
   gameEngine_->platform().set_input_group(Platform::kInputGroupPC);
-  gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
+  if (screenScale_ == 1.0) {
+    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
+  } else {
+    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCUltraHighRes);
+  }
 
   gameEngine_->set_asset_reader_factory_module(
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
@@ -45,7 +54,7 @@
   gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
   gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
-  gameEngine_->set_screen_size(screen_size_make(renderSize_.width, renderSize_.height));
+  gameEngine_->set_screen_size(renderSize_);
 
   sharkengine_init(gameEngine_);
 
@@ -80,18 +89,20 @@
   }
   float screenWidthFloat = self.frame.size.width;
   float screenHeightFloat = self.frame.size.height;
-  float viewportWidthFloat = screenHeightFloat * renderSize_.width / renderSize_.height;
+  float viewportWidthFloat = screenHeightFloat * windowSize_.width / windowSize_.height;
   float viewportHeightFloat = screenHeightFloat;
   if (viewportWidthFloat > screenWidthFloat) {
     viewportWidthFloat = screenWidthFloat;
-    viewportHeightFloat = screenWidthFloat * renderSize_.height / renderSize_.width;
+    viewportHeightFloat = screenWidthFloat * windowSize_.height / windowSize_.width;
   }
 
   viewportX_ = (int)((screenWidthFloat - viewportWidthFloat) / 2);
   viewportY_ = (int)((screenHeightFloat - viewportHeightFloat) / 2);
   viewportWidth_ = (int)viewportWidthFloat;
   viewportHeight_ = (int)viewportHeightFloat;
-  glViewport(viewportX_, viewportY_, viewportWidth_, viewportHeight_);
+  glViewport(viewportX_ * screenScale_, viewportY_ * screenScale_, viewportWidth_ * screenScale_,
+             viewportHeight_ * screenScale_);
+  [self setNeedsLayout:YES];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -99,8 +110,8 @@
 }
 
 - (GamePoint)gamePointFromScreenPoint:(NSPoint)point {
-  return game_point_make((point.x - viewportX_) * renderSize_.width / viewportWidth_,
-                         renderSize_.height - (point.y - viewportY_) * renderSize_.height /
+  return game_point_make((point.x - viewportX_) * windowSize_.width / viewportWidth_,
+                         windowSize_.height - (point.y - viewportY_) * windowSize_.height /
                              viewportHeight_);
 }
 
@@ -160,11 +171,26 @@
   self.frame = self.superview.frame;
 }
 
+- (void)windowDidChangeBackingProperties:(NSNotification *)notification {
+  screenScale_ = self.window.backingScaleFactor;
+}
+
 
 #pragma mark - private
 
 - (BOOL)isFullScreen {
   return ([self.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+}
+
+- (NSSize)defaultWindowSize {
+  NSString *xibFilename = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSMainNibFile"];
+  if ([xibFilename isEqualToString:@"MainMenu-Portrait"]) {
+    return NSMakeSize(768, 1024);
+  } else if ([xibFilename isEqualToString:@"MainMenu-Landscape"]) {
+    return NSMakeSize(1136, 640);
+  }
+  shark_assert(false, "Couldn't figure out game orientation.");
+  return NSMakeSize(0, 0);
 }
 
 - (void)updateEvent:(NSTimer *)timer {
