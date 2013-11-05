@@ -105,7 +105,6 @@
 		FEF4C01B17B3FADA00D2085A /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C00217B3FADA00D2085A /* tinyxml2.cpp */; };
 		FEF4C08D17B3FB0D00D2085A /* SharkengineOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C04017B3FB0D00D2085A /* SharkengineOpenGLView.mm */; };
 		FEF4C09417B3FB0D00D2085A /* TypeUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C07417B3FB0D00D2085A /* TypeUtil.mm */; };
-		FEF4C67C17B3FC3300D2085A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C67B17B3FC3300D2085A /* Info.plist */; };
 		FEF4C68017B3FE0000D2085A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C67E17B3FE0000D2085A /* AppDelegate.mm */; };
 		FEF4C68117B3FE0000D2085A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF4C67F17B3FE0000D2085A /* main.m */; };
 		FEF4C68917B3FF3700D2085A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FEF4C68317B3FF3700D2085A /* Credits.rtf */; };
@@ -792,7 +791,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEF4C67C17B3FC3300D2085A /* Info.plist in Resources */,
 				FEF4C68917B3FF3700D2085A /* Credits.rtf in Resources */,
 				FEF4C68A17B3FF3700D2085A /* InfoPlist.strings in Resources */,
 				FEF4C68B17B3FF3700D2085A /* MainMenu-___SHARKENGINE_ORIENTATION_XIB___.xib in Resources */,
