@@ -27,7 +27,7 @@ size_t ZippedAssetReader::Size() {
   if (file_size_ == -1) {
     struct zip_stat stat;
     zip_stat(zip_, filename_.c_str(), 0, &stat);
-    file_size_ = stat.size;
+    file_size_ = (size_t)stat.size;  // #sharkable
   }
   return file_size_;
 }
