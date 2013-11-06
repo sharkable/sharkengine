@@ -31,7 +31,9 @@
 @implementation SharkengineOpenGLView
 
 - (void)prepareOpenGL {
-  [self setWantsBestResolutionOpenGLSurface:YES];
+  if (os_x_version() >= 107) {
+    [self setWantsBestResolutionOpenGLSurface:YES];
+  }
 
   // The original XIB view size determines the render size.
   windowSize_ = [self defaultWindowSize];
