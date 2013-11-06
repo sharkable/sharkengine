@@ -8,8 +8,6 @@
 
 #import "SharkengineOpenGLView.h"
 
-#include <OpenGL/gl.h>
-
 #include "sharksound/apple/AppleSoundController.h"
 
 #include "gameengine/game_engine.h"

@@ -63,16 +63,6 @@
 #ifndef GAMEENGINE_OPENGL_TEXTURE2D_H_
 #define GAMEENGINE_OPENGL_TEXTURE2D_H_
 
-#if __APPLE__
-  #if TARGET_OS_IPHONE
-    #include <OpenGLES/ES1/glext.h>
-  #else  // OS X
-    #include <OpenGL/gl.h>
-  #endif
-#else  // Android
-  #include <GLES/gl.h>
-#endif
-
 #include <string>
 
 // TODO this is overreaching... this shouldn't know about the game engine.
