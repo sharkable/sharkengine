@@ -17,8 +17,10 @@
 #include "gameengine/apple/modules/ApplePersistenceModule.h"
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
+#include "gameengine/apple/osx/AppDelegate.h"
 
 @interface SharkengineOpenGLView ()
+- (CGFloat)scaleFactor;
 - (BOOL)isFullScreen;
 - (NSSize)defaultWindowSize;
 - (void)updateEvent:(NSTimer *)timer;
@@ -33,7 +35,7 @@
 
   // The original XIB view size determines the render size.
   windowSize_ = [self defaultWindowSize];
-  screenScale_ = self.window.backingScaleFactor;
+  screenScale_ = [self scaleFactor];
   renderSize_ = screen_size_make(windowSize_.width * screenScale_,
                                  windowSize_.height * screenScale_);
 
@@ -170,7 +172,7 @@
 }
 
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification {
-  screenScale_ = self.window.backingScaleFactor;
+  screenScale_ = [self scaleFactor];
   // TODO HACK. This seems needed, otherwise if you move the window from a retina screen to a
   // non retina screen, the shape of the image can be wrong.
   [self performSelector:@selector(reshape) withObject:nil afterDelay:0.1];
@@ -178,6 +180,13 @@
 
 
 #pragma mark - private
+
+- (CGFloat)scaleFactor {
+  if (os_x_version() <= 106) {
+    return 1.0;
+  }
+  return self.window.backingScaleFactor;
+}
 
 - (BOOL)isFullScreen {
   return ([self.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;

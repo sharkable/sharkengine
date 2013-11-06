@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "SharkengineOpenGLView.h"
+#import <CoreServices/CoreServices.h>
+
+#import "gameengine/apple/osx/SharkengineOpenGLView.h"
 
 @implementation AppDelegate
 
@@ -18,6 +20,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   [self.window setAcceptsMouseMovedEvents:YES];
   [self.window setDelegate:self.openGLView];
+
+  if (os_x_version() >= 107) {
+    [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+  }
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
@@ -29,3 +35,12 @@
 }
 
 @end
+
+// Returns 106 for 10.6, 107 for 10.7, etc.
+int os_x_version() {
+  SInt32 major = 0;
+  SInt32 minor = 0;
+  Gestalt(gestaltSystemVersionMajor, &major);
+  Gestalt(gestaltSystemVersionMinor, &minor);
+  return major * 10 + minor;
+}

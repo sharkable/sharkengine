@@ -18,3 +18,6 @@
 @property (assign) IBOutlet SharkengineOpenGLView *openGLView;
 
 @end
+
+// Returns 106 for 10.6, 107 for 10.7, etc.
+int os_x_version();
