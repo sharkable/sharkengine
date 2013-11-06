@@ -5,9 +5,15 @@
 // TODO Either don't share this with Android, or move it out of the ios folder.
 //     (Probably the former.)
 
+
+// Apple specific.
+
 #if __APPLE__
   #import <TargetConditionals.h>
 #endif
+
+
+// Apple and Objective-C specific.
 
 #if __OBJC__
   // TODO consider explicity importing these.
@@ -19,6 +25,9 @@
     #import <Cocoa/Cocoa.h>
   #endif
 #endif
+
+
+// C++ specific.
 
 #if __cplusplus
   #include <assert.h>
@@ -33,11 +42,30 @@
   #endif
 #endif
 
+
+// SharkEngine utility functions.
+
 #if __ANDROID__
   #include <android/log.h>
   #define shark_log(...)  __android_log_print(ANDROID_LOG_DEBUG, "Sharkable", __VA_ARGS__);
 #else
   #define shark_log(...)  { printf(__VA_ARGS__); printf("\n"); }
 #endif
-
 #define shark_assert(check, ...) { if (!(check)) { shark_log(__VA_ARGS__); assert(false); } }
+
+
+// OpenGL
+
+#if __APPLE__
+  #if TARGET_OS_IPHONE
+    #include <OpenGLES/ES1/glext.h>
+    #define GLFRUSTUM glFrustumf
+    #define GLORTHO glOrthof
+  #else  // OS X
+    #include <OpenGL/gl.h>
+    #define GLFRUSTUM glFrustum
+    #define GLORTHO glOrtho
+  #endif
+#else  // Android
+  #include <GLES/gl.h>
+#endif
