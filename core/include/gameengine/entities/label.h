@@ -16,7 +16,7 @@
 
 class Label : public Animatable {
  public:
-  Label(GameEngine *game_engine, GamePoint position);
+  Label(GameEngine &game_engine, GamePoint position);
 
   const std::string & text() { return text_; }
   void set_text(const std::string &text) { text_ = text; }

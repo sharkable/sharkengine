@@ -11,7 +11,7 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 
-Font::Font(GameEngine *game_engine, std::string font_name)
+Font::Font(GameEngine &game_engine, std::string font_name)
     : game_engine_(game_engine),
       font_name_(font_name) {
   char const * const characters =
@@ -19,7 +19,7 @@ Font::Font(GameEngine *game_engine, std::string font_name)
   size_t num_characters = strlen(characters);
   for (int i = 0; i < num_characters; i++) {
     char c = characters[i];
-    glyphs_[c] = game_engine->resource_loader().TextureWithName(TextureNameForCharacter(c));
+    glyphs_[c] = game_engine.resource_loader().TextureWithName(TextureNameForCharacter(c));
   }
 }
 
@@ -30,7 +30,7 @@ void Font::RenderGlyph(char glyph, GamePoint position) {
 #if DEBUG
   shark_assert(glyphs_[glyph].data_loaded(), "Cannot draw character: %c %d", glyph, glyph);
 #endif
-  glyphs_[glyph].DrawAtPoint(game_engine_->game_point_to_screen_point(position));
+  glyphs_[glyph].DrawAtPoint(game_engine_.game_point_to_screen_point(position));
 }
 
 float Font::GlyphWidth(char glyph) {

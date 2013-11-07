@@ -11,7 +11,7 @@
 
 static Font * font__ = NULL;
 
-Label::Label(GameEngine *game_engine, GamePoint position)
+Label::Label(GameEngine &game_engine, GamePoint position)
     : Animatable(position) {
   if (!font__) {
     font__ = new Font(game_engine, "font");

@@ -19,7 +19,7 @@ class GameEngine;
 
 class Font {
  public:
-  Font(GameEngine *game_engine, std::string font_name);
+  Font(GameEngine &game_engine, std::string font_name);
   void RenderGlyph(char glyph, GamePoint position);
   float GlyphWidth(char glyph);
   float GlyphHeight();
@@ -27,7 +27,7 @@ class Font {
  private:
   std::string TextureNameForCharacter(char c);
 
-  GameEngine *game_engine_;  // weak
+  GameEngine &game_engine_;
   std::string font_name_;
   std::map<char, Texture2D> glyphs_;
 };

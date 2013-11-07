@@ -34,7 +34,7 @@ namespace SharkSound {
 }
 
 extern "C" {
-  void sharkengine_init(GameEngine *game_engine);
+  void sharkengine_init(GameEngine &game_engine);
 }
 
 class GameEngine {

@@ -19,7 +19,7 @@ class Touch;
 
 class EngineView {
  public:
-  EngineView(GameEngine *game_engine);
+  EngineView(GameEngine &game_engine);
   virtual ~EngineView() {}
 
   virtual void ViewDidGainFocus() {}
@@ -46,14 +46,14 @@ class EngineView {
                          bool managed_memory = true);
   void RemoveEntity(ViewEntity *entity);
 
-  GameEngine *game_engine() { return game_engine_; }
+  GameEngine &game_engine() { return game_engine_; }
   bool is_visible() { return is_visible_; }
 
  private:
   void set_is_visible(bool is_visible) { is_visible_ = is_visible; }
   friend class GameEngine;
 
-  GameEngine *game_engine_;  // weak
+  GameEngine &game_engine_;
   StagedVector<ViewEntity> entities_;
   bool is_visible_;
 };

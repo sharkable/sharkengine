@@ -15,7 +15,7 @@
 
 using std::vector;
 
-EngineView::EngineView(GameEngine *game_engine)
+EngineView::EngineView(GameEngine &game_engine)
     : game_engine_(game_engine),
       is_visible_(false) {
 }

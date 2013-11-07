@@ -16,15 +16,17 @@
 
 using std::vector;
 
-Button::Button(GameEngine *game_engine)
+Button::Button(GameEngine &game_engine)
     : Animatable(),
       game_engine_(game_engine),
+      normal_sprite_(game_engine),
+      pressed_sprite_(game_engine),
       pressed_offset_(kGamePointZero),
       state_(kButtonStateNormal) {
   Init();
 }
 
-Button::Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite,
+Button::Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite,
                GamePoint position)
     : Animatable(position),
       game_engine_(game_engine),
@@ -95,5 +97,5 @@ void Button::TouchEnded(GamePoint offset, Touch touch) {
 #pragma mark - private
 
 void Button::Init() {
-  beep_sound_ = game_engine_->sound()->GetSound("sounds/beep.wav");
+  beep_sound_ = game_engine_.sound()->GetSound("sounds/beep.wav");
 }

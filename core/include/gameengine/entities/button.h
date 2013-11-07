@@ -35,8 +35,8 @@ class ButtonDelegate {
 
 class Button : public Animatable {
  public:
-  Button(GameEngine *game_engine);
-  Button(GameEngine *game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
+  Button(GameEngine &game_engine);
+  Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
 
   // ViewEntity
@@ -56,7 +56,7 @@ class Button : public Animatable {
  private:
   void Init();
 
-  GameEngine *game_engine_;  // weak
+  GameEngine &game_engine_;
   Sprite normal_sprite_;
   Sprite pressed_sprite_;
   GamePoint pressed_offset_;
