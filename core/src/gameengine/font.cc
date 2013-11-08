@@ -15,7 +15,7 @@ Font::Font(GameEngine &game_engine, std::string font_name)
     : game_engine_(game_engine),
       font_name_(font_name) {
   char const * const characters =
-      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,:;%\"";
+      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,:;%\"+-/";
   size_t num_characters = strlen(characters);
   for (int i = 0; i < num_characters; i++) {
     char c = characters[i];
@@ -74,6 +74,9 @@ std::string Font::TextureNameForCharacter(char c) {
   }
   if (c == '"') {
     return font_name_ + "_quote";
+  }
+  if (c == '/') {
+    return font_name_ + "_divide";
   }
   return font_name_ + "_" + c;
 }

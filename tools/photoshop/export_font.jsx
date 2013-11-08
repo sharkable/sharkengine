@@ -1,12 +1,12 @@
 var activeDocument = app.activeDocument;
-var activeLayer = activeDocument.activeLayer;
+var fontLayer = activeDocument.artLayers[0];
 var textureOutputFolder = activeDocument.path + "/textures";
 
 var response = prompt("It this for Retina Display? iPhone?", 'nn');
 var isRetina = response[0] != 'n' && response[0] != 'N';
 var isPhone = response[1] != 'n' && response[1] != 'N';
 
-var characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,:;%\"";
+var characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,:;%\"+-/";
 
 for (var i = 0; i < characters.length; i++) {
   createLetter(characters.charAt(i))
@@ -43,12 +43,14 @@ function createLetter(letter) {
   } else if (letter == "%") {
     file_extention = "percent";
   } else if (letter == "\"") {
-      file_extention = "quote";
+    file_extention = "quote";
+  } else if (letter == "/") {
+    file_extention = "divide";
   } else {
     file_extention = letter;    
   }
 
-  var documentName = activeLayer.name + "_" + file_extention;
+  var documentName = fontLayer.name + "_" + file_extention;
   if (isPhone) {
     documentName += "_iphone";
   }
@@ -56,7 +58,7 @@ function createLetter(letter) {
     documentName += "@2x";
   }
 
-  activeLayer.textItem.contents = letter;
+  fontLayer.textItem.contents = letter;
 
   activeDocument.selection.selectAll();
   activeDocument.selection.copy(true);
