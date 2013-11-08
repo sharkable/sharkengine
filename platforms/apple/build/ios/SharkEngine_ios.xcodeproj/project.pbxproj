@@ -12,7 +12,6 @@
 		FE164D7417AC4445006C5D88 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1717AC4444006C5D88 /* EAGLView.mm */; };
 		FE164D7517AC4445006C5D88 /* ES1Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1917AC4444006C5D88 /* ES1Renderer.mm */; };
 		FE164D7617AC4445006C5D88 /* ES2Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1B17AC4444006C5D88 /* ES2Renderer.mm */; };
-		FE164D7717AC4445006C5D88 /* GameTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D1E17AC4444006C5D88 /* GameTimer.mm */; };
 		FE164D7817AC4445006C5D88 /* GameTouchWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D2017AC4444006C5D88 /* GameTouchWindow.mm */; };
 		FE164D7917AC4445006C5D88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE164D2117AC4444006C5D88 /* main.m */; };
 		FE164D7A17AC4445006C5D88 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE164D2317AC4444006C5D88 /* ViewController.mm */; };
@@ -99,8 +98,6 @@
 		FE164D1A17AC4444006C5D88 /* ES2Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ES2Renderer.h; sourceTree = "<group>"; };
 		FE164D1B17AC4444006C5D88 /* ES2Renderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ES2Renderer.mm; sourceTree = "<group>"; };
 		FE164D1C17AC4444006C5D88 /* ESRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRenderer.h; sourceTree = "<group>"; };
-		FE164D1D17AC4444006C5D88 /* GameTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTimer.h; sourceTree = "<group>"; };
-		FE164D1E17AC4444006C5D88 /* GameTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameTimer.mm; sourceTree = "<group>"; };
 		FE164D1F17AC4444006C5D88 /* GameTouchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTouchWindow.h; sourceTree = "<group>"; };
 		FE164D2017AC4444006C5D88 /* GameTouchWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameTouchWindow.mm; sourceTree = "<group>"; };
 		FE164D2117AC4444006C5D88 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -340,8 +337,6 @@
 				FE164D1A17AC4444006C5D88 /* ES2Renderer.h */,
 				FE164D1B17AC4444006C5D88 /* ES2Renderer.mm */,
 				FE164D1C17AC4444006C5D88 /* ESRenderer.h */,
-				FE164D1D17AC4444006C5D88 /* GameTimer.h */,
-				FE164D1E17AC4444006C5D88 /* GameTimer.mm */,
 				FE164D1F17AC4444006C5D88 /* GameTouchWindow.h */,
 				FE164D2017AC4444006C5D88 /* GameTouchWindow.mm */,
 				FE148AFA17D91E0400F85DBD /* IOSAssetReader.h */,
@@ -861,7 +856,6 @@
 				FE164D7417AC4445006C5D88 /* EAGLView.mm in Sources */,
 				FE164D7517AC4445006C5D88 /* ES1Renderer.mm in Sources */,
 				FE164D7617AC4445006C5D88 /* ES2Renderer.mm in Sources */,
-				FE164D7717AC4445006C5D88 /* GameTimer.mm in Sources */,
 				FE164D7817AC4445006C5D88 /* GameTouchWindow.mm in Sources */,
 				FE164D7917AC4445006C5D88 /* main.m in Sources */,
 				FE164D7A17AC4445006C5D88 /* ViewController.mm in Sources */,

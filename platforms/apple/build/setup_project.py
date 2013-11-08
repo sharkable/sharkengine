@@ -23,6 +23,7 @@ PBXFileReference.types['.tx'] = ('texture.tx', 'PBXResourcesBuildPhase')
 PBXFileReference.types['.xml'] = ('markup.xml', 'PBXResourcesBuildPhase')
 PBXFileReference.types['.wav'] = ('sound.wav', 'PBXResourcesBuildPhase')
 PBXFileReference.types['.xm'] = ('mod.xm', 'PBXResourcesBuildPhase')
+PBXFileReference.types['.info'] = ('mission.info', 'PBXResourcesBuildPhase')
 
 app_group = project.get_or_create_group('App')
 project.add_folder(app_home + '/src', app_group)

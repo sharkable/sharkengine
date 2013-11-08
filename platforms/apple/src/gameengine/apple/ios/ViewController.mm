@@ -178,7 +178,7 @@
 
 - (void)runGameLoop {
   [view_ initRenderer];
-  sharkengine_init(gameEngine_);
+  sharkengine_init(*gameEngine_);
 
   double last_system_time = CACurrentMediaTime();
   double accumulator = 0;
