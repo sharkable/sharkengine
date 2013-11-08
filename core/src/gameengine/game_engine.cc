@@ -33,6 +33,12 @@ GameEngine::GameEngine()
   input_module_.reset(new InputModule());
 
   positions_ = sp<Positions>(new Positions());
+
+  pthread_mutex_init(&user_input_mutex_, NULL);
+}
+
+GameEngine::~GameEngine() {
+  pthread_mutex_destroy(&user_input_mutex_);
 }
 
 
@@ -78,24 +84,34 @@ void GameEngine::ClearTouches() {
 }
 
 void GameEngine::AddTouchBegan(Touch touch) {
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
   touches_began_.push_back(touch);
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 void GameEngine::AddTouchMoved(Touch touch) {
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
   touches_moved_.push_back(touch);
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 void GameEngine::AddTouchEnded(Touch touch) {
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
   touches_ended_.push_back(touch);
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 void GameEngine::AddKeyPressed(int key) {
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
   keys_pressed_.push_back(key);
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 void GameEngine::AddMouseDelta(float delta_x, float delta_y) {
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
   mouse_delta_x_ += delta_x;
   mouse_delta_y_ += delta_y;
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 bool GameEngine::HandleBackButton() {
@@ -151,6 +167,8 @@ void GameEngine::ProcessInput() {
       break;
     }
   }
+
+  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
 
   if (touches_began_.size() > 0) {
     // This removes captures touches, so they can't use considered for taps.
@@ -213,4 +231,6 @@ void GameEngine::ProcessInput() {
   touches_moved_.clear();
   touches_ended_.clear();
   keys_pressed_.clear();
+
+  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }

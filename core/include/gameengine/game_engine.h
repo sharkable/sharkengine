@@ -40,6 +40,7 @@ extern "C" {
 class GameEngine {
  public:
   GameEngine();
+  ~GameEngine();
 
   // Platform functions
   // Don't call these from an app.
@@ -151,6 +152,7 @@ class GameEngine {
   std::vector<Touch> touches_ended_;
   std::vector<std::pair<Touch, unsigned int> > potential_tap_touches_;
   std::vector<int> keys_pressed_;
+  pthread_mutex_t user_input_mutex_;
   float mouse_delta_x_;
   float mouse_delta_y_;
   ScreenSize screen_size_;
