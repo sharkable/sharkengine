@@ -58,7 +58,7 @@
 
   gameEngine_->set_screen_size(renderSize_);
 
-  sharkengine_init(gameEngine_);
+  sharkengine_init(*gameEngine_);
 
   Texture2D::SetScreenHeight(renderSize_.height);
 
