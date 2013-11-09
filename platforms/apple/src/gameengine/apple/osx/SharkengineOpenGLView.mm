@@ -81,7 +81,6 @@
   [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
 
   [self start];
-  [self performSelector:@selector(reshape) withObject:nil afterDelay:0.1];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -119,6 +118,13 @@
   viewportHeight_ = (int)viewportHeightFloat;
   glViewport(viewportX_ * screenScale_, viewportY_ * screenScale_, viewportWidth_ * screenScale_,
              viewportHeight_ * screenScale_);
+}
+
+// Without this, moving the window to a screen where the scale changes will cause the game to be
+// misshapen.
+- (void)update {
+  [super update];
+  [self reshape];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -189,9 +195,6 @@
 
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification {
   screenScale_ = [self scaleFactor];
-  // TODO HACK. This seems needed, otherwise if you move the window from a retina screen to a
-  // non retina screen, the shape of the image can be wrong.
-  [self performSelector:@selector(reshape) withObject:nil afterDelay:0.1];
 }
 
 
