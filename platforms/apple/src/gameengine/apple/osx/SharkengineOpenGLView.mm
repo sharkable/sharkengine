@@ -17,15 +17,6 @@
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
 #include "gameengine/apple/osx/AppDelegate.h"
 
-@interface SharkengineOpenGLView ()
-- (CGFloat)scaleFactor;
-- (BOOL)isFullScreen;
-- (NSSize)defaultWindowSize;
-- (void)updateEvent:(NSTimer *)timer;
-- (void)start;
-- (void)stop;
-@end
-
 @implementation SharkengineOpenGLView
 
 - (void)prepareOpenGL {
@@ -38,64 +29,10 @@
   screenScale_ = [self scaleFactor];
   renderSize_ = screen_size_make(windowSize_.width * screenScale_,
                                  windowSize_.height * screenScale_);
-
-  // TODO should this really be here?
-  gameEngine_ = new GameEngine();
-  gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
-  gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
-  gameEngine_->platform().set_input_group(Platform::kInputGroupPC);
-  if (screenScale_ == 1.0) {
-    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
-  } else {
-    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCUltraHighRes);
-  }
-
-  gameEngine_->set_asset_reader_factory_module(
-      sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
-  gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
-  gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
-  gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
-
-  gameEngine_->set_screen_size(renderSize_);
-
-  sharkengine_init(*gameEngine_);
-
   Texture2D::SetScreenHeight(renderSize_.height);
 
-  glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-  glEnable(GL_CULL_FACE);
-  glEnable(GL_BLEND);
-  glEnable(GL_TEXTURE_2D);
-  glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glOrtho(0, renderSize_.width, 0, renderSize_.height, -1, 1);
-
-  glMatrixMode(GL_MODELVIEW);
-
-  // Set swap interval for double buffering.
-  GLint swapInt = 1;
-  [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
-
-  [self start];
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-  glClear(GL_COLOR_BUFFER_BIT);
-  glLoadIdentity();
-
-  if (gameEngine_) {
-    gameEngine_->Render();
-  }
-
-  [[self openGLContext] flushBuffer];
-
-  int err;
-  if ((err = glGetError()) != 0) {
-    NSLog(@"glGetError(): %d", err);
+  if (!didStart_) {
+    [self start];
   }
 }
 
@@ -182,11 +119,11 @@
 #pragma mark - NSWindowDelegate
 
 - (void)windowDidResignMain:(NSNotification *)notification {
-  [self stop];
+  [self pause];
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)notification {
-  [self start];
+  [self resume];
 }
 
 - (void)windowDidResize:(NSNotification *)notification {
@@ -195,6 +132,14 @@
 
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification {
   screenScale_ = [self scaleFactor];
+}
+
+- (void)windowWillEnterFullScreen:(NSNotification *)notification {
+  [self pause];
+}
+
+- (void)windowWillExterFullScreen:(NSNotification *)notification {
+  [self pause];
 }
 
 
@@ -222,35 +167,101 @@
   return NSMakeSize(0, 0);
 }
 
-- (void)updateEvent:(NSTimer *)timer {
-  if (gameEngine_) {
-    gameEngine_->Update();
+- (void)setUpGameEngine {
+  gameEngine_ = new GameEngine();
+  gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
+  gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
+  gameEngine_->platform().set_input_group(Platform::kInputGroupPC);
+  if (screenScale_ == 1.0) {
+    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
+  } else {
+    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCUltraHighRes);
   }
-  [self setNeedsDisplay:YES];
+
+  gameEngine_->set_asset_reader_factory_module(
+      sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
+  gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
+  gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
+  gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
+
+  gameEngine_->set_screen_size(renderSize_);
+  
+  sharkengine_init(*gameEngine_);
+}
+
+- (void)setUpOpenGL {
+  // We need a context created in the game thread.
+  NSOpenGLContext *newContext =
+      [[NSOpenGLContext alloc] initWithFormat:self.pixelFormat shareContext:nil];
+  [self setOpenGLContext:newContext];
+  [newContext setView:self];
+
+  glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_CULL_FACE);
+  glEnable(GL_BLEND);
+  glEnable(GL_TEXTURE_2D);
+  glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(0, renderSize_.width, 0, renderSize_.height, -1, 1);
+
+  glMatrixMode(GL_MODELVIEW);
+
+  // Set swap interval for double buffering.
+  GLint swapInt = 1;
+  [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+}
+
+- (void)runGameLoop {
+  [self setUpOpenGL];
+  [self setUpGameEngine];
+
+  double last_system_time = CACurrentMediaTime();
+  double accumulator = 0;
+  static const double kTimeDelta = 1.0 / 60.0;
+
+  while (true) {
+    // TODO use mach_absolute_time instead.
+    double current_system_time = CACurrentMediaTime();
+    double time_diff = current_system_time - last_system_time;
+    last_system_time = current_system_time;
+    accumulator += time_diff;
+
+    while (accumulator >= kTimeDelta) {
+      gameEngine_->Update();
+      accumulator -= kTimeDelta;
+    }
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+
+    if (gameEngine_) {
+      gameEngine_->Render();
+    }
+
+    [[self openGLContext] flushBuffer];
+
+    int err;
+    if ((err = glGetError()) != 0) {
+      NSLog(@"glGetError(): %d", err);
+    }
+  }
 }
 
 - (void)start {
-  if (timer_) {
-    return;
-  }
-  [self setNeedsDisplay:YES];
-  timer_ = [[NSTimer timerWithTimeInterval:1.0/60.0
-                                    target:self
-                                  selector:@selector(updateEvent:)
-                                  userInfo:nil
-                                   repeats:YES] retain];
-
-  [[NSRunLoop mainRunLoop] addTimer:timer_ forMode:NSDefaultRunLoopMode];
+  didStart_ = YES;
+  [NSThread detachNewThreadSelector:@selector(runGameLoop) toTarget:self withObject:nil];
 }
 
-- (void)stop {
-  [timer_ invalidate];
-  [timer_ release];
-  timer_ = nil;
-
+- (void)pause {
   gameEngine_->NotifyPause();
-  gameEngine_->Update();
-  [self setNeedsDisplay:YES];
+}
+
+- (void)resume {
+  // TODO ? (think about pause / resume semantics.)
 }
 
 @end
