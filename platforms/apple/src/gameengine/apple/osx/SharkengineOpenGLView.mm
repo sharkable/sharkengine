@@ -20,9 +20,12 @@
 @implementation SharkengineOpenGLView
 
 - (void)prepareOpenGL {
+#if SE_APP_DISABLE_PC_ULTRA_HIGH_RES
+#else
   if (os_x_version() >= 107) {
     [self setWantsBestResolutionOpenGLSurface:YES];
   }
+#endif
 
   // The original XIB view size determines the render size.
   windowSize_ = [self defaultWindowSize];
@@ -146,10 +149,14 @@
 #pragma mark - private
 
 - (CGFloat)scaleFactor {
+#if SE_APP_DISABLE_PC_ULTRA_HIGH_RES
+  return 1.0;
+#else
   if (os_x_version() <= 106) {
     return 1.0;
   }
   return self.window.backingScaleFactor;
+#endif
 }
 
 - (BOOL)isFullScreen {
