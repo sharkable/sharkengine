@@ -200,6 +200,7 @@
 		FEB9DD1617D6A85B006EE538 /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
 		FEB9DD1717D6A870006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
 		FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
+		FEC6093818314B7D003C7548 /* sharkengine_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sharkengine_config.h; path = ../src/sharkengine_config.h; sourceTree = "<group>"; };
 		FEDD89AB17C2B6940058550C /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FEF91D0217E01CA100018432 /* AppleSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSound.h; sourceTree = "<group>"; };
@@ -416,6 +417,7 @@
 		FE28F90016C9C54A00D3BBFB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FEC6093818314B7D003C7548 /* sharkengine_config.h */,
 				FE2AA97E17C3BC2F007BDF25 /* icons */,
 			);
 			name = App;

@@ -5,6 +5,8 @@
 // TODO Either don't share this with Android, or move it out of the ios folder.
 //     (Probably the former.)
 
+#include "../out/src/sharkengine_config.h"
+
 
 // Apple specific.
 

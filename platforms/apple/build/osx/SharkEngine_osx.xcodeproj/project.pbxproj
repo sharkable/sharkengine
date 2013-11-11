@@ -208,6 +208,7 @@
 		FEB9DD1D17D6B274006EE538 /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
 		FEB9DD1E17D6B291006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
 		FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
+		FEC6093918314EE0003C7548 /* sharkengine_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sharkengine_config.h; path = ../src/sharkengine_config.h; sourceTree = "<group>"; };
 		FEF4BFC017B3FADA00D2085A /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF4BFC117B3FADA00D2085A /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
 		FEF4BFC217B3FADA00D2085A /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
@@ -423,6 +424,7 @@
 		FE64949717A315CD0051BF31 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FEC6093918314EE0003C7548 /* sharkengine_config.h */,
 				FE4FAA6817B81BE400E3B011 /* asset_bundle */,
 				FE1395AC17B57C1C00F1F61C /* icon.icns */,
 				FEF4C67B17B3FC3300D2085A /* Info.plist */,
