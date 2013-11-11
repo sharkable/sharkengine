@@ -79,6 +79,7 @@
 		FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495B117A4698D0051BF31 /* AVFoundation.framework */; };
 		FEAD989817B98B300084C405 /* SharkEngine.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FEAD989717B98B300084C405 /* SharkEngine.entitlements */; };
 		FEB9DD2017D6B291006EE538 /* ApplePersistenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */; };
+		FEC6093F18315204003C7548 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC6093E18315204003C7548 /* QuartzCore.framework */; };
 		FEF4C00417B3FADA00D2085A /* animation.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD717B3FADA00D2085A /* animation.cc */; };
 		FEF4C00517B3FADA00D2085A /* engine_view.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFD917B3FADA00D2085A /* engine_view.cc */; };
 		FEF4C00617B3FADA00D2085A /* animatable.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDB17B3FADA00D2085A /* animatable.cc */; };
@@ -209,6 +210,7 @@
 		FEB9DD1E17D6B291006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
 		FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
 		FEC6093918314EE0003C7548 /* sharkengine_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sharkengine_config.h; path = ../src/sharkengine_config.h; sourceTree = "<group>"; };
+		FEC6093E18315204003C7548 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FEF4BFC017B3FADA00D2085A /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FEF4BFC117B3FADA00D2085A /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
 		FEF4BFC217B3FADA00D2085A /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC6093F18315204003C7548 /* QuartzCore.framework in Frameworks */,
 				FE1FEF4A181755FF0033D5E9 /* AudioUnit.framework in Frameworks */,
 				FE4FAA6B17B81DD200E3B011 /* libz.dylib in Frameworks */,
 				FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */,
@@ -407,6 +410,7 @@
 				FE6495AD17A4690E0051BF31 /* OpenAL.framework */,
 				FE6495AB17A469060051BF31 /* OpenGL.framework */,
 				FE64949317A315CD0051BF31 /* Other Frameworks */,
+				FEC6093E18315204003C7548 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
