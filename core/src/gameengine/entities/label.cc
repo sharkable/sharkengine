@@ -28,7 +28,7 @@ void Label::Render(GamePoint offset) {
       render_point = game_point_make(position().x + offset.x,
                                      render_point.y + font__->GlyphHeight());
     } else {
-      font__->RenderGlyph(c, render_point);
+      font__->RenderGlyph(c, render_point, alpha());
       render_point.x += font__->GlyphWidth(c);
     }
   }

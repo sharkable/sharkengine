@@ -23,14 +23,14 @@ Font::Font(GameEngine &game_engine, std::string font_name)
   }
 }
 
-void Font::RenderGlyph(char glyph, GamePoint position) {
+void Font::RenderGlyph(char glyph, GamePoint position, float alpha) {
   if (glyph == ' ') {
     return;
   }
 #if DEBUG
   shark_assert(glyphs_[glyph].data_loaded(), "Cannot draw character: %c %d", glyph, glyph);
 #endif
-  glyphs_[glyph].DrawAtPoint(game_engine_.game_point_to_screen_point(position));
+  glyphs_[glyph].DrawAtPoint(game_engine_.game_point_to_screen_point(position), alpha, 1, 0, 0);
 }
 
 float Font::GlyphWidth(char glyph) {
