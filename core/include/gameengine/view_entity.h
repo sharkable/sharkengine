@@ -21,8 +21,9 @@ class ViewEntity {
   ViewEntity() : engine_view_(NULL) {}
   virtual ~ViewEntity() {}
 
-  virtual void Update() = 0;
-  virtual void Render(GamePoint offset) = 0;
+  virtual void Update() {};
+  virtual void Render(GamePoint render_offset, float render_angle) {}
+  virtual void Render(GamePoint render_offset) { Render(render_offset, 0.f); }
   virtual bool TouchBegan(GamePoint offset, Touch touch) { return false; }
   virtual void TouchMoved(GamePoint offset, Touch touch) {}
   virtual void TouchEnded(GamePoint offset, Touch touch) {}
@@ -30,6 +31,10 @@ class ViewEntity {
   virtual void ClearTouches() {}
   virtual void KeyPressed(int key) {}
   virtual void HandleMouseDelta(float delta_x, float delta_y) {}
+  virtual GameRect Rect() {
+    shark_assert(false, "rect() is not supported for this ViewEntity of type %s.",
+                 typeid(*this).name());
+  }
 
   // Accessors
   virtual EngineView * view() { return engine_view_; }

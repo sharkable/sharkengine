@@ -20,7 +20,7 @@ class GameEngine;
 class Font {
  public:
   Font(GameEngine &game_engine, std::string font_name);
-  void RenderGlyph(char glyph, GamePoint position, float alpha = 1.f);
+  void RenderGlyph(char glyph, GamePoint position, float alpha = 1.f, float angle = 0.f);
   float GlyphWidth(char glyph);
   float GlyphHeight();
 

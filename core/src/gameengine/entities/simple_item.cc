@@ -38,6 +38,10 @@ SimpleItem::~SimpleItem() {
 
 #pragma mark - ViewEntity
 
-void SimpleItem::Render(GamePoint offset) {
-  sprites_[sprite_].Draw(position() + offset, angle(), alpha(), zoom());
+void SimpleItem::Render(GamePoint render_offset, float render_angle) {
+  sprites_[sprite_].Draw(position() + render_offset, angle() + render_angle, alpha(), zoom());
+}
+
+GameRect SimpleItem::Rect() {
+  return game_rect_make(position(), sprites_[sprite_].content_size());
 }
