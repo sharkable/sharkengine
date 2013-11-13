@@ -49,19 +49,21 @@ void Label::Render(GamePoint offset) {
 }
 
 void Label::Render(GamePoint offset, float angle) {
+  // This function is crazy. See bottom of page 22 of Sharkable Notes Vol 1.
   float angle_in_radians = angle * M_PI / 180.f;
   float cos_theta = cosf(angle_in_radians);
   float sin_theta = sinf(angle_in_radians);
 
-  GamePoint render_center_point = rect_center(Rect()) + offset;
-  GamePoint render_point = position() + offset;
+  GamePoint render_center_point = rect_center(Rect());
+  GamePoint render_point = position();
   GamePoint new_render_point;
 
   new_render_point.x = cos_theta * (render_point.x - render_center_point.x) -
       sin_theta * (render_point.y - render_center_point.y) + render_center_point.x;
   new_render_point.y = sin_theta * (render_point.x - render_center_point.x) +
       cos_theta * (render_point.y - render_center_point.y) + render_center_point.y;
-  render_point = new_render_point;
+
+  render_point = new_render_point + offset;
 
   for (int i = 0; i < text_.length(); i++) {
     char c = text_[i];
@@ -70,8 +72,19 @@ void Label::Render(GamePoint offset, float angle) {
       render_point = game_point_make(position().x + offset.x + sin_theta * glyph_height,
                                      render_point.y + cos_theta * glyph_height);
     } else {
-      font__->RenderGlyph(c, render_point, alpha(), angle);
       float glyph_width = font__->GlyphWidth(c);
+      float glyph_height = font__->GlyphHeight();
+      GamePoint glyph_center = render_point;
+      glyph_center.x += glyph_width / 2;
+      glyph_center.y += glyph_height / 2;
+
+      GamePoint top_left;
+      top_left.x = cos_theta * (render_point.x - glyph_center.x) -
+          sin_theta * (render_point.y - glyph_center.y) + glyph_center.x;
+      top_left.y = sin_theta * (render_point.x - glyph_center.x) +
+          cos_theta * (render_point.y - glyph_center.y) + glyph_center.y;
+
+      font__->RenderGlyph(c, render_point + render_point - top_left, alpha(), angle);
       render_point.x += cos_theta * glyph_width;
       render_point.y += sin_theta * glyph_width;
     }
