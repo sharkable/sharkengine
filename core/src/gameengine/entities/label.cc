@@ -109,6 +109,5 @@ GameSize Label::CalculateSize() {
     }
   }
   size.height += font__->GlyphHeight();
-  shark_log("size is: %f, %f", size.width, size.height);
   return size;
 }
