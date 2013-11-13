@@ -78,6 +78,10 @@ inline GameRect game_rect_make(GamePoint origin, GameSize size) {
   return rect;
 }
 
+inline GamePoint rect_center(GameRect rect) {
+  return game_point_make(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
+}
+
 static const GameSize kGameSizeZero = game_size_make(0, 0);
 static const GamePoint kGamePointZero = game_point_make(0, 0);
 
