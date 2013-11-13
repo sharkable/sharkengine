@@ -33,7 +33,7 @@ class CompositeEntity : public Animatable {
   void ClearTouches();
   void SetEngineView(EngineView *engine_view);
 
- private:
+ protected:
   std::vector<ViewEntity *> entities_;
 };
 
