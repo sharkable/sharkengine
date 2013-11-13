@@ -15,6 +15,9 @@ class InputModule : public Module {
  public:
   virtual void HidePointer() {};
   virtual void ShowPointer() {};
+  virtual void TurnOnRotationUpdates() {};
+  virtual void TurnOffRotationUpdates() {};
+  virtual float device_angle() { return 0.f; }
 };
 
 #endif

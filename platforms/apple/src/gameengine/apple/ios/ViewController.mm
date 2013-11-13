@@ -18,6 +18,7 @@
 #import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
 #import "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
 #import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
+#import "gameengine/apple/modules/ios/IOSInputModule.h"
 #import "gameengine/opengl/texture2d.h"
 #import "gameengine/game_engine.h"
 #import "gameengine/platform.h"
@@ -95,12 +96,19 @@
 // For iOS 5
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+#if SP_APP_DISABLE_ORIENTATION_FLIP
+  if ([self isLandscape]) {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+  }
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#else
   if ([self isLandscape]) {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
             interfaceOrientation == UIInterfaceOrientationLandscapeRight);
   }
   return (interfaceOrientation == UIInterfaceOrientationPortrait ||
           interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+#endif
 }
 
 // For iOS 6
@@ -110,10 +118,17 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
+#if SP_APP_DISABLE_ORIENTATION_FLIP
+  if ([self isLandscape]) {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+  }
+  return UIInterfaceOrientationMaskPortrait;
+#else
   if ([self isLandscape]) {
     return UIInterfaceOrientationMaskLandscape;
   }
   return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+#endif
 }
 
 
@@ -169,6 +184,7 @@
   }
   gameEngine_->set_analytics_module(sp<AnalyticsModule>(new IOSAnalyticsModule()));
   gameEngine_->set_app_store_module(sp<AppStoreModule>(new IOSAppStoreModule()));
+  gameEngine_->set_input_module(sp<InputModule>(new IOSInputModule()));
   gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
   gameTouchWindow_.gameEngine = gameEngine_;

@@ -51,6 +51,8 @@
 		FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
 		FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
 		FE9493DF17EC9A9500B9D9AD /* label.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE9493DE17EC9A9500B9D9AD /* label.cc */; };
+		FEA16F5F1833FBD70001A8B1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */; };
+		FEA16F621833FBE70001A8B1 /* IOSInputModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEA16F611833FBE70001A8B1 /* IOSInputModule.mm */; };
 		FEB9DD0B17D66229006EE538 /* IOSAdModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD0817D66229006EE538 /* IOSAdModule.mm */; };
 		FEB9DD0C17D66229006EE538 /* IOSIAdAdModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */; };
 		FEB9DD1117D678A7006EE538 /* IOSAnalyticsModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1017D678A7006EE538 /* IOSAnalyticsModule.mm */; };
@@ -186,6 +188,9 @@
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FE9493DC17EC9A2100B9D9AD /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
 		FE9493DE17EC9A9500B9D9AD /* label.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cc; sourceTree = "<group>"; };
+		FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		FEA16F601833FBE70001A8B1 /* IOSInputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSInputModule.h; sourceTree = "<group>"; };
+		FEA16F611833FBE70001A8B1 /* IOSInputModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSInputModule.mm; sourceTree = "<group>"; };
 		FEB9DD0717D66229006EE538 /* IOSAdModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAdModule.h; sourceTree = "<group>"; };
 		FEB9DD0817D66229006EE538 /* IOSAdModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAdModule.mm; sourceTree = "<group>"; };
 		FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdModule.h; sourceTree = "<group>"; };
@@ -270,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEA16F5F1833FBD70001A8B1 /* CoreMotion.framework in Frameworks */,
 				FE65436317BA9B9600B59390 /* Security.framework in Frameworks */,
 				FE2B396E17BAED5C00E6AC20 /* iAd.framework in Frameworks */,
 				FEF47BC716DF0C960096F3D4 /* libz.dylib in Frameworks */,
@@ -470,6 +476,8 @@
 				FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */,
 				FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */,
 				FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */,
+				FEA16F601833FBE70001A8B1 /* IOSInputModule.h */,
+				FEA16F611833FBE70001A8B1 /* IOSInputModule.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -502,6 +510,7 @@
 				FE3CF94614F980AC0063CCA5 /* AVFoundation.framework */,
 				FE3CF94814F980D00063CCA5 /* CFNetwork.framework */,
 				FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */,
+				FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */,
 				FE789BC714F97B34007FCBC5 /* Foundation.framework */,
 				FE789BCB14F97B34007FCBC5 /* GLKit.framework */,
 				FE2B396D17BAED5C00E6AC20 /* iAd.framework */,
@@ -838,6 +847,7 @@
 				FEF9B85017A9BFB400867739 /* simple_item.cc in Sources */,
 				FEF9B85117A9BFB400867739 /* game_engine.cc in Sources */,
 				FEF9B85217A9BFB400867739 /* mt19937ar.c in Sources */,
+				FEA16F621833FBE70001A8B1 /* IOSInputModule.mm in Sources */,
 				FEF9B85317A9BFB400867739 /* texture2d.cc in Sources */,
 				FEF9B85417A9BFB400867739 /* positions.cc in Sources */,
 				FEF9B85517A9BFB400867739 /* resource_loader.cc in Sources */,
