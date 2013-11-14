@@ -84,6 +84,7 @@ inline GamePoint rect_center(GameRect rect) {
 
 static const GameSize kGameSizeZero = game_size_make(0, 0);
 static const GamePoint kGamePointZero = game_point_make(0, 0);
+static const GameRect kGameRectZero = game_rect_make(0, 0, 0, 0);
 
 
 // "Screen" - coordinates in pixel space.
