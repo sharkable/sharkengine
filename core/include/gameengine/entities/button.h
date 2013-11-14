@@ -40,9 +40,10 @@ class Button : public Animatable {
   ~Button();
 
   // ViewEntity
-  void Render(GamePoint offset);
+  void Render(GamePoint render_offset, float render_angle);
   bool TouchBegan(GamePoint offset, Touch touch);
   void TouchEnded(GamePoint offset, Touch touch);
+  GameRect Rect();
 
   bool ContainsPoint(GamePoint p);
 

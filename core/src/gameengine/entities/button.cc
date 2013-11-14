@@ -57,14 +57,16 @@ bool Button::ContainsPoint(GamePoint p) {
 
 #pragma mark - ViewEntity
 
-void Button::Render(GamePoint offset) {
+void Button::Render(GamePoint render_offset, float render_angle) {
   switch (state_) {
     case kButtonStateNormal: {
-      normal_sprite_.Draw(position() + pressed_offset_ + offset, angle(), alpha(), zoom());
+      normal_sprite_.Draw(position() + pressed_offset_ + render_offset, angle() + render_angle,
+                          alpha(), zoom());
       break;
     }
     case kButtonStatePressed: {
-      pressed_sprite_.Draw(position() + pressed_offset_ + offset, angle(), alpha(), zoom());
+      pressed_sprite_.Draw(position() + pressed_offset_ + render_offset, angle() + render_angle,
+                           alpha(), zoom());
       break;
     }
   }
@@ -93,6 +95,11 @@ void Button::TouchEnded(GamePoint offset, Touch touch) {
     }
   }
 }
+
+GameRect Button::Rect() {
+  return game_rect_make(position(), normal_sprite_.content_size());
+}
+
 
 #pragma mark - private
 
