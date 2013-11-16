@@ -135,6 +135,11 @@ void GameEngine::PushView(EngineView *view) {
   views_.PushBack(view, true);
 }
 
+void GameEngine::InsertViewAfter(EngineView *view, EngineView *existing_view) {
+  view->set_is_visible(true);
+  views_.InsertAfter(view, existing_view);
+}
+
 void GameEngine::PopView() {
   assert(views_.StagedSize() > 0);
   views_.StagedBack()->set_is_visible(false);

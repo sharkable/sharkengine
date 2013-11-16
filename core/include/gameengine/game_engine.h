@@ -58,6 +58,7 @@ class GameEngine {
 
   // App functions
   void PushView(EngineView *view);
+  void InsertViewAfter(EngineView *view, EngineView *existing_view);
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(EngineView *view);
