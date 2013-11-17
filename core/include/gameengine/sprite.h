@@ -46,8 +46,10 @@ class Sprite {
 
   // TODO consider removing this.
   Texture2D texture() { return texture_; }
-
   void set_texture(Texture2D texture) { texture_ = texture; }
+
+  SpriteAnchor anchor() { return anchor_; }
+  void set_anchor(SpriteAnchor anchor) { anchor_ = anchor; }
 
   GameSize content_size() {
     return game_engine_.screen_size_to_game_size(texture_.content_size());
