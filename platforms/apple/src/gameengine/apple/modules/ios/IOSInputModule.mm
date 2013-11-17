@@ -11,7 +11,7 @@
 IOSInputModule::IOSInputModule()
     : device_angle_(0){
   motion_manager_ = [[CMMotionManager alloc] init];
-  motion_manager_.accelerometerUpdateInterval = 1.0 / 60.0;
+  motion_manager_.accelerometerUpdateInterval = 1.0 / 5.0;
   operation_queue_ = [[NSOperationQueue alloc] init];
 }
 
