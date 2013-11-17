@@ -11,7 +11,11 @@
 
 #include <string>
 
-// "Game" - coordinates in the game world.
+/***************************************\
+ "Game" - coordinates in the game world.
+\***************************************/
+
+// Game Size
 
 struct GameSize {
   double width;
@@ -24,6 +28,33 @@ inline GameSize game_size_make(double width, double height) {
   size.height = height;
   return size;
 }
+
+inline GameSize operator+(const GameSize &size_1, const GameSize &size_2) {
+  return game_size_make(size_1.width + size_2.width, size_1.height + size_2.height);
+}
+
+inline GameSize operator-(const GameSize &size_1, const GameSize &size_2) {
+  return game_size_make(size_1.width - size_2.width, size_1.height - size_2.height);
+}
+
+inline GameSize operator-(const GameSize &size) {
+  return game_size_make(-size.width, -size.height);
+}
+
+inline GameSize & operator+=(GameSize &size_1, const GameSize &size_2) {
+  size_1.width += size_2.width;
+  size_1.height += size_2.height;
+  return size_1;
+}
+
+inline GameSize & operator-=(GameSize &size_1, const GameSize &size_2) {
+  size_1.width -= size_2.width;
+  size_1.height -= size_2.height;
+  return size_1;
+}
+
+
+// Game Point
 
 struct GamePoint {
   double x;
@@ -61,6 +92,9 @@ inline GamePoint & operator-=(GamePoint &point_1, const GamePoint &point_2) {
   return point_1;
 }
 
+
+// GameRect
+
 struct GameRect {
   GamePoint origin;
   GameSize size;
@@ -91,7 +125,12 @@ static const GamePoint kGamePointZero = game_point_make(0, 0);
 static const GameRect kGameRectZero = game_rect_make(0, 0, 0, 0);
 
 
-// "Screen" - coordinates in pixel space.
+/**************************************\
+ "Screen" - coordinates in pixel space.
+\**************************************/
+
+
+// ScreenSize
 
 struct ScreenSize {
   double width;
@@ -104,6 +143,9 @@ inline ScreenSize screen_size_make(double width, double height) {
   size.height = height;
   return size;
 }
+
+
+// ScreenPoint
 
 struct ScreenPoint {
   double x;
