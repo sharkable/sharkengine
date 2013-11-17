@@ -110,6 +110,7 @@ class GameEngine {
 
   GameSize game_size() { return screen_size_to_game_size(screen_size_); }
   GamePoint game_offset() { return -screen_point_to_game_point(kScreenPointZero); }
+  GameRect game_rect() { return game_rect_make(-game_offset(), game_size()); }
 
   double screen_to_game_point_ratio_x() { return screen_to_game_point_ratio_x_; }
   double screen_to_game_point_ratio_y() { return screen_to_game_point_ratio_y_; }
