@@ -108,6 +108,9 @@ class GameEngine {
   ScreenPoint screen_offset() { return screen_offset_; }
   void set_screen_offset(ScreenPoint screen_offset) { screen_offset_ = screen_offset; }
 
+  GameSize game_size() { return screen_size_to_game_size(screen_size_); }
+  GamePoint game_offset() { return -screen_point_to_game_point(kScreenPointZero); }
+
   double screen_to_game_point_ratio_x() { return screen_to_game_point_ratio_x_; }
   double screen_to_game_point_ratio_y() { return screen_to_game_point_ratio_y_; }
   void set_screen_to_game_point_ratios(double ratio_x, double ratio_y) {
