@@ -45,6 +45,10 @@ inline GamePoint operator-(const GamePoint &point_1, const GamePoint &point_2) {
   return game_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
 }
 
+inline GamePoint operator-(const GamePoint &point) {
+  return game_point_make(-point.x, -point.y);
+}
+
 inline GamePoint & operator+=(GamePoint &point_1, const GamePoint &point_2) {
   point_1.x += point_2.x;
   point_1.y += point_2.y;
@@ -119,6 +123,10 @@ inline ScreenPoint operator+(const ScreenPoint &point_1, const ScreenPoint &poin
 
 inline ScreenPoint operator-(const ScreenPoint &point_1, const ScreenPoint &point_2) {
   return screen_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
+}
+
+inline ScreenPoint operator-(const ScreenPoint &point) {
+  return screen_point_make(-point.x, -point.y);
 }
 
 inline ScreenPoint & operator+=(ScreenPoint &point_1, const ScreenPoint &point_2) {
