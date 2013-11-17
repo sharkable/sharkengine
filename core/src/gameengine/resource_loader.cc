@@ -92,7 +92,8 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
   while (texture_height < image_height) {
     texture_height *= 2;
   }
-  unsigned char *data = (unsigned char *)malloc(sizeof(char) * 4 * texture_width * texture_height);
+  unsigned char *data =
+      (unsigned char *)malloc(sizeof(unsigned char) * 4 * texture_width * texture_height);
   unsigned char *write_point = data;
   uint16_t diff_width_size = (texture_width - image_width) * 4;
   for (int y = 0; y < image_height; y++) {

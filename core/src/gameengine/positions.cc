@@ -21,7 +21,7 @@ void Positions::LoadFile(AssetReader &asset_reader) {
   if (!successful_parse) {
     assert(false);
   }
-  delete data;
+  delete[] data;
 
   tinyxml2::XMLNode *positionsNode = doc.FirstChild();
   assert(!strcmp("positions", positionsNode->ToElement()->Name()));

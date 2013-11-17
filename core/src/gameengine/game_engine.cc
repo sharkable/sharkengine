@@ -172,6 +172,7 @@ void GameEngine::ProcessInput() {
       break;
     }
   }
+  shark_assert(touch_view, "No touch view found.");
 
   shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
 
