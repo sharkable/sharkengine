@@ -75,10 +75,9 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
   filename += texture_name_extention_;
   filename += ".tx";
 
-  AssetReader *asset_reader = game_engine_.LoadAsset(filename);
+  sp<AssetReader> asset_reader = game_engine_.LoadAsset(filename);
   if (!asset_reader->IsOpen()) {
     std::cout << "No texture file for " << name << std::endl;
-    delete asset_reader;
     assert(false);
   }
 
@@ -110,6 +109,5 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 
   free(data);
   asset_reader->Close();
-  delete asset_reader;
   return texture;
 }

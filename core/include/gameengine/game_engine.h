@@ -62,7 +62,7 @@ class GameEngine {
   void PopView();
   void RemoveView(EngineView *view);
   void SetRootView(EngineView *view);
-  AssetReader * LoadAsset(std::string filename);
+  sp<AssetReader> LoadAsset(std::string filename);
 
   Platform & platform() { return platform_; }
 

@@ -157,8 +157,8 @@ void GameEngine::SetRootView(EngineView *view) {
   views_.PushBack(view, true);
 }
 
-AssetReader * GameEngine::LoadAsset(std::string filename) {
-  return asset_reader_factory_module_->CreateAssetReader(filename);
+sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
+  return sp<AssetReader>(asset_reader_factory_module_->CreateAssetReader(filename));
 }
 
 
