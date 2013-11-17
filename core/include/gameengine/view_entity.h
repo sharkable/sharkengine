@@ -34,6 +34,7 @@ class ViewEntity {
   virtual GameRect Rect() {
     shark_assert(false, "rect() is not supported for this ViewEntity of type %s.",
                  typeid(*this).name());
+    return kGameRectZero;
   }
 
   // Accessors
