@@ -16,7 +16,7 @@ Animation::Animation()
     : start_(0),
       distance_(0),
       ticks_(0),
-      totalTicks_(0),
+      total_ticks_(0),
       type_(kAnimationTypeLinear) {
 }
 
@@ -25,33 +25,38 @@ void Animation::Reset(float start, float end, int ticks, AnimationType type) {
   end_ = end;
   distance_ = end - start;
   ticks_ = 0;
-  totalTicks_ = ticks;
+  total_ticks_ = ticks;
   type_ = type;
 }
 
 double Animation::Update() {
   ticks_++;
-  if (ticks_ >= totalTicks_) {
+  if (ticks_ >= total_ticks_) {
     return end_;
   }
   switch (type_) {
     case kAnimationTypeLinear:
-      return Linear::easeNone(ticks_, start_, distance_, totalTicks_);
+      return Linear::easeNone(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeCubicEaseIn:
-      return Cubic::easeIn(ticks_, start_, distance_, totalTicks_);
+      return Cubic::easeIn(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeCubicEaseOut:
-      return Cubic::easeOut(ticks_, start_, distance_, totalTicks_);
+      return Cubic::easeOut(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeCubicEaseInOut:
-      return Cubic::easeInOut(ticks_, start_, distance_, totalTicks_);
+      return Cubic::easeInOut(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeBounceEaseIn:
-      return Bounce::easeIn(ticks_, start_, distance_, totalTicks_);
+      return Bounce::easeIn(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeBounceEaseOut:
-      return Bounce::easeOut(ticks_, start_, distance_, totalTicks_);
+      return Bounce::easeOut(ticks_, start_, distance_, total_ticks_);
     case kAnimationTypeBounceEaseInOut:
-      return Bounce::easeInOut(ticks_, start_, distance_, totalTicks_);
+      return Bounce::easeInOut(ticks_, start_, distance_, total_ticks_);
   }
 }
 
 bool Animation::IsActive() {
-  return ticks_ < totalTicks_;
+  return ticks_ < total_ticks_;
+}
+
+void Animation::Stop() {
+  ticks_ = 0;
+  total_ticks_ = 0;
 }

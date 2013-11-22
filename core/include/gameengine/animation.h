@@ -26,13 +26,14 @@ class Animation {
   void Reset(float start, float end, int ticks, AnimationType type);
   double Update();
   bool IsActive();
+  void Stop();
 
  private:
   float start_;
   float end_;
   float distance_;
   int ticks_;
-  int totalTicks_;
+  int total_ticks_;
   AnimationType type_;
 };
 
