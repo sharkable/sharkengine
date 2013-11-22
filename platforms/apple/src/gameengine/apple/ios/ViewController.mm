@@ -200,6 +200,7 @@
   double accumulator = 0;
   static const double kTimeDelta = 1.0 / 60.0;
 
+  [[NSThread currentThread] setThreadPriority:1.0];
   while (true) {
     if (paused_) {
       gameEngine_->NotifyPause();
