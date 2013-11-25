@@ -9,14 +9,16 @@
 #ifndef GAMEENGINE_APPLE_MODULES_IOS_IOSINPUTMODULE_H_
 #define GAMEENGINE_APPLE_MODULES_IOS_IOSINPUTMODULE_H_
 
-#import <CoreMotion/CoreMotion.h>
-
 #include "gameengine/modules/input_module.h"
+
+@class OrientationListener;
 
 class IOSInputModule : public InputModule {
  public:
   IOSInputModule();
   ~IOSInputModule();
+
+  void set_device_angle(float device_angle) { device_angle_ = device_angle; }
 
   // InputModule
   void TurnOnRotationUpdates();
@@ -25,8 +27,7 @@ class IOSInputModule : public InputModule {
 
  private:
   float device_angle_;
-  CMMotionManager *motion_manager_;
-  NSOperationQueue *operation_queue_;
+  OrientationListener *orientation_listener_;
 };
 
 #endif
