@@ -32,7 +32,7 @@
       angle = 0.f;
       break;
     default:
-      angle = 0.f;
+      return;
   }
   self.inputModule->set_device_angle(angle);
 }
