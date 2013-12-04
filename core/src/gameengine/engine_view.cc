@@ -21,7 +21,7 @@ EngineView::EngineView(GameEngine &game_engine)
 }
 
 void EngineView::Update() {
-  entities_.Commit();
+  entities_.CommitStaging();
   for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->Update();
   }
@@ -103,22 +103,22 @@ bool EngineView::HandleBackButton() {
 
 void EngineView::AddEntity(ViewEntity *entity, bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.PushBack(entity, managed_memory);
+  entities_.StagePushBack(entity, managed_memory);
 }
 
 void EngineView::InsertEntityBefore(ViewEntity *entity, ViewEntity *existing_entity,
                                     bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.InsertBefore(entity, existing_entity, managed_memory);
+  entities_.StageInsertBefore(entity, existing_entity, managed_memory);
 }
 
 void EngineView::InsertEntityAfter(ViewEntity *entity, ViewEntity *existing_entity,
                                    bool managed_memory) {
   entity->SetEngineView(this);
-  entities_.InsertAfter(entity, existing_entity, managed_memory);
+  entities_.StageInsertAfter(entity, existing_entity, managed_memory);
 }
 
 void EngineView::RemoveEntity(ViewEntity *entity) {
   entity->SetEngineView(NULL);
-  entities_.Erase(entity);
+  entities_.StageErase(entity);
 }

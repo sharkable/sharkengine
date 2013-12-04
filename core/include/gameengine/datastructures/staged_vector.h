@@ -19,11 +19,11 @@ class StagedVector {
  typedef typename std::vector<T *>::reverse_iterator reverse_iterator;
 
  public:
-  StagedVector() : next_values_initialized_(false), has_staged_changes_(false) {}
+  StagedVector() : staged_values_initialized_(false), has_staged_changes_(false) {}
 
   ~StagedVector() {
-    ConsiderInitialization();
-    for (auto i = next_values_.begin(); i != next_values_.end(); i++) {
+    ConsiderStageInitialization();
+    for (auto i = staged_values_.begin(); i != staged_values_.end(); i++) {
       if (ManageMemoryForValue(*i)) {
         delete *i;
       }
@@ -37,18 +37,17 @@ class StagedVector {
     return values_.size();
   }
 
-  size_t StagedSize() {
-    ConsiderInitialization();
-    return next_values_.size();
+  std::vector<T *> const & StagedValues() {
+    ConsiderStageInitialization();
+    return staged_values_;
+  }
+
+  T * operator[](size_t i) {
+    return values_[i];
   }
 
   T * Back() {
     return values_.back();
-  }
-
-  T * StagedBack() {
-    ConsiderInitialization();
-    return next_values_.back();
   }
 
   iterator Begin() {
@@ -67,55 +66,58 @@ class StagedVector {
     return values_.rend();
   }
 
-  void PushBack(T *value, bool manage_memory = false) {
-    ConsiderInitialization();
-    next_values_.push_back(value);
+  void StagePushBack(T *value, bool manage_memory = false) {
+    ConsiderStageInitialization();
+    staged_values_.push_back(value);
     if (manage_memory) {
       managed_memory_values_.insert(value);
     }
     has_staged_changes_ = true;
   }
 
-  void InsertBefore(T *value, T *existing_value, bool manage_memory = false) {
-    ConsiderInitialization();
-    iterator i = std::find(next_values_.begin(), next_values_.end(), existing_value);
-    assert(i != next_values_.end());
-    next_values_.insert(i, value);
+  void StageInsertBefore(T *value, T *existing_value, bool manage_memory = false) {
+    ConsiderStageInitialization();
+    iterator i = std::find(staged_values_.begin(), staged_values_.end(), existing_value);
+    shark_assert(i != staged_values_.end(),
+                 "StagedVector::StagedInsertBefore - Existing value not found.");
+    staged_values_.insert(i, value);
     if (manage_memory) {
       managed_memory_values_.insert(value);
     }
     has_staged_changes_ = true;
   }
 
-  void InsertAfter(T *value, T *existing_value, bool manage_memory = false) {
-    ConsiderInitialization();
-    iterator i = std::find(next_values_.begin(), next_values_.end(), existing_value);
-    assert(i != next_values_.end());
-    next_values_.insert(i + 1, value);
+  void StageInsertAfter(T *value, T *existing_value, bool manage_memory = false) {
+    ConsiderStageInitialization();
+    iterator i = std::find(staged_values_.begin(), staged_values_.end(), existing_value);
+    shark_assert(i != staged_values_.end(),
+                 "StagedVector::StagedInsertAfter - Existing value not found.");
+    staged_values_.insert(i + 1, value);
     if (manage_memory) {
       managed_memory_values_.insert(value);
     }
     has_staged_changes_ = true;
   }
 
-  void PopBack() {
-    ConsiderInitialization();
-    T *back = next_values_.back();
+  T * StagePopBack() {
+    ConsiderStageInitialization();
+    T *back = staged_values_.back();
     if (ManageMemoryForValue(back)) {
       to_erase_.push_back(back);
     }
-    next_values_.pop_back();
+    staged_values_.pop_back();
     has_staged_changes_ = true;
+    return back;
   }
 
-  void Erase(T *value) {
-    ConsiderInitialization();
-    for (auto i = next_values_.begin(); i != next_values_.end();) {
+  void StageErase(T *value) {
+    ConsiderStageInitialization();
+    for (auto i = staged_values_.begin(); i != staged_values_.end();) {
       if (*i == value) {
         if (ManageMemoryForValue(value)) {
           to_erase_.push_back(value);
         }
-        i = next_values_.erase(i);
+        i = staged_values_.erase(i);
       } else {
         i++;
       }
@@ -123,20 +125,20 @@ class StagedVector {
     has_staged_changes_ = true;
   }
 
-  void Clear() {
-    ConsiderInitialization();
-    for (auto i = next_values_.begin(); i != next_values_.end(); i++) {
+  void StageClear() {
+    ConsiderStageInitialization();
+    for (auto i = staged_values_.begin(); i != staged_values_.end(); i++) {
       if (ManageMemoryForValue(*i)) {
         to_erase_.push_back(*i);
       }
     }
-    next_values_.clear();
+    staged_values_.clear();
     has_staged_changes_ = true;
   }
 
-  void Commit() {
+  void CommitStaging() {
     if (has_staged_changes_) {
-      values_ = next_values_;
+      values_ = staged_values_;
       for (auto i = to_erase_.begin(); i != to_erase_.end(); i++) {
         delete *i;
         managed_memory_values_.erase(*i);
@@ -144,9 +146,9 @@ class StagedVector {
       to_erase_.clear();
       has_staged_changes_ = false;
     }
-    if (next_values_initialized_) {
-      next_values_.clear();
-      next_values_initialized_ = false;
+    if (staged_values_initialized_) {
+      staged_values_.clear();
+      staged_values_initialized_ = false;
     }
   }
 
@@ -155,10 +157,10 @@ class StagedVector {
   }
 
  private:
-  void ConsiderInitialization() {
-    if (!next_values_initialized_) {
-      next_values_ = values_;
-      next_values_initialized_ = true;
+  void ConsiderStageInitialization() {
+    if (!staged_values_initialized_) {
+      staged_values_ = values_;
+      staged_values_initialized_ = true;
     }
   }
 
@@ -167,10 +169,10 @@ class StagedVector {
   }
 
   std::vector<T *> values_;
-  std::vector<T *> next_values_;
+  std::vector<T *> staged_values_;
   std::vector<T *> to_erase_;
   std::set<T *> managed_memory_values_;
-  bool next_values_initialized_;
+  bool staged_values_initialized_;
   bool has_staged_changes_;
 };
 

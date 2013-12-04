@@ -50,8 +50,8 @@ void GameEngine::Update() {
       views_.Back()->ViewDidLoseFocus();
       views_.Back()->ClearTouches();
     }
-    views_.StagedBack()->ViewDidGainFocus();
-    views_.Commit();
+    views_.CommitStaging();
+    views_.Back()->ViewDidGainFocus();
   }
 
   assert(views_.Size() > 0);
@@ -132,29 +132,28 @@ void GameEngine::HandlePauseButton() {
 
 void GameEngine::PushView(EngineView *view) {
   view->set_is_visible(true);
-  views_.PushBack(view, true);
+  views_.StagePushBack(view, true);
 }
 
 void GameEngine::InsertViewAfter(EngineView *view, EngineView *existing_view) {
   view->set_is_visible(true);
-  views_.InsertAfter(view, existing_view);
+  views_.StageInsertAfter(view, existing_view);
 }
 
 void GameEngine::PopView() {
-  assert(views_.StagedSize() > 0);
-  views_.StagedBack()->set_is_visible(false);
-  views_.PopBack();
+  shark_assert(views_.StagedValues().size() > 0, "Popping empty view stack.");
+  views_.StagePopBack()->set_is_visible(false);
 }
 
 void GameEngine::RemoveView(EngineView *view) {
   view->set_is_visible(false);
-  views_.Erase(view);
+  views_.StageErase(view);
 }
 
 void GameEngine::SetRootView(EngineView *view) {
   view->set_is_visible(true);
-  views_.Clear();
-  views_.PushBack(view, true);
+  views_.StageClear();
+  views_.StagePushBack(view, true);
 }
 
 sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
