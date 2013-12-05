@@ -77,6 +77,8 @@ class StagedVector {
 
   // Assumes all elements are already sorted.
   void StageOrderedInsert(T *value, bool (*compare)(T *, T *), bool manage_memory = false) {
+    ConsiderStageInitialization();
+
     // Perform a binary search.
     int i_min = 0;
     int i_max = (int)staged_values_.size() - 1;
