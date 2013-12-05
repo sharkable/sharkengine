@@ -75,6 +75,46 @@ class StagedVector {
     has_staged_changes_ = true;
   }
 
+  // Assumes all elements are already sorted.
+  void StageOrderedInsert(T *value, bool (*compare)(T *, T *), bool manage_memory = false) {
+    // Perform a binary search.
+    int i_min = 0;
+    int i_max = (int)staged_values_.size() - 1;
+
+    while (true) {
+      if (i_max < i_min) {
+        StagePushBack(value, manage_memory);
+        break;
+      } else if (i_min == i_max) {
+        if (compare(staged_values_[i_min], value)) {
+          StageInsertAfter(value, staged_values_[i_min], manage_memory);
+        } else {
+          StageInsertBefore(value, staged_values_[i_min], manage_memory);
+        }
+        break;
+      }
+
+      int i_mid = (i_min + i_max) / 2;
+
+      if (compare(staged_values_[i_mid], value) && !compare(staged_values_[i_mid + 1], value)) {
+        StageInsertAfter(value, staged_values_[i_mid], manage_memory);
+        break;
+      } else if (compare(staged_values_[i_mid], value)) {
+        if (i_min < i_mid) {
+          i_min = i_mid;
+        } else {
+          i_min++;
+        }
+      } else {
+        if (i_max > i_mid) {
+          i_max = i_mid;
+        } else {
+          i_max--;
+        }
+      }
+    }
+  }
+
   void StageInsertBefore(T *value, T *existing_value, bool manage_memory = false) {
     ConsiderStageInitialization();
     iterator i = std::find(staged_values_.begin(), staged_values_.end(), existing_value);
