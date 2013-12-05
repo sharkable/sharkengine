@@ -23,13 +23,13 @@ class StagedVector {
 
   ~StagedVector() {
     ConsiderStageInitialization();
-    for (auto i = staged_values_.begin(); i != staged_values_.end(); i++) {
-      if (ManageMemoryForValue(*i)) {
-        delete *i;
+    for (T *i : staged_values_) {
+      if (ManageMemoryForValue(i)) {
+        delete i;
       }
     }
-    for (iterator i = to_erase_.begin(); i != to_erase_.end(); i++) {
-      delete *i;
+    for (T *i : to_erase_) {
+      delete i;
     }
   }
 
@@ -127,9 +127,9 @@ class StagedVector {
 
   void StageClear() {
     ConsiderStageInitialization();
-    for (auto i = staged_values_.begin(); i != staged_values_.end(); i++) {
-      if (ManageMemoryForValue(*i)) {
-        to_erase_.push_back(*i);
+    for (T *i : staged_values_) {
+      if (ManageMemoryForValue(i)) {
+        to_erase_.push_back(i);
       }
     }
     staged_values_.clear();
@@ -139,9 +139,9 @@ class StagedVector {
   void CommitStaging() {
     if (has_staged_changes_) {
       values_ = staged_values_;
-      for (auto i = to_erase_.begin(); i != to_erase_.end(); i++) {
-        delete *i;
-        managed_memory_values_.erase(*i);
+      for (T *i : to_erase_) {
+        delete i;
+        managed_memory_values_.erase(i);
       }
       to_erase_.clear();
       has_staged_changes_ = false;
