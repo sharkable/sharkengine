@@ -92,6 +92,20 @@ inline GamePoint & operator-=(GamePoint &point_1, const GamePoint &point_2) {
   return point_1;
 }
 
+inline GamePoint operator*(const GamePoint &point, float scalar) {
+  return game_point_make(point.x * scalar, point.y * scalar);
+}
+
+inline GamePoint operator*(float scalar, const GamePoint &point) {
+  return game_point_make(point.x * scalar, point.y * scalar);
+}
+
+inline GamePoint & operator*=(GamePoint &point, float scalar) {
+  point.x *= scalar;
+  point.y *= scalar;
+  return point;
+}
+
 
 // GameRect
 
