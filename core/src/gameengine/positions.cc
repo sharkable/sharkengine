@@ -32,7 +32,7 @@ void Positions::LoadFile(AssetReader &asset_reader) {
     double x = strtod(position->FirstChildElement("x")->GetText(), NULL);
     double y = strtod(position->FirstChildElement("y")->GetText(), NULL);
     assert(positions_.find(name) == positions_.end());
-    positions_[name] = game_point_make(x, y);
+    positions_[name] = GamePoint(x, y);
 
     position = position->NextSibling();
   }

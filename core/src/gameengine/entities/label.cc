@@ -39,8 +39,7 @@ void Label::Render(GamePoint offset) {
   for (int i = 0; i < text_.length(); i++) {
     char c = text_[i];
     if (c == '\n') {
-      render_point = game_point_make(position().x + offset.x,
-                                     render_point.y + font__->GlyphHeight());
+      render_point = GamePoint(position().x + offset.x, render_point.y + font__->GlyphHeight());
     } else {
       font__->RenderGlyph(c, render_point, alpha());
       render_point.x += font__->GlyphWidth(c);
@@ -69,8 +68,8 @@ void Label::Render(GamePoint offset, float angle) {
     char c = text_[i];
     if (c == '\n') {
       float glyph_height = font__->GlyphHeight();
-      render_point = game_point_make(position().x + offset.x + sin_theta * glyph_height,
-                                     render_point.y + cos_theta * glyph_height);
+      render_point = GamePoint(position().x + offset.x + sin_theta * glyph_height,
+                               render_point.y + cos_theta * glyph_height);
     } else {
       float glyph_width = font__->GlyphWidth(c);
       float glyph_height = font__->GlyphHeight();
@@ -92,7 +91,7 @@ void Label::Render(GamePoint offset, float angle) {
 }
 
 GameRect Label::Rect() {
-  return game_rect_make(position(), size_);
+  return GameRect(position(), size_);
 }
 
 

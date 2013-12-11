@@ -110,10 +110,10 @@ class GameEngine {
 
   GameSize game_size() { return screen_size_to_game_size(screen_size_); }
   GamePoint game_offset() { return -screen_point_to_game_point(kScreenPointZero); }
-  GameRect game_rect() { return game_rect_make(-game_offset(), game_size()); }
+  GameRect game_rect() { return GameRect(-game_offset(), game_size()); }
   GameRect game_rect_offset() {
-    return game_rect_make(kGamePointZero,
-                          game_size() - game_size_make(2 * game_offset().x, 2 * game_offset().y));
+    return GameRect(kGamePointZero,
+                    game_size() - GameSize(2 * game_offset().x, 2 * game_offset().y));
   }
 
   double screen_to_game_point_ratio_x() { return screen_to_game_point_ratio_x_; }
@@ -124,20 +124,20 @@ class GameEngine {
   }
 
   ScreenSize game_size_to_screen_size(GameSize game_size_) {
-    return screen_size_make(game_size_.width * screen_to_game_point_ratio_x_,
-                            game_size_.height * screen_to_game_point_ratio_y_);
+    return ScreenSize(game_size_.width * screen_to_game_point_ratio_x_,
+                      game_size_.height * screen_to_game_point_ratio_y_);
   }
   ScreenPoint game_point_to_screen_point(GamePoint game_point_) {
-    return screen_point_make(game_point_.x * screen_to_game_point_ratio_x_ + screen_offset_.x,
-                             game_point_.y * screen_to_game_point_ratio_y_ + screen_offset_.y);
+    return ScreenPoint(game_point_.x * screen_to_game_point_ratio_x_ + screen_offset_.x,
+                       game_point_.y * screen_to_game_point_ratio_y_ + screen_offset_.y);
   }
   GameSize screen_size_to_game_size(ScreenSize screen_size_) {
-    return game_size_make(screen_size_.width / screen_to_game_point_ratio_x_,
-                          screen_size_.height / screen_to_game_point_ratio_y_);
+    return GameSize(screen_size_.width / screen_to_game_point_ratio_x_,
+                    screen_size_.height / screen_to_game_point_ratio_y_);
   }
   GamePoint screen_point_to_game_point(ScreenPoint screen_point_) {
-    return game_point_make((screen_point_.x - screen_offset_.x) / screen_to_game_point_ratio_x_,
-                           (screen_point_.y - screen_offset_.y) / screen_to_game_point_ratio_y_);
+    return GamePoint((screen_point_.x - screen_offset_.x) / screen_to_game_point_ratio_x_,
+                     (screen_point_.y - screen_offset_.y) / screen_to_game_point_ratio_y_);
   }
 
  private:

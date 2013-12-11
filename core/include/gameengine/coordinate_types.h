@@ -18,27 +18,27 @@
 // Game Size
 
 struct GameSize {
-  double width;
-  double height;
+  GameSize() {}
+
+  GameSize(float width, float height) {
+    this->width = width;
+    this->height = height;
+  }
+
+  float width;
+  float height;
 };
 
-inline GameSize game_size_make(double width, double height) {
-  GameSize size;
-  size.width = width;
-  size.height = height;
-  return size;
-}
-
 inline GameSize operator+(const GameSize &size_1, const GameSize &size_2) {
-  return game_size_make(size_1.width + size_2.width, size_1.height + size_2.height);
+  return GameSize(size_1.width + size_2.width, size_1.height + size_2.height);
 }
 
 inline GameSize operator-(const GameSize &size_1, const GameSize &size_2) {
-  return game_size_make(size_1.width - size_2.width, size_1.height - size_2.height);
+  return GameSize(size_1.width - size_2.width, size_1.height - size_2.height);
 }
 
 inline GameSize operator-(const GameSize &size) {
-  return game_size_make(-size.width, -size.height);
+  return GameSize(-size.width, -size.height);
 }
 
 inline GameSize & operator+=(GameSize &size_1, const GameSize &size_2) {
@@ -57,27 +57,27 @@ inline GameSize & operator-=(GameSize &size_1, const GameSize &size_2) {
 // Game Point
 
 struct GamePoint {
-  double x;
-  double y;
+  GamePoint() {}
+
+  GamePoint(float x, float y) {
+    this->x = x;
+    this->y = y;
+  }
+
+  float x;
+  float y;
 };
 
-inline GamePoint game_point_make(double x, double y) {
-  GamePoint point;
-  point.x = x;
-  point.y = y;
-  return point;
-}
-
 inline GamePoint operator+(const GamePoint &point_1, const GamePoint &point_2) {
-  return game_point_make(point_1.x + point_2.x, point_1.y + point_2.y);
+  return GamePoint(point_1.x + point_2.x, point_1.y + point_2.y);
 }
 
 inline GamePoint operator-(const GamePoint &point_1, const GamePoint &point_2) {
-  return game_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
+  return GamePoint(point_1.x - point_2.x, point_1.y - point_2.y);
 }
 
 inline GamePoint operator-(const GamePoint &point) {
-  return game_point_make(-point.x, -point.y);
+  return GamePoint(-point.x, -point.y);
 }
 
 inline GamePoint & operator+=(GamePoint &point_1, const GamePoint &point_2) {
@@ -93,11 +93,11 @@ inline GamePoint & operator-=(GamePoint &point_1, const GamePoint &point_2) {
 }
 
 inline GamePoint operator*(const GamePoint &point, float scalar) {
-  return game_point_make(point.x * scalar, point.y * scalar);
+  return GamePoint(point.x * scalar, point.y * scalar);
 }
 
 inline GamePoint operator*(float scalar, const GamePoint &point) {
-  return game_point_make(point.x * scalar, point.y * scalar);
+  return GamePoint(point.x * scalar, point.y * scalar);
 }
 
 inline GamePoint & operator*=(GamePoint &point, float scalar) {
@@ -110,33 +110,29 @@ inline GamePoint & operator*=(GamePoint &point, float scalar) {
 // GameRect
 
 struct GameRect {
+  GameRect(float x, float y, float width, float height) {
+    this->origin.x = x;
+    this->origin.y = y;
+    this->size.width = width;
+    this->size.height = height;
+  }
+
+  GameRect(GamePoint origin, GameSize size) {
+    this->origin = origin;
+    this->size = size;
+  }
+
   GamePoint origin;
   GameSize size;
 };
 
-inline GameRect game_rect_make(double x, double y, double width, double height) {
-  GameRect rect;
-  rect.origin.x = x;
-  rect.origin.y = y;
-  rect.size.width = width;
-  rect.size.height = height;
-  return rect;
-}
-
-inline GameRect game_rect_make(GamePoint origin, GameSize size) {
-  GameRect rect;
-  rect.origin = origin;
-  rect.size = size;
-  return rect;
-}
-
 inline GamePoint rect_center(GameRect rect) {
-  return game_point_make(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
+  return GamePoint(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
 }
 
-static const GameSize kGameSizeZero = game_size_make(0, 0);
-static const GamePoint kGamePointZero = game_point_make(0, 0);
-static const GameRect kGameRectZero = game_rect_make(0, 0, 0, 0);
+static const GameSize kGameSizeZero(0, 0);
+static const GamePoint kGamePointZero(0, 0);
+static const GameRect kGameRectZero(0, 0, 0, 0);
 
 
 /**************************************\
@@ -147,42 +143,42 @@ static const GameRect kGameRectZero = game_rect_make(0, 0, 0, 0);
 // ScreenSize
 
 struct ScreenSize {
-  double width;
-  double height;
-};
+  ScreenSize() {}
 
-inline ScreenSize screen_size_make(double width, double height) {
-  ScreenSize size;
-  size.width = width;
-  size.height = height;
-  return size;
-}
+  ScreenSize(float width, float height) {
+    this->width = width;
+    this->height = height;
+  }
+
+  float width;
+  float height;
+};
 
 
 // ScreenPoint
 
 struct ScreenPoint {
-  double x;
-  double y;
+  ScreenPoint() {}
+
+  ScreenPoint(float x, float y) {
+    this->x = x;
+    this->y = y;
+  }
+
+  float x;
+  float y;
 };
 
-inline ScreenPoint screen_point_make(double x, double y) {
-  ScreenPoint point;
-  point.x = x;
-  point.y = y;
-  return point;
-}
-
 inline ScreenPoint operator+(const ScreenPoint &point_1, const ScreenPoint &point_2) {
-  return screen_point_make(point_1.x + point_2.x, point_1.y + point_2.y);
+  return ScreenPoint(point_1.x + point_2.x, point_1.y + point_2.y);
 }
 
 inline ScreenPoint operator-(const ScreenPoint &point_1, const ScreenPoint &point_2) {
-  return screen_point_make(point_1.x - point_2.x, point_1.y - point_2.y);
+  return ScreenPoint(point_1.x - point_2.x, point_1.y - point_2.y);
 }
 
 inline ScreenPoint operator-(const ScreenPoint &point) {
-  return screen_point_make(-point.x, -point.y);
+  return ScreenPoint(-point.x, -point.y);
 }
 
 inline ScreenPoint & operator+=(ScreenPoint &point_1, const ScreenPoint &point_2) {
@@ -197,8 +193,8 @@ inline ScreenPoint & operator-=(ScreenPoint &point_1, const ScreenPoint &point_2
   return point_1;
 }
 
-static const ScreenSize kScreenSizeZero = screen_size_make(0, 0);
-static const ScreenPoint kScreenPointZero = screen_point_make(0, 0);
+static const ScreenSize kScreenSizeZero(0, 0);
+static const ScreenPoint kScreenPointZero(0, 0);
 
 
 

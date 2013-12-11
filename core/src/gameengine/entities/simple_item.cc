@@ -46,11 +46,11 @@ GameRect SimpleItem::Rect() {
   SpriteAnchor anchor = sprites_[sprite_].anchor();
   switch (anchor) {
     case kSpriteAnchorTopLeft:
-      return game_rect_make(position(), sprites_[sprite_].content_size());
+      return GameRect(position(), sprites_[sprite_].content_size());
     case kSpriteAnchorCenter:
       GameSize content_size = sprites_[sprite_].content_size();
-      GamePoint origin = position() - game_point_make(content_size.width / 2.f,
-                                                      content_size.height / 2.f);
-      return game_rect_make(origin, content_size);
+      GamePoint origin = position() - GamePoint(content_size.width / 2.f,
+                                                content_size.height / 2.f);
+      return GameRect(origin, content_size);
   }
 }

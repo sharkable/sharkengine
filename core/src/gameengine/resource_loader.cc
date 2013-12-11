@@ -104,7 +104,7 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
   }
   memset(write_point, 0, texture_width * (texture_height - image_height) * 4);
 
-  ScreenSize image_size = screen_size_make(image_width, image_height);
+  ScreenSize image_size(image_width, image_height);
   Texture2D texture(data, kTexture2DPixelFormat_RGBA8888, texture_width, texture_height, image_size,
                     name, opengl_id);
 

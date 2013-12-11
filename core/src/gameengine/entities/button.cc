@@ -97,7 +97,7 @@ void Button::TouchEnded(GamePoint offset, Touch touch) {
 }
 
 GameRect Button::Rect() {
-  return game_rect_make(position(), normal_sprite_.content_size());
+  return GameRect(position(), normal_sprite_.content_size());
 }
 
 

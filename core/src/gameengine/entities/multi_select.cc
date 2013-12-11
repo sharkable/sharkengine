@@ -45,7 +45,7 @@ void MultiSelect::Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint po
 
 void MultiSelect::Render(GamePoint offset) {
   for (int i = 0; i < normal_sprites_.size(); i++) {
-    GamePoint p = game_point_make(positions_x_[i] + offset.x, positions_y_[i] + offset.y);
+    GamePoint p(positions_x_[i] + offset.x, positions_y_[i] + offset.y);
     if (i == selected_value_) {
       selected_sprites_[i].Draw(p, 0, alpha(), 1);
     } else {
