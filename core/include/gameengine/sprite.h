@@ -13,6 +13,10 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 
+// TODO move this from pigeon into gameengine.
+
+#include "pigeon/updaters/coordinate_system.h"
+
 typedef enum {
   kSpriteAnchorTopLeft,
   kSpriteAnchorCenter,
@@ -53,6 +57,11 @@ class Sprite {
 
   GameSize content_size() {
     return game_engine_.screen_size_to_game_size(texture_.content_size());
+  }
+
+  void Draw(CoordinateSystem coordinate_system) {
+    texture_.DrawAtPointAngle(anchor_point_to_screen_point(coordinate_system.origin(), 1.f),
+                              coordinate_system.angle());
   }
 
   void DrawAtPoint(GamePoint position) {
