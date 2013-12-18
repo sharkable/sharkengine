@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_COORDINATETYPES_H_
-#define GAMEENGINE_COORDINATETYPES_H_
+#ifndef GAMEENGINE_COORDINATES_COORDINATETYPES_H_
+#define GAMEENGINE_COORDINATES_COORDINATETYPES_H_
 
 #include <string>
 

@@ -1,13 +1,13 @@
 //
 //  coordinate_system.h
-//  Pigeon
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-12-10.
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef PIGEON_UPDATERS_COORDINATESYSTEM_H_
-#define PIGEON_UPDATERS_COORDINATESYSTEM_H_
+#ifndef GAMEENGINE_COORDINATES_COORDINATESYSTEM_H_
+#define GAMEENGINE_COORDINATES_COORDINATESYSTEM_H_
 
 #include "gameengine/coordinates/coordinate_types.h"
 
