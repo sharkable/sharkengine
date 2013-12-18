@@ -984,7 +984,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					../../../gameengine/core/include,
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
 					../../../sharksound/src,
@@ -1018,7 +1017,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					../../../gameengine/core/include,
 					../../../gameengine/core/src,
 					../../../gameengine/platforms/apple/src,
 					../../../sharksound/src,

@@ -935,7 +935,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
 					___SHARKENGINE_HOME___/platforms/apple/src,
 					___SHARKSOUND_HOME___/src,
@@ -1002,7 +1001,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
 					___SHARKENGINE_HOME___/platforms/apple/src,
 					___SHARKSOUND_HOME___/src,
@@ -1033,7 +1031,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					___SHARKENGINE_HOME___/core/include,
 					___SHARKENGINE_HOME___/core/src,
 					___SHARKENGINE_HOME___/platforms/apple/src,
 					___SHARKSOUND_HOME___/src,
