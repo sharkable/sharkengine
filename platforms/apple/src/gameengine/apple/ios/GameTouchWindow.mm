@@ -87,7 +87,7 @@ using std::vector;
     location.y = location.y + diff_y * move_factor_;
 #endif
 
-    ScreenPoint l = screen_point_make(location.x * scale_, location.y * scale_);
+    ScreenPoint l(location.x * scale_, location.y * scale_);
     GamePoint p = gameEngine_->screen_point_to_game_point(l);
     converted_touch.set_location(p);
     converted_touch.set_identifier(touch);

@@ -30,8 +30,7 @@
   // The original XIB view size determines the render size.
   windowSize_ = [self defaultWindowSize];
   screenScale_ = [self scaleFactor];
-  renderSize_ = screen_size_make(windowSize_.width * screenScale_,
-                                 windowSize_.height * screenScale_);
+  renderSize_ = ScreenSize(windowSize_.width * screenScale_, windowSize_.height * screenScale_);
   Texture2D::SetScreenHeight(renderSize_.height);
 
   if (!didStart_) {
@@ -72,9 +71,9 @@
 }
 
 - (GamePoint)gamePointFromScreenPoint:(NSPoint)point {
-  return game_point_make((point.x - viewportX_) * windowSize_.width / viewportWidth_,
-                         windowSize_.height - (point.y - viewportY_) * windowSize_.height /
-                             viewportHeight_);
+  return GamePoint((point.x - viewportX_) * windowSize_.width / viewportWidth_,
+                   windowSize_.height - (point.y - viewportY_) * windowSize_.height /
+                       viewportHeight_);
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {

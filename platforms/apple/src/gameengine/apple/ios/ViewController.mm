@@ -139,8 +139,7 @@
 
   CGSize screenSize = [self desiredViewFrame].size;
   CGFloat scale = [UIScreen mainScreen].scale;
-  gameEngine_->set_screen_size(screen_size_make(screenSize.width * scale,
-                                                screenSize.height * scale));
+  gameEngine_->set_screen_size(ScreenSize(screenSize.width * scale,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      screenSize.height * scale));
 
   bool is_phone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
   bool is_high_res = [UIScreen mainScreen].scale == 2;
