@@ -13,7 +13,7 @@
 #import "gameengine/apple/thirdparty/ios/admob/GADInterstitial.h"
 #import "gameengine/apple/thirdparty/ios/admob/GADInterstitialDelegate.h"
 #import "gameengine/apple/thirdparty/ios/admob/GADRequest.h"
-#import "gameengine/coordinate_types.h"
+#import "gameengine/coordinates/coordinate_types.h"
 
 using std::string;
 
