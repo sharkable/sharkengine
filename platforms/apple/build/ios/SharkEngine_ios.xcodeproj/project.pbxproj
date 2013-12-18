@@ -50,6 +50,7 @@
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
 		FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
 		FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
+		FE92D3011862552F00A6039D /* coordinate_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE92D2FE1862552F00A6039D /* coordinate_system.cc */; };
 		FE9493DF17EC9A9500B9D9AD /* label.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE9493DE17EC9A9500B9D9AD /* label.cc */; };
 		FEA16F5F1833FBD70001A8B1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */; };
 		FEA16F621833FBE70001A8B1 /* IOSInputModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEA16F611833FBE70001A8B1 /* IOSInputModule.mm */; };
@@ -149,7 +150,6 @@
 		FE164D6817AC4444006C5D88 /* TypeUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TypeUtil.mm; sourceTree = "<group>"; };
 		FE1DB9601811BF50009D1C3D /* font.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = font.cc; sourceTree = "<group>"; };
 		FE1DB9611811BF50009D1C3D /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = "<group>"; };
-		FE1FEF4818174AA90033D5E9 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		FE1FEF4B1817562F0033D5E9 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		FE23DC4217E29FB800F28FF5 /* sound_controller.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_controller.cc; sourceTree = "<group>"; };
 		FE23DC4317E29FB800F28FF5 /* sound.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cc; sourceTree = "<group>"; };
@@ -173,9 +173,6 @@
 		FE3CF95014F9819E0063CCA5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FE3F442916C445CD00E8BEDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FE3F442A16C445CD00E8BEDF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FE3FB6DD17F7A7C900FC5CFB /* staged_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = staged_vector.h; sourceTree = "<group>"; };
-		FE40299D17C2A97E00F0F49C /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
-		FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader_factory_module.h; sourceTree = "<group>"; };
 		FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReaderFactoryModule.h; sourceTree = "<group>"; };
 		FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReaderFactoryModule.mm; sourceTree = "<group>"; };
 		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
@@ -186,7 +183,30 @@
 		FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FE789BCB14F97B34007FCBC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		FE9493DC17EC9A2100B9D9AD /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
+		FE92D2FC1862552700A6039D /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
+		FE92D2FE1862552F00A6039D /* coordinate_system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordinate_system.cc; sourceTree = "<group>"; };
+		FE92D2FF1862552F00A6039D /* coordinate_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_system.h; sourceTree = "<group>"; };
+		FE92D3001862552F00A6039D /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
+		FE92D3031862553600A6039D /* staged_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = staged_vector.h; sourceTree = "<group>"; };
+		FE92D3041862553E00A6039D /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
+		FE92D3051862554D00A6039D /* animatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animatable.h; sourceTree = "<group>"; };
+		FE92D3061862554D00A6039D /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
+		FE92D3071862554D00A6039D /* composite_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = composite_entity.h; sourceTree = "<group>"; };
+		FE92D3081862554D00A6039D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
+		FE92D3091862554D00A6039D /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
+		FE92D30A1862554D00A6039D /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
+		FE92D30B1862558500A6039D /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
+		FE92D30C1862559400A6039D /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
+		FE92D30E1862559400A6039D /* ad_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_module.h; sourceTree = "<group>"; };
+		FE92D30F1862559400A6039D /* analytics_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_module.h; sourceTree = "<group>"; };
+		FE92D3101862559400A6039D /* app_store_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_module.h; sourceTree = "<group>"; };
+		FE92D3111862559400A6039D /* asset_reader_factory_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader_factory_module.h; sourceTree = "<group>"; };
+		FE92D3121862559400A6039D /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
+		FE92D3131862559400A6039D /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
+		FE92D314186255A900A6039D /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
+		FE92D315186255A900A6039D /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
+		FE92D316186255A900A6039D /* view_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = view_entity.h; sourceTree = "<group>"; };
+		FE92D3171862560500A6039D /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		FE9493DE17EC9A9500B9D9AD /* label.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cc; sourceTree = "<group>"; };
 		FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		FEA16F601833FBE70001A8B1 /* IOSInputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSInputModule.h; sourceTree = "<group>"; };
@@ -195,18 +215,13 @@
 		FEB9DD0817D66229006EE538 /* IOSAdModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAdModule.mm; sourceTree = "<group>"; };
 		FEB9DD0917D66229006EE538 /* IOSIAdAdModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAdAdModule.h; sourceTree = "<group>"; };
 		FEB9DD0A17D66229006EE538 /* IOSIAdAdModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAdAdModule.mm; sourceTree = "<group>"; };
-		FEB9DD0D17D67897006EE538 /* ad_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_module.h; sourceTree = "<group>"; };
-		FEB9DD0E17D67897006EE538 /* analytics_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_module.h; sourceTree = "<group>"; };
 		FEB9DD0F17D678A7006EE538 /* IOSAnalyticsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAnalyticsModule.h; sourceTree = "<group>"; };
 		FEB9DD1017D678A7006EE538 /* IOSAnalyticsModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAnalyticsModule.mm; sourceTree = "<group>"; };
-		FEB9DD1217D68F51006EE538 /* app_store_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app_store_module.h; sourceTree = "<group>"; };
 		FEB9DD1317D68F67006EE538 /* IOSAppStoreModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAppStoreModule.h; sourceTree = "<group>"; };
 		FEB9DD1417D68F67006EE538 /* IOSAppStoreModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAppStoreModule.mm; sourceTree = "<group>"; };
-		FEB9DD1617D6A85B006EE538 /* persistence_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = persistence_module.h; sourceTree = "<group>"; };
 		FEB9DD1717D6A870006EE538 /* ApplePersistenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePersistenceModule.h; sourceTree = "<group>"; };
 		FEB9DD1817D6A870006EE538 /* ApplePersistenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApplePersistenceModule.mm; sourceTree = "<group>"; };
 		FEC6093818314B7D003C7548 /* sharkengine_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sharkengine_config.h; path = ../src/sharkengine_config.h; sourceTree = "<group>"; };
-		FEDD89AB17C2B6940058550C /* input_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_module.h; sourceTree = "<group>"; };
 		FEF47BC616DF0C950096F3D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FEF91D0217E01CA100018432 /* AppleSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleSound.h; sourceTree = "<group>"; };
 		FEF91D0317E01CA100018432 /* AppleSound.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleSound.mm; sourceTree = "<group>"; };
@@ -216,18 +231,6 @@
 		FEF91D0717E01CA100018432 /* MyOpenALSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenALSupport.mm; sourceTree = "<group>"; };
 		FEF91D0817E01CA100018432 /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = "<group>"; };
 		FEF91D0917E01CA100018432 /* sound_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound_controller.h; sourceTree = "<group>"; };
-		FEF9B80717A9BFB400867739 /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
-		FEF9B80817A9BFB400867739 /* coordinate_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_types.h; sourceTree = "<group>"; };
-		FEF9B80917A9BFB400867739 /* engine_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine_view.h; sourceTree = "<group>"; };
-		FEF9B80B17A9BFB400867739 /* animatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animatable.h; sourceTree = "<group>"; };
-		FEF9B80C17A9BFB400867739 /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
-		FEF9B80D17A9BFB400867739 /* composite_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = composite_entity.h; sourceTree = "<group>"; };
-		FEF9B80E17A9BFB400867739 /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
-		FEF9B80F17A9BFB400867739 /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
-		FEF9B81017A9BFB400867739 /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
-		FEF9B81817A9BFB400867739 /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sprite.h; sourceTree = "<group>"; };
-		FEF9B81917A9BFB400867739 /* touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touch.h; sourceTree = "<group>"; };
-		FEF9B81A17A9BFB400867739 /* view_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = view_entity.h; sourceTree = "<group>"; };
 		FEF9B81D17A9BFB400867739 /* animation.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation.cc; sourceTree = "<group>"; };
 		FEF9B81E17A9BFB400867739 /* asset_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asset_reader.h; sourceTree = "<group>"; };
 		FEF9B81F17A9BFB400867739 /* engine_view.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_view.cc; sourceTree = "<group>"; };
@@ -455,14 +458,6 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
-		FE3FB6DC17F7A7C900FC5CFB /* datastructures */ = {
-			isa = PBXGroup;
-			children = (
-				FE3FB6DD17F7A7C900FC5CFB /* staged_vector.h */,
-			);
-			path = datastructures;
-			sourceTree = "<group>";
-		};
 		FE4F211617B306EF005EC455 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +523,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FE92D2FD1862552F00A6039D /* coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				FE92D2FE1862552F00A6039D /* coordinate_system.cc */,
+				FE92D2FF1862552F00A6039D /* coordinate_system.h */,
+				FE92D3001862552F00A6039D /* coordinate_types.h */,
+			);
+			path = coordinates;
+			sourceTree = "<group>";
+		};
+		FE92D3021862553600A6039D /* datastructures */ = {
+			isa = PBXGroup;
+			children = (
+				FE92D3031862553600A6039D /* staged_vector.h */,
+			);
+			path = datastructures;
+			sourceTree = "<group>";
+		};
+		FE92D30D1862559400A6039D /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				FE92D30E1862559400A6039D /* ad_module.h */,
+				FE92D30F1862559400A6039D /* analytics_module.h */,
+				FE92D3101862559400A6039D /* app_store_module.h */,
+				FE92D3111862559400A6039D /* asset_reader_factory_module.h */,
+				FE92D3121862559400A6039D /* input_module.h */,
+				FE92D3131862559400A6039D /* persistence_module.h */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
 		FEF91CF717E01C8A00018432 /* SharkSound */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,63 +599,9 @@
 		FEF9B80417A9BFB400867739 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				FEF9B80517A9BFB400867739 /* include */,
 				FEF9B81B17A9BFB400867739 /* src */,
 			);
 			path = core;
-			sourceTree = "<group>";
-		};
-		FEF9B80517A9BFB400867739 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				FEF9B80617A9BFB400867739 /* gameengine */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		FEF9B80617A9BFB400867739 /* gameengine */ = {
-			isa = PBXGroup;
-			children = (
-				FEF9B80717A9BFB400867739 /* animation.h */,
-				FEF9B80817A9BFB400867739 /* coordinate_types.h */,
-				FE3FB6DC17F7A7C900FC5CFB /* datastructures */,
-				FEF9B80917A9BFB400867739 /* engine_view.h */,
-				FEF9B80A17A9BFB400867739 /* entities */,
-				FEF9B81017A9BFB400867739 /* game_engine.h */,
-				FE40299D17C2A97E00F0F49C /* module.h */,
-				FEF9B81217A9BFB400867739 /* modules */,
-				FE1FEF4818174AA90033D5E9 /* platform.h */,
-				FEF9B81817A9BFB400867739 /* sprite.h */,
-				FEF9B81917A9BFB400867739 /* touch.h */,
-				FEF9B81A17A9BFB400867739 /* view_entity.h */,
-			);
-			path = gameengine;
-			sourceTree = "<group>";
-		};
-		FEF9B80A17A9BFB400867739 /* entities */ = {
-			isa = PBXGroup;
-			children = (
-				FEF9B80B17A9BFB400867739 /* animatable.h */,
-				FEF9B80C17A9BFB400867739 /* button.h */,
-				FEF9B80D17A9BFB400867739 /* composite_entity.h */,
-				FE9493DC17EC9A2100B9D9AD /* label.h */,
-				FEF9B80E17A9BFB400867739 /* multi_select.h */,
-				FEF9B80F17A9BFB400867739 /* simple_item.h */,
-			);
-			path = entities;
-			sourceTree = "<group>";
-		};
-		FEF9B81217A9BFB400867739 /* modules */ = {
-			isa = PBXGroup;
-			children = (
-				FEB9DD0D17D67897006EE538 /* ad_module.h */,
-				FEB9DD0E17D67897006EE538 /* analytics_module.h */,
-				FEB9DD1217D68F51006EE538 /* app_store_module.h */,
-				FE616C5017D7CAD400FF061B /* asset_reader_factory_module.h */,
-				FEDD89AB17C2B6940058550C /* input_module.h */,
-				FEB9DD1617D6A85B006EE538 /* persistence_module.h */,
-			);
-			path = modules;
 			sourceTree = "<group>";
 		};
 		FEF9B81B17A9BFB400867739 /* src */ = {
@@ -644,19 +616,30 @@
 			isa = PBXGroup;
 			children = (
 				FEF9B81D17A9BFB400867739 /* animation.cc */,
+				FE92D2FC1862552700A6039D /* animation.h */,
 				FEF9B81E17A9BFB400867739 /* asset_reader.h */,
+				FE92D2FD1862552F00A6039D /* coordinates */,
+				FE92D3021862553600A6039D /* datastructures */,
 				FEF9B81F17A9BFB400867739 /* engine_view.cc */,
+				FE92D3041862553E00A6039D /* engine_view.h */,
 				FEF9B82017A9BFB400867739 /* entities */,
 				FE1DB9601811BF50009D1C3D /* font.cc */,
 				FE1DB9611811BF50009D1C3D /* font.h */,
 				FEF9B82617A9BFB400867739 /* game_engine.cc */,
+				FE92D30B1862558500A6039D /* game_engine.h */,
+				FE92D30C1862559400A6039D /* module.h */,
+				FE92D30D1862559400A6039D /* modules */,
 				FEF9B82717A9BFB400867739 /* mt19937ar.c */,
 				FEF9B82817A9BFB400867739 /* opengl */,
+				FE92D3171862560500A6039D /* platform.h */,
 				FEF9B82B17A9BFB400867739 /* positions.cc */,
 				FEF9B82C17A9BFB400867739 /* positions.h */,
 				FEF9B82D17A9BFB400867739 /* resource_loader.cc */,
 				FEF9B82E17A9BFB400867739 /* resource_loader.h */,
+				FE92D314186255A900A6039D /* sprite.h */,
 				FEF9B82F17A9BFB400867739 /* thirdparty */,
+				FE92D315186255A900A6039D /* touch.h */,
+				FE92D316186255A900A6039D /* view_entity.h */,
 			);
 			path = gameengine;
 			sourceTree = "<group>";
@@ -665,11 +648,17 @@
 			isa = PBXGroup;
 			children = (
 				FEF9B82117A9BFB400867739 /* animatable.cc */,
+				FE92D3051862554D00A6039D /* animatable.h */,
 				FEF9B82217A9BFB400867739 /* button.cc */,
+				FE92D3061862554D00A6039D /* button.h */,
 				FEF9B82317A9BFB400867739 /* composite_entity.cc */,
+				FE92D3071862554D00A6039D /* composite_entity.h */,
 				FE9493DE17EC9A9500B9D9AD /* label.cc */,
+				FE92D3081862554D00A6039D /* label.h */,
 				FEF9B82417A9BFB400867739 /* multi_select.cc */,
+				FE92D3091862554D00A6039D /* multi_select.h */,
 				FEF9B82517A9BFB400867739 /* simple_item.cc */,
+				FE92D30A1862554D00A6039D /* simple_item.h */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -862,6 +851,7 @@
 				FEF9B85D17A9BFB400867739 /* Quad.cpp in Sources */,
 				FEF9B85E17A9BFB400867739 /* Quart.cpp in Sources */,
 				FEF9B85F17A9BFB400867739 /* Quint.cpp in Sources */,
+				FE92D3011862552F00A6039D /* coordinate_system.cc in Sources */,
 				FEF9B86017A9BFB400867739 /* Sine.cpp in Sources */,
 				FEF9B86117A9BFB400867739 /* tinyxml2.cpp in Sources */,
 				FE164D7317AC4444006C5D88 /* AppDelegate.mm in Sources */,
