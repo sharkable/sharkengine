@@ -9,13 +9,10 @@
 #ifndef GAMEENGINE_SPRITE_H_
 #define GAMEENGINE_SPRITE_H_
 
-#include "gameengine/opengl/texture2d.h"
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
-
-// TODO move this from pigeon into gameengine.
-
-#include "pigeon/updaters/coordinate_system.h"
+#include "gameengine/coordinates/coordinate_system.h"
+#include "gameengine/opengl/texture2d.h"
 
 typedef enum {
   kSpriteAnchorTopLeft,

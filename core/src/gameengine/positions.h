@@ -9,7 +9,7 @@
 #ifndef GAMEENGINE_POSITIONS_H_
 #define GAMEENGINE_POSITIONS_H_
 
-#include "gameengine/coordinate_types.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 #include <map>
 #include <string>

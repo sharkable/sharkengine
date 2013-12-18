@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-#include "gameengine/coordinate_types.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 class Touch {
  public:

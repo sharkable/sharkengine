@@ -12,7 +12,7 @@
 #include <map>
 #include <string>
 
-#include "gameengine/coordinate_types.h"
+#include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/opengl/texture2d.h"
 
 class GameEngine;

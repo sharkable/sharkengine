@@ -13,8 +13,8 @@
 
 #include "sharksound/sound_controller.h"
 
+#include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/entities/animatable.h"
-#include "gameengine/coordinate_types.h"
 #include "gameengine/sprite.h"
 
 

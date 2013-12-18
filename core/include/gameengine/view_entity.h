@@ -11,8 +11,8 @@
 
 #include <vector>
 
-#include "gameengine/coordinate_types.h"
 #include "gameengine/touch.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 class EngineView;
 

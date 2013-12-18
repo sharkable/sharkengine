@@ -8,7 +8,7 @@
 
 class GameEngine;
 
-#include "gameengine/coordinate_types.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 @interface SharkengineOpenGLView : NSOpenGLView<NSWindowDelegate> {
   BOOL didStart_;

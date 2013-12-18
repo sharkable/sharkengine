@@ -10,8 +10,8 @@
 #define GAMEENGINE_ENTITIES_ANIMATABLE_H_
 
 #include "gameengine/animation.h"
-#include "gameengine/coordinate_types.h"
 #include "gameengine/view_entity.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 class Animatable;
 

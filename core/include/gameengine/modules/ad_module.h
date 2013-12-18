@@ -11,8 +11,8 @@
 
 #include <string>
 
-#include "gameengine/coordinate_types.h"
 #include "gameengine/module.h"
+#include "gameengine/coordinates/coordinate_types.h"
 
 class AdModule : public Module {
  public:
