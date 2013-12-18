@@ -30,28 +30,31 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [Appirater setAppId:@"371905230"];
-  [Appirater setDaysUntilPrompt:1];
-  [Appirater setUsesUntilPrompt:6];
-  [Appirater setSignificantEventsUntilPrompt:-1];
-  [Appirater setTimeBeforeReminding:2];
-  [Appirater setDebug:NO];
+  // TODO make Appirater optional.
+//  [Appirater setAppId:@"371905230"];
+//  [Appirater setDaysUntilPrompt:1];
+//  [Appirater setUsesUntilPrompt:6];
+//  [Appirater setSignificantEventsUntilPrompt:-1];
+//  [Appirater setTimeBeforeReminding:2];
+//  [Appirater setDebug:NO];
 
+  // TODO let the app set the Flurry id.
   NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
   [Flurry setAppVersion:appVersion];
-  [Flurry startSession:@"BGGPH5B2THWFSJHXEKRH"];
+  [Flurry startSession:@"4BYTHKQNVMS5J89XVZF6"];
 
   viewController_ = [[ViewController alloc] init];
 
 //  SoundPlayer::instance()->syncAudioSessionForITunes();
 
-  [Appirater appLaunched:YES];
+//  [Appirater appLaunched:YES];
 
   return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-  [Appirater appEnteredForeground:YES];
+  exit(0);
+//  [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
