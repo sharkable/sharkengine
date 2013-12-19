@@ -22,6 +22,7 @@ class ViewEntity {
   virtual ~ViewEntity() {}
 
   virtual void Update() {};
+
   virtual void Render(GamePoint render_offset, float render_angle) {}
   virtual void Render(GamePoint render_offset) { Render(render_offset, 0.f); }
   virtual bool TouchBegan(GamePoint offset, Touch touch) { return false; }

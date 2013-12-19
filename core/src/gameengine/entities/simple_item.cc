@@ -54,3 +54,10 @@ GameRect SimpleItem::Rect() {
       return GameRect(origin, content_size);
   }
 }
+
+
+#pragma mark - Renderer
+
+void SimpleItem::Render(CoordinateSystem const &coordinate_system) {
+  Render(coordinate_system.origin(), coordinate_system.angle());
+}

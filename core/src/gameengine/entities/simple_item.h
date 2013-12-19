@@ -13,9 +13,10 @@
 
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/entities/animatable.h"
+#include "gameengine/render/renderer.h"
 #include "gameengine/sprite.h"
 
-class SimpleItem : public Animatable {
+class SimpleItem : public Animatable, public Renderer {
  public:
   SimpleItem();
   SimpleItem(Sprite sprite, GamePoint position);
@@ -25,6 +26,9 @@ class SimpleItem : public Animatable {
   // ViewEntity
   void Render(GamePoint render_offset, float render_angle);
   GameRect Rect();
+
+  // Renderer
+  void Render(CoordinateSystem const &coordinate_system);
 
   // Accessors
   void set_sprites(std::vector<Sprite> sprites) { sprites_ = sprites; }
