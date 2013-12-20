@@ -29,6 +29,10 @@ struct GameSize {
   float height;
 };
 
+inline bool operator==(const GameSize &size_1, const GameSize &size_2) {
+  return size_1.width == size_2.width && size_1.height == size_2.height;
+}
+
 inline GameSize operator+(const GameSize &size_1, const GameSize &size_2) {
   return GameSize(size_1.width + size_2.width, size_1.height + size_2.height);
 }
@@ -67,6 +71,10 @@ struct GamePoint {
   float x;
   float y;
 };
+
+inline bool operator==(const GamePoint &point_1, const GamePoint &point_2) {
+  return point_1.x == point_2.x && point_1.y == point_2.y;
+}
 
 inline GamePoint operator+(const GamePoint &point_1, const GamePoint &point_2) {
   return GamePoint(point_1.x + point_2.x, point_1.y + point_2.y);
