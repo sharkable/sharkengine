@@ -223,7 +223,7 @@ void GameEngine::ProcessInput() {
     for (auto i = touches_ended_.begin(); i != touches_ended_.end(); i++) {
       for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end();) {
         if (i->identifier() == j->first.identifier()) {
-          touch_view->TouchTapped(*i);
+//          touch_view->TouchTapped(*i);
           j = potential_tap_touches_.erase(j);
         } else {
           j++;

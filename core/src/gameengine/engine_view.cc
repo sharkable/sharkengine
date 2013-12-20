@@ -71,12 +71,6 @@ void EngineView::TouchesEnded(vector<Touch> const &touches) {
   }
 }
 
-void EngineView::TouchTapped(Touch touch) {
-  for (auto i = entities_.Begin(); i != entities_.End(); i++) {
-    (*i)->TouchTapped(kGamePointZero, touch);
-  }
-}
-
 void EngineView::ClearTouches() {
   for (auto i = entities_.Begin(); i != entities_.End(); i++) {
     (*i)->ClearTouches();

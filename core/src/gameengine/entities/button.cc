@@ -72,32 +72,36 @@ void Button::Render(GamePoint render_offset, float render_angle) {
   }
 }
 
-bool Button::TouchBegan(GamePoint offset, Touch touch) {
-  if (state_ == kButtonStateNormal) {
-    if (ContainsPoint(touch.location() - offset)) {
-      state_ = kButtonStatePressed;
-      beep_sound_->Play();
-      start_touch_ = touch.identifier();
+GameRect Button::Rect() {
+  return GameRect(position(), normal_sprite_.content_size());
+}
+
+
+#pragma mark - InputHandler
+
+bool Button::HandleEvent(InputEvent const &event) {
+  if (event.Action() == kInputActionDown && event.HasLocation()) {
+    if (state_ == kButtonStateNormal) {
+      if (ContainsPoint(event.Location())) {
+        state_ = kButtonStatePressed;
+        beep_sound_->Play();
+        start_touch_ = event.Id();
+        if (delegate_) {
+          delegate_->ButtonDown(this);
+        }
+        return true;
+      }
+    }
+  } else if (event.Action() == kInputActionUp && event.HasLocation()) {
+    if (state_ == kButtonStatePressed && event.Id() == start_touch_) {
+      state_ = kButtonStateNormal;
       if (delegate_) {
-        delegate_->ButtonDown(this);
+        delegate_->ButtonUp(this);
       }
       return true;
     }
   }
   return false;
-}
-
-void Button::TouchEnded(GamePoint offset, Touch touch) {
-  if (state_ == kButtonStatePressed && touch.identifier() == start_touch_) {
-    state_ = kButtonStateNormal;
-    if (delegate_) {
-      delegate_->ButtonUp(this);
-    }
-  }
-}
-
-GameRect Button::Rect() {
-  return GameRect(position(), normal_sprite_.content_size());
 }
 
 
