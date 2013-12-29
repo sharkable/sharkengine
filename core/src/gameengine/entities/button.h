@@ -16,6 +16,8 @@
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/entities/animatable.h"
 #include "gameengine/input/input_handler.h"
+#include "gameengine/render/renderer.h"
+#include "gameengine/simulation/simulator.h"
 #include "gameengine/sprite.h"
 
 
@@ -34,7 +36,7 @@ class ButtonDelegate {
   virtual void ButtonUp(Button *button) {};
 };
 
-class Button : public Animatable, public InputHandler {
+class Button : public Animatable, public Simulator, public Renderer, public InputHandler {
  public:
   Button(GameEngine &game_engine);
   Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
@@ -43,6 +45,12 @@ class Button : public Animatable, public InputHandler {
   // ViewEntity
   void Render(GamePoint render_offset, float render_angle);
   GameRect Rect();
+
+  // Simulator
+  virtual void SimulateStep();
+
+  // Renderer
+  virtual void Render(CoordinateSystem const &coordinate_system);
 
   // InputHandler
   virtual bool HandleEvent(InputEvent const &event);

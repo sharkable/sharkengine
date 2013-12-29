@@ -77,6 +77,20 @@ GameRect Button::Rect() {
 }
 
 
+#pragma mark - Simulator
+
+void Button::SimulateStep() {
+  Update();
+}
+
+
+#pragma mark - Renderer
+
+void Button::Render(CoordinateSystem const &coordinate_system) {
+  Render(coordinate_system.origin(), coordinate_system.angle());
+}
+
+
 #pragma mark - InputHandler
 
 bool Button::HandleEvent(InputEvent const &event) {

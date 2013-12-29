@@ -55,6 +55,12 @@ GameRect SimpleItem::Rect() {
   }
 }
 
+#pragma mark - Simulator
+
+void SimpleItem::SimulateStep() {
+  Update();
+}
+
 
 #pragma mark - Renderer
 
