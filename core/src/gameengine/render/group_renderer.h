@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_RENDER_SORTEDRENDERER_H_
-#define GAMEENGINE_RENDER_SORTEDRENDERER_H_
+#ifndef GAMEENGINE_RENDER_GROUPRENDERER_H_
+#define GAMEENGINE_RENDER_GROUPRENDERER_H_
 
 #include "gameengine/datastructures/staged_vector.h"
 
