@@ -54,19 +54,24 @@ void MultiSelect::Render(GamePoint offset) {
   }
 }
 
-bool MultiSelect::TouchBegan(GamePoint offset, Touch touch) {
-  for (int i = 0; i < normal_sprites_.size(); i++) {
-    double x = positions_x_[i];
-    double y = positions_y_[i];
-    GameSize size = normal_sprites_[i].content_size();
-    GamePoint touchPoint = touch.location() - offset;
-    if (touchPoint.x >= x && touchPoint.y >= y && touchPoint.x < x + size.width &&
-        touchPoint.y < y + size.height) {
-      if (selected_value_ != i) {
-        selected_value_ = i;
-        click_sound_->Play();
-      };
-      return true;
+
+#pragma mark - InputHandler
+
+bool MultiSelect::HandleEvent(InputEvent const &event) {
+  if (event.Action() == kInputActionDown && event.HasLocation()) {
+    for (int i = 0; i < normal_sprites_.size(); i++) {
+      double x = positions_x_[i];
+      double y = positions_y_[i];
+      GameSize size = normal_sprites_[i].content_size();
+      GamePoint touchPoint = event.Location();
+      if (touchPoint.x >= x && touchPoint.y >= y && touchPoint.x < x + size.width &&
+          touchPoint.y < y + size.height) {
+        if (selected_value_ != i) {
+          selected_value_ = i;
+          click_sound_->Play();
+        };
+        return true;
+      }
     }
   }
   return false;
