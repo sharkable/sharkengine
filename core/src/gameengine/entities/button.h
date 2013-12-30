@@ -17,7 +17,6 @@
 #include "gameengine/entities/animatable.h"
 #include "gameengine/input/input_handler.h"
 #include "gameengine/render/renderer.h"
-#include "gameengine/simulation/simulator.h"
 #include "gameengine/sprite.h"
 
 
@@ -34,18 +33,13 @@ class ButtonDelegate {
   virtual void ButtonUp(Button *button) {};
 };
 
-class Button : public Animatable, public Simulator, public Renderer, public InputHandler {
+class Button : public Animatable, public Renderer, public InputHandler {
  public:
   Button(GameEngine &game_engine);
   Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
 
-  // ViewEntity
-  void Render(GamePoint render_offset, float render_angle);
   GameRect Rect();
-
-  // Simulator
-  virtual void SimulateStep();
 
   // Renderer
   virtual void Render(CoordinateSystem const &coordinate_system);

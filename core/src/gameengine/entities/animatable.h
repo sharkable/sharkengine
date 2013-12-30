@@ -10,8 +10,8 @@
 #define GAMEENGINE_ENTITIES_ANIMATABLE_H_
 
 #include "gameengine/animation.h"
-#include "gameengine/view_entity.h"
 #include "gameengine/coordinates/coordinate_types.h"
+#include "gameengine/simulation/simulator.h"
 
 class Animatable;
 
@@ -20,7 +20,7 @@ class AnimatableDelegate {
   virtual void AnimationFinished(Animatable *animatable) = 0;
 };
 
-class Animatable : public ViewEntity {
+class Animatable : public Simulator {
  public:
   Animatable();
   Animatable(GamePoint position);
@@ -30,8 +30,8 @@ class Animatable : public ViewEntity {
   void AnimateToAlpha(double alpha, AnimationType animation_type, int ticks);
   void AnimateToZoom(double zoom, AnimationType animation_type, int ticks);
 
-  // VewEntity
-  void Update();
+  // Simulator
+  void SimulateStep();
 
   // Accessors
   AnimatableDelegate *delegate() { return delegate_; }

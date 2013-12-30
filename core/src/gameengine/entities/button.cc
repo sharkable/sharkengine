@@ -12,7 +12,6 @@
 #include "sharksound/sound_controller.h"
 
 #include "gameengine/resource_loader.h"
-#include "gameengine/touch.h"
 
 using std::vector;
 
@@ -57,37 +56,26 @@ bool Button::ContainsPoint(GamePoint p) {
 
 #pragma mark - ViewEntity
 
-void Button::Render(GamePoint render_offset, float render_angle) {
-  switch (state_) {
-    case kButtonStateNormal: {
-      normal_sprite_.Draw(position() + pressed_offset_ + render_offset, angle() + render_angle,
-                          alpha(), zoom());
-      break;
-    }
-    case kButtonStatePressed: {
-      pressed_sprite_.Draw(position() + pressed_offset_ + render_offset, angle() + render_angle,
-                           alpha(), zoom());
-      break;
-    }
-  }
-}
-
 GameRect Button::Rect() {
   return GameRect(position(), normal_sprite_.content_size());
-}
-
-
-#pragma mark - Simulator
-
-void Button::SimulateStep() {
-  Update();
 }
 
 
 #pragma mark - Renderer
 
 void Button::Render(CoordinateSystem const &coordinate_system) {
-  Render(coordinate_system.origin(), coordinate_system.angle());
+  switch (state_) {
+    case kButtonStateNormal: {
+      normal_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
+                          angle() + coordinate_system.angle(), alpha(), zoom());
+      break;
+    }
+    case kButtonStatePressed: {
+      pressed_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
+                           angle() + coordinate_system.angle(), alpha(), zoom());
+      break;
+    }
+  }
 }
 
 

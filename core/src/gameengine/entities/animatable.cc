@@ -9,8 +9,7 @@
 #include "gameengine/entities/animatable.h"
 
 Animatable::Animatable()
-    : ViewEntity(),
-      delegate_(NULL),
+    : delegate_(nullptr),
       position_(kGamePointZero),
       angle_(0),
       alpha_(1),
@@ -18,8 +17,7 @@ Animatable::Animatable()
 }
 
 Animatable::Animatable(GamePoint position)
-    : ViewEntity(),
-      delegate_(NULL),
+    : delegate_(nullptr),
       position_(position),
       angle_(0),
       alpha_(1),
@@ -44,9 +42,9 @@ void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ti
 }
 
 
-#pragma mark - ViewEntity
+#pragma mark - Simulator
 
-void Animatable::Update() {
+void Animatable::SimulateStep() {
   bool call_delegate = false;
   if (x_animation_.IsActive()) {
     position_.x = x_animation_.Update();

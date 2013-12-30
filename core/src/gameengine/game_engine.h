@@ -15,7 +15,6 @@
 #include "gameengine/platform.h"
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
-#include "gameengine/touch.h"
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/datastructures/staged_vector.h"
 #include "gameengine/input/input_event.h"

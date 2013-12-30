@@ -14,7 +14,6 @@
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/sprite.h"
-#include "gameengine/touch.h"
 
 using std::vector;
 
