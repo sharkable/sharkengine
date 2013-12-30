@@ -23,8 +23,6 @@ class SimpleItem : public Animatable, public Renderer {
   SimpleItem(std::vector<Sprite> sprites, GamePoint position);
   ~SimpleItem();
 
-  // ViewEntity
-  void Render(GamePoint render_offset, float render_angle);
   GameRect Rect();
 
   // Renderer

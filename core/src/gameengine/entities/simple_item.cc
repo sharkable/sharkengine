@@ -36,12 +36,6 @@ SimpleItem::~SimpleItem() {
 }
 
 
-#pragma mark - ViewEntity
-
-void SimpleItem::Render(GamePoint render_offset, float render_angle) {
-  sprites_[sprite_].Draw(position() + render_offset, angle() + render_angle, alpha(), zoom());
-}
-
 GameRect SimpleItem::Rect() {
   SpriteAnchor anchor = sprites_[sprite_].anchor();
   switch (anchor) {
@@ -59,5 +53,6 @@ GameRect SimpleItem::Rect() {
 #pragma mark - Renderer
 
 void SimpleItem::Render(CoordinateSystem const &coordinate_system) {
-  Render(coordinate_system.origin(), coordinate_system.angle());
+  sprites_[sprite_].Draw(position() + coordinate_system.origin(),
+                         angle() + coordinate_system.angle(), alpha(), zoom());
 }

@@ -23,7 +23,7 @@ class Label : public Animatable {
   const std::string & Text();
   void SetText(const std::string &text);
 
-  // ViewEntity
+  // ViewEntity TODO NOW
   void Render(GamePoint offset);
   void Render(GamePoint offset, float angle);
   GameRect Rect();

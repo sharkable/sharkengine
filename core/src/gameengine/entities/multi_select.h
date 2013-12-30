@@ -14,6 +14,7 @@
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/entities/animatable.h"
 #include "gameengine/input/input_handler.h"
+#include "gameengine/render/renderer.h"
 
 class GameEngine;
 class Sprite;
@@ -22,15 +23,15 @@ namespace SharkSound {
   class Sound;
 }
 
-class MultiSelect : public Animatable, public InputHandler {
+class MultiSelect : public Animatable, public Renderer, public InputHandler {
  public:
   MultiSelect(GameEngine &game_engine);
   ~MultiSelect();
 
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);
 
-  // ViewEntity
-  virtual void Render(GamePoint offset);
+  // Renderer
+  virtual void Render(CoordinateSystem const &coordinate_system);
 
   // InputHandler
   virtual bool HandleInputEvent(InputEvent const &event);

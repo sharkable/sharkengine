@@ -39,8 +39,6 @@ class Button : public Animatable, public Renderer, public InputHandler {
   Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
 
-  GameRect Rect();
-
   // Renderer
   virtual void Render(CoordinateSystem const &coordinate_system);
 

@@ -54,13 +54,6 @@ bool Button::ContainsPoint(GamePoint p) {
 }
 
 
-#pragma mark - ViewEntity
-
-GameRect Button::Rect() {
-  return GameRect(position(), normal_sprite_.content_size());
-}
-
-
 #pragma mark - Renderer
 
 void Button::Render(CoordinateSystem const &coordinate_system) {
