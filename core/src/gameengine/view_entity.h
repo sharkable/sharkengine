@@ -43,7 +43,6 @@ class ViewEntity {
 
  private:
   virtual void SetEngineView(EngineView *engine_view) { engine_view_ = engine_view; }
-  friend class CompositeEntity;
   friend class EngineView;
 
   EngineView *engine_view_;  // weak
