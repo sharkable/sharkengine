@@ -93,7 +93,7 @@ void Button::Render(CoordinateSystem const &coordinate_system) {
 
 #pragma mark - InputHandler
 
-bool Button::HandleEvent(InputEvent const &event) {
+bool Button::HandleInputEvent(InputEvent const &event) {
   if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     if (state_ == kButtonStateNormal) {
       if (ContainsPoint(event.location())) {

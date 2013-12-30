@@ -33,7 +33,7 @@ class MultiSelect : public Animatable, public InputHandler {
   virtual void Render(GamePoint offset);
 
   // InputHandler
-  virtual bool HandleEvent(InputEvent const &event);
+  virtual bool HandleInputEvent(InputEvent const &event);
 
   // Accessors
   int selected_value() { return selected_value_; };

@@ -51,7 +51,7 @@ class Button : public Animatable, public Simulator, public Renderer, public Inpu
   virtual void Render(CoordinateSystem const &coordinate_system);
 
   // InputHandler
-  virtual bool HandleEvent(InputEvent const &event);
+  virtual bool HandleInputEvent(InputEvent const &event);
 
   bool ContainsPoint(GamePoint p);
 

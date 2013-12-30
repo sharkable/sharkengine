@@ -89,7 +89,7 @@ void GameEngine::ProcessInput() {
   shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
 
   for (InputEvent event : input_events_) {
-    input_handler_->HandleEvent(event);
+    input_handler_->HandleInputEvent(event);
   }
   input_events_.clear();
 

@@ -57,7 +57,7 @@ void MultiSelect::Render(GamePoint offset) {
 
 #pragma mark - InputHandler
 
-bool MultiSelect::HandleEvent(InputEvent const &event) {
+bool MultiSelect::HandleInputEvent(InputEvent const &event) {
   if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     for (int i = 0; i < normal_sprites_.size(); i++) {
       double x = positions_x_[i];

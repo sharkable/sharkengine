@@ -14,7 +14,7 @@
 class InputHandler {
  public:
   virtual ~InputHandler() {}
-  virtual bool HandleEvent(InputEvent const &event) = 0;
+  virtual bool HandleInputEvent(InputEvent const &event) = 0;
 };
 
 #endif
