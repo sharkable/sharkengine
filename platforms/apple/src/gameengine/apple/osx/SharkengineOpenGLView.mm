@@ -16,6 +16,7 @@
 #include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "gameengine/apple/modules/osx/OSXInputModule.h"
 #include "gameengine/apple/osx/AppDelegate.h"
+#include "gameengine/input/input_event.h"
 
 @implementation SharkengineOpenGLView
 
@@ -78,30 +79,29 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  Touch t;
-  t.set_location([self gamePointFromScreenPoint:mouseLocation]);
-  t.set_identifier((void *)1);
-  gameEngine_->AddTouchBegan(t);
+  InputEvent event(kInputActionDown, kInputIdMouseButton0,
+                   [self gamePointFromScreenPoint:mouseLocation]);
+  gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  Touch t;
-  t.set_location([self gamePointFromScreenPoint:mouseLocation]);
-  t.set_identifier((void *)1);
-  gameEngine_->AddTouchMoved(t);
+  InputEvent event(kInputActionMove, kInputIdMouseButton0,
+                   [self gamePointFromScreenPoint:mouseLocation]);
+  gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  Touch t;
-  t.set_location([self gamePointFromScreenPoint:mouseLocation]);
-  t.set_identifier((void *)1);
-  gameEngine_->AddTouchEnded(t);
+  InputEvent event(kInputActionUp, kInputIdMouseButton0,
+                   [self gamePointFromScreenPoint:mouseLocation]);
+  gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
-  gameEngine_->AddMouseDelta(theEvent.deltaX, theEvent.deltaY);
+  InputEvent event(kInputActionUp, kInputIdMouse,
+                   [self gamePointFromScreenPoint:NSMakePoint(theEvent.deltaX, theEvent.deltaY)]);
+  gameEngine_->AddInputEvent(event);
   if (!CGCursorIsVisible()) {
     NSRect windowFrame = self.window.frame;
     CGPoint windowCenter = CGPointMake(NSMidX(windowFrame), NSMidY(windowFrame));
@@ -110,10 +110,23 @@
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
+  // Allow Esc to remove full screen. In windowed mode, it gets passed to the game.
   if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
     [super keyDown:theEvent];
   } else {
-    gameEngine_->AddKeyPressed(theEvent.keyCode);
+    InputId input_id;
+    switch (theEvent.keyCode) {
+      case 0x31:
+        input_id = kInputIdKeyboardSpace;
+        break;
+      case 0x35:
+        input_id = kInputIdKeyboardEsc;
+        break;
+      default:
+        input_id = kInputIdKeyboardOther;
+    }
+    InputEvent event(kInputActionDown, kInputIdKeyboardOther);
+    gameEngine_->AddInputEvent(event);
   }
 }
 
@@ -265,7 +278,7 @@
 }
 
 - (void)pause {
-  gameEngine_->NotifyPause();
+// TODO  gameEngine_->NotifyPause();
 }
 
 - (void)resume {

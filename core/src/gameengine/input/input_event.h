@@ -30,6 +30,7 @@ typedef enum {
   kInputIdTouch8,
   kInputIdTouch9,
   kInputIdMouse,
+  kInputIdMouseButton0,
   kInputIdKeyboardSpace,
   kInputIdKeyboardEsc,
   kInputIdKeyboardOther,

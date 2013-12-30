@@ -16,6 +16,9 @@
 #include "gameengine/modules/asset_reader_factory_module.h"
 #include "gameengine/modules/input_module.h"
 #include "gameengine/modules/persistence_module.h"
+#include "gameengine/input/input_handler.h"
+#include "gameengine/render/renderer.h"
+#include "gameengine/simulation/simulator.h"
 
 GameEngine::GameEngine()
     : resource_loader_(*this),
@@ -45,115 +48,34 @@ GameEngine::~GameEngine() {
 #pragma mark - Platform functions
 
 void GameEngine::Update() {
-  if (views_.HasStagedChanges()) {
-    if (views_.Size() > 0) {
-      views_.Back()->ViewDidLoseFocus();
-      views_.Back()->ClearTouches();
-    }
-    views_.CommitStaging();
-    views_.Back()->ViewDidGainFocus();
-  }
-
-  assert(views_.Size() > 0);
-
   ProcessInput();
-
-  // Update views.
-  for (auto i = views_.Begin(); i != views_.End(); i++) {
-    (*i)->Update();
-  }
+  simulator_->SimulateStep();
   game_tick_++;
 }
 
 void GameEngine::Render() {
-  for (auto i = views_.Begin(); i != views_.End(); i++) {
-    (*i)->Render();
-  }
+  renderer_->Render(CoordinateSystem::BaseSystem());
 }
 
-void GameEngine::NotifyPause() {
-  for (auto i = views_.Begin(); i != views_.End(); i++) {
-    (*i)->NotifyPause();
-  }
-}
-
-void GameEngine::ClearTouches() {
-  for (auto i = views_.Begin(); i != views_.End(); i++) {
-    (*i)->ClearTouches();
-  }
-}
-
-void GameEngine::AddTouchBegan(Touch touch) {
+void GameEngine::AddInputEvent(const InputEvent &event) {
   shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  touches_began_.push_back(touch);
+  input_events_.push_back(event);
   shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
-}
-
-void GameEngine::AddTouchMoved(Touch touch) {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  touches_moved_.push_back(touch);
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
-}
-
-void GameEngine::AddTouchEnded(Touch touch) {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  touches_ended_.push_back(touch);
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
-}
-
-void GameEngine::AddKeyPressed(int key) {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  keys_pressed_.push_back(key);
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
-}
-
-void GameEngine::AddMouseDelta(float delta_x, float delta_y) {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  mouse_delta_x_ += delta_x;
-  mouse_delta_y_ += delta_y;
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
-}
-
-bool GameEngine::HandleBackButton() {
-  if (views_.Size() == 0) {
-    return false;
-  }
-  return views_.Back()->HandleBackButton();
-}
-
-void GameEngine::HandlePauseButton() {
-  if (views_.Size() != 0) {
-    views_.Back()->HandlePauseButton();
-  }
 }
 
 
 #pragma mark - App functions
 
-void GameEngine::PushView(EngineView *view) {
-  view->set_is_visible(true);
-  views_.StagePushBack(view, true);
+void GameEngine::SetSimulator(Simulator *simulator) {
+  simulator_ = simulator;
 }
 
-void GameEngine::InsertViewAfter(EngineView *view, EngineView *existing_view) {
-  view->set_is_visible(true);
-  views_.StageInsertAfter(view, existing_view);
+void GameEngine::SetRenderer(Renderer *renderer) {
+  renderer_ = renderer;
 }
 
-void GameEngine::PopView() {
-  shark_assert(views_.StagedValues().size() > 0, "Popping empty view stack.");
-  views_.StagePopBack()->set_is_visible(false);
-}
-
-void GameEngine::RemoveView(EngineView *view) {
-  view->set_is_visible(false);
-  views_.StageErase(view);
-}
-
-void GameEngine::SetRootView(EngineView *view) {
-  view->set_is_visible(true);
-  views_.StageClear();
-  views_.StagePushBack(view, true);
+void GameEngine::SetInputHandler(InputHandler *input_handler) {
+  input_handler_ = input_handler;
 }
 
 sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
@@ -164,78 +86,12 @@ sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
 #pragma mark - private
 
 void GameEngine::ProcessInput() {
-  EngineView *touch_view = NULL;
-  for (auto i = views_.ReverseBegin(); i != views_.ReverseEnd(); i++) {
-    if ((*i)->IsCapturingTouches()) {
-      touch_view = *i;
-      break;
-    }
-  }
-  shark_assert(touch_view, "No touch view found.");
-
   shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
 
-  if (touches_began_.size() > 0) {
-    // This removes captures touches, so they can't use considered for taps.
-    touch_view->TouchesBegan(touches_began_);
+  for (InputEvent event : input_events_) {
+    input_handler_->HandleEvent(event);
   }
-  if (touches_moved_.size() > 0) {
-    touch_view->TouchesMoved(touches_moved_);
-  }
-  if (touches_ended_.size() > 0) {
-    touch_view->TouchesEnded(touches_ended_);
-  }
-  if (keys_pressed_.size() > 0) {
-    touch_view->KeysPressed(keys_pressed_);
-  }
-  // TODO should this be called if both values are 0?
-  touch_view->HandleMouseDelta(mouse_delta_x_, mouse_delta_y_);
-  mouse_delta_x_ = 0;
-  mouse_delta_y_ = 0;
-
-  if (touch_view) {
-    // Erase presses that have existed too long to be a tap.
-    for (auto i = potential_tap_touches_.begin(); i != potential_tap_touches_.end();) {
-      if (game_tick_ - i->second > 10) {
-        i = potential_tap_touches_.erase(i);
-      } else {
-        i++;
-      }
-    }
-    // Add new touches as potential taps.
-    if (touches_began_.size() > 0) {
-      for (auto i = touches_began_.begin(); i != touches_began_.end(); i++) {
-        potential_tap_touches_.push_back(std::make_pair(*i, game_tick_));
-      }
-    }
-    for (auto i = touches_moved_.begin(); i != touches_moved_.end(); i++) {
-      for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end(); j++) {
-        if (i->identifier() == j->first.identifier()) {
-          float dx = i->location().x - j->first.location().x;
-          float dy = i->location().y - j->first.location().y;
-          if (fabs(dx) >= 20.f || fabs(dy) >= 20.f) {
-            potential_tap_touches_.erase(j);
-          }
-          break;
-        }
-      }
-    }
-    for (auto i = touches_ended_.begin(); i != touches_ended_.end(); i++) {
-      for (auto j = potential_tap_touches_.begin(); j != potential_tap_touches_.end();) {
-        if (i->identifier() == j->first.identifier()) {
-//          touch_view->TouchTapped(*i);
-          j = potential_tap_touches_.erase(j);
-        } else {
-          j++;
-        }
-      }
-    }
-  }
-
-  touches_began_.clear();
-  touches_moved_.clear();
-  touches_ended_.clear();
-  keys_pressed_.clear();
+  input_events_.clear();
 
   shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }

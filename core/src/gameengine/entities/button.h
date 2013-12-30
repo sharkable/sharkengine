@@ -21,8 +21,6 @@
 #include "gameengine/sprite.h"
 
 
-class Touch;
-
 typedef enum {
   kButtonStateNormal,
   kButtonStatePressed

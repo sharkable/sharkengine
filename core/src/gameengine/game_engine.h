@@ -12,13 +12,13 @@
 #include <utility>
 #include <vector>
 
-#include "gameengine/engine_view.h"
 #include "gameengine/platform.h"
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/touch.h"
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/datastructures/staged_vector.h"
+#include "gameengine/input/input_event.h"
 
 class AdModule;
 class AnalyticsModule;
@@ -26,12 +26,15 @@ class AppStoreModule;
 class AssetReader;
 class AssetReaderFactoryModule;
 class GameEngine;
+class InputHandler;
 class InputModule;
 class Label;
 class PersistenceModule;
+class Renderer;
 namespace SharkSound {
   class SoundController;
 }
+class Simulator;
 
 extern "C" {
   void sharkengine_init(GameEngine &game_engine);
@@ -46,22 +49,12 @@ class GameEngine {
   // Don't call these from an app.
   void Update();
   void Render();
-  void NotifyPause();
-  void ClearTouches();
-  void AddTouchBegan(Touch touch);
-  void AddTouchMoved(Touch touch);
-  void AddTouchEnded(Touch touch);
-  void AddKeyPressed(int key);
-  void AddMouseDelta(float delta_x, float delta_y);
-  bool HandleBackButton();
-  void HandlePauseButton();
+  void AddInputEvent(const InputEvent &event);
 
   // App functions
-  void PushView(EngineView *view);
-  void InsertViewAfter(EngineView *view, EngineView *existing_view);
-  void PopView();
-  void RemoveView(EngineView *view);
-  void SetRootView(EngineView *view);
+  void SetSimulator(Simulator *simulator);
+  void SetRenderer(Renderer *renderer);
+  void SetInputHandler(InputHandler *input_handler);
   sp<AssetReader> LoadAsset(std::string filename);
 
   Platform & platform() { return platform_; }
@@ -143,6 +136,10 @@ class GameEngine {
  private:
   void ProcessInput();
 
+  Simulator *simulator_;  // weak
+  Renderer *renderer_;  // weak
+  InputHandler *input_handler_;  // weak
+
   // Platform specific
   Platform platform_;
   sp<AssetReaderFactoryModule> asset_reader_factory_module_;
@@ -155,12 +152,7 @@ class GameEngine {
 
   ResourceLoader resource_loader_;
   sp<Positions> positions_;
-  StagedVector<EngineView> views_;
-  std::vector<Touch> touches_began_;
-  std::vector<Touch> touches_moved_;
-  std::vector<Touch> touches_ended_;
-  std::vector<std::pair<Touch, unsigned int> > potential_tap_touches_;
-  std::vector<int> keys_pressed_;
+  std::vector<InputEvent> input_events_;
   pthread_mutex_t user_input_mutex_;
   float mouse_delta_x_;
   float mouse_delta_y_;

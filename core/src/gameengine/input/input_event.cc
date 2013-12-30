@@ -46,5 +46,5 @@ bool InputEvent::IsTouch() const {
 }
 
 bool InputEvent::HasLocation() const {
-  return id_ <= kInputIdMouse;
+  return id_ <= kInputIdMouseButton0;
 }
