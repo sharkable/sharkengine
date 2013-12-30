@@ -58,12 +58,12 @@ void MultiSelect::Render(GamePoint offset) {
 #pragma mark - InputHandler
 
 bool MultiSelect::HandleEvent(InputEvent const &event) {
-  if (event.Action() == kInputActionDown && event.HasLocation()) {
+  if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     for (int i = 0; i < normal_sprites_.size(); i++) {
       double x = positions_x_[i];
       double y = positions_y_[i];
       GameSize size = normal_sprites_[i].content_size();
-      GamePoint touchPoint = event.Location();
+      GamePoint touchPoint = event.location();
       if (touchPoint.x >= x && touchPoint.y >= y && touchPoint.x < x + size.width &&
           touchPoint.y < y + size.height) {
         if (selected_value_ != i) {

@@ -11,39 +11,39 @@
 
 #include "gameengine/coordinates/coordinate_types.h"
 
-typedef enum {
-  kInputActionDown,
-  kInputActionMove,
-  kInputActionUp,
-  kInputActionCancelAll
-} InputAction;
-
-typedef enum {
-  kInputIdTouch0,
-  kInputIdTouch1,
-  kInputIdTouch2,
-  kInputIdTouch3,
-  kInputIdTouch4,
-  kInputIdTouch5,
-  kInputIdTouch6,
-  kInputIdTouch7,
-  kInputIdTouch8,
-  kInputIdTouch9,
-  kInputIdMouse,
-  kInputIdMouseButton0,
-  kInputIdKeyboardSpace,
-  kInputIdKeyboardEsc,
-  kInputIdKeyboardOther,
-  kInputIdCancelAll
-} InputId;
-
 class InputEvent {
  public:
-  InputEvent(InputAction action, InputId id, GamePoint location = kGamePointZero);
+  typedef enum {
+    kActionDown,
+    kActionMove,
+    kActionUp,
+    kActionCancelAll
+  } Action;
 
-  InputAction Action() const;
-  InputId Id() const;
-  GamePoint Location() const;
+  typedef enum {
+    kIdTouch0,
+    kIdTouch1,
+    kIdTouch2,
+    kIdTouch3,
+    kIdTouch4,
+    kIdTouch5,
+    kIdTouch6,
+    kIdTouch7,
+    kIdTouch8,
+    kIdTouch9,
+    kIdMouse,
+    kIdMouseButton0,
+    kIdKeyboardSpace,
+    kIdKeyboardEsc,
+    kIdKeyboardOther,
+    kIdCancelAll
+  } Id;
+
+  InputEvent(Action action, Id id, GamePoint location = kGamePointZero);
+
+  Action action() const;
+  Id id() const;
+  GamePoint location() const;
 
   bool IsMouse() const;
   bool IsKey() const;
@@ -51,8 +51,8 @@ class InputEvent {
   bool HasLocation() const;
 
  private:
-  InputAction action_;
-  InputId id_;
+  Action action_;
+  Id id_;
   GamePoint location_;
 };
 

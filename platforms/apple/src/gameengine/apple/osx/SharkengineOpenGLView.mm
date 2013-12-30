@@ -79,27 +79,27 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  InputEvent event(kInputActionDown, kInputIdMouseButton0,
+  InputEvent event(InputEvent::kActionDown, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
   gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  InputEvent event(kInputActionMove, kInputIdMouseButton0,
+  InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
   gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
-  InputEvent event(kInputActionUp, kInputIdMouseButton0,
+  InputEvent event(InputEvent::kActionUp, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
   gameEngine_->AddInputEvent(event);
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
-  InputEvent event(kInputActionUp, kInputIdMouse,
+  InputEvent event(InputEvent::kActionUp, InputEvent::kIdMouse,
                    [self gamePointFromScreenPoint:NSMakePoint(theEvent.deltaX, theEvent.deltaY)]);
   gameEngine_->AddInputEvent(event);
   if (!CGCursorIsVisible()) {
@@ -114,18 +114,18 @@
   if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
     [super keyDown:theEvent];
   } else {
-    InputId input_id;
+    InputEvent::Id input_id;
     switch (theEvent.keyCode) {
       case 0x31:
-        input_id = kInputIdKeyboardSpace;
+        input_id = InputEvent::kIdKeyboardSpace;
         break;
       case 0x35:
-        input_id = kInputIdKeyboardEsc;
+        input_id = InputEvent::kIdKeyboardEsc;
         break;
       default:
-        input_id = kInputIdKeyboardOther;
+        input_id = InputEvent::kIdKeyboardOther;
     }
-    InputEvent event(kInputActionDown, kInputIdKeyboardOther);
+    InputEvent event(InputEvent::kActionDown, InputEvent::kIdKeyboardOther);
     gameEngine_->AddInputEvent(event);
   }
 }

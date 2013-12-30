@@ -94,20 +94,20 @@ void Button::Render(CoordinateSystem const &coordinate_system) {
 #pragma mark - InputHandler
 
 bool Button::HandleEvent(InputEvent const &event) {
-  if (event.Action() == kInputActionDown && event.HasLocation()) {
+  if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     if (state_ == kButtonStateNormal) {
-      if (ContainsPoint(event.Location())) {
+      if (ContainsPoint(event.location())) {
         state_ = kButtonStatePressed;
         beep_sound_->Play();
-        start_touch_ = event.Id();
+        start_touch_ = event.id();
         if (delegate_) {
           delegate_->ButtonDown(this);
         }
         return true;
       }
     }
-  } else if (event.Action() == kInputActionUp && event.HasLocation()) {
-    if (state_ == kButtonStatePressed && event.Id() == start_touch_) {
+  } else if (event.action() == InputEvent::kActionUp && event.HasLocation()) {
+    if (state_ == kButtonStatePressed && event.id() == start_touch_) {
       state_ = kButtonStateNormal;
       if (delegate_) {
         delegate_->ButtonUp(this);

@@ -71,7 +71,7 @@ class Button : public Animatable, public Simulator, public Renderer, public Inpu
   GamePoint pressed_offset_;
   ButtonState state_;
   ButtonDelegate *delegate_;
-  InputId start_touch_;
+  InputEvent::Id start_touch_;
   SharkSound::Sound *beep_sound_;
 };
 

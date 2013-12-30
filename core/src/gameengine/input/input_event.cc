@@ -8,43 +8,43 @@
 
 #include "gameengine/input/input_event.h"
 
-InputEvent::InputEvent(InputAction action, InputId id, GamePoint location)
+InputEvent::InputEvent(Action action, Id id, GamePoint location)
     : action_(action),
       id_(id),
       location_(location) {
 #if DEBUG
   if (IsKey()) shark_assert(location == kGamePointZero, "Keys don't have locations.");
-  if (action == kInputActionCancelAll) {
-    shark_assert(id == kInputIdCancelAll, "CancelAll action needs CancelAll id.");
+  if (action == kActionCancelAll) {
+    shark_assert(id == kIdCancelAll, "CancelAll action needs CancelAll id.");
   }
 #endif
 }
 
-InputAction InputEvent::Action() const {
+InputEvent::Action InputEvent::action() const {
   return action_;
 }
 
-InputId InputEvent::Id() const {
+InputEvent::Id InputEvent::id() const {
   return id_;
 }
 
-GamePoint InputEvent::Location() const {
+GamePoint InputEvent::location() const {
   shark_assert(HasLocation(), "No location for InputEvent.");
   return location_;
 }
 
 bool InputEvent::IsMouse() const {
-  return id_ == kInputIdMouse;
+  return id_ == kIdMouse;
 }
 
 bool InputEvent::IsKey() const {
-  return id_ >= kInputIdKeyboardSpace && id_ < kInputIdCancelAll;
+  return id_ >= kIdKeyboardSpace && id_ < kIdCancelAll;
 }
 
 bool InputEvent::IsTouch() const {
-  return id_ < kInputIdTouch9;
+  return id_ < kIdTouch9;
 }
 
 bool InputEvent::HasLocation() const {
-  return id_ <= kInputIdMouseButton0;
+  return id_ <= kIdMouseButton0;
 }
