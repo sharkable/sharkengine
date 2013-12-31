@@ -21,7 +21,10 @@
 #include "gameengine/simulation/simulator.h"
 
 GameEngine::GameEngine()
-    : resource_loader_(*this),
+    : simulator_(nullptr),
+      renderer_(nullptr),
+      input_handler_(nullptr),
+      resource_loader_(*this),
       mouse_delta_x_(0),
       mouse_delta_y_(0),
       screen_size_(kScreenSizeZero),
@@ -48,12 +51,14 @@ GameEngine::~GameEngine() {
 #pragma mark - Platform functions
 
 void GameEngine::Update() {
+  shark_assert(simulator_, "No Renderer found.");
   ProcessInput();
   simulator_->SimulateStep();
   game_tick_++;
 }
 
 void GameEngine::Render() {
+  shark_assert(renderer_, "No Renderer found.");
   renderer_->Render(CoordinateSystem::BaseSystem());
 }
 
@@ -88,6 +93,7 @@ sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
 void GameEngine::ProcessInput() {
   shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
 
+  shark_assert(input_handler_, "No InputHandler found.");
   for (InputEvent event : input_events_) {
     input_handler_->HandleInputEvent(event);
   }
