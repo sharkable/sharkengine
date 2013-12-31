@@ -202,7 +202,7 @@
   [[NSThread currentThread] setThreadPriority:1.0];
   while (true) {
     if (paused_) {
-      gameEngine_->NotifyPause();
+// TODO NOW      gameEngine_->NotifyPause();
       while (paused_) {
         // TODO This is needed, or this is an infinite loop in release mode. Investigate.
         [NSThread sleepForTimeInterval:0.1];

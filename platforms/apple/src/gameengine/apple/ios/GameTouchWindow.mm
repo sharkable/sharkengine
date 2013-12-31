@@ -11,11 +11,10 @@
 #include <vector>
 using std::vector;
 
-#import "game_engine.h"
-#import "Touch.h"
+#import "gameengine/game_engine.h"
 
 @interface GameTouchWindow ()
-- (std::vector<Touch>)convertTouches:(NSSet *)touches;
+- (std::vector<InputEvent>)convertTouches:(NSSet *)touches action:(InputEvent::Action)action;
 @end
 
 @implementation GameTouchWindow {
@@ -39,32 +38,34 @@ using std::vector;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   move_factor_ = 0;
-  vector<Touch> converted_touches = [self convertTouches:touches];
-  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
-    gameEngine_->AddTouchBegan(*i);
+  vector<InputEvent> converted_touches =
+      [self convertTouches:touches action:InputEvent::kActionDown];
+  for (InputEvent event : converted_touches) {
+    gameEngine_->AddInputEvent(event);
   }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  vector<Touch> converted_touches = [self convertTouches:touches];
-  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
-    gameEngine_->AddTouchMoved(*i);
+  vector<InputEvent> converted_touches =
+      [self convertTouches:touches action:InputEvent::kActionMove];
+  for (InputEvent event : converted_touches) {
+    gameEngine_->AddInputEvent(event);
   }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  vector<Touch> converted_touches = [self convertTouches:touches];
-  for (auto i = converted_touches.begin(); i != converted_touches.end(); i++) {
-    gameEngine_->AddTouchEnded(*i);
+  vector<InputEvent> converted_touches =
+      [self convertTouches:touches action:InputEvent::kActionUp];
+  for (InputEvent event : converted_touches) {
+    gameEngine_->AddInputEvent(event);
   }
 }
 
 #pragma mark - Private
 
-- (vector<Touch>)convertTouches:(NSSet *)touches {
-  vector<Touch> converted_touches;
+- (vector<InputEvent>)convertTouches:(NSSet *)touches action:(InputEvent::Action)action {
+  vector<InputEvent> converted_touches;
   for (UITouch *touch in touches) {
-    Touch converted_touch;
     CGPoint location = [touch locationInView:touch.view];
 
 // TODO: Should this be a game option? I was using it in Air Hockey.
@@ -89,8 +90,7 @@ using std::vector;
 
     ScreenPoint l(location.x * scale_, location.y * scale_);
     GamePoint p = gameEngine_->screen_point_to_game_point(l);
-    converted_touch.set_location(p);
-    converted_touch.set_identifier(touch);
+    InputEvent converted_touch(action, InputEvent::kIdTouch0, p);
     converted_touches.push_back(converted_touch);
   }
   return converted_touches;

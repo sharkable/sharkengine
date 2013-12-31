@@ -63,7 +63,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [viewController_ start];
-  viewController_.gameEngine->ClearTouches();
+  InputEvent event(InputEvent::kActionCancelAll, InputEvent::kIdCancelAll);
+  viewController_.gameEngine->AddInputEvent(event);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
