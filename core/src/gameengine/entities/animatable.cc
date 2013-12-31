@@ -1,5 +1,5 @@
 //
-//  animatable.cpp
+//  animatable.cc
 //  GameEngine
 //
 //  Created by Jon Sharkey on 2013-02-26.
