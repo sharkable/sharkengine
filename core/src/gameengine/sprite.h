@@ -59,10 +59,10 @@ class Sprite {
   void Draw(CoordinateSystem coordinate_system) {
     texture_.DrawAtPoint(anchor_point_to_screen_point(coordinate_system.origin(), 1.f),
                          1.f, 1.f, coordinate_system.angle());
-  }
+ } 
 
   void DrawAtPoint(GamePoint position) {
-    texture_.DrawAtPoint(anchor_point_to_screen_point(position, 1.f));
+    texture_.DrawAtPoint(anchor_point_to_screen_point(position, 1.f), 1.f, 1.f, 0.f);
   }
 
   void DrawAtPointAngle(GamePoint position, GLfloat angle) {
@@ -73,13 +73,6 @@ class Sprite {
     texture_.DrawAtPoint(anchor_point_to_screen_point(position, zoom), alpha, zoom, angle);
   }
 
-  void DrawAtPointLeftRatio(GamePoint position, GLfloat left_ratio) {
-    texture_.DrawAtPointLeftRatio(anchor_point_to_screen_point(position, 1.f), left_ratio);
-  }
-
-  void DrawAtPointRightRatio(GamePoint position, GLfloat right_ratio) {
-    texture_.DrawAtPointRightRatio(anchor_point_to_screen_point(position, 1.f), right_ratio);
-  }
 
  private:
   ScreenPoint anchor_point_to_screen_point(GamePoint point, GLfloat zoom) {

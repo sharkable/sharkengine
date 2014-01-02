@@ -78,10 +78,6 @@ void Texture2D::Delete() {
 }
 
 
-void Texture2D::DrawAtPoint(ScreenPoint point) {
-  DrawAtPoint(point, 1.f, 1.f, 0.f);
-}
-
 void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle) {
   assert(opengl_id_);
 
@@ -98,66 +94,6 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glRotatef(angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glColor4f(1.0, 1.0, 1.0, alpha);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-}
-
-void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
-  assert(opengl_id_);
-
-  GLfloat    width = (GLfloat)width_ * max_s_ * leftRatio,
-  height = (GLfloat)height_ * max_t_;
-
-  coordinates_[2] = coordinates_[6] = leftRatio * max_s_;
-
-  vertices_[0] = -width/2.0;
-  vertices_[1] = -height/2.0;
-
-  vertices_[3] = width/2.0;
-  vertices_[4] = -height/2.0;
-
-  vertices_[6] = -width/2.0;
-  vertices_[7] = height/2.0;
-
-  vertices_[9] = width/2.0;
-  vertices_[10] = height/2.0;
-
-  glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, opengl_id_);
-  glVertexPointer(3, GL_FLOAT, 0, vertices_);
-  glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
-  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-  glTranslatef(point.x + width/2.0, point.y - height/2.0, 0.0);
-  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-}
-
-void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
-  assert(opengl_id_);
-
-  GLfloat    width = (GLfloat)width_ * max_s_ * rightRatio,
-  height = (GLfloat)height_ * max_t_;
-
-  coordinates_[0] = coordinates_[4] = (1.0 - rightRatio) * max_s_;
-
-  vertices_[0] = -width/2.0;
-  vertices_[1] = -height/2.0;
-
-  vertices_[3] = width/2.0;
-  vertices_[4] = -height/2.0;
-
-  vertices_[6] = -width/2.0;
-  vertices_[7] = height/2.0;
-
-  vertices_[9] = width/2.0;
-  vertices_[10] = height/2.0;
-
-  glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, opengl_id_);
-  glVertexPointer(3, GL_FLOAT, 0, vertices_);
-  glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
-  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-  glTranslatef(point.x + width/2.0 + (1.0 - rightRatio) * (GLfloat)width_ * max_s_, point.y - height/2.0, 0.0);
-  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 

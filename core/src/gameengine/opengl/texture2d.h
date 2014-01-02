@@ -93,10 +93,7 @@ class Texture2D {
 
   void Delete();
 
-  void DrawAtPoint(ScreenPoint point);
   void DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle);
-  void DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio);
-  void DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio);
 
   bool loaded() { return opengl_id_ != 0; }  // TODO identical to data_loaded
   GLuint opengl_id() { return opengl_id_; }
