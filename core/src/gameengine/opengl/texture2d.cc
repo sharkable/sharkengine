@@ -166,27 +166,6 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-
-void Texture2D::DrawAtPointAngle(ScreenPoint point, GLfloat angle) {
-  assert(opengl_id_);
-
-  // Swap vertical coordinate system.
-  point.y = screen_height_ - point.y;
-
-  GLfloat    width = (GLfloat)width_ * max_s_,
-  height = (GLfloat)height_ * max_t_;
-
-  glLoadIdentity();
-  glBindTexture(GL_TEXTURE_2D, opengl_id_);
-  glVertexPointer(3, GL_FLOAT, 0, vertices_);
-  glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
-  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-  glTranslatef(point.x + width/2.0, point.y - height/2.0, 0.0);
-  glRotatef(-angle, 0.f, 0.f, 1.f);
-  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-}
-
 void Texture2D::Delete() {
   assert(opengl_id_);
   glDeleteTextures(1, &opengl_id_);
