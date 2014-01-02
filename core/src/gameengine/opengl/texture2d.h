@@ -93,7 +93,6 @@ class Texture2D {
 
   void Delete();
 
-  static void SetGlobalAlpha(GLfloat alpha);
   // TODO remove this crap. Figure out a better way to handle the coordinate system.
   // This is currently used to flip Y coordinates.
   static void SetScreenHeight(GLfloat screen_height) { screen_height_ = screen_height; }
