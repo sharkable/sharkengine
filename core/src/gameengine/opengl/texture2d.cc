@@ -78,7 +78,7 @@ void Texture2D::Delete() {
 }
 
 
-void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle) {
+void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat angle) {
   assert(opengl_id_);
 
   GLfloat width = (GLfloat)width_ * max_s_,
@@ -90,7 +90,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
   glTranslatef(point.x + width / 2.0, point.y + height / 2.0, 0.0);
-  glScalef(zoom, zoom, 0.0);
+  glScalef(scale, scale, 0.0);
   glRotatef(angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glColor4f(1.0, 1.0, 1.0, alpha);
