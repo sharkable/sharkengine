@@ -13,20 +13,20 @@
 
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/entities/animatable.h"
+#include "gameengine/render/renderer.h"
 
 class GameEngine;
 
-class Label : public Animatable {
+class Label : public Animatable, public Renderer {
  public:
   Label(GameEngine &game_engine, GamePoint position);
 
   const std::string & Text();
   void SetText(const std::string &text);
-
-  // ViewEntity TODO NOW
-  void Render(GamePoint offset);
-  void Render(GamePoint offset, float angle);
   GameRect Rect();
+
+  // Renderer
+  void Render(CoordinateSystem const &coordinate_system);
 
  private:
   GameSize CalculateSize();

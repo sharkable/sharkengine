@@ -12,6 +12,7 @@
 #include <map>
 #include <string>
 
+#include "gameengine/coordinates/coordinate_system.h"
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/opengl/texture2d.h"
 
@@ -20,7 +21,7 @@ class GameEngine;
 class Font {
  public:
   Font(GameEngine &game_engine, std::string font_name);
-  void RenderGlyph(char glyph, GamePoint position, float alpha = 1.f, float angle = 0.f);
+  void RenderGlyph(char glyph, CoordinateSystem const &coordinate_system, float alpha = 1.f);
   float GlyphWidth(char glyph);
   float GlyphHeight();
 
