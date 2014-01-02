@@ -78,8 +78,7 @@ void Texture2D::Delete() {
 }
 
 
-void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat angle,
-                            bool center) {
+void Texture2D::Draw(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat angle, bool center) {
   assert(opengl_id_);
 
   glLoadIdentity();
