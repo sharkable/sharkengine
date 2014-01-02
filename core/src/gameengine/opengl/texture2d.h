@@ -94,7 +94,7 @@ class Texture2D {
   void Delete();
 
   void DrawAtPoint(ScreenPoint point);
-  void DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z);
+  void DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle);
   void DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio);
   void DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio);
 

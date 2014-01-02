@@ -79,10 +79,10 @@ void Texture2D::Delete() {
 
 
 void Texture2D::DrawAtPoint(ScreenPoint point) {
-  DrawAtPoint(point, 1.f, 1.f, 0.f, 0.f);
+  DrawAtPoint(point, 1.f, 1.f, 0.f);
 }
 
-void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z) {
+void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle) {
   assert(opengl_id_);
 
   GLfloat width = (GLfloat)width_ * max_s_,
