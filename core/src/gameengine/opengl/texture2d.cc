@@ -66,16 +66,11 @@
 using std::string;
 
 int Texture2D::nameCounter_ = 0;
-GLfloat Texture2D::globalAlpha_ = 1;
 GLfloat Texture2D::screen_height_ = 480;
 
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
                      uint32_t height, ScreenSize size, string filename, GLuint opengl_id) {
   Init(data, pixelFormat, width, height, size, filename, opengl_id);
-}
-
-void Texture2D::SetGlobalAlpha(GLfloat alpha) {
-  globalAlpha_ = alpha;
 }
 
 void Texture2D::DrawAtPoint(ScreenPoint point) {
@@ -100,7 +95,7 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glScalef(zoom, zoom, 0.0);
   glRotatef(-angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glColor4f(1.0, 1.0, 1.0, alpha * globalAlpha_);
+  glColor4f(1.0, 1.0, 1.0, alpha);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 

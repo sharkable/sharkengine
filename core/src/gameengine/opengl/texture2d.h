@@ -116,7 +116,6 @@ class Texture2D {
             ScreenSize size, std::string filename_, GLuint opengl_id = 0);
 
   static int nameCounter_;
-  static GLfloat globalAlpha_;
   static GLfloat screen_height_;
   GLuint opengl_id_;
   std::string filename_;
