@@ -65,7 +65,6 @@
 
 using std::string;
 
-int Texture2D::nameCounter_ = 0;
 GLfloat Texture2D::screen_height_ = 480;
 
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
@@ -182,13 +181,11 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
   GLint saveName;
   filename_ = filename;
 
-  // TODO decide how we're generating names. Do some research.
   if (opengl_id) {
     opengl_id_ = opengl_id;
   } else {
     glGenTextures(1, &opengl_id_);
   }
-  //opengl_id_ = ++nameCounter_;
 
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
   glBindTexture(GL_TEXTURE_2D, opengl_id_);

@@ -115,7 +115,6 @@ class Texture2D {
   void Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
             ScreenSize size, std::string filename_, GLuint opengl_id = 0);
 
-  static int nameCounter_;
   static GLfloat screen_height_;
   GLuint opengl_id_;
   std::string filename_;
