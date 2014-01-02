@@ -78,18 +78,16 @@ void Texture2D::Delete() {
 }
 
 
-void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat angle) {
+void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat angle,
+                            bool center) {
   assert(opengl_id_);
-
-  GLfloat width = (GLfloat)width_ * max_s_,
-  height = (GLfloat)height_ * max_t_;
 
   glLoadIdentity();
   glBindTexture(GL_TEXTURE_2D, opengl_id_);
-  glVertexPointer(3, GL_FLOAT, 0, vertices_);
+  glVertexPointer(3, GL_FLOAT, 0, center ? centered_vertices_ : vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
-  glTranslatef(point.x + width / 2.0, point.y + height / 2.0, 0.0);
+  glTranslatef(point.x, point.y, 0.0);
   glScalef(scale, scale, 0.0);
   glRotatef(angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -141,32 +139,49 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
   max_s_ = size.width / (float)width;
   max_t_ = size.height / (float)height;
 
-  coordinates_[0] = 0;
+  coordinates_[0] = 0.f;
   coordinates_[1] = max_t_;
 
   coordinates_[2] = max_s_;
   coordinates_[3] = max_t_;
 
-  coordinates_[4] = 0;
-  coordinates_[5] = 0;
+  coordinates_[4] = 0.f;
+  coordinates_[5] = 0.f;
 
   coordinates_[6] = max_s_;
-  coordinates_[7] = 0;
+  coordinates_[7] = 0.f;
 
 
-  vertices_[0] = -size.width/2.0;
-  vertices_[1] = size.height/2.0;
-  vertices_[2] = 0;
+  vertices_[0] = 0.f;
+  vertices_[1] = size.height;
+  vertices_[2] = 0.f;
 
-  vertices_[3] = size.width/2.0;
-  vertices_[4] = size.height/2.0;
-  vertices_[5] = 0;
+  vertices_[3] = size.width;
+  vertices_[4] = size.height;
+  vertices_[5] = 0.f;
 
-  vertices_[6] = -size.width/2.0;
-  vertices_[7] = -size.height/2.0;
-  vertices_[8] = 0.0;
+  vertices_[6] = 0.f;
+  vertices_[7] = 0.f;
+  vertices_[8] = 0.f;
 
-  vertices_[9] = size.width/2.0;
-  vertices_[10] = -size.height/2.0;
-  vertices_[11] = 0.0;
+  vertices_[9] = size.width;
+  vertices_[10] = 0.f;
+  vertices_[11] = 0.f;
+
+
+  centered_vertices_[0] = -size.width / 2.f;
+  centered_vertices_[1] = size.height / 2.f;
+  centered_vertices_[2] = 0.f;
+
+  centered_vertices_[3] = size.width / 2.f;
+  centered_vertices_[4] = size.height / 2.f;
+  centered_vertices_[5] = 0.f;
+
+  centered_vertices_[6] = -size.width / 2.f;
+  centered_vertices_[7] = -size.height / 2.f;
+  centered_vertices_[8] = 0.f;
+
+  centered_vertices_[9] = size.width / 2.f;
+  centered_vertices_[10] = -size.height / 2.f;
+  centered_vertices_[11] = 0.f;
 }

@@ -57,35 +57,25 @@ class Sprite {
   }
 
   void Draw(CoordinateSystem coordinate_system) {
-    texture_.DrawAtPoint(anchor_point_to_screen_point(coordinate_system.origin(), 1.f),
-                         1.f, 1.f, coordinate_system.angle());
+    texture_.DrawAtPoint(game_engine_.game_point_to_screen_point(coordinate_system.origin()),
+                         1.f, 1.f, coordinate_system.angle(), anchor_ == kSpriteAnchorCenter);
  } 
 
   void DrawAtPoint(GamePoint position) {
-    texture_.DrawAtPoint(anchor_point_to_screen_point(position, 1.f), 1.f, 1.f, 0.f);
+    texture_.DrawAtPoint(game_engine_.game_point_to_screen_point(position), 1.f, 1.f, 0.f,
+                         anchor_ == kSpriteAnchorCenter);
   }
 
   void DrawAtPointAngle(GamePoint position, GLfloat angle) {
-    texture_.DrawAtPoint(anchor_point_to_screen_point(position, 1.f), 1.f, 1.f, angle);
+    texture_.DrawAtPoint(game_engine_.game_point_to_screen_point(position), 1.f, 1.f, angle,
+                         anchor_ == kSpriteAnchorCenter);
   }
 
   void Draw(GamePoint position, GLfloat angle, GLfloat alpha, GLfloat zoom) {
-    texture_.DrawAtPoint(anchor_point_to_screen_point(position, zoom), alpha, zoom, angle);
+    texture_.DrawAtPoint(game_engine_.game_point_to_screen_point(position), alpha, zoom, angle,
+                         anchor_ == kSpriteAnchorCenter);
   }
 
-
- private:
-  ScreenPoint anchor_point_to_screen_point(GamePoint point, GLfloat zoom) {
-    switch (anchor_) {
-      case kSpriteAnchorTopLeft:
-        return game_engine_.game_point_to_screen_point(point);
-      case kSpriteAnchorCenter:
-        GameSize size = content_size();
-        point.x -= size.width / 2.f;
-        point.y -= size.height / 2.f;
-        return game_engine_.game_point_to_screen_point(point);
-    }
-  }
 
   GameEngine &game_engine_;
   SpriteAnchor anchor_;

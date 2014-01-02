@@ -30,7 +30,8 @@ void Font::RenderGlyph(char glyph, GamePoint position, float alpha, float angle)
 #if DEBUG
   shark_assert(glyphs_[glyph].data_loaded(), "Cannot draw character: %c %d", glyph, glyph);
 #endif
-  glyphs_[glyph].DrawAtPoint(game_engine_.game_point_to_screen_point(position), alpha, 1, angle);
+  glyphs_[glyph].DrawAtPoint(game_engine_.game_point_to_screen_point(position), alpha, 1, angle,
+                             false);
 }
 
 float Font::GlyphWidth(char glyph) {
