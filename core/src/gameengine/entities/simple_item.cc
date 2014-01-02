@@ -53,6 +53,6 @@ GameRect SimpleItem::Rect() {
 #pragma mark - Renderer
 
 void SimpleItem::Render(CoordinateSystem const &coordinate_system) {
-  sprites_[sprite_].Draw(position() + coordinate_system.origin(),
-                         angle() + coordinate_system.angle(), alpha(), zoom());
+  sprites_[sprite_].set_alpha(alpha());
+  sprites_[sprite_].Draw(coordinate_system.Subsystem(angle(), position()));
 }
