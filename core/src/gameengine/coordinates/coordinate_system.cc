@@ -19,16 +19,27 @@ CoordinateSystem const & CoordinateSystem::BaseSystem() {
 
 GamePoint CoordinateSystem::ConvertPoint(GamePoint p) const {
   if (angle_ == 0.f) {
-    return p + origin_;
+    return p * scale_ + origin_;
   }
-  return GamePoint(cos_angle_ * p.x - sin_angle_ * p.y + origin_.x,
-                   sin_angle_ * p.x + cos_angle_ * p.y + origin_.y);
+  return GamePoint((cos_angle_ * p.x - sin_angle_ * p.y) * scale_ + origin_.x,
+                   (sin_angle_ * p.x + cos_angle_ * p.y) * scale_ + origin_.y);
 }
 
-CoordinateSystem CoordinateSystem::Subsystem(float angle, GamePoint origin) const {
+CoordinateSystem CoordinateSystem::Translate(GamePoint translation) const {
   CoordinateSystem subsystem;
+  subsystem.origin_ = ConvertPoint(translation);
+  subsystem.angle_ = angle_;
+  subsystem.scale_ = scale_;
+  subsystem.cos_angle_ = cos_angle_;
+  subsystem.sin_angle_ = sin_angle_;
+  return subsystem;
+}
+
+CoordinateSystem CoordinateSystem::Rotate(float angle) const {
+  CoordinateSystem subsystem;
+  subsystem.origin_ = origin_;
   subsystem.angle_ = angle_ + angle;
-  subsystem.origin_ = ConvertPoint(origin);
+  subsystem.scale_ = scale_;
   if (angle == 0.f) {
     subsystem.cos_angle_ = cos_angle_;
     subsystem.sin_angle_ = sin_angle_;
@@ -39,6 +50,16 @@ CoordinateSystem CoordinateSystem::Subsystem(float angle, GamePoint origin) cons
   return subsystem;
 }
 
+CoordinateSystem CoordinateSystem::Scale(float scale) const {
+  CoordinateSystem subsystem;
+  subsystem.origin_ = origin_;
+  subsystem.angle_ = angle_;
+  subsystem.scale_ = scale_ * scale;
+  subsystem.cos_angle_ = cos_angle_;
+  subsystem.sin_angle_ = sin_angle_;
+  return subsystem;
+}
+
 
 #pragma mark - private
 
@@ -46,8 +67,9 @@ CoordinateSystem CoordinateSystem::base_system_;
 
 // Constructs the system used for BaseSystem().
 CoordinateSystem::CoordinateSystem()
-    : angle_(0.f),
-      origin_(kGamePointZero),
+    : origin_(kGamePointZero),
+      angle_(0.f),
+      scale_(1.f),
       cos_angle_(1.f),
       sin_angle_(0.f) {
 }

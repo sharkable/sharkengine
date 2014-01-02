@@ -16,16 +16,25 @@ class CoordinateSystem {
   static CoordinateSystem const & BaseSystem();
 
   GamePoint ConvertPoint(GamePoint p) const;
-  CoordinateSystem Subsystem(float angle, GamePoint origin) const;
+  CoordinateSystem Translate(GamePoint translation) const;
+  CoordinateSystem Rotate(float angle) const;
+  CoordinateSystem Scale(float scale) const;
+  CoordinateSystem Subsystem(float angle, GamePoint origin) const {
+    shark_assert(false, "deprecated.");
+  }
 
-  float angle() const { return angle_; }
   GamePoint origin() const { return origin_; }
+  float angle() const { return angle_; }
+  float scale() const { return scale_; }
 
  private:
-  float angle_;
   GamePoint origin_;
+  float angle_;
+  float scale_;
+
   float cos_angle_;
   float sin_angle_;
+
   static CoordinateSystem base_system_;
 
   CoordinateSystem();
