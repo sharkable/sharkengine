@@ -32,7 +32,6 @@
   windowSize_ = [self defaultWindowSize];
   screenScale_ = [self scaleFactor];
   renderSize_ = ScreenSize(windowSize_.width * screenScale_, windowSize_.height * screenScale_);
-  Texture2D::SetScreenHeight(renderSize_.height);
 
   if (!didStart_) {
     [self start];
@@ -225,7 +224,7 @@
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, renderSize_.width, 0, renderSize_.height, -1, 1);
+  glOrtho(0, renderSize_.width, renderSize_.height, 0, -1, 1);
 
   glMatrixMode(GL_MODELVIEW);
 

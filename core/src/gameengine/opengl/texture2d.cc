@@ -65,8 +65,6 @@
 
 using std::string;
 
-GLfloat Texture2D::screen_height_ = 480;
-
 Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width,
                      uint32_t height, ScreenSize size, string filename, GLuint opengl_id) {
   Init(data, pixelFormat, width, height, size, filename, opengl_id);
@@ -87,9 +85,6 @@ void Texture2D::DrawAtPoint(ScreenPoint point) {
 void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z) {
   assert(opengl_id_);
 
-  // Swap vertical coordinate system.
-  point.y = screen_height_ - point.y;
-
   GLfloat width = (GLfloat)width_ * max_s_,
   height = (GLfloat)height_ * max_t_;
 
@@ -98,9 +93,9 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
   glVertexPointer(3, GL_FLOAT, 0, vertices_);
   glTexCoordPointer(2, GL_FLOAT, 0, coordinates_);
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
-  glTranslatef(point.x + width / 2.0, point.y - height / 2.0, 0.0);
+  glTranslatef(point.x + width / 2.0, point.y + height / 2.0, 0.0);
   glScalef(zoom, zoom, 0.0);
-  glRotatef(-angle, 0.0, 0.0, 1.0);
+  glRotatef(angle, 0.0, 0.0, 1.0);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glColor4f(1.0, 1.0, 1.0, alpha);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -108,10 +103,6 @@ void Texture2D::DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfl
 
 void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
   assert(opengl_id_);
-
-  // Swap vertical coordinate system.
-  // TODO make this not screen size dependent.
-  point.y = screen_height_ - point.y;
 
   GLfloat    width = (GLfloat)width_ * max_s_ * leftRatio,
   height = (GLfloat)height_ * max_t_;
@@ -142,9 +133,6 @@ void Texture2D::DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio) {
 
 void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
   assert(opengl_id_);
-
-  // Swap vertical coordinate system.
-  point.y = screen_height_ - point.y;
 
   GLfloat    width = (GLfloat)width_ * max_s_ * rightRatio,
   height = (GLfloat)height_ * max_t_;
@@ -231,18 +219,18 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
 
 
   vertices_[0] = -size.width/2.0;
-  vertices_[1] = -size.height/2.0;
+  vertices_[1] = size.height/2.0;
   vertices_[2] = 0;
 
   vertices_[3] = size.width/2.0;
-  vertices_[4] = -size.height/2.0;
+  vertices_[4] = size.height/2.0;
   vertices_[5] = 0;
 
   vertices_[6] = -size.width/2.0;
-  vertices_[7] = size.height/2.0;
+  vertices_[7] = -size.height/2.0;
   vertices_[8] = 0.0;
 
   vertices_[9] = size.width/2.0;
-  vertices_[10] = size.height/2.0;
+  vertices_[10] = -size.height/2.0;
   vertices_[11] = 0.0;
 }
