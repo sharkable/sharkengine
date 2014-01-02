@@ -61,7 +61,8 @@ class Sprite {
 
   void Draw(CoordinateSystem coordinate_system) {
     texture_.Draw(game_engine_.game_point_to_screen_point(coordinate_system.origin()),
-                  alpha_, 1.f, coordinate_system.angle(), anchor_ == kAnchorCenter);
+                  alpha_, coordinate_system.scale(), coordinate_system.angle(),
+                  anchor_ == kAnchorCenter);
  } 
 
   void DrawAtPoint(GamePoint position) {

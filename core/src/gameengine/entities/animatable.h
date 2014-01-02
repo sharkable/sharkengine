@@ -28,7 +28,7 @@ class Animatable : public Simulator {
   void AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks);
   void AnimateToAngle(double angle, AnimationType animation_type, int ticks);
   void AnimateToAlpha(double alpha, AnimationType animation_type, int ticks);
-  void AnimateToZoom(double zoom, AnimationType animation_type, int ticks);
+  void AnimateToScale(double scale, AnimationType animation_type, int ticks);
 
   // Simulator
   void SimulateStep();
@@ -42,8 +42,8 @@ class Animatable : public Simulator {
   void set_angle(double angle) { angle_ = angle; }
   double alpha() { return alpha_; }
   void set_alpha(double alpha) { alpha_ = alpha; }
-  double zoom() { return zoom_; }
-  void set_zoom(double zoom) { zoom_ = zoom; }
+  double scale() { return scale_; }
+  void set_scale(double scale) { scale_ = scale; }
 
  private:
   AnimatableDelegate *delegate_;
@@ -51,13 +51,13 @@ class Animatable : public Simulator {
   GamePoint position_;
   double angle_;
   double alpha_;
-  double zoom_;
+  double scale_;
 
   Animation x_animation_;
   Animation y_animation_;
   Animation angle_animation_;
   Animation alpha_animation_;
-  Animation zoom_animation_;
+  Animation scale_animation_;
 };
 
 #endif

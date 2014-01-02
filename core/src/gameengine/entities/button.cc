@@ -60,12 +60,12 @@ void Button::Render(CoordinateSystem const &coordinate_system) {
   switch (state_) {
     case kButtonStateNormal: {
       normal_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
-                          angle() + coordinate_system.angle(), alpha(), zoom());
+                          angle() + coordinate_system.angle(), alpha(), scale());
       break;
     }
     case kButtonStatePressed: {
       pressed_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
-                           angle() + coordinate_system.angle(), alpha(), zoom());
+                           angle() + coordinate_system.angle(), alpha(), scale());
       break;
     }
   }

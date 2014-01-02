@@ -54,5 +54,5 @@ GameRect SimpleItem::Rect() {
 
 void SimpleItem::Render(CoordinateSystem const &coordinate_system) {
   sprites_[sprite_].set_alpha(alpha());
-  sprites_[sprite_].Draw(coordinate_system.Subsystem(angle(), position()));
+  sprites_[sprite_].Draw(coordinate_system.Translate(position()).Rotate(angle()).Scale(scale()));
 }

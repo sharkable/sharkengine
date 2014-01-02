@@ -13,7 +13,7 @@ Animatable::Animatable()
       position_(kGamePointZero),
       angle_(0),
       alpha_(1),
-      zoom_(1) {
+      scale_(1) {
 }
 
 Animatable::Animatable(GamePoint position)
@@ -21,7 +21,7 @@ Animatable::Animatable(GamePoint position)
       position_(position),
       angle_(0),
       alpha_(1),
-      zoom_(1) {
+      scale_(1) {
 }
 
 void Animatable::AnimateToPosition(GamePoint position, AnimationType animation_type, int ticks) {
@@ -37,8 +37,8 @@ void Animatable::AnimateToAlpha(double alpha, AnimationType animation_type, int 
   alpha_animation_.Reset(alpha_, alpha, ticks, animation_type);
 }
 
-void Animatable::AnimateToZoom(double zoom, AnimationType animation_type, int ticks) {
-  zoom_animation_.Reset(zoom_, zoom, ticks, animation_type);
+void Animatable::AnimateToScale(double zoom, AnimationType animation_type, int ticks) {
+  scale_animation_.Reset(scale_, zoom, ticks, animation_type);
 }
 
 
@@ -62,9 +62,9 @@ void Animatable::SimulateStep() {
     alpha_ = alpha_animation_.Update();
     call_delegate = !alpha_animation_.IsActive();
   }
-  if (zoom_animation_.IsActive()) {
-    zoom_ = zoom_animation_.Update();
-    call_delegate = !zoom_animation_.IsActive();
+  if (scale_animation_.IsActive()) {
+    scale_ = scale_animation_.Update();
+    call_delegate = !scale_animation_.IsActive();
   }
   if (delegate_ && call_delegate) {
     delegate_->AnimationFinished(this);
