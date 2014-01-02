@@ -73,6 +73,14 @@ Texture2D::Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_
   Init(data, pixelFormat, width, height, size, filename, opengl_id);
 }
 
+
+void Texture2D::Delete() {
+  assert(opengl_id_);
+  glDeleteTextures(1, &opengl_id_);
+  opengl_id_ = 0;
+}
+
+
 void Texture2D::DrawAtPoint(ScreenPoint point) {
   DrawAtPoint(point, 1.f, 1.f, 0.f, 0.f);
 }
@@ -164,12 +172,6 @@ void Texture2D::DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio) {
   glTranslatef(point.x + width/2.0 + (1.0 - rightRatio) * (GLfloat)width_ * max_s_, point.y - height/2.0, 0.0);
   //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-}
-
-void Texture2D::Delete() {
-  assert(opengl_id_);
-  glDeleteTextures(1, &opengl_id_);
-  opengl_id_ = 0;
 }
 
 

@@ -91,6 +91,8 @@ class Texture2D {
   Texture2D(const void *data, Texture2DPixelFormat pixelFormat, uint32_t width, uint32_t height,
             ScreenSize size, std::string filename, GLuint opengl_id = 0);
 
+  void Delete();
+
   static void SetGlobalAlpha(GLfloat alpha);
   // TODO remove this crap. Figure out a better way to handle the coordinate system.
   // This is currently used to flip Y coordinates.
@@ -99,7 +101,6 @@ class Texture2D {
   void DrawAtPoint(ScreenPoint point, GLfloat alpha, GLfloat zoom, GLfloat angle, GLfloat z);
   void DrawAtPointLeftRatio(ScreenPoint point, GLfloat leftRatio);
   void DrawAtPointRightRatio(ScreenPoint point, GLfloat rightRatio);
-  void Delete();
 
   bool loaded() { return opengl_id_ != 0; }  // TODO identical to data_loaded
   GLuint opengl_id() { return opengl_id_; }
