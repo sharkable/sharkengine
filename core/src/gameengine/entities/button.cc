@@ -59,13 +59,17 @@ bool Button::ContainsPoint(GamePoint p) {
 void Button::Render(CoordinateSystem const &coordinate_system) {
   switch (state_) {
     case kButtonStateNormal: {
-      normal_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
-                          angle() + coordinate_system.angle(), alpha(), scale());
+      CoordinateSystem local =
+          coordinate_system.Translate(position()).Rotate(angle()).Scale(scale());
+      normal_sprite_.set_alpha(alpha());
+      normal_sprite_.Draw(local);
       break;
     }
     case kButtonStatePressed: {
-      pressed_sprite_.Draw(position() + pressed_offset_ + coordinate_system.origin(),
-                           angle() + coordinate_system.angle(), alpha(), scale());
+      CoordinateSystem local =
+          coordinate_system.Translate(position() + pressed_offset_).Rotate(angle()).Scale(scale());
+      pressed_sprite_.set_alpha(alpha());
+      pressed_sprite_.Draw(local);
       break;
     }
   }
