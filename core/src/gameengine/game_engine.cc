@@ -95,7 +95,7 @@ void GameEngine::ProcessInput() {
 
   shark_assert(input_handler_, "No InputHandler found.");
   for (InputEvent event : input_events_) {
-    input_handler_->HandleInputEvent(event);
+    input_handler_->HandleInputEvent(event, CoordinateSystem::BaseSystem());
   }
   input_events_.clear();
 

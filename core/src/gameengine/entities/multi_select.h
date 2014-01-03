@@ -34,7 +34,7 @@ class MultiSelect : public Animatable, public Renderer, public InputHandler {
   virtual void Render(CoordinateSystem const &coordinate_system);
 
   // InputHandler
-  virtual bool HandleInputEvent(InputEvent const &event);
+  virtual bool HandleInputEvent(InputEvent const &event, CoordinateSystem const &coordinate_system);
 
   // Accessors
   int selected_value() { return selected_value_; };

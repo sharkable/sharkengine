@@ -43,7 +43,7 @@ class Button : public Animatable, public Renderer, public InputHandler {
   virtual void Render(CoordinateSystem const &coordinate_system);
 
   // InputHandler
-  virtual bool HandleInputEvent(InputEvent const &event);
+  virtual bool HandleInputEvent(InputEvent const &event, CoordinateSystem const &coordinate_system);
 
   bool ContainsPoint(GamePoint p);
 

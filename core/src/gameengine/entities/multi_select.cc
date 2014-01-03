@@ -57,7 +57,8 @@ void MultiSelect::Render(CoordinateSystem const &coordinate_system) {
 
 #pragma mark - InputHandler
 
-bool MultiSelect::HandleInputEvent(InputEvent const &event) {
+bool MultiSelect::HandleInputEvent(InputEvent const &event,
+                                   CoordinateSystem const &coordinate_system) {
   if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     for (int i = 0; i < normal_sprites_.size(); i++) {
       double x = positions_x_[i];
