@@ -63,18 +63,6 @@ class Sprite {
     texture_.Draw(game_engine_.game_point_to_screen_point(coordinate_system.origin()),
                   alpha_, coordinate_system.scale(), coordinate_system.angle(),
                   anchor_ == kAnchorCenter);
- } 
-
-  void DrawAtPoint(GamePoint position) {
-    shark_assert(false, "deprecated.");
-  }
-
-  void DrawAtPointAngle(GamePoint position, GLfloat angle) {
-    shark_assert(false, "deprecated.");
-  }
-
-  void Draw(GamePoint position, GLfloat angle, GLfloat alpha, GLfloat zoom) {
-    shark_assert(false, "deprecated.");
   }
 
   GameEngine &game_engine_;

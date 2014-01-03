@@ -45,11 +45,12 @@ void MultiSelect::Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint po
 void MultiSelect::Render(CoordinateSystem const &coordinate_system) {
   for (int i = 0; i < normal_sprites_.size(); i++) {
     GamePoint p(positions_x_[i], positions_y_[i]);
-    p += coordinate_system.origin();
     if (i == selected_value_) {
-      selected_sprites_[i].Draw(p, 0, alpha(), 1);
+      selected_sprites_[i].set_alpha(alpha());
+      selected_sprites_[i].Draw(coordinate_system.Translate(p));
     } else {
-      normal_sprites_[i].Draw(p, 0, alpha(), 1);
+      normal_sprites_[i].set_alpha(alpha());
+      normal_sprites_[i].Draw(coordinate_system.Translate(p));
     }
   }
 }

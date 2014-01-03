@@ -19,9 +19,6 @@ class CoordinateSystem {
   CoordinateSystem Translate(GamePoint translation) const;
   CoordinateSystem Rotate(float angle) const;
   CoordinateSystem Scale(float scale) const;
-  CoordinateSystem Subsystem(float angle, GamePoint origin) const {
-    shark_assert(false, "deprecated.");
-  }
 
   GamePoint origin() const { return origin_; }
   float angle() const { return angle_; }
