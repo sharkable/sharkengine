@@ -98,8 +98,8 @@
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
-  InputEvent event(InputEvent::kActionUp, InputEvent::kIdMouse,
-                   [self gamePointFromScreenPoint:NSMakePoint(theEvent.deltaX, theEvent.deltaY)]);
+  InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouse,
+                   GamePoint(theEvent.deltaX, theEvent.deltaY));
   gameEngine_->AddInputEvent(event);
   if (!CGCursorIsVisible()) {
     NSRect windowFrame = self.window.frame;
