@@ -17,17 +17,11 @@ CoordinateSystem const & CoordinateSystem::BaseSystem() {
 }
 
 
-GamePoint CoordinateSystem::ConvertPoint(GamePoint p) const {
-  if (angle_ == 0.f) {
-    return p * scale_ + origin_;
-  }
-  return GamePoint((cos_angle_ * p.x - sin_angle_ * p.y) * scale_ + origin_.x,
-                   (sin_angle_ * p.x + cos_angle_ * p.y) * scale_ + origin_.y);
-}
+#pragma mark - System Transformations
 
 CoordinateSystem CoordinateSystem::Translate(GamePoint translation) const {
   CoordinateSystem subsystem;
-  subsystem.origin_ = ConvertPoint(translation);
+  subsystem.origin_ = PointToBasePoint(translation);
   subsystem.angle_ = angle_;
   subsystem.scale_ = scale_;
   subsystem.cos_angle_ = cos_angle_;
@@ -58,6 +52,26 @@ CoordinateSystem CoordinateSystem::Scale(float scale) const {
   subsystem.cos_angle_ = cos_angle_;
   subsystem.sin_angle_ = sin_angle_;
   return subsystem;
+}
+
+
+#pragma mark - Convert to and from BaseSystem
+
+GamePoint CoordinateSystem::PointToBasePoint(GamePoint p) const {
+  if (angle_ == 0.f) {
+    return p * scale_ + origin_;
+  }
+  return GamePoint((cos_angle_ * p.x - sin_angle_ * p.y) * scale_ + origin_.x,
+                   (sin_angle_ * p.x + cos_angle_ * p.y) * scale_ + origin_.y);
+}
+
+GamePoint CoordinateSystem::BasePointToPoint(GamePoint p) const {
+  GamePoint point = (p - origin_) * (1.f / scale_);
+  if (angle_ == 0.f) {
+    return point;
+  }
+  return GamePoint(cos_angle_ * point.x + sin_angle_ * point.y,
+                   -sin_angle_ * point.x + cos_angle_ * point.y);
 }
 
 

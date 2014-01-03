@@ -15,11 +15,16 @@ class CoordinateSystem {
  public:
   static CoordinateSystem const & BaseSystem();
 
-  GamePoint ConvertPoint(GamePoint p) const;
+  // System Transformations
   CoordinateSystem Translate(GamePoint translation) const;
   CoordinateSystem Rotate(float angle) const;
   CoordinateSystem Scale(float scale) const;
 
+  // Convert to and from BaseSystem
+  GamePoint PointToBasePoint(GamePoint p) const;
+  GamePoint BasePointToPoint(GamePoint p) const;
+
+  // Accessors
   GamePoint origin() const { return origin_; }
   float angle() const { return angle_; }
   float scale() const { return scale_; }

@@ -81,7 +81,7 @@ void Button::Render(CoordinateSystem const &coordinate_system) {
 bool Button::HandleInputEvent(InputEvent const &event, CoordinateSystem const &coordinate_system) {
   if (event.action() == InputEvent::kActionDown && event.HasLocation()) {
     if (state_ == kButtonStateNormal) {
-      if (ContainsPoint(event.location())) {
+      if (ContainsPoint(coordinate_system.BasePointToPoint(event.location()))) {
         state_ = kButtonStatePressed;
         beep_sound_->Play();
         start_touch_ = event.id();
