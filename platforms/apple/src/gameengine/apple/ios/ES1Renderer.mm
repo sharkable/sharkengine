@@ -54,7 +54,7 @@
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrthof(0, backingWidth_, 0, backingHeight_, -1, 1);
+  glOrthof(0, backingWidth_, backingHeight_, 0, -1, 1);
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -99,7 +99,6 @@
   [context_ renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:layer];
   glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth_);
   glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight_);
-  Texture2D::SetScreenHeight(backingHeight_);
 
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   glEnable(GL_CULL_FACE);
