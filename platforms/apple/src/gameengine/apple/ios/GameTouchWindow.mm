@@ -8,20 +8,16 @@
 
 #import "GameTouchWindow.h"
 
-#include <vector>
-using std::vector;
-
 #import "gameengine/game_engine.h"
 
 @interface GameTouchWindow ()
-- (std::vector<InputEvent>)convertTouches:(NSSet *)touches action:(InputEvent::Action)action;
+- (void)addTouches:(NSSet *)touches action:(InputEvent::Action)action;
 @end
 
 @implementation GameTouchWindow {
  @private
   GameEngine *gameEngine_;  // weak
   CGFloat scale_;
-  double move_factor_;
 }
 
 @synthesize gameEngine = gameEngine_;
@@ -34,66 +30,36 @@ using std::vector;
   return self;
 }
 
+
 #pragma mark - UIWindow
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  move_factor_ = 0;
-  vector<InputEvent> converted_touches =
-      [self convertTouches:touches action:InputEvent::kActionDown];
-  for (InputEvent event : converted_touches) {
-    gameEngine_->AddInputEvent(event);
-  }
+  [self addTouches:touches action:InputEvent::kActionDown];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  vector<InputEvent> converted_touches =
-      [self convertTouches:touches action:InputEvent::kActionMove];
-  for (InputEvent event : converted_touches) {
-    gameEngine_->AddInputEvent(event);
-  }
+  [self addTouches:touches action:InputEvent::kActionMove];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  vector<InputEvent> converted_touches =
-      [self convertTouches:touches action:InputEvent::kActionUp];
-  for (InputEvent event : converted_touches) {
-    gameEngine_->AddInputEvent(event);
-  }
+  [self addTouches:touches action:InputEvent::kActionUp];
 }
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self addTouches:touches action:InputEvent::kActionCancel];
+}
+
 
 #pragma mark - Private
 
-- (vector<InputEvent>)convertTouches:(NSSet *)touches action:(InputEvent::Action)action {
-  vector<InputEvent> converted_touches;
-  for (UITouch *touch in touches) {
-    CGPoint location = [touch locationInView:touch.view];
-
-// TODO: Should this be a game option? I was using it in Air Hockey.
-// TODO: Compare new threading method input to this and to old method. Maybe the new
-//     threading method is enough to fix this.
-#if 0
-    // Fudge the point by some factor of the velocity, to prevent the lag in movement.
-    CGPoint previous_location = [touch previousLocationInView:touch.view];
-    double diff_x = location.x - previous_location.x;
-    double diff_y = location.y - previous_location.y;
-    double new_factor = 0;
-    double velocity_squared = diff_x * diff_x + diff_y * diff_y;
-    if (velocity_squared > 25 * 25) {
-      new_factor = 1.5;
-    } else {
-      new_factor = velocity_squared / (25 * 25 / 1.5);
-    }
-    move_factor_ = (move_factor_ + new_factor) / 2;
-    location.x = location.x + diff_x * move_factor_;
-    location.y = location.y + diff_y * move_factor_;
-#endif
-
-    ScreenPoint l(location.x * scale_, location.y * scale_);
-    GamePoint p = gameEngine_->screen_point_to_game_point(l);
-    InputEvent converted_touch(action, InputEvent::kIdTouch0, p);
-    converted_touches.push_back(converted_touch);
+- (void)addTouches:(NSSet *)touches action:(InputEvent::Action)action {
+  for (UITouch *touch : touches) {
+    InputManager::PlatformEventId platform_id = (InputManager::PlatformEventId)touch;
+    CGPoint window_point = [touch locationInView:touch.view];
+    ScreenPoint screen_point(window_point.x * scale_, window_point.y * scale_);
+    GamePoint location = gameEngine_->screen_point_to_game_point(screen_point);
+    gameEngine_->input_manager().AddTouch(platform_id, action, location);
   }
-  return converted_touches;
 }
 
 @end

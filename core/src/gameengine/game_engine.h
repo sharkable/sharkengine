@@ -9,15 +9,13 @@
 #ifndef GAMEENGINE_GAMEENGINE_H_
 #define GAMEENGINE_GAMEENGINE_H_
 
-#include <utility>
-#include <vector>
-
 #include "gameengine/platform.h"
 #include "gameengine/positions.h"
 #include "gameengine/resource_loader.h"
 #include "gameengine/coordinates/coordinate_types.h"
 #include "gameengine/datastructures/staged_vector.h"
 #include "gameengine/input/input_event.h"
+#include "gameengine/input/input_manager.h"
 
 class AdModule;
 class AnalyticsModule;
@@ -42,13 +40,11 @@ extern "C" {
 class GameEngine {
  public:
   GameEngine();
-  ~GameEngine();
 
   // Platform functions
   // Don't call these from an app.
   void Update();
   void Render();
-  void AddInputEvent(const InputEvent &event);
 
   // App functions
   void SetSimulator(Simulator *simulator);
@@ -88,6 +84,7 @@ class GameEngine {
     sound_controller_ = sound_controller;
   }
 
+  InputManager &input_manager() { return input_manager_; }
   ResourceLoader &resource_loader() { return resource_loader_; }
 
   void load_positions(AssetReader &file) { positions_->LoadFile(file); }
@@ -137,8 +134,6 @@ class GameEngine {
   }
 
  private:
-  void ProcessInput();
-
   Simulator *simulator_;  // weak
   Renderer *renderer_;  // weak
   InputHandler *input_handler_;  // weak
@@ -153,10 +148,9 @@ class GameEngine {
   sp<InputModule> input_module_;
   sp<SharkSound::SoundController> sound_controller_;
 
+  InputManager input_manager_;
   ResourceLoader resource_loader_;
   sp<Positions> positions_;
-  std::vector<InputEvent> input_events_;
-  pthread_mutex_t user_input_mutex_;
   float mouse_delta_x_;
   float mouse_delta_y_;
   ScreenSize screen_size_;

@@ -14,9 +14,7 @@ InputEvent::InputEvent(Action action, Id id, GamePoint location)
       location_(location) {
 #if DEBUG
   if (IsKey()) shark_assert(location == kGamePointZero, "Keys don't have locations.");
-  if (action == kActionCancelAll) {
-    shark_assert(id == kIdCancelAll, "CancelAll action needs CancelAll id.");
-  }
+  shark_assert(id != kIdNone, "Invalid InputEvent::Id");
 #endif
 }
 
@@ -38,13 +36,13 @@ bool InputEvent::IsMouse() const {
 }
 
 bool InputEvent::IsKey() const {
-  return id_ >= kIdKeyboardSpace && id_ < kIdCancelAll;
+  return id_ >= kIdKeyboardSpace && id_ <= kIdKeyboardOther;
 }
 
 bool InputEvent::IsTouch() const {
-  return id_ < kIdTouch9;
+  return id_ > kIdNone && id_ <= kIdTouch9;
 }
 
 bool InputEvent::HasLocation() const {
-  return id_ <= kIdMouseButton0;
+  return id_ > kIdNone && id_ <= kIdMouseButton0;
 }

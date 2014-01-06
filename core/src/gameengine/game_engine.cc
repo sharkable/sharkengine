@@ -39,20 +39,15 @@ GameEngine::GameEngine()
   input_module_.reset(new InputModule());
 
   positions_ = sp<Positions>(new Positions());
-
-  pthread_mutex_init(&user_input_mutex_, NULL);
-}
-
-GameEngine::~GameEngine() {
-  pthread_mutex_destroy(&user_input_mutex_);
 }
 
 
 #pragma mark - Platform functions
 
 void GameEngine::Update() {
-  shark_assert(simulator_, "No Renderer found.");
-  ProcessInput();
+  shark_assert(input_handler_, "No InputHandler found.");
+  shark_assert(simulator_, "No Simulator found.");
+  input_manager_.HandleEvents(*input_handler_);
   simulator_->SimulateStep();
   game_tick_++;
 }
@@ -60,12 +55,6 @@ void GameEngine::Update() {
 void GameEngine::Render() {
   shark_assert(renderer_, "No Renderer found.");
   renderer_->Render(CoordinateSystem::BaseSystem());
-}
-
-void GameEngine::AddInputEvent(const InputEvent &event) {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-  input_events_.push_back(event);
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }
 
 
@@ -85,19 +74,4 @@ void GameEngine::SetInputHandler(InputHandler *input_handler) {
 
 sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
   return sp<AssetReader>(asset_reader_factory_module_->CreateAssetReader(filename));
-}
-
-
-#pragma mark - private
-
-void GameEngine::ProcessInput() {
-  shark_assert(!pthread_mutex_lock(&user_input_mutex_), "Error locking mutex.");
-
-  shark_assert(input_handler_, "No InputHandler found.");
-  for (InputEvent event : input_events_) {
-    input_handler_->HandleInputEvent(event, CoordinateSystem::BaseSystem());
-  }
-  input_events_.clear();
-
-  shark_assert(!pthread_mutex_unlock(&user_input_mutex_), "Error unlocking mutex.");
 }

@@ -63,8 +63,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [viewController_ start];
-  InputEvent event(InputEvent::kActionCancelAll, InputEvent::kIdCancelAll);
-  viewController_.gameEngine->AddInputEvent(event);
+  viewController_.gameEngine->input_manager().CancelAllActive();
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

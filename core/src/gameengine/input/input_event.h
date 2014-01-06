@@ -14,13 +14,14 @@
 class InputEvent {
  public:
   typedef enum {
-    kActionDown,
+    kActionDown = 0,
     kActionMove,
     kActionUp,
-    kActionCancelAll
+    kActionCancel,
   } Action;
 
   typedef enum {
+    kIdNone = 0,
     kIdTouch0,
     kIdTouch1,
     kIdTouch2,
@@ -36,7 +37,7 @@ class InputEvent {
     kIdKeyboardSpace,
     kIdKeyboardEsc,
     kIdKeyboardOther,
-    kIdCancelAll
+    kIdCount,
   } Id;
 
   InputEvent(Action action, Id id, GamePoint location = kGamePointZero);
