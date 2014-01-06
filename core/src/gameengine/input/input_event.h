@@ -36,7 +36,6 @@ class InputEvent {
     kIdMouseButton0,
     kIdKeyboardSpace,
     kIdKeyboardEsc,
-    kIdKeyboardOther,
     kIdCount,
   } Id;
 

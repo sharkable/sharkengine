@@ -108,12 +108,16 @@
   }
 }
 
-- (void)addKeyWithEvent:(NSEvent *)theEvent action:(InputEvent::Action)action {
+- (void)considerAddingKeyWithEvent:(NSEvent *)theEvent action:(InputEvent::Action)action {
   // Allow Esc to remove full screen. In windowed mode, it gets passed to the game.
   if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
     [super keyDown:theEvent];
   } else {
-    InputEvent::Id input_id;
+    if ([theEvent isARepeat]) {
+      return;
+    }
+
+    InputEvent::Id input_id = InputEvent::kIdNone;
     switch (theEvent.keyCode) {
       case 0x31:
         input_id = InputEvent::kIdKeyboardSpace;
@@ -121,22 +125,23 @@
       case 0x35:
         input_id = InputEvent::kIdKeyboardEsc;
         break;
-      default:
-        input_id = InputEvent::kIdKeyboardOther;
     }
+
+    if (input_id == InputEvent::kIdNone) {
+      return;
+    }
+
     InputEvent event(action, input_id);
     gameEngine_->input_manager().AddEvent(event);
   }
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
-  if (![theEvent isARepeat]) {
-    [self addKeyWithEvent:theEvent action:InputEvent::kActionDown];
-  }
+  [self considerAddingKeyWithEvent:theEvent action:InputEvent::kActionDown];
 }
 
 - (void)keyUp:(NSEvent *)theEvent {
-  [self addKeyWithEvent:theEvent action:InputEvent::kActionUp];
+  [self considerAddingKeyWithEvent:theEvent action:InputEvent::kActionUp];
 }
 
 

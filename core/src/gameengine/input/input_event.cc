@@ -36,7 +36,7 @@ bool InputEvent::IsMouse() const {
 }
 
 bool InputEvent::IsKey() const {
-  return id_ >= kIdKeyboardSpace && id_ <= kIdKeyboardOther;
+  return id_ >= kIdKeyboardSpace && id_ <= kIdKeyboardEsc;
 }
 
 bool InputEvent::IsTouch() const {
