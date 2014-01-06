@@ -11,6 +11,7 @@
 #include "gameengine/input/input_handler.h"
 
 InputManager::InputManager() {
+  memset(event_is_active_, 0, sizeof(bool) * InputEvent::kIdCount);
   pthread_mutex_init(&input_events_mutex_, NULL);
 }
 
