@@ -88,6 +88,9 @@
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
   gameEngine_->input_manager().AddEvent(event);
+
+  // A drag is both a movement for kIdMouseButton0 and a mouse delta.
+  [self mouseMoved:theEvent];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -97,6 +100,9 @@
   gameEngine_->input_manager().AddEvent(event);
 }
 
+// TODO It is more reasonable to expect this to be a pointer position. Rethink mouse input.
+// IDEA: mouse visible and invisible mode. In invisible mode you get deltas, in visible mode you
+//     get cursor positions.
 - (void)mouseMoved:(NSEvent *)theEvent {
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouse,
                    GamePoint(theEvent.deltaX, theEvent.deltaY));
