@@ -34,7 +34,7 @@
     default:
       return;
   }
-  self.inputModule->set_device_angle(angle);
+  self.inputModule->SetTargetDeviceAngle(angle);
 }
 
 @end
@@ -53,6 +53,11 @@ IOSInputModule::~IOSInputModule() {
 }
 
 
+void IOSInputModule::SetTargetDeviceAngle(float target_device_angle) {
+  device_angle_animation_.Reset(device_angle_, target_device_angle, 30, kAnimationTypeLinear);
+}
+
+
 #pragma mark - InputModule
 
 void IOSInputModule::TurnOnRotationUpdates() {
@@ -61,4 +66,14 @@ void IOSInputModule::TurnOnRotationUpdates() {
 
 void IOSInputModule::TurnOffRotationUpdates() {
   [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+}
+
+
+#pragma mark - Simulator
+
+void IOSInputModule::SimulateStep() {
+  // TODO Should this class be responsible for the angle animation?
+  if (device_angle_animation_.IsActive()) {
+    device_angle_ = device_angle_animation_.Update();
+  }
 }

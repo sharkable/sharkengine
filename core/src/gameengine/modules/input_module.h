@@ -10,14 +10,18 @@
 #define GAMEENGINE_INPUTMODULE_H_
 
 #include "gameengine/module.h"
+#include "gameengine/simulation/simulator.h"
 
-class InputModule : public Module {
+class InputModule : public Module, Simulator {
  public:
   virtual void HidePointer() {};
   virtual void ShowPointer() {};
   virtual void TurnOnRotationUpdates() {};
   virtual void TurnOffRotationUpdates() {};
   virtual float device_angle() { return 0.f; }
+
+  // Simulator
+  virtual void SimulateStep() {}
 };
 
 #endif

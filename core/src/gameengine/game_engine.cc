@@ -49,6 +49,7 @@ void GameEngine::Update() {
   shark_assert(simulator_, "No Simulator found.");
   input_manager_.HandleEvents(*input_handler_);
   simulator_->SimulateStep();
+  input_module_->SimulateStep();
   game_tick_++;
 }
 
