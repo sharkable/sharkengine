@@ -78,6 +78,7 @@
 		FE6495AE17A4690E0051BF31 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AD17A4690E0051BF31 /* OpenAL.framework */; };
 		FE6495B017A469340051BF31 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495AF17A469340051BF31 /* AudioToolbox.framework */; };
 		FE6495B217A4698D0051BF31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6495B117A4698D0051BF31 /* AVFoundation.framework */; };
+		FE837151187A701A005A8F55 /* input_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE83714F187A701A005A8F55 /* input_manager.cc */; };
 		FE92D31F1862585600A6039D /* coordinate_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE92D31A1862585600A6039D /* coordinate_system.cc */; };
 		FEAD989817B98B300084C405 /* SharkEngine.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = FEAD989717B98B300084C405 /* SharkEngine.entitlements */; };
 		FEB9DD2017D6B291006EE538 /* ApplePersistenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEB9DD1F17D6B291006EE538 /* ApplePersistenceModule.mm */; };
@@ -206,6 +207,8 @@
 		FE6495AD17A4690E0051BF31 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		FE6495AF17A469340051BF31 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FE6495B117A4698D0051BF31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FE83714F187A701A005A8F55 /* input_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_manager.cc; sourceTree = "<group>"; };
+		FE837150187A701A005A8F55 /* input_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_manager.h; sourceTree = "<group>"; };
 		FE92D3181862585600A6039D /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FE92D31A1862585600A6039D /* coordinate_system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordinate_system.cc; sourceTree = "<group>"; };
 		FE92D31B1862585600A6039D /* coordinate_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_system.h; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 				FE5B101718721C7D001781E5 /* input_event.cc */,
 				FE5B101818721C7D001781E5 /* input_event.h */,
 				FE5B101918721C7D001781E5 /* input_handler.h */,
+				FE83714F187A701A005A8F55 /* input_manager.cc */,
+				FE837150187A701A005A8F55 /* input_manager.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -863,6 +868,7 @@
 				FEF4C00B17B3FADA00D2085A /* game_engine.cc in Sources */,
 				FEF4C00C17B3FADA00D2085A /* mt19937ar.c in Sources */,
 				FEF4C00D17B3FADA00D2085A /* texture2d.cc in Sources */,
+				FE837151187A701A005A8F55 /* input_manager.cc in Sources */,
 				FEF4C00E17B3FADA00D2085A /* positions.cc in Sources */,
 				FEF4C00F17B3FADA00D2085A /* resource_loader.cc in Sources */,
 				FEF4C01017B3FADA00D2085A /* Back.cpp in Sources */,

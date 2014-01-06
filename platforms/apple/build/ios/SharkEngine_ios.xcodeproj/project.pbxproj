@@ -51,6 +51,7 @@
 		FE789BCA14F97B34007FCBC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */; };
 		FE789BCC14F97B34007FCBC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCB14F97B34007FCBC5 /* GLKit.framework */; };
 		FE789BCE14F97B34007FCBC5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */; };
+		FE837154187A702B005A8F55 /* input_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE837152187A702B005A8F55 /* input_manager.cc */; };
 		FE92D3011862552F00A6039D /* coordinate_system.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE92D2FE1862552F00A6039D /* coordinate_system.cc */; };
 		FE9493DF17EC9A9500B9D9AD /* label.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE9493DE17EC9A9500B9D9AD /* label.cc */; };
 		FEA16F5F1833FBD70001A8B1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA16F5E1833FBD70001A8B1 /* CoreMotion.framework */; };
@@ -190,6 +191,8 @@
 		FE789BC914F97B34007FCBC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FE789BCB14F97B34007FCBC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		FE789BCD14F97B34007FCBC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FE837152187A702B005A8F55 /* input_manager.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_manager.cc; sourceTree = "<group>"; };
+		FE837153187A702B005A8F55 /* input_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_manager.h; sourceTree = "<group>"; };
 		FE92D2FC1862552700A6039D /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
 		FE92D2FE1862552F00A6039D /* coordinate_system.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordinate_system.cc; sourceTree = "<group>"; };
 		FE92D2FF1862552F00A6039D /* coordinate_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate_system.h; sourceTree = "<group>"; };
@@ -484,6 +487,8 @@
 				FE5B102318728257001781E5 /* input_event.cc */,
 				FE5B102418728257001781E5 /* input_event.h */,
 				FE5B102518728257001781E5 /* input_handler.h */,
+				FE837152187A702B005A8F55 /* input_manager.cc */,
+				FE837153187A702B005A8F55 /* input_manager.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				FEF91D0F17E01CA100018432 /* MyOpenALSupport.mm in Sources */,
 				FE23DC4417E29FB800F28FF5 /* sound_controller.cc in Sources */,
 				FE23DC4517E29FB800F28FF5 /* sound.cc in Sources */,
+				FE837154187A702B005A8F55 /* input_manager.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +985,7 @@
 		FE5DF90D16E96AA400C0E399 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1075,6 +1082,7 @@
 		FE789BEB14F97B34007FCBC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1101,6 +1109,7 @@
 		FE789BEC14F97B34007FCBC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
