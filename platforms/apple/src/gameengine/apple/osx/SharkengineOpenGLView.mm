@@ -80,27 +80,27 @@
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionDown, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->AddInputEvent(event);
+  gameEngine_->input_manager().AddEvent(event);
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->AddInputEvent(event);
+  gameEngine_->input_manager().AddEvent(event);
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionUp, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->AddInputEvent(event);
+  gameEngine_->input_manager().AddEvent(event);
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouse,
                    GamePoint(theEvent.deltaX, theEvent.deltaY));
-  gameEngine_->AddInputEvent(event);
+  gameEngine_->input_manager().AddEvent(event);
   if (!CGCursorIsVisible()) {
     NSRect windowFrame = self.window.frame;
     CGPoint windowCenter = CGPointMake(NSMidX(windowFrame), NSMidY(windowFrame));
@@ -108,7 +108,7 @@
   }
 }
 
-- (void)keyDown:(NSEvent *)theEvent {
+- (void)addKeyWithEvent:(NSEvent *)theEvent action:(InputEvent::Action)action {
   // Allow Esc to remove full screen. In windowed mode, it gets passed to the game.
   if ([self isFullScreen] && theEvent.keyCode == 0x35 /* Esc */) {
     [super keyDown:theEvent];
@@ -124,9 +124,19 @@
       default:
         input_id = InputEvent::kIdKeyboardOther;
     }
-    InputEvent event(InputEvent::kActionDown, InputEvent::kIdKeyboardOther);
-    gameEngine_->AddInputEvent(event);
+    InputEvent event(action, input_id);
+    gameEngine_->input_manager().AddEvent(event);
   }
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+  if (![theEvent isARepeat]) {
+    [self addKeyWithEvent:theEvent action:InputEvent::kActionDown];
+  }
+}
+
+- (void)keyUp:(NSEvent *)theEvent {
+  [self addKeyWithEvent:theEvent action:InputEvent::kActionUp];
 }
 
 
