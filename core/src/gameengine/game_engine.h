@@ -91,22 +91,19 @@ class GameEngine {
   GamePoint position(std::string name) { return positions_->position(name); }
 
   // TODO consider refactoring this information exposure for game vs. platform, using inheritance.
-  ScreenSize screen_size() { return screen_size_; }
   void set_screen_size(ScreenSize screen_size) { screen_size_ = screen_size; }
-
-  ScreenPoint screen_offset() { return screen_offset_; }
   void set_screen_offset(ScreenPoint screen_offset) { screen_offset_ = screen_offset; }
 
-  GameSize game_size() { return screen_size_to_game_size(screen_size_); }
-  GamePoint game_offset() { return -screen_point_to_game_point(kScreenPointZero); }
-  GameRect game_rect() { return GameRect(-game_offset(), game_size()); }
-  GameRect game_rect_offset() {
+  GameSize screen_size() { return screen_size_to_game_size(screen_size_); }
+  GamePoint screen_offset() { return -screen_point_to_game_point(kScreenPointZero); }
+  GameRect screen_rect() { return GameRect(-screen_offset(), screen_size()); }
+  GameRect game_rect() {
     return GameRect(kGamePointZero,
-                    game_size() - GameSize(2 * game_offset().x, 2 * game_offset().y));
+                    screen_size() - GameSize(2 * screen_offset().x, 2 * screen_offset().y));
   }
   GamePoint game_center() {
-    GameSize size = game_size();
-    return GamePoint(size.width / 2.f, size.height / 2.f);
+    GameSize size = screen_size();
+    return GamePoint(size.width / 2.f, size.height / 2.f) - screen_offset();
   }
 
   double screen_to_game_point_ratio_x() { return screen_to_game_point_ratio_x_; }
