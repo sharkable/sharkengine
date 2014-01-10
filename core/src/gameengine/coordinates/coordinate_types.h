@@ -76,6 +76,10 @@ struct GamePoint {
     float length = sqrt(x * x + y * y);
     return GamePoint(x / length, y / length);
   }
+
+  inline float Angle() {
+    return atan2f(y, x) * 180.f / M_PI;
+  }
 };
 
 inline bool operator==(const GamePoint &point_1, const GamePoint &point_2) {
