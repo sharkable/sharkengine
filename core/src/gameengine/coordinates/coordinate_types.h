@@ -138,6 +138,11 @@ struct GameRect {
 
   GamePoint origin;
   GameSize size;
+
+  inline GamePoint TopLeft() { return origin; }
+  inline GamePoint TopRight() { return origin + GamePoint(size.width, 0); }
+  inline GamePoint BottomLeft() { return origin + GamePoint(0, size.height); }
+  inline GamePoint BottomRight() { return origin + GamePoint(size.width, size.height); }
 };
 
 inline GamePoint rect_center(GameRect rect) {
