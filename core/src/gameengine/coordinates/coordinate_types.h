@@ -9,6 +9,7 @@
 #ifndef GAMEENGINE_COORDINATES_COORDINATETYPES_H_
 #define GAMEENGINE_COORDINATES_COORDINATETYPES_H_
 
+#include <cmath>
 #include <string>
 
 /***************************************\
@@ -70,6 +71,11 @@ struct GamePoint {
 
   float x;
   float y;
+
+  inline GamePoint Normalize() {
+    float length = sqrt(x * x + y * y);
+    return GamePoint(x / length, y / length);
+  }
 };
 
 inline bool operator==(const GamePoint &point_1, const GamePoint &point_2) {
