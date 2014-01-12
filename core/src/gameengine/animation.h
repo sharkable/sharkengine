@@ -24,6 +24,7 @@ class Animation {
   Animation();
 
   void Reset(float start, float end, int ticks, AnimationType type);
+  double Value();
   double Update();
   bool IsActive();
   void Stop();

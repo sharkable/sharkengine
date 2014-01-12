@@ -29,8 +29,7 @@ void Animation::Reset(float start, float end, int ticks, AnimationType type) {
   type_ = type;
 }
 
-double Animation::Update() {
-  ticks_++;
+double Animation::Value() {
   if (ticks_ >= total_ticks_) {
     return end_;
   }
@@ -50,6 +49,11 @@ double Animation::Update() {
     case kAnimationTypeBounceEaseInOut:
       return Bounce::easeInOut(ticks_, start_, distance_, total_ticks_);
   }
+}
+
+double Animation::Update() {
+  ticks_++;
+  return Value();
 }
 
 bool Animation::IsActive() {
