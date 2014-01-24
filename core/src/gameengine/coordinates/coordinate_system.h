@@ -19,6 +19,7 @@ class CoordinateSystem {
   CoordinateSystem Translate(GamePoint translation) const;
   CoordinateSystem Rotate(float angle) const;
   CoordinateSystem Scale(float scale) const;
+  CoordinateSystem ScaleAroundPoint(float scale, GamePoint point) const;
 
   // Convert to and from BaseSystem
   GamePoint PointToBasePoint(GamePoint p) const;

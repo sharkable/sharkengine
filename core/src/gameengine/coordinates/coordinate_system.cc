@@ -20,24 +20,15 @@ CoordinateSystem const & CoordinateSystem::BaseSystem() {
 #pragma mark - System Transformations
 
 CoordinateSystem CoordinateSystem::Translate(GamePoint translation) const {
-  CoordinateSystem subsystem;
+  CoordinateSystem subsystem(*this);
   subsystem.origin_ = PointToBasePoint(translation);
-  subsystem.angle_ = angle_;
-  subsystem.scale_ = scale_;
-  subsystem.cos_angle_ = cos_angle_;
-  subsystem.sin_angle_ = sin_angle_;
   return subsystem;
 }
 
 CoordinateSystem CoordinateSystem::Rotate(float angle) const {
-  CoordinateSystem subsystem;
-  subsystem.origin_ = origin_;
-  subsystem.angle_ = angle_ + angle;
-  subsystem.scale_ = scale_;
-  if (angle == 0.f) {
-    subsystem.cos_angle_ = cos_angle_;
-    subsystem.sin_angle_ = sin_angle_;
-  } else {
+  CoordinateSystem subsystem(*this);
+  if (angle != 0.f) {
+    subsystem.angle_ += angle;
     subsystem.cos_angle_ = cosf(subsystem.angle_ * M_PI / 180.f);
     subsystem.sin_angle_ = sinf(subsystem.angle_ * M_PI / 180.f);
   }
@@ -45,12 +36,14 @@ CoordinateSystem CoordinateSystem::Rotate(float angle) const {
 }
 
 CoordinateSystem CoordinateSystem::Scale(float scale) const {
-  CoordinateSystem subsystem;
-  subsystem.origin_ = origin_;
-  subsystem.angle_ = angle_;
-  subsystem.scale_ = scale_ * scale;
-  subsystem.cos_angle_ = cos_angle_;
-  subsystem.sin_angle_ = sin_angle_;
+  CoordinateSystem subsystem(*this);
+  subsystem.scale_ *= scale;
+  return subsystem;
+}
+
+CoordinateSystem CoordinateSystem::ScaleAroundPoint(float scale, GamePoint point) const {
+  CoordinateSystem subsystem = Translate(point * (1 - scale));
+  subsystem.scale_ *= scale;
   return subsystem;
 }
 
