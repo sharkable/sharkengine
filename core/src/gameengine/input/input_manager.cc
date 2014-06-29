@@ -40,10 +40,11 @@ void InputManager::AddTouch(PlatformEventId platform_id, InputEvent::Action acti
 #if DEBUG
     shark_assert(touch_ids_.find(platform_id) == touch_ids_.end(), "Touch used twice!");
 #endif
-    for (InputEvent::Id id = InputEvent::kIdTouch0; id <= InputEvent::kIdTouch9; id++) {
+    for (int id = InputEvent::kIdTouch0; id <= InputEvent::kIdTouch9; id++) {
+      InputEvent::Id id_enum = static_cast<InputEvent::Id>(id);
       if (!event_is_active_[id]) {
-        touch_ids_[platform_id] = id;
-        AddEvent(InputEvent(action, id, location));
+        touch_ids_[platform_id] = id_enum;
+        AddEvent(InputEvent(action, static_cast<InputEvent::Id>(id_enum), location));
         break;
       }
     }
@@ -60,9 +61,10 @@ void InputManager::AddTouch(PlatformEventId platform_id, InputEvent::Action acti
 
 void InputManager::CancelAllActive() {
   shark_assert(!pthread_mutex_lock(&input_events_mutex_), "Error locking mutex.");
-  for (InputEvent::Id id = InputEvent::kIdNone; id < InputEvent::kIdCount; id++) {
+  for (int id = InputEvent::kIdNone; id < InputEvent::kIdCount; id++) {
     if (event_is_active_[id]) {
-      input_events_.push_back(InputEvent(InputEvent::kActionCancel, id));
+      input_events_.push_back(InputEvent(InputEvent::kActionCancel,
+                                         static_cast<InputEvent::Id>(id)));
       event_is_active_[id] = false;
     }
   }
