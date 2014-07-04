@@ -18,8 +18,11 @@
 
 // Game Size
 
+struct GamePoint;
+
 struct GameSize {
   GameSize() {}
+  GameSize(GamePoint const &point);
 
   GameSize(float width, float height) {
     this->width = width;
@@ -58,11 +61,36 @@ inline GameSize & operator-=(GameSize &size_1, const GameSize &size_2) {
   return size_1;
 }
 
+inline GameSize operator*(const GameSize &size, float scalar) {
+  return GameSize(size.width * scalar, size.height * scalar);
+}
+
+inline GameSize operator*(float scalar, const GameSize &size) {
+  return GameSize(size.width * scalar, size.height * scalar);
+}
+
+inline GameSize operator/(const GameSize &size, float scalar) {
+  return GameSize(size.width / scalar, size.height / scalar);
+}
+
+inline GameSize & operator*=(GameSize &size, float scalar) {
+  size.width *= scalar;
+  size.height *= scalar;
+  return size;
+}
+
+inline GameSize & operator/=(GameSize &size, float scalar) {
+  size.width /= scalar;
+  size.height /= scalar;
+  return size;
+}
+
 
 // Game Point
 
 struct GamePoint {
   GamePoint() {}
+  GamePoint(GameSize const &size);
 
   GamePoint(float x, float y) {
     this->x = x;
@@ -118,9 +146,19 @@ inline GamePoint operator*(float scalar, const GamePoint &point) {
   return GamePoint(point.x * scalar, point.y * scalar);
 }
 
+inline GamePoint operator/(const GamePoint &point, float scalar) {
+  return GamePoint(point.x / scalar, point.y / scalar);
+}
+
 inline GamePoint & operator*=(GamePoint &point, float scalar) {
   point.x *= scalar;
   point.y *= scalar;
+  return point;
+}
+
+inline GamePoint & operator/=(GamePoint &point, float scalar) {
+  point.x /= scalar;
+  point.y /= scalar;
   return point;
 }
 
@@ -218,7 +256,6 @@ inline ScreenPoint & operator-=(ScreenPoint &point_1, const ScreenPoint &point_2
 
 static const ScreenSize kScreenSizeZero(0, 0);
 static const ScreenPoint kScreenPointZero(0, 0);
-
 
 
 #pragma mark - debug
