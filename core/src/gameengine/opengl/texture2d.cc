@@ -110,8 +110,8 @@ void Texture2D::Init(const void *data, Texture2DPixelFormat pixelFormat, uint32_
 
   glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
   glBindTexture(GL_TEXTURE_2D, opengl_id_);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
   switch(pixelFormat) {
     case kTexture2DPixelFormat_RGBA8888:
