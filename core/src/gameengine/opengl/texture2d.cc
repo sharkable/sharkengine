@@ -94,6 +94,55 @@ void Texture2D::Draw(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat an
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
+void Texture2D::Draw(ScreenPoint point, float left, float right, float top, float bottom,
+                     GLfloat alpha, GLfloat scale, GLfloat angle, bool center) {
+  assert(opengl_id_);
+
+  GLfloat coordinates[12];
+  GLfloat vertices[12];
+  GLfloat *vertices_to_copy = center ? centered_vertices_ : vertices_;
+
+  coordinates[0] = left * max_s_;
+  coordinates[1] = bottom * max_t_;
+
+  coordinates[2] = right * max_s_;
+  coordinates[3] = bottom * max_t_;
+
+  coordinates[4] = left * max_s_;
+  coordinates[5] = top * max_t_;
+
+  coordinates[6] = right * max_s_;
+  coordinates[7] = top * max_t_;
+
+  vertices[0] = vertices_to_copy[0] + left;
+  vertices[1] = vertices_to_copy[1] - bottom;
+  vertices[2] = 0.f;
+
+  vertices[3] = vertices_to_copy[3] - right;
+  vertices[4] = vertices_to_copy[4] - bottom;
+  vertices[5] = 0.f;
+
+  vertices[6] = vertices_to_copy[6] + left;
+  vertices[7] = vertices_to_copy[7] + top;
+  vertices[8] = 0.f;
+
+  vertices[9] = vertices_to_copy[9] - right;
+  vertices[10] = vertices_to_copy[10] + top;
+  vertices[11] = 0.f;
+
+  glLoadIdentity();
+  glBindTexture(GL_TEXTURE_2D, opengl_id_);
+  glVertexPointer(3, GL_FLOAT, 0, vertices);
+  glTexCoordPointer(2, GL_FLOAT, 0, coordinates);
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE);
+  glTranslatef(point.x, point.y, 0.0);
+  glScalef(scale, scale, 0.0);
+  glRotatef(angle, 0.0, 0.0, 1.0);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glColor4f(1.0, 1.0, 1.0, alpha);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+}
+
 
 #pragma mark - private
 

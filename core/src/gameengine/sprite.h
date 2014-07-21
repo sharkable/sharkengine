@@ -65,6 +65,12 @@ class Sprite {
                   anchor_ == kAnchorCenter);
   }
 
+  void Draw(CoordinateSystem coordinate_system, float left, float right, float top, float bottom) {
+    texture_.Draw(game_engine_.game_point_to_screen_point(coordinate_system.origin()), left, right,
+                  top, bottom, alpha_, coordinate_system.scale(), coordinate_system.angle(),
+                  anchor_ == kAnchorCenter);
+  }
+
   GameEngine &game_engine_;
   Anchor anchor_;
   Texture2D texture_;
