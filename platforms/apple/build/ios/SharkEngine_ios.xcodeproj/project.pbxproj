@@ -44,6 +44,7 @@
 		FE3F442C16C445CD00E8BEDF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3F442A16C445CD00E8BEDF /* StoreKit.framework */; };
 		FE5B102D18728257001781E5 /* input_event.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE5B102318728257001781E5 /* input_event.cc */; };
 		FE616C5617D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */; };
+		FE61AB161986CE2B00FEB597 /* coordinate_types.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE61AB151986CE2B00FEB597 /* coordinate_types.cc */; };
 		FE65436117BA9B6400B59390 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */; };
 		FE65436317BA9B9600B59390 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE65436217BA9B9500B59390 /* Security.framework */; };
 		FE789BC614F97B34007FCBC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE789BC514F97B34007FCBC5 /* UIKit.framework */; };
@@ -183,6 +184,7 @@
 		FE5B102C18728257001781E5 /* simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simulator.h; sourceTree = "<group>"; };
 		FE616C5417D7CB0000FF061B /* IOSAssetReaderFactoryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAssetReaderFactoryModule.h; sourceTree = "<group>"; };
 		FE616C5517D7CB0000FF061B /* IOSAssetReaderFactoryModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSAssetReaderFactoryModule.mm; sourceTree = "<group>"; };
+		FE61AB151986CE2B00FEB597 /* coordinate_types.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordinate_types.cc; sourceTree = "<group>"; };
 		FE65436017BA9B6400B59390 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		FE65436217BA9B9500B59390 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE789BC114F97B34007FCBC5 /* AirHockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirHockey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -563,6 +565,7 @@
 			children = (
 				FE92D2FE1862552F00A6039D /* coordinate_system.cc */,
 				FE92D2FF1862552F00A6039D /* coordinate_system.h */,
+				FE61AB151986CE2B00FEB597 /* coordinate_types.cc */,
 				FE92D3001862552F00A6039D /* coordinate_types.h */,
 			);
 			path = coordinates;
@@ -877,6 +880,7 @@
 				FEF9B85A17A9BFB400867739 /* Elastic.cpp in Sources */,
 				FE1DB9621811BF50009D1C3D /* font.cc in Sources */,
 				FEF9B85B17A9BFB400867739 /* Expo.cpp in Sources */,
+				FE61AB161986CE2B00FEB597 /* coordinate_types.cc in Sources */,
 				FEF9B85C17A9BFB400867739 /* Linear.cpp in Sources */,
 				FEF9B85D17A9BFB400867739 /* Quad.cpp in Sources */,
 				FEF9B85E17A9BFB400867739 /* Quart.cpp in Sources */,
