@@ -1,6 +1,6 @@
 //
 //  AndroidAppStoreModule.java
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-07-19.
 //  Copyright 2013 Sharkable. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  AndroidAnalyticsModule.java
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-07-01. (Oh Canada!)
 //  Copyright 2013 Sharkable. All rights reserved.

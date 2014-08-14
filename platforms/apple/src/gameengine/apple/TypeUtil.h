@@ -1,6 +1,6 @@
 //
 //  TypeUtil.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2012-03-08.
 //  Copyright 2012 Sharkable. All rights reserved.

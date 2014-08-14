@@ -1,6 +1,6 @@
 //
 //  sorted_renderer.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-12-08.
 //  Copyright 2013 Sharkable. All rights reserved.

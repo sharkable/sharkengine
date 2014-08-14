@@ -1,6 +1,6 @@
 //
 //  persistence_module.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-05-02.
 //  Copyright 2010 Sharkable. All rights reserved.

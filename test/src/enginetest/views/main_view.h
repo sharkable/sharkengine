@@ -1,6 +1,6 @@
 //
 //  main_view.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2/12/13.
 //  Copyright (c) 2013 Jon Sharkey. All rights reserved.

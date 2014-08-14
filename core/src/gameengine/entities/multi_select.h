@@ -1,6 +1,6 @@
 //
 //  multi_select.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-04-30.
 //  Copyright 2010 Sharkable. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  IOSAppStoreModule.mm
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
 //  Copyright 2013 Sharkable. All rights reserved.

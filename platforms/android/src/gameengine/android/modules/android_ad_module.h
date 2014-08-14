@@ -1,6 +1,6 @@
 //
 //  android_ad_module.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-04-09.
 //  Copyright 2013 Sharkable. All rights reserved.

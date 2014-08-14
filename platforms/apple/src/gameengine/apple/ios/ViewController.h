@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2012-04-01.
 //  Copyright 2012 Sharkable. All rights reserved.

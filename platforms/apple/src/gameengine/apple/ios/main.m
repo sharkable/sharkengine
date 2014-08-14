@@ -1,6 +1,6 @@
 //
 //  main.m
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-05-07.
 //  Copyright 2010 Sharkable. All rights reserved.

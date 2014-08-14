@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jonathan Sharkey on 2/12/13.
 //  Copyright Sharkable 2013. All rights reserved.

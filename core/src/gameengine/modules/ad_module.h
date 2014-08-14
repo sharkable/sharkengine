@@ -1,6 +1,6 @@
 //
 //  ad_module.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2012-02-25.
 //  Copyright 2012 Sharkable. All rights reserved.

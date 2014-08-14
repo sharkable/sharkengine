@@ -1,6 +1,6 @@
 //
 //  label.cc
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-09-18.
 //  Copyright 2013 Sharkable. All rights reserved.

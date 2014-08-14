@@ -1,6 +1,6 @@
 //
 //  coordinate_system.h
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-12-10.
 //  Copyright 2013 Sharkable. All rights reserved.

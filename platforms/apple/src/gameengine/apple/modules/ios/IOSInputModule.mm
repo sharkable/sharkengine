@@ -1,6 +1,6 @@
 //
 //  IOSInputModule.mm
-//  GameEngine
+//  SharkEngine
 //
 //  Created by Jon Sharkey on 2013-11-13.
 //  Copyright 2013 Sharkable. All rights reserved.
