@@ -94,41 +94,69 @@ void Texture2D::Draw(ScreenPoint point, GLfloat alpha, GLfloat scale, GLfloat an
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void Texture2D::Draw(ScreenPoint point, float left, float right, float top, float bottom,
-                     GLfloat alpha, GLfloat scale, GLfloat angle, bool center) {
+void Texture2D::Draw(ScreenPoint point, GameRect subtexture, GLfloat alpha, GLfloat scale,
+                     GLfloat angle, bool center) {
   assert(opengl_id_);
 
   GLfloat coordinates[12];
   GLfloat vertices[12];
-  GLfloat *vertices_to_copy = center ? centered_vertices_ : vertices_;
 
-  coordinates[0] = left * max_s_;
-  coordinates[1] = bottom * max_t_;
+  shark_log("width / height: %d %d %s %s", width_, height_, to_string(subtexture).c_str(),
+            to_string(size_).c_str());
 
-  coordinates[2] = right * max_s_;
-  coordinates[3] = bottom * max_t_;
+  coordinates[0] = subtexture.origin.x / width_;
+  coordinates[1] = (subtexture.origin.y + subtexture.size.height) / height_;
 
-  coordinates[4] = left * max_s_;
-  coordinates[5] = top * max_t_;
+  coordinates[2] = (subtexture.origin.x + subtexture.size.width) / width_;
+  coordinates[3] = (subtexture.origin.y + subtexture.size.height) / height_;
 
-  coordinates[6] = right * max_s_;
-  coordinates[7] = top * max_t_;
+  coordinates[4] = subtexture.origin.x / width_;
+  coordinates[5] = subtexture.origin.y / height_;
 
-  vertices[0] = vertices_to_copy[0] + left;
-  vertices[1] = vertices_to_copy[1] - bottom;
-  vertices[2] = 0.f;
+  coordinates[6] = (subtexture.origin.x + subtexture.size.width) / width_;
+  coordinates[7] = subtexture.origin.y / height_;
 
-  vertices[3] = vertices_to_copy[3] - right;
-  vertices[4] = vertices_to_copy[4] - bottom;
-  vertices[5] = 0.f;
+  if (center) {
+    vertices[0] = -subtexture.size.width / 2.f;
+    vertices[1] = subtexture.size.height / 2.f;
+    vertices[2] = 0.f;
 
-  vertices[6] = vertices_to_copy[6] + left;
-  vertices[7] = vertices_to_copy[7] + top;
-  vertices[8] = 0.f;
+    vertices[3] = subtexture.size.width / 2.f;
+    vertices[4] = subtexture.size.height / 2.f;
+    vertices[5] = 0.f;
 
-  vertices[9] = vertices_to_copy[9] - right;
-  vertices[10] = vertices_to_copy[10] + top;
-  vertices[11] = 0.f;
+    vertices[6] = -subtexture.size.width / 2.f;
+    vertices[7] = -subtexture.size.height / 2.f;
+    vertices[8] = 0.f;
+
+    vertices[9] = subtexture.size.width / 2.f;
+    vertices[10] = -subtexture.size.height / 2.f;
+    vertices[11] = 0.f;
+  } else {
+    vertices[0] = 0.f;
+    vertices[1] = subtexture.size.height;
+    vertices[2] = 0.f;
+
+    vertices[3] = subtexture.size.width;
+    vertices[4] = subtexture.size.height;
+    vertices[5] = 0.f;
+
+    vertices[6] = 0.f;
+    vertices[7] = 0.f;
+    vertices[8] = 0.f;
+
+    vertices[9] = subtexture.size.width;
+    vertices[10] = 0.f;
+    vertices[11] = 0.f;
+  }
+
+  for (int i = 0; i < 12; i++) {
+    shark_log("vertices: %f\t%f", vertices_[i], vertices[i]);
+  }
+  for (int i = 0; i < 8; i++) {
+    shark_log("coords:   %f\t%f", coordinates_[i], coordinates[i]);
+  }
+  shark_log("");
 
   glLoadIdentity();
   glBindTexture(GL_TEXTURE_2D, opengl_id_);
