@@ -1,6 +1,6 @@
 //
 //  staged_vector.h
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-09-27.
 //  Copyright 2013 Sharkable. All rights reserved.

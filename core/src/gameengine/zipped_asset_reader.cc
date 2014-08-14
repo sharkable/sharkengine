@@ -1,6 +1,6 @@
 //
 //  zipped_asset_reader.cc
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-19.
 //  Copyright 2013 Sharkable. All rights reserved.

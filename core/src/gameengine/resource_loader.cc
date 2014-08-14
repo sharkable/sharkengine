@@ -1,6 +1,6 @@
 //
 //  ResourceLoader.m
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2009-09-28.
 //  Copyright 2009 Sharkable. All rights reserved.

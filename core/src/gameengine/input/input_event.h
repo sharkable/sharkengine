@@ -1,6 +1,6 @@
 //
 //  input_event.h
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-12-19.
 //  Copyright 2013 Sharkable. All rights reserved.

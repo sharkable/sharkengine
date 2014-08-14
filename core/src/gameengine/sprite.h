@@ -1,6 +1,6 @@
 //
 //  sprite.h
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-01-27.
 //  Copyright 2013 Sharkable. All rights reserved.

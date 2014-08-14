@@ -1,6 +1,6 @@
 //
 //  app_store_module.h
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-03-20.
 //  Copyright 2013 Sharkable. All rights reserved.

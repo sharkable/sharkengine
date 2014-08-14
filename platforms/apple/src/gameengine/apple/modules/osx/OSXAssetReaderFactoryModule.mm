@@ -1,6 +1,6 @@
 //
 //  OSXAssetReaderFactoryModule.mm
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-08-11.
 //  Copyright 2013 Sharkable. All rights reserved.

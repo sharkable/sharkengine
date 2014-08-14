@@ -1,6 +1,6 @@
 //
 //  asset_reader_factory_module.h
-//  SharkEngine
+//  GameEngine
 //
 //  Created by Jon Sharkey on 2013-04-19.
 //  Copyright 2013 Sharkable. All rights reserved.
