@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_INPUT_INPUTHANDLER_H_
-#define GAMEENGINE_INPUT_INPUTHANDLER_H_
+#ifndef SHARKENGINE_INPUT_INPUTHANDLER_H_
+#define SHARKENGINE_INPUT_INPUTHANDLER_H_
 
 #include "gameengine/coordinates/coordinate_system.h"
 #include "gameengine/input/input_event.h"

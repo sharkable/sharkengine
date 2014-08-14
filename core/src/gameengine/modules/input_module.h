@@ -6,8 +6,8 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_INPUTMODULE_H_
-#define GAMEENGINE_INPUTMODULE_H_
+#ifndef SHARKENGINE_INPUTMODULE_H_
+#define SHARKENGINE_INPUTMODULE_H_
 
 #include "gameengine/module.h"
 #include "gameengine/simulation/simulator.h"

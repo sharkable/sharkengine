@@ -6,8 +6,8 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ADMODULE_H_
-#define GAMEENGINE_ADMODULE_H_
+#ifndef SHARKENGINE_ADMODULE_H_
+#define SHARKENGINE_ADMODULE_H_
 
 #include <string>
 

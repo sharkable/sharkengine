@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_INPUT_INPUTEVENT_H_
-#define GAMEENGINE_INPUT_INPUTEVENT_H_
+#ifndef SHARKENGINE_INPUT_INPUTEVENT_H_
+#define SHARKENGINE_INPUT_INPUTEVENT_H_
 
 #include "gameengine/coordinates/coordinate_types.h"
 

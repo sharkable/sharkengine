@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_SPRITE_H_
-#define GAMEENGINE_SPRITE_H_
+#ifndef SHARKENGINE_SPRITE_H_
+#define SHARKENGINE_SPRITE_H_
 
 #include "gameengine/game_engine.h"
 #include "gameengine/resource_loader.h"

@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ENTITIES_MULTISELECT_H_
-#define GAMEENGINE_ENTITIES_MULTISELECT_H_
+#ifndef SHARKENGINE_ENTITIES_MULTISELECT_H_
+#define SHARKENGINE_ENTITIES_MULTISELECT_H_
 
 #include <vector>
 

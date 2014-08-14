@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_FONT_H_
-#define GAMEENGINE_FONT_H_
+#ifndef SHARKENGINE_FONT_H_
+#define SHARKENGINE_FONT_H_
 
 #include <map>
 #include <string>

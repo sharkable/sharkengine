@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_MODULE_H_
-#define GAMEENGINE_MODULE_H_
+#ifndef SHARKENGINE_MODULE_H_
+#define SHARKENGINE_MODULE_H_
 
 class Module {
  public:

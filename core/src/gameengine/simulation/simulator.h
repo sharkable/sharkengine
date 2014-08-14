@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_SIMULATION_SIMULATOR_H_
-#define GAMEENGINE_SIMULATION_SIMULATOR_H_
+#ifndef SHARKENGINE_SIMULATION_SIMULATOR_H_
+#define SHARKENGINE_SIMULATION_SIMULATOR_H_
 
 class Simulator {
  public:

@@ -6,8 +6,8 @@
 //  Copyright 2009 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_RESOURCELOADER_H_
-#define GAMEENGINE_RESOURCELOADER_H_
+#ifndef SHARKENGINE_RESOURCELOADER_H_
+#define SHARKENGINE_RESOURCELOADER_H_
 
 #include <map>
 #include <string>

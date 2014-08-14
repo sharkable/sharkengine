@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ENTITIES_ANIMATABLE_H_
-#define GAMEENGINE_ENTITIES_ANIMATABLE_H_
+#ifndef SHARKENGINE_ENTITIES_ANIMATABLE_H_
+#define SHARKENGINE_ENTITIES_ANIMATABLE_H_
 
 #include "gameengine/animation.h"
 #include "gameengine/coordinates/coordinate_types.h"

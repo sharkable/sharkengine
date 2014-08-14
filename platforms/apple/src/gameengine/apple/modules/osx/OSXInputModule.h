@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
-#define GAMEENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
+#ifndef SHARKENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
+#define SHARKENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
 
 #include "gameengine/modules/input_module.h"
 

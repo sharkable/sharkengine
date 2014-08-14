@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPSTOREMODULE_H_
-#define GAMEENGINE_APPSTOREMODULE_H_
+#ifndef SHARKENGINE_APPSTOREMODULE_H_
+#define SHARKENGINE_APPSTOREMODULE_H_
 
 #include "gameengine/module.h"
 

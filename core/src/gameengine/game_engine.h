@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_GAMEENGINE_H_
-#define GAMEENGINE_GAMEENGINE_H_
+#ifndef SHARKENGINE_SHARKENGINE_H_
+#define SHARKENGINE_SHARKENGINE_H_
 
 #include "gameengine/platform.h"
 #include "gameengine/positions.h"

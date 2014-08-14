@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_RENDER_RENDERER_H_
-#define GAMEENGINE_RENDER_RENDERER_H_
+#ifndef SHARKENGINE_RENDER_RENDERER_H_
+#define SHARKENGINE_RENDER_RENDERER_H_
 
 #include "gameengine/coordinates/coordinate_system.h"
 

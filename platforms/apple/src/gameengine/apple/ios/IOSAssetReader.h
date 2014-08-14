@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_APPLE_IOS_IOSASSETREADER_H_
-#define GAMEENGINE_APPLE_IOS_IOSASSETREADER_H_
+#ifndef SHARKENGINE_APPLE_IOS_IOSASSETREADER_H_
+#define SHARKENGINE_APPLE_IOS_IOSASSETREADER_H_
 
 #import <Foundation/Foundation.h>
 

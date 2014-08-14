@@ -6,8 +6,8 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ENTITIES_SIMPLEITEM_H_
-#define GAMEENGINE_ENTITIES_SIMPLEITEM_H_
+#ifndef SHARKENGINE_ENTITIES_SIMPLEITEM_H_
+#define SHARKENGINE_ENTITIES_SIMPLEITEM_H_
 
 #include <vector>
 

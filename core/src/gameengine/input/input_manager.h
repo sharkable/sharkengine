@@ -6,8 +6,8 @@
 //  Copyright 2014 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_INPUT_INPUTMANAGER_H_
-#define GAMEENGINE_INPUT_INPUTMANAGER_H_
+#ifndef SHARKENGINE_INPUT_INPUTMANAGER_H_
+#define SHARKENGINE_INPUT_INPUTMANAGER_H_
 
 #include <utility>
 #include <map>

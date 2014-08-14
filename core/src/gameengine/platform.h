@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_PLATFORMTYPES_H_
-#define GAMEENGINE_PLATFORMTYPES_H_
+#ifndef SHARKENGINE_PLATFORMTYPES_H_
+#define SHARKENGINE_PLATFORMTYPES_H_
 
 class Platform {
  public:

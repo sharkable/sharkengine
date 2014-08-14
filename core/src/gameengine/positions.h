@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_POSITIONS_H_
-#define GAMEENGINE_POSITIONS_H_
+#ifndef SHARKENGINE_POSITIONS_H_
+#define SHARKENGINE_POSITIONS_H_
 
 #include "gameengine/coordinates/coordinate_types.h"
 

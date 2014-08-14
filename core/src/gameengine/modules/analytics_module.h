@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ANALYITICSMODULE_H_
-#define GAMEENGINE_ANALYITICSMODULE_H_
+#ifndef SHARKENGINE_ANALYITICSMODULE_H_
+#define SHARKENGINE_ANALYITICSMODULE_H_
 
 #include "gameengine/module.h"
 

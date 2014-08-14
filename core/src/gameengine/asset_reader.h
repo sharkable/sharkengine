@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_ASSETREADER_H_
-#define GAMEENGINE_ASSETREADER_H_
+#ifndef SHARKENGINE_ASSETREADER_H_
+#define SHARKENGINE_ASSETREADER_H_
 
 class AssetReader {
  public:

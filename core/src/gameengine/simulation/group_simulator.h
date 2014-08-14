@@ -6,8 +6,8 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#ifndef GAMEENGINE_SIMULATION_GROUPSIMULATOR_H_
-#define GAMEENGINE_SIMULATION_GROUPSIMULATOR_H_
+#ifndef SHARKENGINE_SIMULATION_GROUPSIMULATOR_H_
+#define SHARKENGINE_SIMULATION_GROUPSIMULATOR_H_
 
 #include "gameengine/datastructures/staged_vector.h"
 
