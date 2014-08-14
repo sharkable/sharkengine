@@ -9,9 +9,9 @@
 #ifndef SHARKENGINE_RENDER_GROUPRENDERER_H_
 #define SHARKENGINE_RENDER_GROUPRENDERER_H_
 
-#include "gameengine/datastructures/staged_vector.h"
+#include "sharkengine/datastructures/staged_vector.h"
 
-#include "gameengine/render/renderer.h"
+#include "sharkengine/render/renderer.h"
 
 class GroupRenderer : public Renderer {
  public:

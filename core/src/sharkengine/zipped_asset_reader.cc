@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/zipped_asset_reader.h"
+#include "sharkengine/zipped_asset_reader.h"
 
-#include "gameengine/thirdparty/libzip/zip.h"
+#include "sharkengine/thirdparty/libzip/zip.h"
 
 ZippedAssetReader::ZippedAssetReader(zip *zip, std::string filename)
     : zip_(zip),

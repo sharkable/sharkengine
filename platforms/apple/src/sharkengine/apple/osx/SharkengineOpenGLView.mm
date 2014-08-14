@@ -10,13 +10,13 @@
 
 #include "sharksound/apple/AppleSoundController.h"
 
-#include "gameengine/game_engine.h"
-#include "gameengine/platform.h"
-#include "gameengine/apple/modules/ApplePersistenceModule.h"
-#include "gameengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
-#include "gameengine/apple/modules/osx/OSXInputModule.h"
-#include "gameengine/apple/osx/AppDelegate.h"
-#include "gameengine/input/input_event.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/platform.h"
+#include "sharkengine/apple/modules/ApplePersistenceModule.h"
+#include "sharkengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
+#include "sharkengine/apple/modules/osx/OSXInputModule.h"
+#include "sharkengine/apple/osx/AppDelegate.h"
+#include "sharkengine/input/input_event.h"
 
 @implementation SharkengineOpenGLView
 

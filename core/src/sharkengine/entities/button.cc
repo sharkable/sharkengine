@@ -6,12 +6,12 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/entities/button.h"
+#include "sharkengine/entities/button.h"
 
 #include "sharksound/sound.h"
 #include "sharksound/sound_controller.h"
 
-#include "gameengine/resource_loader.h"
+#include "sharkengine/resource_loader.h"
 
 using std::vector;
 

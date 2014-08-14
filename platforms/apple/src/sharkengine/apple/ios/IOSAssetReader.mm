@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/ios/IOSAssetReader.h"
+#include "sharkengine/apple/ios/IOSAssetReader.h"
 
-#include "gameengine/apple/TypeUtil.h"
+#include "sharkengine/apple/TypeUtil.h"
 
 #include <sys/stat.h>
 

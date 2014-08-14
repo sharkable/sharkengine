@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_RENDER_RENDERER_H_
 #define SHARKENGINE_RENDER_RENDERER_H_
 
-#include "gameengine/coordinates/coordinate_system.h"
+#include "sharkengine/coordinates/coordinate_system.h"
 
 class Renderer {
  public:

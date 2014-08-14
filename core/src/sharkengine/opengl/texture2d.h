@@ -66,7 +66,7 @@
 #include <string>
 
 // TODO this is overreaching... this shouldn't know about the game engine.
-#include "gameengine/coordinates/coordinate_types.h"
+#include "sharkengine/coordinates/coordinate_types.h"
 
 #define kMaxTextureSize   4096
 

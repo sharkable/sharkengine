@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
+#include "sharkengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
 
-#include "gameengine/apple/ios/IOSAssetReader.h"
+#include "sharkengine/apple/ios/IOSAssetReader.h"
 
 using std::string;
 

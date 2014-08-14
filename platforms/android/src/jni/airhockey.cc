@@ -21,13 +21,13 @@ extern "C" {
 
 #include "sharksound/android/android_sound_controller.h"
 
-#include "gameengine/android/modules/android_ad_module.h"
-#include "gameengine/android/modules/android_analytics_module.h"
-#include "gameengine/android/modules/android_app_store_module.h"
-#include "gameengine/android/modules/android_asset_reader_factory_module.h"
-#include "gameengine/android/modules/android_persistence_module.h"
-#include "gameengine/game_engine.h"
-#include "gameengine/platform.h"
+#include "sharkengine/android/modules/android_ad_module.h"
+#include "sharkengine/android/modules/android_analytics_module.h"
+#include "sharkengine/android/modules/android_app_store_module.h"
+#include "sharkengine/android/modules/android_asset_reader_factory_module.h"
+#include "sharkengine/android/modules/android_persistence_module.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/platform.h"
 
 static sp<GameEngine> game_engine_;
 
@@ -124,7 +124,7 @@ void update() {
   game_engine_->Render();
 }
 
-#include "gameengine/touch.h"
+#include "sharkengine/touch.h"
 #include <vector>
 using std::vector;
 

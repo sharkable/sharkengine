@@ -11,10 +11,10 @@
 
 #include <vector>
 
-#include "gameengine/coordinates/coordinate_types.h"
-#include "gameengine/entities/animatable.h"
-#include "gameengine/input/input_handler.h"
-#include "gameengine/render/renderer.h"
+#include "sharkengine/coordinates/coordinate_types.h"
+#include "sharkengine/entities/animatable.h"
+#include "sharkengine/input/input_handler.h"
+#include "sharkengine/render/renderer.h"
 
 class GameEngine;
 class Sprite;

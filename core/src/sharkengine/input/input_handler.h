@@ -9,8 +9,8 @@
 #ifndef SHARKENGINE_INPUT_INPUTHANDLER_H_
 #define SHARKENGINE_INPUT_INPUTHANDLER_H_
 
-#include "gameengine/coordinates/coordinate_system.h"
-#include "gameengine/input/input_event.h"
+#include "sharkengine/coordinates/coordinate_system.h"
+#include "sharkengine/input/input_event.h"
 
 class InputHandler {
  public:

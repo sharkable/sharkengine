@@ -9,7 +9,7 @@
 #include <jni.h>
 #include <string>
 
-#include "gameengine/modules/app_store_module.h"
+#include "sharkengine/modules/app_store_module.h"
 
 #ifndef SHARKENGINE_ANDROID_MODULES_ANDROIDAPPSTOREMODULE_H_
 #define SHARKENGINE_ANDROID_MODULES_ANDROIDAPPSTOREMODULE_H_

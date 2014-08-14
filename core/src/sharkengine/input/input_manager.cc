@@ -6,9 +6,9 @@
 //  Copyright 2014 Sharkable. All rights reserved.
 //
 
-#include "gameengine/input/input_manager.h"
+#include "sharkengine/input/input_manager.h"
 
-#include "gameengine/input/input_handler.h"
+#include "sharkengine/input/input_handler.h"
 
 InputManager::InputManager() {
   memset(event_is_active_, 0, sizeof(bool) * InputEvent::kIdCount);

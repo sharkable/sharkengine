@@ -12,9 +12,9 @@
 #include <map>
 #include <string>
 
-#include "gameengine/coordinates/coordinate_system.h"
-#include "gameengine/coordinates/coordinate_types.h"
-#include "gameengine/opengl/texture2d.h"
+#include "sharkengine/coordinates/coordinate_system.h"
+#include "sharkengine/coordinates/coordinate_types.h"
+#include "sharkengine/opengl/texture2d.h"
 
 class GameEngine;
 

@@ -13,7 +13,7 @@
 #include <map>
 #include <string>
 
-#include "gameengine/modules/analytics_module.h"
+#include "sharkengine/modules/analytics_module.h"
 
 // TODO have this do setup as well maybe?
 class AndroidAnalyticsModule : public AnalyticsModule {

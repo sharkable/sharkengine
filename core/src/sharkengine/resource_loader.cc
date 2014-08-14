@@ -6,11 +6,11 @@
 //  Copyright 2009 Sharkable. All rights reserved.
 //
 
-#include "gameengine/resource_loader.h"
+#include "sharkengine/resource_loader.h"
 
-#include "gameengine/asset_reader.h"
-#include "gameengine/game_engine.h"
-#include "gameengine/platform.h"
+#include "sharkengine/asset_reader.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/platform.h"
 
 using std::map;
 using std::string;

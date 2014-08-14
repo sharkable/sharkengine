@@ -9,8 +9,8 @@
 #ifndef SHARKENGINE_APPLE_MODULES_IOS_IOSINPUTMODULE_H_
 #define SHARKENGINE_APPLE_MODULES_IOS_IOSINPUTMODULE_H_
 
-#include "gameengine/animation.h"
-#include "gameengine/modules/input_module.h"
+#include "sharkengine/animation.h"
+#include "sharkengine/modules/input_module.h"
 
 @class OrientationListener;
 

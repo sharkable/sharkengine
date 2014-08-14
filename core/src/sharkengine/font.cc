@@ -6,10 +6,10 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/font.h"
+#include "sharkengine/font.h"
 
-#include "gameengine/game_engine.h"
-#include "gameengine/resource_loader.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/resource_loader.h"
 
 Font::Font(GameEngine &game_engine, std::string font_name)
     : game_engine_(game_engine),

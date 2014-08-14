@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/coordinates/coordinate_types.h"
+#include "sharkengine/coordinates/coordinate_types.h"
 
 #pragma mark - GameSize
 

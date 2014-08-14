@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_APPSTOREMODULE_H_
 #define SHARKENGINE_APPSTOREMODULE_H_
 
-#include "gameengine/module.h"
+#include "sharkengine/module.h"
 
 class AppStoreModuleDelegate {
  public:

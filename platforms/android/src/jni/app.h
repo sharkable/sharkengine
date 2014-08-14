@@ -2,7 +2,7 @@
 #ifndef APP_H_INCLUDED
 #define APP_H_INCLUDED
 
-#include "gameengine/thirdparty/libzip/zip.h"
+#include "sharkengine/thirdparty/libzip/zip.h"
 
 #ifdef __cplusplus
 extern "C" {

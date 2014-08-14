@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_ad_module.h"
+#include "sharkengine/android/modules/android_ad_module.h"
 
-#include "gameengine/coordinate_types.h"
+#include "sharkengine/coordinate_types.h"
 
 using std::string;
 

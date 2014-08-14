@@ -6,11 +6,11 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/entities/label.h"
+#include "sharkengine/entities/label.h"
 
 #include <cmath>
 
-#include "gameengine/font.h"
+#include "sharkengine/font.h"
 
 static Font * font__ = NULL;
 

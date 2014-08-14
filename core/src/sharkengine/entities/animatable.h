@@ -9,9 +9,9 @@
 #ifndef SHARKENGINE_ENTITIES_ANIMATABLE_H_
 #define SHARKENGINE_ENTITIES_ANIMATABLE_H_
 
-#include "gameengine/animation.h"
-#include "gameengine/coordinates/coordinate_types.h"
-#include "gameengine/simulation/simulator.h"
+#include "sharkengine/animation.h"
+#include "sharkengine/coordinates/coordinate_types.h"
+#include "sharkengine/simulation/simulator.h"
 
 class Animatable;
 

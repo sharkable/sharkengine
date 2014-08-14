@@ -8,9 +8,9 @@
 
 #include "enginetest/views/main_view.h"
 
-#include "gameengine/entities/simple_item.h"
-#include "gameengine/game_engine.h"
-#include "gameengine/sprite.h"
+#include "sharkengine/entities/simple_item.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/sprite.h"
 
 MainView::MainView(GameEngine *game_engine) : EngineView(game_engine) {
   Sprite stripes_image(game_engine, "stripes");

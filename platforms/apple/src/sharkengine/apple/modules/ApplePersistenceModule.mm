@@ -6,9 +6,9 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/apple/modules/ApplePersistenceModule.h"
+#include "sharkengine/apple/modules/ApplePersistenceModule.h"
 
-#include "gameengine/apple/TypeUtil.h"
+#include "sharkengine/apple/TypeUtil.h"
 
 using std::string;
 

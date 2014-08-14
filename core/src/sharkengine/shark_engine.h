@@ -9,13 +9,13 @@
 #ifndef SHARKENGINE_SHARKENGINE_H_
 #define SHARKENGINE_SHARKENGINE_H_
 
-#include "gameengine/platform.h"
-#include "gameengine/positions.h"
-#include "gameengine/resource_loader.h"
-#include "gameengine/coordinates/coordinate_types.h"
-#include "gameengine/datastructures/staged_vector.h"
-#include "gameengine/input/input_event.h"
-#include "gameengine/input/input_manager.h"
+#include "sharkengine/platform.h"
+#include "sharkengine/positions.h"
+#include "sharkengine/resource_loader.h"
+#include "sharkengine/coordinates/coordinate_types.h"
+#include "sharkengine/datastructures/staged_vector.h"
+#include "sharkengine/input/input_event.h"
+#include "sharkengine/input/input_manager.h"
 
 class AdModule;
 class AnalyticsModule;

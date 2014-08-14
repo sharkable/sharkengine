@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_ANALYITICSMODULE_H_
 #define SHARKENGINE_ANALYITICSMODULE_H_
 
-#include "gameengine/module.h"
+#include "sharkengine/module.h"
 
 struct ScreenPoint;
 

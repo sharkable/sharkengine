@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jon Sharkey. All rights reserved.
 //
 
-#include "gameengine/apple/modules/osx/OSXInputModule.h"
+#include "sharkengine/apple/modules/osx/OSXInputModule.h"
 
 void OSXInputModule::HidePointer() {
   CGDisplayHideCursor(kCGDirectMainDisplay);

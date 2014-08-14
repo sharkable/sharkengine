@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_COORDINATES_COORDINATESYSTEM_H_
 #define SHARKENGINE_COORDINATES_COORDINATESYSTEM_H_
 
-#include "gameengine/coordinates/coordinate_types.h"
+#include "sharkengine/coordinates/coordinate_types.h"
 
 class CoordinateSystem {
  public:

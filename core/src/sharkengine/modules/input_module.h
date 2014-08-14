@@ -9,8 +9,8 @@
 #ifndef SHARKENGINE_INPUTMODULE_H_
 #define SHARKENGINE_INPUTMODULE_H_
 
-#include "gameengine/module.h"
-#include "gameengine/simulation/simulator.h"
+#include "sharkengine/module.h"
+#include "sharkengine/simulation/simulator.h"
 
 class InputModule : public Module, Simulator {
  public:

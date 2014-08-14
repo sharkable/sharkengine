@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_POSITIONS_H_
 #define SHARKENGINE_POSITIONS_H_
 
-#include "gameengine/coordinates/coordinate_types.h"
+#include "sharkengine/coordinates/coordinate_types.h"
 
 #include <map>
 #include <string>

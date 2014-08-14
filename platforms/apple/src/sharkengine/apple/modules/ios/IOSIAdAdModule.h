@@ -11,8 +11,8 @@
 
 #include <string>
 
-#include "gameengine/apple/modules/ios/IOSAdModule.h"
-#include "gameengine/modules/ad_module.h"
+#include "sharkengine/apple/modules/ios/IOSAdModule.h"
+#include "sharkengine/modules/ad_module.h"
 
 @class IAdInterstitialState;
 

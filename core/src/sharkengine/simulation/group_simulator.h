@@ -9,9 +9,9 @@
 #ifndef SHARKENGINE_SIMULATION_GROUPSIMULATOR_H_
 #define SHARKENGINE_SIMULATION_GROUPSIMULATOR_H_
 
-#include "gameengine/datastructures/staged_vector.h"
+#include "sharkengine/datastructures/staged_vector.h"
 
-#include "gameengine/simulation/simulator.h"
+#include "sharkengine/simulation/simulator.h"
 
 class GroupSimulator : public Simulator {
  public:

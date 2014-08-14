@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/input/input_event.h"
+#include "sharkengine/input/input_event.h"
 
 InputEvent::InputEvent(Action action, Id id, GamePoint location)
     : action_(action),

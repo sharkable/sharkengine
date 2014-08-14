@@ -6,14 +6,14 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/entities/multi_select.h"
+#include "sharkengine/entities/multi_select.h"
 
 #include "sharksound/sound.h"
 #include "sharksound/sound_controller.h"
 
-#include "gameengine/game_engine.h"
-#include "gameengine/resource_loader.h"
-#include "gameengine/sprite.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/resource_loader.h"
+#include "sharkengine/sprite.h"
 
 using std::vector;
 

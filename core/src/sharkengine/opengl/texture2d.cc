@@ -61,7 +61,7 @@
 
  */
 
-#include "gameengine/opengl/texture2d.h"
+#include "sharkengine/opengl/texture2d.h"
 
 using std::string;
 

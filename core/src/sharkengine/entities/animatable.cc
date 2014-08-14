@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/entities/animatable.h"
+#include "sharkengine/entities/animatable.h"
 
 Animatable::Animatable()
     : delegate_(nullptr),

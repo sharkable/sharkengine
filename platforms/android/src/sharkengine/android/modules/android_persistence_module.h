@@ -12,7 +12,7 @@
 #include <jni.h>
 #include <string>
 
-#include "gameengine/modules/persistence_module.h"
+#include "sharkengine/modules/persistence_module.h"
 
 class AndroidPersistenceModule : public PersistenceModule {
  public:

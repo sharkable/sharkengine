@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/android_asset_reader.h"
+#include "sharkengine/android/android_asset_reader.h"
 
-#include "gameengine/thirdparty/libzip/zip.h"
+#include "sharkengine/thirdparty/libzip/zip.h"
 
 // TODO UGH this is kinda gross. This is needed for the GLOBAL variable APKArchive.
 #include "jni/app.h"

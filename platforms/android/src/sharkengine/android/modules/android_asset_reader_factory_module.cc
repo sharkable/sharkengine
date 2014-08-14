@@ -6,9 +6,9 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_asset_reader_factory_module.h"
+#include "sharkengine/android/modules/android_asset_reader_factory_module.h"
 
-#include "gameengine/android/android_asset_reader.h"
+#include "sharkengine/android/android_asset_reader.h"
 
 using std::string;
 

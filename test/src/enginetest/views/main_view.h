@@ -9,7 +9,7 @@
 #ifndef ENGINETEST_VIEWS_MAINVIEW_H_
 #define ENGINETEST_VIEWS_MAINVIEW_H_
 
-#include "gameengine/engine_view.h"
+#include "sharkengine/engine_view.h"
 
 class GameEngine;
 

@@ -11,10 +11,10 @@
 
 #include <vector>
 
-#include "gameengine/coordinates/coordinate_types.h"
-#include "gameengine/entities/animatable.h"
-#include "gameengine/render/renderer.h"
-#include "gameengine/sprite.h"
+#include "sharkengine/coordinates/coordinate_types.h"
+#include "sharkengine/entities/animatable.h"
+#include "sharkengine/render/renderer.h"
+#include "sharkengine/sprite.h"
 
 class SimpleItem : public Animatable, public Renderer {
  public:

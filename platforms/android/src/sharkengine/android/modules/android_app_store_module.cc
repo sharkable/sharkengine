@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/android/modules/android_app_store_module.h"
+#include "sharkengine/android/modules/android_app_store_module.h"
 
 AndroidAppStoreModule::AndroidAppStoreModule(JNIEnv *jni_env, jobject java_object)
     : jni_env_(jni_env) {

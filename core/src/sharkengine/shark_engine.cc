@@ -6,19 +6,19 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "gameengine/game_engine.h"
+#include "sharkengine/game_engine.h"
 
 #include <cmath>
 
-#include "gameengine/modules/ad_module.h"
-#include "gameengine/modules/analytics_module.h"
-#include "gameengine/modules/app_store_module.h"
-#include "gameengine/modules/asset_reader_factory_module.h"
-#include "gameengine/modules/input_module.h"
-#include "gameengine/modules/persistence_module.h"
-#include "gameengine/input/input_handler.h"
-#include "gameengine/render/renderer.h"
-#include "gameengine/simulation/simulator.h"
+#include "sharkengine/modules/ad_module.h"
+#include "sharkengine/modules/analytics_module.h"
+#include "sharkengine/modules/app_store_module.h"
+#include "sharkengine/modules/asset_reader_factory_module.h"
+#include "sharkengine/modules/input_module.h"
+#include "sharkengine/modules/persistence_module.h"
+#include "sharkengine/input/input_handler.h"
+#include "sharkengine/render/renderer.h"
+#include "sharkengine/simulation/simulator.h"
 
 GameEngine::GameEngine()
     : simulator_(nullptr),

@@ -9,7 +9,7 @@
 #ifndef SHARKENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
 #define SHARKENGINE_APPLE_MODULES_OSX_OSXINPUTMODULE_H_
 
-#include "gameengine/modules/input_module.h"
+#include "sharkengine/modules/input_module.h"
 
 class OSXInputModule : public InputModule {
  public:

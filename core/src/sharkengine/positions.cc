@@ -6,10 +6,10 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#include "gameengine/positions.h"
+#include "sharkengine/positions.h"
 
-#include "gameengine/asset_reader.h"
-#include "gameengine/thirdparty/tinyxml2/tinyxml2.h"
+#include "sharkengine/asset_reader.h"
+#include "sharkengine/thirdparty/tinyxml2/tinyxml2.h"
 
 void Positions::LoadFile(AssetReader &asset_reader) {
   tinyxml2::XMLDocument doc;

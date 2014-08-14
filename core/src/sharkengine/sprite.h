@@ -9,10 +9,10 @@
 #ifndef SHARKENGINE_SPRITE_H_
 #define SHARKENGINE_SPRITE_H_
 
-#include "gameengine/game_engine.h"
-#include "gameengine/resource_loader.h"
-#include "gameengine/coordinates/coordinate_system.h"
-#include "gameengine/opengl/texture2d.h"
+#include "sharkengine/game_engine.h"
+#include "sharkengine/resource_loader.h"
+#include "sharkengine/coordinates/coordinate_system.h"
+#include "sharkengine/opengl/texture2d.h"
 
 class Sprite {
  public:

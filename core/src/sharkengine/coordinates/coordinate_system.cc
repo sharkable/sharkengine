@@ -10,7 +10,7 @@
 
 #include <cmath>
 
-#include "gameengine/coordinates/coordinate_system.h"
+#include "sharkengine/coordinates/coordinate_system.h"
 
 CoordinateSystem const & CoordinateSystem::BaseSystem() {
   return base_system_;
