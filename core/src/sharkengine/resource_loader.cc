@@ -9,7 +9,7 @@
 #include "sharkengine/resource_loader.h"
 
 #include "sharkengine/asset_reader.h"
-#include "sharkengine/game_engine.h"
+#include "sharkengine/shark_engine.h"
 #include "sharkengine/platform.h"
 
 using std::map;

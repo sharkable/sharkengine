@@ -10,7 +10,7 @@
 
 #import <CoreServices/CoreServices.h>
 
-#import "gameengine/apple/osx/SharkengineOpenGLView.h"
+#import "sharkengine/apple/osx/SharkengineOpenGLView.h"
 
 @implementation AppDelegate
 

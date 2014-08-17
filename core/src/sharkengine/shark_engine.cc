@@ -1,12 +1,12 @@
 //
-//  game_engine.cc
+//  shark_engine.cc
 //  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-04-10.
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#include "sharkengine/game_engine.h"
+#include "sharkengine/shark_engine.h"
 
 #include <cmath>
 

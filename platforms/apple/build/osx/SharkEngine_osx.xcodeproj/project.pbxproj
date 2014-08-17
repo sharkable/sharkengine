@@ -88,7 +88,7 @@
 		FEF4C00717B3FADA00D2085A /* button.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDC17B3FADA00D2085A /* button.cc */; };
 		FEF4C00917B3FADA00D2085A /* multi_select.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDE17B3FADA00D2085A /* multi_select.cc */; };
 		FEF4C00A17B3FADA00D2085A /* simple_item.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFDF17B3FADA00D2085A /* simple_item.cc */; };
-		FEF4C00B17B3FADA00D2085A /* game_engine.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFE017B3FADA00D2085A /* game_engine.cc */; };
+		FEF4C00B17B3FADA00D2085A /* shark_engine.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFE017B3FADA00D2085A /* shark_engine.cc */; };
 		FEF4C00C17B3FADA00D2085A /* mt19937ar.c in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFE117B3FADA00D2085A /* mt19937ar.c */; };
 		FEF4C00D17B3FADA00D2085A /* texture2d.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFE317B3FADA00D2085A /* texture2d.cc */; };
 		FEF4C00E17B3FADA00D2085A /* positions.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF4BFE517B3FADA00D2085A /* positions.cc */; };
@@ -219,7 +219,7 @@
 		FE92D3231862586600A6039D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
 		FE92D3241862586600A6039D /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
 		FE92D3251862586600A6039D /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
-		FE92D3271862588200A6039D /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
+		FE92D3271862588200A6039D /* shark_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shark_engine.h; sourceTree = "<group>"; };
 		FE92D3281862588200A6039D /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE92D32C186258A100A6039D /* ad_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_module.h; sourceTree = "<group>"; };
 		FE92D32D186258A100A6039D /* analytics_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_module.h; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		FEF4BFDC17B3FADA00D2085A /* button.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cc; sourceTree = "<group>"; };
 		FEF4BFDE17B3FADA00D2085A /* multi_select.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multi_select.cc; sourceTree = "<group>"; };
 		FEF4BFDF17B3FADA00D2085A /* simple_item.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_item.cc; sourceTree = "<group>"; };
-		FEF4BFE017B3FADA00D2085A /* game_engine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_engine.cc; sourceTree = "<group>"; };
+		FEF4BFE017B3FADA00D2085A /* shark_engine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shark_engine.cc; sourceTree = "<group>"; };
 		FEF4BFE117B3FADA00D2085A /* mt19937ar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mt19937ar.c; sourceTree = "<group>"; };
 		FEF4BFE317B3FADA00D2085A /* texture2d.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture2d.cc; sourceTree = "<group>"; };
 		FEF4BFE417B3FADA00D2085A /* texture2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture2d.h; sourceTree = "<group>"; };
@@ -536,12 +536,12 @@
 		FEF4BFD517B3FADA00D2085A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FEF4BFD617B3FADA00D2085A /* gameengine */,
+				FEF4BFD617B3FADA00D2085A /* sharkengine */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		FEF4BFD617B3FADA00D2085A /* gameengine */ = {
+		FEF4BFD617B3FADA00D2085A /* sharkengine */ = {
 			isa = PBXGroup;
 			children = (
 				FEF4BFD717B3FADA00D2085A /* animation.cc */,
@@ -552,8 +552,8 @@
 				FEF4BFDA17B3FADA00D2085A /* entities */,
 				FE1DB9631811BFEC009D1C3D /* font.cc */,
 				FE1DB9641811BFEC009D1C3D /* font.h */,
-				FEF4BFE017B3FADA00D2085A /* game_engine.cc */,
-				FE92D3271862588200A6039D /* game_engine.h */,
+				FEF4BFE017B3FADA00D2085A /* shark_engine.cc */,
+				FE92D3271862588200A6039D /* shark_engine.h */,
 				FE5B101618721C7D001781E5 /* input */,
 				FE92D3281862588200A6039D /* module.h */,
 				FE92D32B186258A100A6039D /* modules */,
@@ -571,7 +571,7 @@
 				FE616C5817D7CB3300FF061B /* zipped_asset_reader.cc */,
 				FE616C5917D7CB3300FF061B /* zipped_asset_reader.h */,
 			);
-			path = gameengine;
+			path = sharkengine;
 			sourceTree = "<group>";
 		};
 		FEF4BFDA17B3FADA00D2085A /* entities */ = {
@@ -651,18 +651,18 @@
 		FEF4C01C17B3FB0C00D2085A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FEF4C01D17B3FB0C00D2085A /* gameengine */,
+				FEF4C01D17B3FB0C00D2085A /* sharkengine */,
 			);
 			name = src;
 			path = ___SHARKENGINE_HOME___/platforms/apple/src;
 			sourceTree = "<absolute>";
 		};
-		FEF4C01D17B3FB0C00D2085A /* gameengine */ = {
+		FEF4C01D17B3FB0C00D2085A /* sharkengine */ = {
 			isa = PBXGroup;
 			children = (
 				FEF4C01E17B3FB0C00D2085A /* apple */,
 			);
-			path = gameengine;
+			path = sharkengine;
 			sourceTree = "<group>";
 		};
 		FEF4C01E17B3FB0C00D2085A /* apple */ = {
@@ -865,7 +865,7 @@
 				FEF4C00717B3FADA00D2085A /* button.cc in Sources */,
 				FEF4C00917B3FADA00D2085A /* multi_select.cc in Sources */,
 				FEF4C00A17B3FADA00D2085A /* simple_item.cc in Sources */,
-				FEF4C00B17B3FADA00D2085A /* game_engine.cc in Sources */,
+				FEF4C00B17B3FADA00D2085A /* shark_engine.cc in Sources */,
 				FEF4C00C17B3FADA00D2085A /* mt19937ar.c in Sources */,
 				FEF4C00D17B3FADA00D2085A /* texture2d.cc in Sources */,
 				FE837151187A701A005A8F55 /* input_manager.cc in Sources */,
@@ -1016,8 +1016,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					../../../gameengine/core/src,
-					../../../gameengine/platforms/apple/src,
+					../../../sharkengine/core/src,
+					../../../sharkengine/platforms/apple/src,
 					../../../sharksound/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -1049,8 +1049,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../../src,
-					../../../gameengine/core/src,
-					../../../gameengine/platforms/apple/src,
+					../../../sharkengine/core/src,
+					../../../sharkengine/platforms/apple/src,
 					../../../sharksound/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -1065,7 +1065,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -1081,7 +1081,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/Prefix.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;

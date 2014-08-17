@@ -11,8 +11,8 @@
 #include "sharksound/sound.h"
 #include "sharksound/sound_controller.h"
 
-#include "sharkengine/game_engine.h"
 #include "sharkengine/resource_loader.h"
+#include "sharkengine/shark_engine.h"
 #include "sharkengine/sprite.h"
 
 using std::vector;

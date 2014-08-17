@@ -163,6 +163,13 @@ inline GamePoint & operator/=(GamePoint &point, float scalar) {
 }
 
 
+// conversion
+
+inline GameSize::GameSize(GamePoint const &point) : width(point.x), height(point.y) {}
+
+inline GamePoint::GamePoint(GameSize const &size) : x(size.width), y(size.height) {}
+
+
 // GameRect
 
 struct GameRect {

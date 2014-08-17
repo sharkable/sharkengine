@@ -9,8 +9,8 @@
 #ifndef SHARKENGINE_SPRITE_H_
 #define SHARKENGINE_SPRITE_H_
 
-#include "sharkengine/game_engine.h"
 #include "sharkengine/resource_loader.h"
+#include "sharkengine/shark_engine.h"
 #include "sharkengine/coordinates/coordinate_system.h"
 #include "sharkengine/opengl/texture2d.h"
 

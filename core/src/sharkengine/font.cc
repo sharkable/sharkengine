@@ -8,8 +8,8 @@
 
 #include "sharkengine/font.h"
 
-#include "sharkengine/game_engine.h"
 #include "sharkengine/resource_loader.h"
+#include "sharkengine/shark_engine.h"
 
 Font::Font(GameEngine &game_engine, std::string font_name)
     : game_engine_(game_engine),

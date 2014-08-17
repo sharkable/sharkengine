@@ -10,8 +10,8 @@
 
 #include "sharksound/apple/AppleSoundController.h"
 
-#include "sharkengine/game_engine.h"
 #include "sharkengine/platform.h"
+#include "sharkengine/shark_engine.h"
 #include "sharkengine/apple/modules/ApplePersistenceModule.h"
 #include "sharkengine/apple/modules/osx/OSXAssetReaderFactoryModule.h"
 #include "sharkengine/apple/modules/osx/OSXInputModule.h"

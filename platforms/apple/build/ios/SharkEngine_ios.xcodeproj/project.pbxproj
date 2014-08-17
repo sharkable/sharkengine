@@ -71,7 +71,7 @@
 		FEF9B84D17A9BFB400867739 /* button.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82217A9BFB400867739 /* button.cc */; };
 		FEF9B84F17A9BFB400867739 /* multi_select.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82417A9BFB400867739 /* multi_select.cc */; };
 		FEF9B85017A9BFB400867739 /* simple_item.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82517A9BFB400867739 /* simple_item.cc */; };
-		FEF9B85117A9BFB400867739 /* game_engine.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82617A9BFB400867739 /* game_engine.cc */; };
+		FEF9B85117A9BFB400867739 /* shark_engine.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82617A9BFB400867739 /* shark_engine.cc */; };
 		FEF9B85217A9BFB400867739 /* mt19937ar.c in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82717A9BFB400867739 /* mt19937ar.c */; };
 		FEF9B85317A9BFB400867739 /* texture2d.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82917A9BFB400867739 /* texture2d.cc */; };
 		FEF9B85417A9BFB400867739 /* positions.cc in Sources */ = {isa = PBXBuildFile; fileRef = FEF9B82B17A9BFB400867739 /* positions.cc */; };
@@ -205,7 +205,7 @@
 		FE92D3081862554D00A6039D /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
 		FE92D3091862554D00A6039D /* multi_select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi_select.h; sourceTree = "<group>"; };
 		FE92D30A1862554D00A6039D /* simple_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_item.h; sourceTree = "<group>"; };
-		FE92D30B1862558500A6039D /* game_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_engine.h; sourceTree = "<group>"; };
+		FE92D30B1862558500A6039D /* shark_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shark_engine.h; sourceTree = "<group>"; };
 		FE92D30C1862559400A6039D /* module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = module.h; sourceTree = "<group>"; };
 		FE92D30E1862559400A6039D /* ad_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ad_module.h; sourceTree = "<group>"; };
 		FE92D30F1862559400A6039D /* analytics_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analytics_module.h; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 		FEF9B82217A9BFB400867739 /* button.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cc; sourceTree = "<group>"; };
 		FEF9B82417A9BFB400867739 /* multi_select.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multi_select.cc; sourceTree = "<group>"; };
 		FEF9B82517A9BFB400867739 /* simple_item.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_item.cc; sourceTree = "<group>"; };
-		FEF9B82617A9BFB400867739 /* game_engine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_engine.cc; sourceTree = "<group>"; };
+		FEF9B82617A9BFB400867739 /* shark_engine.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shark_engine.cc; sourceTree = "<group>"; };
 		FEF9B82717A9BFB400867739 /* mt19937ar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mt19937ar.c; sourceTree = "<group>"; };
 		FEF9B82917A9BFB400867739 /* texture2d.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture2d.cc; sourceTree = "<group>"; };
 		FEF9B82A17A9BFB400867739 /* texture2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture2d.h; sourceTree = "<group>"; };
@@ -314,18 +314,18 @@
 		FE164D1017AC4444006C5D88 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FE164D1117AC4444006C5D88 /* gameengine */,
+				FE164D1117AC4444006C5D88 /* sharkengine */,
 			);
 			name = src;
 			path = platforms/apple/src;
 			sourceTree = "<group>";
 		};
-		FE164D1117AC4444006C5D88 /* gameengine */ = {
+		FE164D1117AC4444006C5D88 /* sharkengine */ = {
 			isa = PBXGroup;
 			children = (
 				FE164D1217AC4444006C5D88 /* apple */,
 			);
-			path = gameengine;
+			path = sharkengine;
 			sourceTree = "<group>";
 		};
 		FE164D1217AC4444006C5D88 /* apple */ = {
@@ -645,12 +645,12 @@
 		FEF9B81B17A9BFB400867739 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FEF9B81C17A9BFB400867739 /* gameengine */,
+				FEF9B81C17A9BFB400867739 /* sharkengine */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		FEF9B81C17A9BFB400867739 /* gameengine */ = {
+		FEF9B81C17A9BFB400867739 /* sharkengine */ = {
 			isa = PBXGroup;
 			children = (
 				FEF9B81D17A9BFB400867739 /* animation.cc */,
@@ -661,8 +661,8 @@
 				FEF9B82017A9BFB400867739 /* entities */,
 				FE1DB9601811BF50009D1C3D /* font.cc */,
 				FE1DB9611811BF50009D1C3D /* font.h */,
-				FEF9B82617A9BFB400867739 /* game_engine.cc */,
-				FE92D30B1862558500A6039D /* game_engine.h */,
+				FEF9B82617A9BFB400867739 /* shark_engine.cc */,
+				FE92D30B1862558500A6039D /* shark_engine.h */,
 				FE5B102218728257001781E5 /* input */,
 				FE92D30C1862559400A6039D /* module.h */,
 				FE92D30D1862559400A6039D /* modules */,
@@ -678,7 +678,7 @@
 				FE92D314186255A900A6039D /* sprite.h */,
 				FEF9B82F17A9BFB400867739 /* thirdparty */,
 			);
-			path = gameengine;
+			path = sharkengine;
 			sourceTree = "<group>";
 		};
 		FEF9B82017A9BFB400867739 /* entities */ = {
@@ -867,7 +867,7 @@
 				FE9493DF17EC9A9500B9D9AD /* label.cc in Sources */,
 				FEF9B84F17A9BFB400867739 /* multi_select.cc in Sources */,
 				FEF9B85017A9BFB400867739 /* simple_item.cc in Sources */,
-				FEF9B85117A9BFB400867739 /* game_engine.cc in Sources */,
+				FEF9B85117A9BFB400867739 /* shark_engine.cc in Sources */,
 				FEF9B85217A9BFB400867739 /* mt19937ar.c in Sources */,
 				FEA16F621833FBE70001A8B1 /* IOSInputModule.mm in Sources */,
 				FEF9B85317A9BFB400867739 /* texture2d.cc in Sources */,
@@ -963,7 +963,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/Prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1002,8 +1002,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1025,7 +1025,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1060,7 +1060,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/Prefix.pch;
+				GCC_PREFIX_HEADER = ___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/Prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1099,8 +1099,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1126,8 +1126,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/admob\"",
-					"\"___SHARKENGINE_HOME___/platforms/apple/src/gameengine/apple/thirdparty/ios/flurry\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/admob\"",
+					"\"___SHARKENGINE_HOME___/platforms/apple/src/sharkengine/apple/thirdparty/ios/flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
