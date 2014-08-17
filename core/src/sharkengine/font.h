@@ -20,7 +20,7 @@ class SharkEngine;
 
 class Font {
  public:
-  Font(SharkEngine &game_engine, std::string font_name);
+  Font(SharkEngine &shark_engine, std::string font_name);
   void RenderGlyph(char glyph, CoordinateSystem const &coordinate_system, float alpha = 1.f);
   float GlyphWidth(char glyph);
   float GlyphHeight();
@@ -28,7 +28,7 @@ class Font {
  private:
   std::string TextureNameForCharacter(char c);
 
-  SharkEngine &game_engine_;
+  SharkEngine &shark_engine_;
   std::string font_name_;
   std::map<char, Texture2D> glyphs_;
 };

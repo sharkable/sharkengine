@@ -1,5 +1,5 @@
 //
-//  game_engine.h
+//  shark_engine.h
 //  SharkEngine
 //
 //  Created by Jon Sharkey on 2010-04-10.
@@ -34,7 +34,7 @@ namespace SharkSound {
 class Simulator;
 
 extern "C" {
-  void sharkengine_init(SharkEngine &game_engine);
+  void sharkengine_init(SharkEngine &shark_engine);
 }
 
 class SharkEngine {

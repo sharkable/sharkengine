@@ -11,15 +11,15 @@
 #include "sharkengine/resource_loader.h"
 #include "sharkengine/shark_engine.h"
 
-Font::Font(SharkEngine &game_engine, std::string font_name)
-    : game_engine_(game_engine),
+Font::Font(SharkEngine &shark_engine, std::string font_name)
+    : shark_engine_(shark_engine),
       font_name_(font_name) {
   char const * const characters =
       "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,:;%\"+-/";
   size_t num_characters = strlen(characters);
   for (int i = 0; i < num_characters; i++) {
     char c = characters[i];
-    glyphs_[c] = game_engine.resource_loader().TextureWithName(TextureNameForCharacter(c));
+    glyphs_[c] = shark_engine.resource_loader().TextureWithName(TextureNameForCharacter(c));
   }
 }
 
@@ -31,7 +31,7 @@ void Font::RenderGlyph(char glyph, CoordinateSystem const &coordinate_system, fl
   shark_assert(glyphs_[glyph].data_loaded(), "Cannot draw character: %c %d", glyph, glyph);
 #endif
 
-  glyphs_[glyph].Draw(game_engine_.game_point_to_screen_point(coordinate_system.origin()), alpha,
+  glyphs_[glyph].Draw(shark_engine_.game_point_to_screen_point(coordinate_system.origin()), alpha,
                       coordinate_system.scale(), coordinate_system.angle(), false);
 }
 

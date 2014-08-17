@@ -25,7 +25,7 @@ namespace SharkSound {
 
 class MultiSelect : public Animatable, public Renderer, public InputHandler {
  public:
-  MultiSelect(SharkEngine &game_engine);
+  MultiSelect(SharkEngine &shark_engine);
   ~MultiSelect();
 
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);

@@ -80,14 +80,14 @@
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionDown, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->input_manager().AddEvent(event);
+  sharkEngine_->input_manager().AddEvent(event);
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->input_manager().AddEvent(event);
+  sharkEngine_->input_manager().AddEvent(event);
 
   // A drag is both a movement for kIdMouseButton0 and a mouse delta.
   [self mouseMoved:theEvent];
@@ -97,7 +97,7 @@
   NSPoint mouseLocation = [theEvent locationInWindow];
   InputEvent event(InputEvent::kActionUp, InputEvent::kIdMouseButton0,
                    [self gamePointFromScreenPoint:mouseLocation]);
-  gameEngine_->input_manager().AddEvent(event);
+  sharkEngine_->input_manager().AddEvent(event);
 }
 
 // TODO It is more reasonable to expect this to be a pointer position. Rethink mouse input.
@@ -106,7 +106,7 @@
 - (void)mouseMoved:(NSEvent *)theEvent {
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouse,
                    GamePoint(theEvent.deltaX, theEvent.deltaY));
-  gameEngine_->input_manager().AddEvent(event);
+  sharkEngine_->input_manager().AddEvent(event);
   if (!CGCursorIsVisible()) {
     NSRect windowFrame = self.window.frame;
     CGPoint windowCenter = CGPointMake(NSMidX(windowFrame), NSMidY(windowFrame));
@@ -138,7 +138,7 @@
     }
 
     InputEvent event(action, input_id);
-    gameEngine_->input_manager().AddEvent(event);
+    sharkEngine_->input_manager().AddEvent(event);
   }
 }
 
@@ -206,26 +206,26 @@
   return NSMakeSize(0, 0);
 }
 
-- (void)setUpGameEngine {
-  gameEngine_ = new SharkEngine();
-  gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
-  gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
-  gameEngine_->platform().set_input_group(Platform::kInputGroupPC);
+- (void)setUpSharkEngine {
+  sharkEngine_ = new SharkEngine();
+  sharkEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
+  sharkEngine_->platform().set_os_group(Platform::kOSGroupOSX);
+  sharkEngine_->platform().set_input_group(Platform::kInputGroupPC);
   if (screenScale_ == 1.0) {
-    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
+    sharkEngine_->platform().set_texture_group(Platform::kTextureGroupPCHighRes);
   } else {
-    gameEngine_->platform().set_texture_group(Platform::kTextureGroupPCUltraHighRes);
+    sharkEngine_->platform().set_texture_group(Platform::kTextureGroupPCUltraHighRes);
   }
 
-  gameEngine_->set_asset_reader_factory_module(
+  sharkEngine_->set_asset_reader_factory_module(
       sp<AssetReaderFactoryModule>(new OSXAssetReaderFactoryModule()));
-  gameEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
-  gameEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
-  gameEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
+  sharkEngine_->set_persistence_module(sp<PersistenceModule>(new ApplePersistenceModule()));
+  sharkEngine_->set_input_module(sp<InputModule>(new OSXInputModule()));
+  sharkEngine_->set_sound(sp<SharkSound::SoundController>(new SharkSound::AppleSoundController()));
 
-  gameEngine_->set_screen_size(renderSize_);
+  sharkEngine_->set_screen_size(renderSize_);
   
-  sharkengine_init(*gameEngine_);
+  sharkengine_init(*sharkEngine_);
 }
 
 - (void)setUpOpenGL {
@@ -256,7 +256,7 @@
 
 - (void)runGameLoop {
   [self setUpOpenGL];
-  [self setUpGameEngine];
+  [self setUpSharkEngine];
 
   double last_system_time = CACurrentMediaTime();
   double accumulator = 0;
@@ -272,15 +272,15 @@
     accumulator += time_diff;
 
     while (accumulator >= kTimeDelta) {
-      gameEngine_->Update();
+      sharkEngine_->Update();
       accumulator -= kTimeDelta;
     }
 
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    if (gameEngine_) {
-      gameEngine_->Render();
+    if (sharkEngine_) {
+      sharkEngine_->Render();
     }
 
     [[self openGLContext] flushBuffer];
@@ -298,7 +298,7 @@
 }
 
 - (void)pause {
-// TODO  gameEngine_->NotifyPause();
+// TODO  sharkEngine_->NotifyPause();
 }
 
 - (void)resume {

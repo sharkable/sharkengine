@@ -19,7 +19,7 @@ class SharkEngine;
 
 class Label : public Animatable, public Renderer {
  public:
-  Label(SharkEngine &game_engine, GamePoint position);
+  Label(SharkEngine &shark_engine, GamePoint position);
 
   const std::string & Text();
   void SetText(const std::string &text);

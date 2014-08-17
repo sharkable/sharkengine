@@ -14,11 +14,11 @@
 
 static Font * font__ = NULL;
 
-Label::Label(SharkEngine &game_engine, GamePoint position)
+Label::Label(SharkEngine &shark_engine, GamePoint position)
     : Animatable(position),
       size_(kGameSizeZero) {
   if (!font__) {
-    font__ = new Font(game_engine, "font");
+    font__ = new Font(shark_engine, "font");
   }
 }
 

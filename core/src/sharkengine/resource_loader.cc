@@ -15,7 +15,7 @@
 using std::map;
 using std::string;
 
-ResourceLoader::ResourceLoader(SharkEngine &game_engine) : game_engine_(game_engine) {
+ResourceLoader::ResourceLoader(SharkEngine &shark_engine) : shark_engine_(shark_engine) {
 }
 
 Texture2D ResourceLoader::TextureWithName(const std::string &name) {
@@ -67,7 +67,7 @@ void ResourceLoader::ReloadTextures() {
 Texture2D ResourceLoader::Texture(string name, int opengl_id) {
 // TODO think about this
   string filename;
-  if (game_engine_.platform().os_group() != Platform::kOSGroupIOS) {
+  if (shark_engine_.platform().os_group() != Platform::kOSGroupIOS) {
     filename = "assets/textures/" + name;
   } else {
     filename = name;
@@ -75,7 +75,7 @@ Texture2D ResourceLoader::Texture(string name, int opengl_id) {
   filename += texture_name_extention_;
   filename += ".tx";
 
-  sp<AssetReader> asset_reader = game_engine_.LoadAsset(filename);
+  sp<AssetReader> asset_reader = shark_engine_.LoadAsset(filename);
   if (!asset_reader->IsOpen()) {
     std::cout << "No texture file for " << name << std::endl;
     assert(false);

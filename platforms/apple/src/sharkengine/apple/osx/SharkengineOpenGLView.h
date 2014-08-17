@@ -12,7 +12,7 @@ class SharkEngine;
 
 @interface SharkengineOpenGLView : NSOpenGLView<NSWindowDelegate> {
   BOOL didStart_;
-  SharkEngine *gameEngine_;
+  SharkEngine *sharkEngine_;
   int viewportX_;
   int viewportY_;
   int viewportWidth_;

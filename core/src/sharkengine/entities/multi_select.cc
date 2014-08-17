@@ -17,10 +17,10 @@
 
 using std::vector;
 
-MultiSelect::MultiSelect(SharkEngine &game_engine)
+MultiSelect::MultiSelect(SharkEngine &shark_engine)
     : Animatable(),
       selected_value_(0) {
-  click_sound_ = game_engine.sound()->GetSound("sounds/button_click.wav");
+  click_sound_ = shark_engine.sound()->GetSound("sounds/button_click.wav");
 }
 
 MultiSelect::~MultiSelect() {

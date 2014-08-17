@@ -15,20 +15,20 @@
 
 using std::vector;
 
-Button::Button(SharkEngine &game_engine)
+Button::Button(SharkEngine &shark_engine)
     : Animatable(),
-      game_engine_(game_engine),
-      normal_sprite_(game_engine),
-      pressed_sprite_(game_engine),
+      shark_engine_(shark_engine),
+      normal_sprite_(shark_engine),
+      pressed_sprite_(shark_engine),
       pressed_offset_(kGamePointZero),
       state_(kButtonStateNormal) {
   Init();
 }
 
-Button::Button(SharkEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite,
+Button::Button(SharkEngine &shark_engine, Sprite normal_sprite, Sprite pressed_sprite,
                GamePoint position)
     : Animatable(position),
-      game_engine_(game_engine),
+      shark_engine_(shark_engine),
       normal_sprite_(normal_sprite),
       pressed_sprite_(pressed_sprite),
       pressed_offset_(kGamePointZero),
@@ -39,7 +39,7 @@ Button::Button(SharkEngine &game_engine, Sprite normal_sprite, Sprite pressed_sp
 
 Button::~Button() {
   if (normal_sprite_.texture().loaded()) {
-    // TODO game_engine->resource_loader().ReleaseResource(normal_sprite_.texture());
+    // TODO shark_engine->resource_loader().ReleaseResource(normal_sprite_.texture());
   }
   if (pressed_sprite_.texture().loaded()) {
     // TODO ResourceLoader::Instance().ReleaseResource(pressed_sprite_.texture());
@@ -107,5 +107,5 @@ bool Button::HandleInputEvent(InputEvent const &event, CoordinateSystem const &c
 #pragma mark - private
 
 void Button::Init() {
-  beep_sound_ = game_engine_.sound()->GetSound("sounds/beep.wav");
+  beep_sound_ = shark_engine_.sound()->GetSound("sounds/beep.wav");
 }
