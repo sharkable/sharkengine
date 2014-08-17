@@ -207,7 +207,7 @@
 }
 
 - (void)setUpGameEngine {
-  gameEngine_ = new GameEngine();
+  gameEngine_ = new SharkEngine();
   gameEngine_->platform().set_screen_size_group(Platform::kScreenSizeGroupPC);
   gameEngine_->platform().set_os_group(Platform::kOSGroupOSX);
   gameEngine_->platform().set_input_group(Platform::kInputGroupPC);

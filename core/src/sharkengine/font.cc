@@ -11,7 +11,7 @@
 #include "sharkengine/resource_loader.h"
 #include "sharkengine/shark_engine.h"
 
-Font::Font(GameEngine &game_engine, std::string font_name)
+Font::Font(SharkEngine &game_engine, std::string font_name)
     : game_engine_(game_engine),
       font_name_(font_name) {
   char const * const characters =

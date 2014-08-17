@@ -21,20 +21,20 @@ class Sprite {
     kAnchorCenter,
   } Anchor;
 
-  Sprite(GameEngine &game_engine, Anchor anchor = kAnchorTopLeft)
+  Sprite(SharkEngine &game_engine, Anchor anchor = kAnchorTopLeft)
     : game_engine_(game_engine),
       anchor_(anchor),
       alpha_(1.f) {
   }
 
-  Sprite(GameEngine &game_engine, Texture2D texture, Anchor anchor = kAnchorTopLeft)
+  Sprite(SharkEngine &game_engine, Texture2D texture, Anchor anchor = kAnchorTopLeft)
     : game_engine_(game_engine),
       anchor_(anchor),
       texture_(texture),
       alpha_(1.f) {
   }
 
-  Sprite(GameEngine &game_engine, std::string texture_name, Anchor anchor = kAnchorTopLeft)
+  Sprite(SharkEngine &game_engine, std::string texture_name, Anchor anchor = kAnchorTopLeft)
     : game_engine_(game_engine),
       anchor_(anchor),
       alpha_(1.f) {
@@ -71,7 +71,7 @@ class Sprite {
                   anchor_ == kAnchorCenter);
   }
 
-  GameEngine &game_engine_;
+  SharkEngine &game_engine_;
   Anchor anchor_;
   Texture2D texture_;
   float alpha_;

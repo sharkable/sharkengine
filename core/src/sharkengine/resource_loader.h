@@ -15,11 +15,11 @@
 #include "opengl/texture2d.h"
 
 class AssetReader;
-class GameEngine;
+class SharkEngine;
 
 class ResourceLoader {
  public:
-  ResourceLoader(GameEngine &game_engine);
+  ResourceLoader(SharkEngine &game_engine);
 
   Texture2D TextureWithName(const std::string &name);
   void ReleaseResource(const std::string &name);
@@ -34,7 +34,7 @@ class ResourceLoader {
  private:
   Texture2D Texture(std::string filename, int opengl_id = 0);
 
-  GameEngine &game_engine_;
+  SharkEngine &game_engine_;
   std::string texture_name_extention_;
   std::map<std::string, Texture2D> resources_;
   std::map<std::string, int> resource_counter_;

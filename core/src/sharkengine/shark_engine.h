@@ -22,7 +22,7 @@ class AnalyticsModule;
 class AppStoreModule;
 class AssetReader;
 class AssetReaderFactoryModule;
-class GameEngine;
+class SharkEngine;
 class InputHandler;
 class InputModule;
 class Label;
@@ -34,12 +34,12 @@ namespace SharkSound {
 class Simulator;
 
 extern "C" {
-  void sharkengine_init(GameEngine &game_engine);
+  void sharkengine_init(SharkEngine &game_engine);
 }
 
-class GameEngine {
+class SharkEngine {
  public:
-  GameEngine();
+  SharkEngine();
 
   // Platform functions
   // Don't call these from an app.

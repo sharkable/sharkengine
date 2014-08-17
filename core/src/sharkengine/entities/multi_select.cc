@@ -17,7 +17,7 @@
 
 using std::vector;
 
-MultiSelect::MultiSelect(GameEngine &game_engine)
+MultiSelect::MultiSelect(SharkEngine &game_engine)
     : Animatable(),
       selected_value_(0) {
   click_sound_ = game_engine.sound()->GetSound("sounds/button_click.wav");

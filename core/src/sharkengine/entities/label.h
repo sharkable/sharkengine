@@ -15,11 +15,11 @@
 #include "sharkengine/entities/animatable.h"
 #include "sharkengine/render/renderer.h"
 
-class GameEngine;
+class SharkEngine;
 
 class Label : public Animatable, public Renderer {
  public:
-  Label(GameEngine &game_engine, GamePoint position);
+  Label(SharkEngine &game_engine, GamePoint position);
 
   const std::string & Text();
   void SetText(const std::string &text);

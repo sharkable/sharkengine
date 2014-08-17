@@ -15,7 +15,7 @@
 using std::map;
 using std::string;
 
-ResourceLoader::ResourceLoader(GameEngine &game_engine) : game_engine_(game_engine) {
+ResourceLoader::ResourceLoader(SharkEngine &game_engine) : game_engine_(game_engine) {
 }
 
 Texture2D ResourceLoader::TextureWithName(const std::string &name) {

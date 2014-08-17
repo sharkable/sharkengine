@@ -16,7 +16,7 @@
 #include "sharkengine/input/input_handler.h"
 #include "sharkengine/render/renderer.h"
 
-class GameEngine;
+class SharkEngine;
 class Sprite;
 class Touch;
 namespace SharkSound {
@@ -25,7 +25,7 @@ namespace SharkSound {
 
 class MultiSelect : public Animatable, public Renderer, public InputHandler {
  public:
-  MultiSelect(GameEngine &game_engine);
+  MultiSelect(SharkEngine &game_engine);
   ~MultiSelect();
 
   void Add(Sprite normal_sprite, Sprite selected_sprite, GamePoint position);

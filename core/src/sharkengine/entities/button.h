@@ -35,8 +35,8 @@ class ButtonDelegate {
 
 class Button : public Animatable, public Renderer, public InputHandler {
  public:
-  Button(GameEngine &game_engine);
-  Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
+  Button(SharkEngine &game_engine);
+  Button(SharkEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite, GamePoint position);
   ~Button();
 
   // Renderer
@@ -57,7 +57,7 @@ class Button : public Animatable, public Renderer, public InputHandler {
  private:
   void Init();
 
-  GameEngine &game_engine_;
+  SharkEngine &game_engine_;
   Sprite normal_sprite_;
   Sprite pressed_sprite_;
   GamePoint pressed_offset_;

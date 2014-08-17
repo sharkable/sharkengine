@@ -20,7 +20,7 @@
 #include "sharkengine/render/renderer.h"
 #include "sharkengine/simulation/simulator.h"
 
-GameEngine::GameEngine()
+SharkEngine::SharkEngine()
     : simulator_(nullptr),
       renderer_(nullptr),
       input_handler_(nullptr),
@@ -44,7 +44,7 @@ GameEngine::GameEngine()
 
 #pragma mark - Platform functions
 
-void GameEngine::Update() {
+void SharkEngine::Update() {
   shark_assert(input_handler_, "No InputHandler found.");
   shark_assert(simulator_, "No Simulator found.");
   input_manager_.HandleEvents(*input_handler_);
@@ -53,7 +53,7 @@ void GameEngine::Update() {
   game_tick_++;
 }
 
-void GameEngine::Render() {
+void SharkEngine::Render() {
   shark_assert(renderer_, "No Renderer found.");
   renderer_->Render(CoordinateSystem::BaseSystem());
 }
@@ -61,18 +61,18 @@ void GameEngine::Render() {
 
 #pragma mark - App functions
 
-void GameEngine::SetSimulator(Simulator *simulator) {
+void SharkEngine::SetSimulator(Simulator *simulator) {
   simulator_ = simulator;
 }
 
-void GameEngine::SetRenderer(Renderer *renderer) {
+void SharkEngine::SetRenderer(Renderer *renderer) {
   renderer_ = renderer;
 }
 
-void GameEngine::SetInputHandler(InputHandler *input_handler) {
+void SharkEngine::SetInputHandler(InputHandler *input_handler) {
   input_handler_ = input_handler;
 }
 
-sp<AssetReader> GameEngine::LoadAsset(std::string filename) {
+sp<AssetReader> SharkEngine::LoadAsset(std::string filename) {
   return sp<AssetReader>(asset_reader_factory_module_->CreateAssetReader(filename));
 }

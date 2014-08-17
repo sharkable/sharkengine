@@ -15,7 +15,7 @@
 
 using std::vector;
 
-Button::Button(GameEngine &game_engine)
+Button::Button(SharkEngine &game_engine)
     : Animatable(),
       game_engine_(game_engine),
       normal_sprite_(game_engine),
@@ -25,7 +25,7 @@ Button::Button(GameEngine &game_engine)
   Init();
 }
 
-Button::Button(GameEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite,
+Button::Button(SharkEngine &game_engine, Sprite normal_sprite, Sprite pressed_sprite,
                GamePoint position)
     : Animatable(position),
       game_engine_(game_engine),
