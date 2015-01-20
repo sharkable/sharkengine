@@ -20,6 +20,8 @@
 
 @implementation SharkengineOpenGLView
 
+// NSOpenGLView
+
 - (void)prepareOpenGL {
 #if SE_APP_DISABLE_PC_ULTRA_HIGH_RES
 #else
@@ -33,9 +35,9 @@
   screenScale_ = [self scaleFactor];
   renderSize_ = ScreenSize(windowSize_.width * screenScale_, windowSize_.height * screenScale_);
 
-  if (!didStart_) {
-    [self start];
-  }
+  dispatch_async(dispatch_get_current_queue(), ^{
+    [NSThread detachNewThreadSelector:@selector(runGameLoop) toTarget:self withObject:nil];
+  });
 }
 
 - (void)reshape {
@@ -106,7 +108,8 @@
 - (void)mouseMoved:(NSEvent *)theEvent {
   InputEvent event(InputEvent::kActionMove, InputEvent::kIdMouse,
                    GamePoint(theEvent.deltaX, theEvent.deltaY));
-  sharkEngine_->input_manager().AddEvent(event);
+  if (sharkEngine_)
+    sharkEngine_->input_manager().AddEvent(event);
   if (!CGCursorIsVisible()) {
     NSRect windowFrame = self.window.frame;
     CGPoint windowCenter = CGPointMake(NSMidX(windowFrame), NSMidY(windowFrame));
@@ -230,6 +233,7 @@
 
 - (void)setUpOpenGL {
   // We need a context created in the game thread.
+  [self clearGLContext];
   NSOpenGLContext *newContext =
       [[NSOpenGLContext alloc] initWithFormat:self.pixelFormat shareContext:nil];
   [self setOpenGLContext:newContext];
@@ -290,11 +294,6 @@
       NSLog(@"glGetError(): %d", err);
     }
   }
-}
-
-- (void)start {
-  didStart_ = YES;
-  [NSThread detachNewThreadSelector:@selector(runGameLoop) toTarget:self withObject:nil];
 }
 
 - (void)pause {
