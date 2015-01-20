@@ -6,9 +6,9 @@
 //  Copyright 2010 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/ios/ES1Renderer.h"
+#import "sharkengine/apple/ios/ES1Renderer.h"
 
-#import "gameengine/opengl/texture2d.h"
+#import "sharkengine/opengl/texture2d.h"
 
 @implementation ES1Renderer {
  @private
@@ -71,7 +71,7 @@
 
   if (!context_ || ![EAGLContext setCurrentContext:context_]) {
     [self release];
-    return nil;
+    return NO;
   }
 
   // Create default framebuffer object. The backing will be allocated for the current layer in
@@ -87,11 +87,11 @@
   // width and heigh THAT way.)
   CGSize layerSize = layer.visibleRect.size;
   float scale = [UIScreen mainScreen].scale;
-  glGenRenderbuffers(1, &depthRenderbuffer_);
-  glBindRenderbuffer(GL_RENDERBUFFER, depthRenderbuffer_);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, layerSize.width * scale,
+  glGenRenderbuffersOES(1, &depthRenderbuffer_);
+  glBindRenderbufferOES(GL_RENDERBUFFER_OES, depthRenderbuffer_);
+  glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, layerSize.width * scale,
                         layerSize.height * scale);
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER,
+  glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES,
                             depthRenderbuffer_);
 
   // Allocate color buffer backing based on the current layer size

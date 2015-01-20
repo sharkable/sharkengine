@@ -8,7 +8,7 @@
 
 #import "GameTouchWindow.h"
 
-#import "gameengine/game_engine.h"
+#import "sharkengine/shark_engine.h"
 
 @interface GameTouchWindow ()
 - (void)addTouches:(NSSet *)touches action:(InputEvent::Action)action;
@@ -16,7 +16,7 @@
 
 @implementation GameTouchWindow {
  @private
-  GameEngine *gameEngine_;  // weak
+  SharkEngine *gameEngine_;  // weak
   CGFloat scale_;
 }
 

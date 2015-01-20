@@ -6,7 +6,7 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/modules/app_store_module.h"
+#import "sharkengine/modules/app_store_module.h"
 
 #ifndef SHARKENGINE_APPLE_MODULES_IOS_IOSAPPSTOREMODULE_H_
 #define SHARKENGINE_APPLE_MODULES_IOS_IOSAPPSTOREMODULE_H_

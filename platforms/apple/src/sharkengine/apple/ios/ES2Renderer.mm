@@ -7,7 +7,7 @@
 //
 
 #import "ES2Renderer.h"
-#import "game_engine.h"
+#import "shark_engine.h"
 
 // uniform index
 enum {
@@ -44,7 +44,7 @@ enum {
 
   GLuint program_;
 
-  GameEngine *gameEngine_;
+  SharkEngine *gameEngine_;
 }
 
 // Create an OpenGL ES 2.0 context

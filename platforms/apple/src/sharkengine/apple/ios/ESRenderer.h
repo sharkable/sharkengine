@@ -11,7 +11,7 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/EAGLDrawable.h>
 
-class GameEngine;
+class SharkEngine;
 
 @protocol ESRenderer<NSObject>
 

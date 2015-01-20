@@ -11,11 +11,11 @@
 struct GameSize;
 class EngineView;
 
-class GameEngine;
+class SharkEngine;
 
 @interface ViewController : UIViewController
 
-@property(nonatomic, readonly) GameEngine *gameEngine;
+@property(nonatomic, readonly) SharkEngine *gameEngine;
 @property(nonatomic, readonly) UIWindow *window;
 
 - (void)pause;

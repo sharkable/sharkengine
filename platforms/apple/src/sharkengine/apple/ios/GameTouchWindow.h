@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-class GameEngine;
+class SharkEngine;
 
 @interface GameTouchWindow : UIWindow
 
-@property(nonatomic, assign) GameEngine *gameEngine;
+@property(nonatomic, assign) SharkEngine *gameEngine;
 
 @end

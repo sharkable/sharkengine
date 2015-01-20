@@ -6,22 +6,22 @@
 //  Copyright 2012 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/ios/ViewController.h"
+#import "sharkengine/apple/ios/ViewController.h"
 
 #import "sharksound/apple/AppleSoundController.h"
 
-#import "gameengine/apple/ios/EAGLView.h"
-#import "gameengine/apple/ios/GameTouchWindow.h"
-#import "gameengine/apple/modules/ApplePersistenceModule.h"
-#import "gameengine/apple/modules/ios/IOSAdModule.h"
-#import "gameengine/apple/modules/ios/IOSAnalyticsModule.h"
-#import "gameengine/apple/modules/ios/IOSAppStoreModule.h"
-#import "gameengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
-#import "gameengine/apple/modules/ios/IOSIAdAdModule.h"
-#import "gameengine/apple/modules/ios/IOSInputModule.h"
-#import "gameengine/opengl/texture2d.h"
-#import "gameengine/game_engine.h"
-#import "gameengine/platform.h"
+#import "sharkengine/apple/ios/EAGLView.h"
+#import "sharkengine/apple/ios/GameTouchWindow.h"
+#import "sharkengine/apple/modules/ApplePersistenceModule.h"
+#import "sharkengine/apple/modules/ios/IOSAdModule.h"
+#import "sharkengine/apple/modules/ios/IOSAnalyticsModule.h"
+#import "sharkengine/apple/modules/ios/IOSAppStoreModule.h"
+#import "sharkengine/apple/modules/ios/IOSAssetReaderFactoryModule.h"
+#import "sharkengine/apple/modules/ios/IOSIAdAdModule.h"
+#import "sharkengine/apple/modules/ios/IOSInputModule.h"
+#import "sharkengine/opengl/texture2d.h"
+#import "sharkengine/shark_engine.h"
+#import "sharkengine/platform.h"
 
 @interface ViewController ()
 - (void)setup;
@@ -35,7 +35,7 @@
   EAGLView *view_;
   GameTouchWindow *gameTouchWindow_;
 
-  GameEngine *gameEngine_;
+  SharkEngine *gameEngine_;
   BOOL paused_;
   BOOL renderedAtLeastOnce_;
 };
@@ -135,7 +135,7 @@
 #pragma mark - Private
 
 - (void)setup {
-  gameEngine_ = new GameEngine();
+  gameEngine_ = new SharkEngine();
 
   CGSize screenSize = [self desiredViewFrame].size;
   CGFloat scale = [UIScreen mainScreen].scale;

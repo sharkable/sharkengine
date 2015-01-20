@@ -6,14 +6,14 @@
 //  Copyright 2013 Sharkable. All rights reserved.
 //
 
-#import "gameengine/apple/modules/ios/IOSAdModule.h"
+#import "sharkengine/apple/modules/ios/IOSAdModule.h"
 
-#import "gameengine/apple/TypeUtil.h"
-#import "gameengine/apple/thirdparty/ios/admob/GADBannerView.h"
-#import "gameengine/apple/thirdparty/ios/admob/GADInterstitial.h"
-#import "gameengine/apple/thirdparty/ios/admob/GADInterstitialDelegate.h"
-#import "gameengine/apple/thirdparty/ios/admob/GADRequest.h"
-#import "gameengine/coordinates/coordinate_types.h"
+#import "sharkengine/apple/TypeUtil.h"
+#import "sharkengine/apple/thirdparty/ios/admob/GADBannerView.h"
+#import "sharkengine/apple/thirdparty/ios/admob/GADInterstitial.h"
+#import "sharkengine/apple/thirdparty/ios/admob/GADInterstitialDelegate.h"
+#import "sharkengine/apple/thirdparty/ios/admob/GADRequest.h"
+#import "sharkengine/coordinates/coordinate_types.h"
 
 using std::string;
 
