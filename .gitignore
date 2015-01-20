@@ -10,5 +10,7 @@ project.xcworkspace*
 
 tools/png2tx
 
-artresources/*
+/samples/whack-a-snake/out/
+
+/samples/whack-a-snake/artresources
 
